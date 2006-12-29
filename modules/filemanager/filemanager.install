@@ -1,0 +1,55 @@
+<?php
+
+// $Id$
+
+/**
+ * Update the tables to UTF-8
+ */
+function filemanager_update_1() {
+  return _system_update_utf8(array('file'));
+}
+
+/**
+ * Install the initial schema.
+ */
+function filemanager_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query(
+  <<<MYSQL_UPDATE
+        CREATE TABLE {file} (
+          fid int(10) unsigned NOT NULL,
+          area varchar(255) NOT NULL,
+          directory tinyint(3) NOT NULL,
+          filename varchar(255) NOT NULL,
+          mimetype varchar(255) NOT NULL,
+          size int(12) NOT NULL,
+          active char(1) NOT NULL,
+          working char(1) NOT NULL,
+          private char(1) NOT NULL,
+          PRIMARY KEY (fid)
+        ) /*!40100 DEFAULT CHARACTER SET utf8 */;
+MYSQL_UPDATE
+      );
+      break;
+
+    case 'pgsql':
+      db_query(
+<<<PGSQL_UPDATE
+        CREATE TABLE {file} (
+          fid serial PRIMARY KEY CONSTRAINT file_fid_positive CHECK (fid > 0),
+          area varchar(255) NOT NULL,
+          directory smallint NOT NULL,
+          filename varchar(255) NOT NULL,
+          mimetype varchar(255) NOT NULL,
+          size integer NOT NULL,
+          active char(1) NOT NULL,
+          working char(1) NOT NULL,
+          private char(1) NOT NULL
+        );
+PGSQL_UPDATE
+      );
+      break;
+  }
+}

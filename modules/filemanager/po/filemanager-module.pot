@@ -1,0 +1,133 @@
+# LANGUAGE translation of Drupal (contributions-HEAD\modules\filemanager\filemanager.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: filemanager.module,v 1.10 2005/10/31 15:29:23 ccourtne
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-01-08 20:49+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:193
+msgid "Filestore add failed: Working space limit has been reached."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:290
+msgid "Filestore get working copy failed: Working space limit has been reached."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:386
+msgid "File promotion failed: area out of space"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:392
+msgid "File promotion failed: out of space"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:458
+msgid "General"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:458
+msgid "All files not specifically stored in another area."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:541;545
+msgid "file download"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:584
+msgid "Adds support for a managed file repository for other modules."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:596;603
+msgid "the directory '%name' does not exist, or is not writable."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:598
+msgid "Public file system path"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:598
+msgid "A file system path where public files will be stored. This directory has to exist and be writable by Drupal. This directory has to be accessible over the web. Changing this location after the site has been in use will cause problems so only change this setting on an existing site if you know what you are doing."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:599
+msgid "Public file system url"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:599
+msgid "Base url that points to the public files directory."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:605
+msgid "Private file system path"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:605
+msgid "A file system path where private access controlled files will be stored. This directory has to exist and be writable by Drupal. This directory should not be accessible over the web. Changing this location after the site has been in use will cause problems so only change this setting on an existing site if you know what you are doing."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:607
+msgid "Maximum files per directory"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:607
+msgid "Maximum number of files to put in each directory."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:608
+msgid "Working size limit"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:608
+msgid "Maximum total size in megabytes for the working storage directory. Enter -1 for unlimited."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:609
+msgid "Maximum working age"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:609
+msgid "Maximum amoung of time in minutes that an attachment is allowed to live in working storage. Enter -1 for unlimited."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:610
+msgid "Maximum size limit"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:610
+msgid "Maximum amount of disk space that can be consumed by all files. Enter in megabytes."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:612
+msgid "File areas"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:614
+msgid "The following numbers control the total size of all files allowed in the particular area. -1 means unlimited."
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:625
+msgid "Area"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:625
+msgid "Description"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:625
+msgid "Max size (Mb)"
+msgstr ""
+
+#: contributions-HEAD\modules\filemanager\filemanager.module:0
+msgid "filemanager"
+msgstr ""
+

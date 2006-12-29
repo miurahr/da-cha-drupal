@@ -1,0 +1,115 @@
+# Traduzione italiana per Drupal (filemanager.module)
+# Copyright 2006 Riccardo Riccardi <webmaster@jsdir.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: Traduzione Italiana di Drupal (filemanager.module)\n"
+"POT-Creation-Date: 2006-01-25 12:11+0100\n"
+"Last-Translator: Uccio <ucciopan@aicomputer.it>\n"
+"Language-Team: Drupalitalia.org <webmaster@jsdir.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Italiano\n"
+"X-Poedit-Country: ITALIA\n"
+"PO-Revision-Date: 2006-01-30 14:08+0100\n"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:193
+msgid "Filestore add failed: Working space limit has been reached."
+msgstr "Impossibile salvare il file. Lo spazio a disposizione e' terminato"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:290
+msgid "Filestore get working copy failed: Working space limit has been reached."
+msgstr "Impossibile copiare il file. Lo spazio a disposizione e' terminato"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:386
+msgid "File promotion failed: area out of space"
+msgstr "Impossibile promuovere il file: Lo spazio a disposizione e' terminato"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:392
+msgid "File promotion failed: out of space"
+msgstr "Impossibile promuovere il file: Lo spazio a disposizione e' terminato"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:458
+msgid "General"
+msgstr "Generale"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:458
+msgid "All files not specifically stored in another area."
+msgstr "Tutti i files non destinati ad una specifica area."
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:541
+#: ;545
+msgid "file download"
+msgstr "file download"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:584
+msgid "Adds support for a managed file repository for other modules."
+msgstr "Consente di gestire un contenitore di files per altri moduli"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:596
+#: ;605
+msgid "the directory '%name' does not exist, or is not writable."
+msgstr "la directory '%name' non esiste o non e' accessibile in scrittura"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:599
+msgid "Public file system path"
+msgstr "Percorso di sistema per i files pubblici"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:599
+msgid "A file system path where public files will be stored. This directory has to exist and be writable by Drupal. This directory has to be accessible over the web. Changing this location after the site has been in use will cause problems so only change this setting on an existing site if you know what you are doing."
+msgstr "Un percorso di sistema dove vengono conservati i files accessibili al pubblico (anonymous). La directory deve esistere ed essere accessibile in scrittura da Drupal ed in lettura dal web. Se sposti questa directory (o cambi nome) dopo che il sito e' in uso potresti avere dei problemi di files non trovati: modifica la directory su un sito on-line solo se sai cosa stai facendo!"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:601
+msgid "Public file system url"
+msgstr "URL per i files pubblici"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:601
+msgid "Base url that points to the public files directory."
+msgstr "URL di base (root) che punta alla directory dei files pubblci."
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:608
+msgid "Private file system path"
+msgstr "Percorso di sistema per i files privati"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:608
+msgid "A file system path where private access controlled files will be stored. This directory has to exist and be writable by Drupal. This directory should not be accessible over the web. Changing this location after the site has been in use will cause problems so only change this setting on an existing site if you know what you are doing."
+msgstr "Un percorso di sistema dove vengono conservati files privati (ad accesso controllato). La directory deve esistere ed essere accessibile in scrittura da Drupal ed in lettura dal web. Se sposti questa directory (o cambi nome) dopo che il sito e' in uso potresti avere dei problemi di files non trovati: modifica la directory su un sito on-line solo se sai cosa stai facendo!"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:610
+msgid "Maximum files per directory"
+msgstr "Totale dei files per cartella"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:610
+msgid "Maximum number of files to put in each directory."
+msgstr "Massimo numero di files consentito in ogni cartella"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:612
+msgid "Working size limit"
+msgstr "Limite di dimensione per i files"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:612
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:614
+msgid "Maximum working age"
+msgstr "Limite temporale"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:614
+msgid "Maximum amoung of time in minutes that an attachment is allowed to live in working storage. Enter -1 for unlimited."
+msgstr "Tempo massimo di conservazione del file nella cartella temporanea. Scrivi -1 per nessun limite"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:616
+msgid "Maximum size limit"
+msgstr "Dimensione massima"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:616
+msgid "Maximum amount of disk space that can be consumed by all files. Enter in megabytes."
+msgstr "Limite di spazio sul disco (server) che pue' essere occupato da tutti i files. Da indicare in Megabytes"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:622
+msgid "File areas"
+msgstr "Tipi di files"
+
+#: contributions-DRUPAL-4-6\modules\filemanager\filemanager.module:0
+msgid "filemanager"
+msgstr "File Manager"
+

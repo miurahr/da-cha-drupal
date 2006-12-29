@@ -1,0 +1,1057 @@
+<?php
+// $Id: filemanager.module,v 1.18.2.2 2006/11/19 02:35:21 drewish Exp $
+
+/**
+ * @defgroup filemanager File Upload/Download Manager
+ *   Functions for modules to use the managed file repository.  Modules using
+ *   this repository don't have to deal with filenames, directory, size limits,
+ *   or creating download URLs.
+ *
+ *   File Manager supports both private(access controlled) and public files.
+ *   When a module adds a file to the file manager they specify which type of
+ *   file it is. A module may use both public and private files at the same
+ *   time, but an individual may only be public or private.
+ *
+ * @{
+ */
+
+/**
+ * Create the URL to download a file in the filestore.
+ *
+ * @param $file
+ *   Filestore file to create the URL for
+ * @param $working
+ *   If this is true and there is a working copy of the file then a URL to the
+ *   working copy will be returned, otherwise the URL will point to the active
+ *   copy.
+ * @param $absolute
+ *   Whether to force the output to be an absolute URL (beginning with http:).
+ *   Useful for URLs that will be displayed outside the site, such as in an RSS
+ *   feed.
+ * @return
+ *   a string containing the URL to the given path.
+ */
+function filemanager_url($file, $working = FALSE, $absolute = FALSE) {
+  global $base_url;
+
+  // Load file info if we only got a $fid
+  $file = filemanager_get_file_info($file);
+
+  $subdir = ($file->working && $working) ? 'working' : 'active';
+
+  if ($file->private) {
+    return url('filemanager/' . $subdir, 'fid=' . $file->fid, NULL, $absolute);
+  }
+  else {
+    return variable_get('filemanager_public_url', 'files') . "/$subdir/{$file->directory}/{$file->filename}";
+  }
+}
+
+/**
+ * Create a link to download a file in the filestore.
+ *
+ * @param $text
+ *   The text to be enclosed with the anchor tag.
+ * @param $file
+ *   Filestore file to create the URL for
+ * @param $working
+ *   If this is true and there is a working copy of the file then a link
+ *   to the working copy will be returned, otherwise the link will point to
+ *   the active copy.
+ * @param $attributes
+ *   An associative array of HTML attributes to apply to the anchor tag.
+ * @param $absolute
+ *   Whether to force the output to be an absolute link (beginning with http:).
+ *   Useful for links that will be displayed outside the site, such as in an RSS feed.
+ * @return
+ *   an HTML string containing a link to the given path.
+ */
+function filemanager_l($text, $file, $working = FALSE, $attributes = array(), $absolute = FALSE) {
+  return '<a href="' . filemanager_url($file, $working, $absolute) . '"' . drupal_attributes($attributes) . '>' . $text . '</a>';
+}
+
+/**
+ * Returns the path to a file in the filestore
+ *
+ * @param $file
+ *   Filestore file or id to create the path for
+ * @param $working
+ *   If this is true return the path to where the working copy
+ *   would reside.  This does not guarantee a working copy exists.
+ */
+function filemanager_create_path($file, $working = FALSE) {
+  $file = filemanager_get_file_info($file);
+  return filemanager_create_directory_path($file->private, $working, $file->directory) . '/' . $file->filename;
+}
+
+/**
+ * Returns the path to a the directory where this file is located.
+ *
+ * @param $private
+ *   If true creates a path to a private directory
+ * @param $working
+ *   If this is true return the path to where the working copy
+ *   would reside.  This does not guarantee a working copy exists.
+ * @param $subdir
+ *   Subdirectory underneath the root which you want
+ */
+function filemanager_create_directory_path($private = FALSE, $working = FALSE, $subdir = FALSE) {
+  return ($private ? variable_get('filemanager_private_path', 'private') : variable_get('filemanager_public_path', 'files')) . '/' . ($working ? 'working' : 'active') . ($subdir !== FALSE ? '/' . $subdir : '');
+}
+
+/**
+ * Saves a file uploaded into a the file store as a working copy.
+ *
+ * @param $source
+ *   Name of the fileupload field to check
+ * @param $area
+ *   Name of the area where the file resides which will usually be the name of the module
+ *   managing the file. Ignored if over if you supply a file to overwrite
+ * @param $private
+ *   True if you want this file to be a private download.  This is ignored if you
+ *   supply a file to overwrite.
+ * @param $file
+ *   Filestore file which this upload should replace
+ * @return File object containing file information or 0 if there
+ *   was an error during save.
+ */
+function filemanager_add_upload($source, $area, $private = FALSE, $file = FALSE) {
+  $upload = file_check_upload($source);
+  return filemanager_add_file($area, $upload->filepath, $upload->filename, $upload->filemime, FALSE, $private, $file);
+}
+
+/**
+ * Adds a file into the repository as a working copy
+ *
+ * @param $area
+ *   Name of the area where the file resides which will usually be the name of the module
+ *   managing the file. Ignored if over if you supply a file to overwrite
+ * @param $path
+ *   Path to the file to be added to the
+ * @param $filename
+ * @param $mimetype
+ *   Mime type that should be used for the HTTP header when downloading this file.
+ *   Ignored if over if you supply a file to overwrite
+ * @param $remove
+ *   If true the original file will be removed once it is put into the repository.
+ * @param $private
+ *   True if you want this file to be a private download.  This is ignored if you
+ *   supply a file to overwrite.
+ * @param $file
+ *   Filestore file which this upload should replace
+ * @return
+ *   Fileobject on success, otherwise FALSE
+ */
+function filemanager_add_file($area, $path, $filename, $mimetype = 'application/unknown', $remove = TRUE, $private = FALSE, $file = FALSE) {
+  if(variable_get('filemanager_force_private_' . $area, 0)) {
+    $private = TRUE;
+  }
+
+  $size = filesize($path);
+
+  // Lock on a lock file to prevent naming conflict race conditions
+  $lock = _filemanager_lock();
+
+  if ($file === FALSE) {
+
+    if ($area == '') {
+      $area = 'general';
+    }
+
+    // This is a net new file find a directory for it and setup the object
+    $file->fid = db_next_id('{file}_fid');
+    $file->area = $area;
+    $file->filename = $filename;
+    $file->active = FALSE;
+    $file->working = FALSE;
+    $file->private = $private;
+    $file->size = $size;
+    $file = _filemanager_find_directory($file);
+    $update = false;
+  }
+  else {
+
+    // We're replacing a file so delete it's existing working version
+    $file = filemanager_get_file_info($file);
+    if ($file->working) {
+      file_delete(filemanager_create_path($file, TRUE));
+    }
+    $file->working = FALSE;
+    $update = true;
+    // We don't update the size for existing files until they are promoted
+  }
+
+  // Purge out any old working files, we do this every time since
+  // not all sites have cron support and we don't one upload to have
+  // to delete several weeks worth of build up
+  filemanager_purge_orphans();
+
+
+  // Verify we are not going to exceed our working directory size
+  $sizelimit = variable_get('filemanager_working_sizelimit', '10') * 1024 * 1024;
+  if ($sizelimit > -1 && $size + filemanager_get_working_size() > $sizelimit) {
+    drupal_set_message(t('Filestore add failed: Working space limit has been reached.'), 'error');
+    _filemanager_unlock($lock);
+    return FALSE;
+  }
+
+  // Verify working directory exists
+  filemanager_create_directory(filemanager_create_directory_path($file->private, TRUE));
+  filemanager_create_directory(filemanager_create_directory_path($file->private, TRUE, $file->directory));
+
+  // Move upload file to new location and name
+  $orig_path = $path;
+  if (_filemanager_copy($path, filemanager_create_path($file, TRUE), FILE_EXISTS_ERROR)) {
+
+    $file->working = TRUE;
+    $file->mimetype = $mimetype;
+
+    // Save database record
+    if ($update) {
+      db_query("UPDATE {file} SET working='%s' WHERE fid=%d", $file->working, $file->fid);
+    }
+    else {
+      db_query("INSERT INTO {file} (fid, area, directory, filename, mimetype, size, active, working, private) VALUES (%d,'%s',%d,'%s','%s',%d,'%s','%s','%s')",
+               $file->fid, $file->area, $file->directory, $file->filename, $file->mimetype, $file->size, $file->active, $file->working, $file->private);
+    }
+
+    if ($remove) {
+      file_delete($orig_path);
+    }
+  } else {
+    $file = FALSE;
+  }
+
+  _filemanager_unlock($lock);
+  return $file;
+}
+
+/**
+ * Renames an existing file in the filestore
+ *
+ * @param $file
+ *   file or fid to rename
+ * @param $name
+ *   new name for the file, use NULL or blank to retain old name
+ * @return
+ *   the renamed file object on success or false on failure
+ */
+function filemanager_rename($file, $name) {
+    $file = filemanager_get_file_info($file);
+
+    // Exit immediately if the rename does nothing
+    if (! $file || $name == $file->filename) {
+      return $file;
+    }
+
+    // Begin rename operation
+    $oldworking = filemanager_create_path($file, true);
+    $oldactive = filemanager_create_path($file, false);
+    $lock = _filemanager_lock();
+
+    $file->filename = $name;
+
+    $updated = _filemanager_update_file($file, $oldworking, $oldactive);
+
+    if ($file != false) {
+        db_query("UPDATE {file} SET filename = '%s', directory = '%d' WHERE fid=%d", $file->filename, $file->directory, $file->fid);
+    }
+    _filemanager_unlock($lock);
+    return $file;
+}
+
+/**
+ * Moves the file from public to private or vice versa
+ *
+ * @param $file
+ *   file or fid to modify
+ * @param $private
+ *  new private state for the file
+ * @return
+ *  the modified file object on success or false on failure.
+ */
+function filemanager_set_private($file, $private) {
+    $file = filemanager_get_file_info($file);
+
+    // The  private column is a char, adjust the flag to match
+    if ($private) {
+        $private = '1';
+    }
+    else {
+        $private = '0';
+    }
+
+    // Exit immediately if file is already in the right state
+    if (! $file || $file->private == $private) {
+      return $file;
+    }
+
+    // Begin set_private operation
+    $oldworking = filemanager_create_path($file, true);
+    $oldactive = filemanager_create_path($file, false);
+    $lock = _filemanager_lock();
+
+    $file->private = $private;
+
+    $updated = _filemanager_update_file($file, $oldworking, $oldactive);
+
+    if ($file != false) {
+        db_query("UPDATE {file} SET private='%s', directory = '%d' WHERE fid=%d", $file->private, $file->directory, $file->fid);
+    }
+    _filemanager_unlock($lock);
+    return $file;
+}
+
+/**
+ * helper function for filemanager_rename and filemanager_set_private
+ * does the actual file moving from $oldactive and $oldworking to the
+ * values set in the $file object
+ *
+ * @param $file
+ *   file or fid containing new name/directory/private info
+ * @param $oldworking
+ *  the path to the current working file
+ * @param $oldactive
+ *  the path to the current active file
+ * @return
+ *  true on success and false on failure
+ */
+function _filemanager_update_file(&$file, $oldworking, $oldactive) {
+    // Using the new file object find/create an appropiate area for this file
+    $file = _filemanager_find_directory($file);
+    $newworking = filemanager_create_path($file, true);
+    $newactive = filemanager_create_path($file, false);
+    if (file_exists($oldworking)) {
+        filemanager_create_directory(dirname(dirname($newworking)));
+        filemanager_create_directory(dirname($newworking));
+        if (!_filemanager_move($oldworking, $newworking, FILE_EXISTS_ERROR)) {
+            drupal_set_message("file exists: {$file->filename}", 'error');
+            return false;
+        }
+    }
+    if (file_exists($oldactive)) {
+        filemanager_create_directory(dirname(dirname($newactive)));
+        filemanager_create_directory(dirname($newactive));
+        if (!_filemanager_move($oldactive, $newactive, FILE_EXISTS_ERROR)) {
+            drupal_set_message("file exists: {$file->filename}", 'error');
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ * Gets a working copy of the active version of a file in the filestore
+ * @param $file
+ *   file or fid to copy into working stage area
+ * @param $overwrite
+ *   if true, create a new copy, overwriting an existing working copy
+ *   otherwise, only return the new copy if an existing working copy doesn't exist
+ * @return
+ *   a file object on success or false on failure
+ */
+function filemanager_get_working_copy($file, $overwrite=false) {
+  $file = filemanager_get_file_info($file);
+  if ($file->working && !$overwrite) {
+      return $file;
+  }
+
+  // Purge out any old working files, we do this every time since
+  // not all sites have cron support and we don't one upload to have
+  // to delete several weeks worth of build up
+  filemanager_purge_orphans();
+
+  // Verify we are not going to exceed our working directory size
+  $sizelimit = variable_get('filemanager_working_sizelimit', '10') * 1024 * 1024;
+  if ($sizelimit > -1 && $file->size + filemanager_get_working_size() > $sizelimit) {
+    drupal_set_message(t('Filestore get working copy failed: Working space limit has been reached.'), 'error');
+    return;
+  }
+
+  $active_path = filemanager_create_path($file, false);
+  $working_path = filemanager_create_path($file, true);
+  if (_filemanager_copy($active_path, $working_path, FILE_EXISTS_REPLACE)) {
+    $file->working = 1;
+    db_query("UPDATE {file} SET working=%d WHERE fid=%d", $file->working, $file->fid);
+  } else {
+    $file = false;
+  }
+  return $file;
+}
+
+/**
+ * Returns the total size in bytes of all current active files.
+ */
+function filemanager_get_size() {
+  $size = db_fetch_object(db_query("SELECT SUM(size) AS size FROM {file} WHERE working = 0"));
+  return $size->size;
+}
+
+/**
+ * Returns the total size in bytes of all the current working files.
+ * We have to use the filesystem since sizes of working files will
+ * not be accurate in the database.
+ */
+function filemanager_get_working_size() {
+  $size = 0;
+
+  $files = file_scan_directory(filemanager_create_directory_path(TRUE, TRUE), '.*');
+  foreach($files as $file) {
+    $size += filesize($file->filename);
+  }
+
+  $files = file_scan_directory(filemanager_create_directory_path(FALSE, TRUE), '.*');
+  foreach($files as $file) {
+    $size += filesize($file->filename);
+  }
+
+  return $size;
+}
+
+/**
+ * Returns statistics object about a given filestore area.  The object contains
+ * the following fields:
+ * - size - the total size of all files in the area
+ * - filecount - which is the number of files in the area.
+ * - sizelimit - the size limit for this area
+ *
+ * @param $area
+ *   Name of the area where the file resides which will usually be the name of the module
+ *   managing the file.
+ */
+function filemanager_get_area_info($area) {
+  if ($area == '') {
+    $area = 'general';
+  }
+  $result = db_query("SELECT SUM(size) AS size, COUNT(1) AS filecount FROM {file} WHERE area = '%s'", $area);
+
+  $area_info = db_fetch_object($result);
+  $area_info->sizelimit = variable_get("filemanager_area_limit_" . $area, '-1');
+  return $area_info;
+}
+
+/**
+ * Returns a filestore object containing information about a given file.
+ * Passing in a filestore object will just pass the same object back out.
+ *
+ * @param $file
+ *   File id which you want information about.
+ */
+function filemanager_get_file_info($file) {
+  if (is_object($file)) {
+    return $file;
+  }
+  $result = db_query("SELECT fid, area, directory, filename, mimetype, size, active, working, private FROM {file} WHERE fid = %d", $file);
+  return db_fetch_object($result);
+}
+
+/**
+ * Promotes a working copy of a file to the active copy
+ *
+ * @param $file
+ *   File object or file id you want to promote
+ * @return
+ *    Updated $file object for promoted file
+ */
+function filemanager_promote_working($file) {
+  $file = filemanager_get_file_info($file);
+
+  if ($file->working) {
+    $size = filesize(filemanager_create_path($file, TRUE));
+
+    $area = filemanager_get_area_info($file->area);
+    if ($area->sizelimit > -1 && ($size + $area->size) > ($area->sizelimit * 1024 * 1024)) {
+      drupal_set_message(t('File promotion failed: area out of space'), 'error');
+      return FALSE;
+    }
+
+    $maxsize = variable_get('filemanager_max_size', '400');
+    if ($maxsize > -1 && ($size + filemanager_get_size()) > ($maxsize * 1024 * 1024)) {
+      drupal_set_message(t('File promotion failed: out of space'), 'error');
+      return FALSE;
+    }
+
+    // Verify working directory exists
+    $activedir = filemanager_create_directory_path($file->private, FALSE);
+    if (!file_exists($activedir)) {
+      mkdir($activedir);
+    }
+    $filedir = filemanager_create_directory_path($file->private, FALSE, $file->directory);
+    if (!file_exists($filedir)) {
+      mkdir($filedir);
+    }
+
+    $current_path = filemanager_create_path($file, TRUE);
+    $destination_path = filemanager_create_path($file, FALSE);
+    if (_filemanager_move($current_path, $destination_path, FILE_EXISTS_REPLACE)) {
+      $file->working = FALSE;
+      $file->active = TRUE;
+      $file->size = $size;
+      db_query("UPDATE {file} SET working='%s', active='%s', size=%d WHERE fid=%d", $file->working, $file->active, $file->size, $file->fid);
+      return $file;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Purge a working file from the repository
+ *
+ * @param $file
+ *   File object or file id you want to purge the working file for
+ */
+function filemanager_purge_working($file) {
+  $file = filemanager_get_file_info($file);
+
+  file_delete(filemanager_create_path($file, TRUE));
+  if ($file->active) {
+    db_query("UPDATE {file} SET working = '%s' WHERE fid = %d", FALSE, $file->fid);
+  }
+  else {
+    db_query("DELETE FROM {file} WHERE fid = %d", $file->fid);
+  }
+}
+
+/**
+ * Removes a file from a repository
+ *
+ * @param $file
+ *   File object or file id you want to promote
+ */
+function filemanager_delete($file) {
+  $file = filemanager_get_file_info($file);
+  file_delete(filemanager_create_path($file, TRUE));
+  file_delete(filemanager_create_path($file, FALSE));
+  db_query("DELETE FROM {file} WHERE fid=%d", $file->fid);
+}
+
+/**
+ * Returns a list of file areas used by the current module set
+ *
+ * @return
+ *   A list of all file areas
+ */
+function filemanager_area_list() {
+  $areas = array();
+  $areas[] = array('area' => 'general', 'name' => t('General'), 'description' => t('All files not specifically stored in another area.'));
+  foreach (module_list() as $module) {
+    $module_areas = module_invoke($module, 'filemanager_areas');
+    if ($module_areas) {
+      foreach ($module_areas as $area) {
+        $areas[] = $area;
+      }
+    }
+  }
+  return $areas;
+}
+
+/**
+ * Purges out files over the age limit in the working repository for all areas
+ */
+function filemanager_purge_orphans() {
+  $result = db_query("SELECT fid, area, directory, filename, mimetype, size, active, working, private FROM {file} WHERE working = '%s'", TRUE);
+  while ($file = db_fetch_object($result)) {
+    $path = filemanager_create_path($file, TRUE);
+    if (file_exists($path) && (time() - filemtime($path) > 60*variable_get('attachment_tmp_age', '120'))) {
+      filemanager_purge_working($file);
+    }
+  }
+}
+
+/**
+ * Transfers a file to the client after calling modules to find out
+ * if a file is accessible for a given user.  This function
+ * is here to support legacy private downloads
+ *
+ * @param $file
+ *   File object or file id you want to promote
+ * @param $working
+ *   Boolean value to indicate if the working version of the file should be returned.
+ * @param $headers
+ *   Custom headers, in case you want to stream the file, change the name, etc
+ */
+function filemanager_transfer($file, $working, $headers = FALSE) {
+  $file = filemanager_get_file_info($file);
+  $filepath = filemanager_create_path($file, $working);
+  $default_headers = array(
+    'Content-Type: '. $file->mimetype,
+    'Content-Length: '. $file->size,
+    'Content-Disposition: attachment; filename="'. $file->filename .'"'
+  );
+
+  if ($file->private) {
+    if (file_check_location($filepath, variable_get('filemanager_private_path','private')) && file_exists($filepath)) {
+      foreach (module_list() as $module) {
+        $headers = module_invoke($module, 'filemanager_download', $file);
+
+        if ($headers === FALSE) {
+          return drupal_access_denied();
+        }
+
+        elseif ($headers === TRUE) {
+          return _filemanager_transfer($filepath, $default_headers);
+        }
+
+        elseif (is_array($headers)) {
+          return _filemanager_transfer($filepath, $headers);
+        }
+      }
+
+      // Since no modules responded check to see if this is a general area file
+      // and allow download if so.
+      if ($file->area == 'general' || variable_get('filemanager_force_private_' . $file->area, 0)) {
+        return _filemanager_transfer($filepath, $default_headers);
+      }
+    }
+
+    return drupal_not_found();
+  }
+  else {
+    // It's a public file so no auth check is required.
+    return file_transfer($filepath, (is_array($headers)) ? $headers : $default_headers);
+  }
+}
+
+/**
+ * @}
+ */
+
+function filemanager_menu($may_cache) {
+  $items = array();
+
+  if ($may_cache) {
+    $items[] = array('path' => 'filemanager/active', 'title' => t('file download'),
+      'callback' => 'filemanager_download_active',
+      'access' => TRUE,
+      'type' => MENU_CALLBACK);
+    $items[] = array('path' => 'filemanager/working', 'title' => t('file download'),
+      'callback' => 'filemanager_download_working',
+      'access' => TRUE,
+      'type' => MENU_CALLBACK);
+  }
+
+  return $items;
+}
+
+/**
+ * Menu callback to download the latest active file
+ */
+function filemanager_download_active() {
+  $file = filemanager_get_file_info($_GET['fid']);
+  if ($file) {
+    filemanager_transfer($file, FALSE);
+  }
+  else {
+    drupal_not_found();
+  }
+}
+
+/**
+ * Menu callback to download the working version of a file. If no working
+ * version is available then the latest active version will be downloaded.
+ */
+function filemanager_download_working() {
+  $file = filemanager_get_file_info($_GET['fid']);
+  if ($file) {
+    filemanager_transfer($file, TRUE);
+  }
+  else {
+    drupal_not_found();
+  }
+}
+
+function filemanager_help($section) {
+  switch ($section) {
+    case 'admin/modules#description':
+      return t('Adds support for a managed file repository for other modules.');
+  }
+}
+
+
+
+/**
+ * Checks the existence of the directory specified in $form_element. If
+ * validation fails, the form element is flagged with an error from within the
+ * file_check_directory function. See: system_check_directory()
+ *
+ * @param $form_element
+ *   The form element containing the name of the directory to check.
+ */
+function _filemanager_settings_check_directory($form_element) {
+  file_check_directory($form_element['#value'], 0, $form_element['#parents'][0]);
+  return $form_element;
+}
+
+/**
+ * Displays filemanager admin screen
+ */
+function filemanager_settings() {
+  global $base_url;
+
+  $form['filemanager_public_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Public file system path'),
+    '#default_value' => variable_get('filemanager_public_path', 'files'),
+    '#maxlength' => 255,
+    '#after_build' => array('_filemanager_settings_check_directory'),
+    '#description' => t('A file system path where public files will be stored. This directory has to exist and be writable by Drupal. This directory has to be accessible over the web. Changing this location after the site has been in use will cause problems so only change this setting on an existing site if you know what you are doing.')
+  );
+  $form['filemanager_public_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Public file system URL'),
+    '#default_value' => variable_get('filemanager_public_url', $base_url .'/'. $public_directory_path),
+    '#maxlength' => 255,
+    '#description' => t('Base URL that points to the public files directory.')
+  );
+  $form['filemanager_private_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Private file system path'),
+    '#default_value' => variable_get('filemanager_private_path', 'private'),
+    '#maxlength' => 255,
+    '#after_build' => array('_filemanager_settings_check_directory'),
+    '#description' => t('A file system path where private access controlled files will be stored. This directory has to exist and be writable by Drupal. This directory should not be accessible over the web. Changing this location after the site has been in use will cause problems so only change this setting on an existing site if you know what you are doing.')
+  );
+  $form['filemanager_max_filecount'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Maximum files per directory'),
+    '#default_value' => variable_get('filemanager_max_filecount', '200'),
+    '#size' => 6,
+    '#maxlength' => 10,
+    '#description' => t('Maximum number of files to put in each directory.'));
+  $form['filemanager_working_sizelimit'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Working size limit'),
+    '#default_value' => variable_get('filemanager_working_sizelimit', '10'),
+    '#size' => 6,
+    '#maxlength' => 10,
+    '#description' => t('Maximum total size in megabytes for the working storage directory. Enter -1 for unlimited.'),
+    '#requred' => true
+  );
+  $form['filemanager_working_maxage'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Maximum working age'),
+    '#default_value' => variable_get('filemanager_working_maxage', '120'),
+    '#size' => 6,
+    '#maxlength' => 10,
+    '#description' => t('Maximum amoung of time in minutes that an attachment is allowed to live in working storage. Enter -1 for unlimited.'),
+    '#requred' => true
+  );
+  $form['filemanager_max_size'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Maximum size limit'),
+    '#default_value' => variable_get('filemanager_max_size', '400'),
+    '#size' => 6,
+    '#maxlength' => 10,
+    '#description' => t('Maximum amount of disk space that can be consumed by all files. Enter in megabytes.'),
+    '#requred' => true
+  );
+
+  $form['file_areas'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('File areas'),
+    '#tree' => true,
+    '#theme' => 'filemanager_fileareas_admin',
+    'info' => array(
+      '#type' => 'markup',
+      '#value' => '<em>'. t("The following numbers control the total size of all files allowed in a particular area. Enter '-1' to allow unlimited size. Select force private to force all files in that area to be streamed (no direct access) through the private directory.  If the module that controls that area does not enforce security it will default to allow all access.") .'</em>'
+    ),
+  );
+  foreach(filemanager_area_list() as $area) {
+    $key = $area['area'];
+    $form['file_areas']['areas'][$key] = array(
+      '#description' => $area['description'],
+      '#title' => $area['name'],
+      'limit' => array(
+        'filemanager_area_limit_' . $key => array(
+          '#type' => 'textfield',
+          '#default_value' => variable_get('filemanager_area_limit_' . $key, '-1'),
+          '#size' => 6,
+          '#maxlength' => 10,
+        ),
+      ),
+      'force' => array(
+        'filemanager_force_private_' . $key => array(
+          '#type' => 'checkbox',
+          '#default_value' => variable_get('filemanager_force_private_' . $key, 0),
+          '#return_value' => 1,
+        ),
+      ),
+    );
+  }
+
+  return $form;
+}
+
+function theme_filemanager_fileareas_admin($form) {
+  $output = form_render($form['info']);
+
+  $header = array(t('Area'),t('Description'),t('Max size (Mb)'),t('Force Private'));
+  foreach (element_children($form['areas']) as $key) {
+    $row = array();
+    $row[] = $form['areas'][$key]['#title'];
+    $row[] = $form['areas'][$key]['#description'];
+    $row[] = form_render($form['areas'][$key]['limit']);
+    $row[] = form_render($form['areas'][$key]['force']);
+    $rows[] = $row;
+  }
+  $output .= theme('table', $header, $rows);
+
+  $output .= form_render($form);
+  return $output;
+}
+
+/**
+ * Handle the submission of the admin/settings form. This is a bit unusual
+ * since the settings form is normally handled automatically, but due to the
+ * deep fileareas->areas array used for the file areas table, the
+ * system_settings_form_submit can't handle all the values without some
+ * pre-processing.
+ */
+function filemanager_settings_form_submit($form_id, $values) {
+  // Flatten the fileareas array into $values
+  foreach ($values['file_areas']['areas'] as $area => $settings) {
+    foreach ($settings as $value_key => $value_array) {
+      foreach ($value_array as $key => $value) {
+        $values[$key] = $value;
+      }
+    }
+  }
+  system_settings_form_submit($form_id, $values);
+}
+
+/**
+ * Creates a directory if it does not already exist.
+ *
+ * @param $directory
+ */
+function filemanager_create_directory($directory) {
+  if (!file_exists($directory)) {
+    mkdir($directory);
+  }
+}
+
+/**
+ * Removes a directory and all files contained within.
+ *
+ * @param $directory
+ */
+function filemanager_remove_directory($directory) {
+  if (is_dir($directory)) {
+    $files = file_scan_directory($directory, ".*");
+    foreach($files as $file) {
+      file_delete($file);
+    }
+    rmdir($directory);
+  }
+}
+
+function _filemanager_lock() {
+  $lock_file = variable_get('filemanager_private_path', 'private') .'/'. 'filemanager.lck';
+  $flk = fopen($lock_file,'w+');
+  flock($flk, LOCK_EX);
+  return $flk;
+}
+
+function _filemanager_unlock(&$handle) {
+  flock($handle, LOCK_UN);
+  fclose($handle);
+}
+
+/**
+ * this must be called while the lock is held
+ * @param $file
+ */
+function _filemanager_find_directory(&$file) {
+  // Find a directory that is not already full and does not contain our files
+  $file->directory = 0;
+  $directories = db_query("SELECT directory, count(1) AS filecount FROM {file} WHERE private = '%s' GROUP BY directory ORDER BY directory ASC", $file->private);
+
+  // this while loop requires the $directories array to be ordered in ascending order
+  while ($directory = db_fetch_object($directories)) {
+    // The idea here is to find a directory where the filename doesn't exist
+    // and we haven't hit the maximum file limit. The directories are named
+    // numerically and the first part of the test makes sure that the they're
+    // filled in sequenceially. $file->directory is incremented by 1 each time
+    // but $directory->directory comes from the database. If
+    // $directory->directory > $file->directory, then $file->directory doesn't
+    // exist and would be a safe place to save the file.
+    if ($directory->directory > $file->directory || $directory->filecount < variable_get('filemanager_max_file_count', '2000')) {
+      // If the directory is ok now lets make sure we don't already have this
+      // filename in the directory (checking both working and active).
+      if (!file_exists(filemanager_create_path($file, FALSE)) && !file_exists(filemanager_create_path($file, TRUE))) {
+        break;
+      }
+    }
+    $file->directory++;
+  }
+  return $file;
+}
+
+/**
+ * Copies a file to a new location. This is a powerful function that in many
+ * ways performs like an advanced version of copy().
+ * - Checks if $source and $dest are valid and readable/writable.
+ * - Performs a file copy if $source is not equal to $dest.
+ * - If file already exists in $dest either the call will error out, replace the
+ *   file or rename the file based on the $replace parameter.
+ *
+ * @param $source A string specifying the file location of the original file.
+ *   This parameter will contain the resulting destination filename in case of
+ *   success.
+ * @param $dest A string containing the directory $source should be copied to.
+ * @param $replace Replace behavior when the destination file already exists.
+ *   - FILE_EXISTS_REPLACE - Replace the existing file
+ *   - FILE_EXISTS_RENAME - Append _{incrementing number} until the filename is
+ *      unique
+ *   - FILE_EXISTS_ERROR - Do nothing and return false.
+ * @return True for success, false for failure.
+ */
+function _filemanager_copy(&$source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
+  $directory = $dest;
+  $basename = file_check_path($directory);
+
+  // Make sure we at least have a valid directory.
+  if ($basename === false) {
+    drupal_set_message(t('The selected file %file could not be uploaded, because the destination %directory is not properly configured.', array('%file' => theme('placeholder', $source), '%directory' => theme('placeholder', $dest))), 'error');
+    watchdog('file system', t('The selected file %file could not not be uploaded, because the destination %directory could not be found, or because its permissions do not allow the file to be written.', array('%file' => theme('placeholder', $source), '%directory' => theme('placeholder', $dest))), WATCHDOG_ERROR);
+    return 0;
+  }
+
+  // Process a file upload object.
+  if (is_object($source)) {
+    $file = $source;
+    $source = $file->filepath;
+    if (!$basename) {
+      $basename = $file->filename;
+    }
+  }
+
+  $source = realpath($source);
+
+  if (!file_exists($source)) {
+    drupal_set_message(t('The selected file %file could not be copied, because no file by that name exists.  Please check that you supplied the correct filename.', array('%file' => theme('placeholder', $source))), 'error');
+    return 0;
+  }
+
+  // If the destination file is not specified then use the filename of the
+  // source file.
+  $basename = $basename ? $basename : basename($source);
+  $dest = $directory .'/'. $basename;
+
+  // Make sure source and destination filenames are not the same, makes no sense
+  // to copy it if they are. In fact copying the file will most likely result in
+  // a 0 byte file. Which is bad. Real bad.
+  if ($source != realpath($dest)) {
+    if (file_exists($dest)) {
+      switch ($replace) {
+        case FILE_EXISTS_RENAME:
+          // Destination file already exists and we can't replace is so we try
+          // and and find a new filename.
+          if ($pos = strrpos($basename, '.')) {
+            $name = substr($basename, 0, $pos);
+            $ext = substr($basename, $pos);
+          }
+          else {
+            $name = $basename;
+          }
+
+          $counter = 0;
+          do {
+            $dest = $directory .'/'. $name .'_'. $counter++ . $ext;
+          } while (file_exists($dest));
+          break;
+
+        case FILE_EXISTS_ERROR:
+          drupal_set_message(t('The selected file %file could not be copied, because a file by that name already exists in the destination.', array('%file' => theme('placeholder', $source))), 'error');
+          return 0;
+      }
+    }
+
+    if (!@copy($source, $dest)) {
+      drupal_set_message(t('The selected file %file could not be copied.', array('%file' => theme('placeholder', $source))), 'error');
+      return 0;
+    }
+
+    // Give everyone read access so that FTP'd users or non-webserver users
+    // can see/read these files.
+    @chmod($dest, 0664);
+  }
+
+  if (is_object($file)) {
+    $file->filename = $basename;
+    $file->filepath = $dest;
+    $source = $file;
+  }
+  else {
+    $source = $dest;
+  }
+
+  return 1; // Everything went ok.
+}
+
+/**
+ * Moves a file to a new location.
+ * - Checks if $source and $dest are valid and readable/writable.
+ * - Performs a file move if $source is not equal to $dest.
+ * - If file already exists in $dest either the call will error out, replace the
+ *   file or rename the file based on the $replace parameter.
+ *
+ * @param $source A string specifying the file location of the original file.
+ *   This parameter will contain the resulting destination filename in case of
+ *   success.
+ * @param $dest A string containing the directory $source should be copied to.
+ * @param $replace Replace behavior when the destination file already exists.
+ *   - FILE_EXISTS_REPLACE - Replace the existing file
+ *   - FILE_EXISTS_RENAME - Append _{incrementing number} until the filename is
+ *     unique
+ *   - FILE_EXISTS_ERROR - Do nothing and return false.
+ * @return True for success, false for failure.
+ */
+function _filemanager_move(&$source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
+  $path_original = is_object($source) ? $source->filepath : $source;
+
+  if (_filemanager_copy($source, $dest, $replace)) {
+    $path_current = is_object($source) ? $source->filepath : $source;
+
+    if ($path_original == $path_current || file_delete($path_original)) {
+      return 1;
+    }
+    drupal_set_message(t('The removal of the original file %file has failed.', array('%file' => theme('placeholder', $source))), 'error');
+  }
+  return 0;
+}
+
+/**
+ * Transfer file using http to client. Pipes a file through Drupal to the
+ * client.
+ *
+ * @param $source File to transfer.
+ * @param $headers An array of http headers to send along with file.
+ */
+function _filemanager_transfer($source, $headers) {
+  ob_end_clean();
+
+  foreach ($headers as $header) {
+    // To prevent HTTP header injection, we delete new lines that are
+    // not followed by a space or a tab.
+    // See http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2
+    $header = preg_replace('/\r?\n(?!\t| )/', '', $header);
+    header($header);
+  }
+
+  // Transfer file in 1024 byte chunks to save memory usage.
+  if ($fd = fopen($source, 'rb')) {
+    set_time_limit(0);
+    while (!feof($fd)) {
+      print fread($fd, 1024);
+      ob_flush();
+      flush();
+    }
+    fclose($fd);
+  }
+  else {
+    drupal_not_found();
+  }
+  exit();
+}

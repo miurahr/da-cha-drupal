@@ -1,0 +1,20 @@
+Installing filemanager for Drupal 4.7.* requires that you visit the 
+administer->modules page:
+
+  http://yoursite?q=admin/modules
+  
+When you enable the filemanager module, the requisite database table will
+be created for you.
+
+Important Notes:
+This module does create directories and may have problems in some restricted
+or odd user configurations.  Please make sure your PHP configuration creates
+folders with permissions for the PHP user to add new files.  In addition
+depending on your PHP configuration you may be forced to have both the private
+and public directories underneath your base directory.  If so be sure to
+restrict access to the private files through .htaccess
+
+If you are having problems with file not found errors, please try using absolute
+paths to your file locations.  Some PHP environments don't properly resolve
+relative filenames for the realpath and file_exists function.  This seems to
+be caused when realpath or file_exists have to resolve symbolic links.
