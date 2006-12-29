@@ -1,0 +1,131 @@
+# Hungarian translation of attachment module
+# Copyright 2006 by Kővágó Zoltán
+# <DirtY.iCE.hu@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: attachment module hu translation\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-09-22 14:57+0100\n"
+"Last-Translator: Kővágó Zoltán <DirtY.iCE.hu@gmail.com>\n"
+"Language-Team: Kővágó Zoltán <DirtY.iCE.hu@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+
+#: attachment.module:18;43;171
+msgid "Attachments"
+msgstr "Csatolmányok"
+
+#: attachment.module:34
+msgid "File"
+msgstr "Fájl"
+
+#: attachment.module:35;116
+msgid "Add"
+msgstr "Hozzáad"
+
+#: attachment.module:45
+msgid "Disabled"
+msgstr "Letiltva"
+
+#: attachment.module:45
+msgid "Enabled"
+msgstr "Engedélyezve"
+
+#: attachment.module:137
+msgid "Display settings"
+msgstr "Megjelenítés beállításai"
+
+#: attachment.module:140
+msgid "Display attachments in teaser"
+msgstr "Csatolmányok megjelenítése a tartalom alatt"
+
+#: attachment.module:143
+msgid "If checked attachment file lists will be added to the bottom of teasers."
+msgstr "Ha engedélyezve van, a tartalom alatt egy lista fog megjelenni a csatományokról."
+
+#: attachment.module:148
+msgid "Security settings"
+msgstr "Biztonsági beállítások"
+
+#: attachment.module:152
+msgid "Private files"
+msgstr "Privát fájlok"
+
+#: attachment.module:155
+msgid "If checked attachments will be streamed through the private directory and node access security will be enforced.  When unchecked public URLs can be accessed by anyone with the URL regardless if they are logged in or have access to that node.  There is a server load impact to using private files.  Changes to this setting only affect new attachments it will not update any existing attachments."
+msgstr "Ha ki van jelölve, a feltöltött csatolmányok a privát könyvtárba kerülnek. Ha nincs kijelölve, akkor a publikus mappába kerülnek, ahonnan (az URI ismeretével) bárki letöltheti a fájlt. A privát fájlok használata megnöveli a szerver erőforrás-használatát. Változtatás csak az új csatolmányokra vonatkoznak, a már feltöltött csatolmányokat nem érinti."
+
+#: attachment.module:159
+msgid "Text rename extensions"
+msgstr "Szövegfájlra átnevezendő kiterjesztések"
+
+#: attachment.module:161
+msgid "List of extensions that should be renamed to text.  If a file is uploaded with one of these extensions .txt will automatically be appended to prevent execution on the server."
+msgstr "Kiterjesztések listája, amiket át kell nevezni szövegfájlra. Ha egy feltöltött fájl kiterjesztése megegyezik az itt felsoroltak valamelyikével, akkor .txt lessz a fájlnév végére szúrva, ezzel megakadályozva a szerveren való lefutást."
+
+#: attachment.module:171
+msgid "Area where all node attachments are stored."
+msgstr "Ezen a helyen lesznek a csatolmányok tárolva."
+
+#: attachment.module:180
+msgid "Adds support for attaching files to nodes and downloading them."
+msgstr "Támogatás hozzáadása fájlok tartalmakhoz csatolásához."
+
+#: attachment.module:182
+msgid ""
+"<p>Attachments are files uploaded while creating nodes. These files can be used to add images to stories, blogs, etc as well as just adding documents for download.</p>\n"
+"                <p>There are two factors used to determine whether a user can add attachments to the node they are creating.  First the user is checked to make sure they have <em>add attachments</em> permission.  These permissions can be set on the <a href=\"%permissionurl%\">permissions</a> page.  Second attachments must be enabled for that particular node type.  You can enable nodes on the <a href=\"%nodeconfigurl%\">default workfow</a> page.</p>"
+msgstr ""
+"<p>A csatolmányoktartalmak létrehozásakor feltöltött fájlok. Ezekkel lehet képet hozzáadni a történetekhez, blogogkhoz, stb., vagy akár dokumentumot, amit aztán le lehet tölteni.</p>\n"
+"                <p>Két dolog dönti el, hogy a felhasználó hozzáadhatja-e a csatolmányt a tartalomhoz. Az első a <em>„csatolmány hozzáadása”</em> jogosultság. Ezek a jogosultságok a <a href=\"%permissionurl%\">jogosultságok</a> oldalon állíthatóak be. A második, hogy az adott tartalom típuson engedélyezve vannak-e a csatolmányok. Ezek a <a href=\"%nodeconfigurl%\">tartalom típusok beállítási</a> oldalán szerkeszthetőek.</p>"
+
+#: attachment.module:198
+msgid "View attachment list"
+msgstr "Csatolmány lista megjelenítése"
+
+#: attachment.module:224
+msgid "Delete"
+msgstr "Töröl"
+
+#: attachment.module:225
+msgid "Hidden"
+msgstr "Rejtett"
+
+#: attachment.module:226
+msgid "Title"
+msgstr "Cím"
+
+#: attachment.module:227
+msgid "Description"
+msgstr "Leírás"
+
+#: attachment.module:262
+msgid "No file selected."
+msgstr "Nincs fájl kiválasztva"
+
+#: attachment.module:302
+msgid "Error saving upload to filestore."
+msgstr "Hiba a feltöltött fájl mentése közben."
+
+#: attachment.module:351
+msgid "Filename/Title"
+msgstr "Fájlnév/Cím"
+
+#: attachment.module:353
+msgid "Size"
+msgstr "Méret"
+
+#: attachment.module:198
+#: attachment.module:128
+msgid "add attachments"
+msgstr "csatolmány hozzáadása"
+
+#: attachment.module:0
+msgid "attachment"
+msgstr "csatolmány"
+

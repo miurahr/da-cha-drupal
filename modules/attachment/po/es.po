@@ -1,0 +1,98 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: attachment.module\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-06-11 20:39-0500\n"
+"Last-Translator: Eduin Yezid Carrillo Vega <webmaster@scoutsace.org>\n"
+"Language-Team: SPANISH <eduinyezid@carrillovega.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-SourceCharset: text/plain; charset=utf-8\n"
+
+#: contributions-HEAD\modules\attachment\attachment.module:16
+#: ;88;145
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#: contributions-HEAD\modules\attachment\attachment.module:16
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: contributions-HEAD\modules\attachment\attachment.module:16
+msgid "Enabled"
+msgstr "Activado"
+
+#: contributions-HEAD\modules\attachment\attachment.module:69
+#: ;162
+msgid "Add"
+msgstr "Agregar"
+
+#: contributions-HEAD\modules\attachment\attachment.module:88
+msgid "Area where all node attachments are stored."
+msgstr "Area donde todos los adjuntos de nodo son almacenados."
+
+#: contributions-HEAD\modules\attachment\attachment.module:97
+msgid "Adds support for attaching files to nodes and downloading them."
+msgstr "Agrega soporte para adjuntar archivos a los nodos y permite su descarga."
+
+#: contributions-HEAD\modules\attachment\attachment.module:99
+msgid ""
+"<p>Attachments are files uploaded while creating nodes. These files can be used to add images to stories, blogs, etc as well as just adding documents for download.</p>\n"
+"                <p>There are two factors used to determine whether a user can add attachments to the node they are creating.  First the user is checked to make sure they have <em>add attachments</em> permission.  These permissions can be set on the <a href=\"%permissionurl%\">permissions</a> page.  Second attachments must be enabled for that particular node type.  You can enable nodes on the <a href=\"%nodeconfigurl%\">default workfow</a> page.</p>"
+msgstr ""
+"<p>Los adjuntos son archivos subidos al servidor en el momento de crear nodos. Estos archivos pueden ser usados para agregar imágenes a las historias, blogs, etc así como para agregar documentos para descarga.</p>\n"
+"                <p>Hay dos factores usados para determinar si un usuario puede agregar adjuntos al nodo que está creando. El primero, el usuario debe tener asignado el permiso de <em>agregar adjuntos</em>.  Estos permisos pueden asignarse en la página de <a href=\"%permissionurl%\">permisos</a>. En segundo lugar, los djuntos deben estar habilitados para cada tipo de nodo en particular.  Puede asignar esta opción en la página de <a href=\"%nodeconfigurl%\">flujo de trabajo por defecto</a>.</p>"
+
+#: contributions-HEAD\modules\attachment\attachment.module:116
+msgid "View attachment list"
+msgstr "Ver lista de adjuntos"
+
+#: contributions-HEAD\modules\attachment\attachment.module:161
+msgid "File"
+msgstr "Archivo"
+
+#: contributions-HEAD\modules\attachment\attachment.module:170
+msgid "Deleted"
+msgstr "Eliminado"
+
+#: contributions-HEAD\modules\attachment\attachment.module:171
+msgid "Hidden"
+msgstr "Oculto"
+
+#: contributions-HEAD\modules\attachment\attachment.module:172
+msgid "Title"
+msgstr "Título"
+
+#: contributions-HEAD\modules\attachment\attachment.module:173
+msgid "Description"
+msgstr "Descripción"
+
+#: contributions-HEAD\modules\attachment\attachment.module:207
+msgid "No file selected."
+msgstr "Ningún archivo seleccionado."
+
+#: contributions-HEAD\modules\attachment\attachment.module:245
+msgid "Error saving upload to filestore."
+msgstr "Error al guardar el archivo adjuntado en filestore."
+
+#: contributions-HEAD\modules\attachment\attachment.module:287
+msgid "Filename/Title"
+msgstr "Nombre de archivo/Título"
+
+#: contributions-HEAD\modules\attachment\attachment.module:289
+msgid "Size"
+msgstr "Tamaño"
+
+#: contributions-HEAD\modules\attachment\attachment.module:116
+msgid "attachment"
+msgid_plural "%count attachments"
+msgstr[0] "adjunto"
+msgstr[1] "%count adjuntos"
+
+#: contributions-HEAD\modules\attachment\attachment.module:81
+msgid "add attachments"
+msgstr "agregar adjuntos"
+

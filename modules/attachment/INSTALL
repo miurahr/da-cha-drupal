@@ -1,0 +1,23 @@
+Installation
+------------
+Before installing this module you should already have the filemanager module
+installed and configured.  This module requires an additional table to store
+attachment information.  I have supplied scripts for creating a mysql table.
+This table can be created using following command:
+
+mysql -u {userid} -p {drupaldatabase} < attachment.mysql
+
+Once the table is created copy the attachment.module into your drupal
+installation's modules directory.  You should then disable the upload module
+and enable the attachments module.  You will then give the appropraite user roles
+the 'add attachments' permission.  Finally you will need to enable the attachment
+capability under the content types configuration pages.
+
+Themes
+------
+This modules introduces a new theme hook of _attachments.  This hook should
+format a listing of the attachments for a give node.
+
+CSS
+---
+{TODO Give description of the CSS classes here}

@@ -1,0 +1,100 @@
+# Danish translation of Drupal (attachment.module)
+# Copyright 2006 Morten Wulff <wulff@tem.dtu.dk>
+msgid ""
+msgstr ""
+"Project-Id-Version: Danish translation of Drupal (attachment.module) $Id: da.po,v 1.2 2006/01/08 19:41:00 wulff Exp $\n"
+"POT-Creation-Date: 2005-07-06 14:43+0200\n"
+"PO-Revision-Date: 2006-01-08 20:41+0100\n"
+"Last-Translator: Morten Wulff <wulff@tem.dtu.dk>\n"
+"Language-Team: Danish <danish@psyke.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+
+#: contributions-HEAD\modules\attachment\attachment.module:16
+#: ;88;145
+msgid "Attachments"
+msgstr "Bilag"
+
+#: contributions-HEAD\modules\attachment\attachment.module:16
+msgid "Disabled"
+msgstr "Aktiveret"
+
+#: contributions-HEAD\modules\attachment\attachment.module:16
+msgid "Enabled"
+msgstr "Deaktiveret"
+
+#: contributions-HEAD\modules\attachment\attachment.module:69
+#: ;162
+msgid "Add"
+msgstr "Tilføj"
+
+#: contributions-HEAD\modules\attachment\attachment.module:88
+msgid "Area where all node attachments are stored."
+msgstr "Område hvor alle bilag gemmes."
+
+#: contributions-HEAD\modules\attachment\attachment.module:97
+msgid "Adds support for attaching files to nodes and downloading them."
+msgstr "Understøtter bilag til indholdselementer."
+
+#: contributions-HEAD\modules\attachment\attachment.module:99
+msgid ""
+"<p>Attachments are files uploaded while creating nodes. These files can be used to add images to stories, blogs, etc as well as just adding documents for download.</p>\n"
+"                <p>There are two factors used to determine whether a user can add attachments to the node they are creating.  First the user is checked to make sure they have <em>add attachments</em> permission.  These permissions can be set on the <a href=\"%permissionurl%\">permissions</a> page.  Second attachments must be enabled for that particular node type.  You can enable nodes on the <a href=\"%nodeconfigurl%\">default workfow</a> page.</p>"
+msgstr ""
+"<p>Bilag er filer, der overføres når nyt indhold oprettes. Filerne kan bruges til at tilføje billeder til historier, blogs osv., men kan også bruges til blot at gøre dokumenter tilgængelige for brugerne.</p>\n"
+"<p>To faktorer bestemmer om en bruger kan tilføje bilag til nyt indhold. For det første skal brugeren have rettigheden <em>tilføj bilag<em>. Dernæst skal bilag være aktiveret for den aktuelle indholdstype.</p>"
+
+#: contributions-HEAD\modules\attachment\attachment.module:116
+msgid "View attachment list"
+msgstr "Se bilag"
+
+#: contributions-HEAD\modules\attachment\attachment.module:161
+msgid "File"
+msgstr "Fil"
+
+#: contributions-HEAD\modules\attachment\attachment.module:170
+msgid "Deleted"
+msgstr "Slettet"
+
+#: contributions-HEAD\modules\attachment\attachment.module:171
+msgid "Hidden"
+msgstr "Skjult"
+
+#: contributions-HEAD\modules\attachment\attachment.module:172
+msgid "Title"
+msgstr "Titel"
+
+#: contributions-HEAD\modules\attachment\attachment.module:173
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: contributions-HEAD\modules\attachment\attachment.module:207
+msgid "No file selected."
+msgstr "Ingen fil valgt"
+
+#: contributions-HEAD\modules\attachment\attachment.module:245
+msgid "Error saving upload to filestore."
+msgstr "Kan ikke gemme den overførte fil i fillageret."
+
+#: contributions-HEAD\modules\attachment\attachment.module:287
+msgid "Filename/Title"
+msgstr "Filnavn/titel"
+
+#: contributions-HEAD\modules\attachment\attachment.module:289
+msgid "Size"
+msgstr "Størrelse"
+
+#: contributions-HEAD\modules\attachment\attachment.module:116
+msgid "attachment"
+msgid_plural "%count attachments"
+msgstr[0] "bilag"
+msgstr[1] "%count bilag"
+
+#: contributions-HEAD\modules\attachment\attachment.module:81
+msgid "add attachments"
+msgstr "tilføj bilag"
+

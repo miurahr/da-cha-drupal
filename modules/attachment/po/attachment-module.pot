@@ -1,0 +1,131 @@
+# LANGUAGE translation of Drupal (attachment.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: attachment.module,v 1.15 2006/09/14 06:24:47 drewish
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-09-21 10:15-0700\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: attachment.module:18;43;171
+msgid "Attachments"
+msgstr ""
+
+#: attachment.module:34
+msgid "File"
+msgstr ""
+
+#: attachment.module:35;116
+msgid "Add"
+msgstr ""
+
+#: attachment.module:45
+msgid "Disabled"
+msgstr ""
+
+#: attachment.module:45
+msgid "Enabled"
+msgstr ""
+
+#: attachment.module:137
+msgid "Display settings"
+msgstr ""
+
+#: attachment.module:140
+msgid "Display attachments in teaser"
+msgstr ""
+
+#: attachment.module:143
+msgid "If checked attachment file lists will be added to the bottom of teasers."
+msgstr ""
+
+#: attachment.module:148
+msgid "Security settings"
+msgstr ""
+
+#: attachment.module:152
+msgid "Private files"
+msgstr ""
+
+#: attachment.module:155
+msgid "If checked attachments will be streamed through the private directory and node access security will be enforced.  When unchecked public URLs can be accessed by anyone with the URL regardless if they are logged in or have access to that node.  There is a server load impact to using private files.  Changes to this setting only affect new attachments it will not update any existing attachments."
+msgstr ""
+
+#: attachment.module:159
+msgid "Text rename extensions"
+msgstr ""
+
+#: attachment.module:161
+msgid "List of extensions that should be renamed to text.  If a file is uploaded with one of these extensions .txt will automatically be appended to prevent execution on the server."
+msgstr ""
+
+#: attachment.module:171
+msgid "Area where all node attachments are stored."
+msgstr ""
+
+#: attachment.module:180
+msgid "Adds support for attaching files to nodes and downloading them."
+msgstr ""
+
+#: attachment.module:182
+msgid "<p>Attachments are files uploaded while creating nodes. These files can be used to add images to stories, blogs, etc as well as just adding documents for download.</p>\n                <p>There are two factors used to determine whether a user can add attachments to the node they are creating.  First the user is checked to make sure they have <em>add attachments</em> permission.  These permissions can be set on the <a href=\"%permissionurl%\">permissions</a> page.  Second attachments must be enabled for that particular node type.  You can enable nodes on the <a href=\"%nodeconfigurl%\">default workfow</a> page.</p>"
+msgstr ""
+
+#: attachment.module:198
+msgid "View attachment list"
+msgstr ""
+
+#: attachment.module:224
+msgid "Delete"
+msgstr ""
+
+#: attachment.module:225
+msgid "Hidden"
+msgstr ""
+
+#: attachment.module:226
+msgid "Title"
+msgstr ""
+
+#: attachment.module:227
+msgid "Description"
+msgstr ""
+
+#: attachment.module:262
+msgid "No file selected."
+msgstr ""
+
+#: attachment.module:302
+msgid "Error saving upload to filestore."
+msgstr ""
+
+#: attachment.module:351
+msgid "Filename/Title"
+msgstr ""
+
+#: attachment.module:353
+msgid "Size"
+msgstr ""
+
+#: attachment.module:198
+msgid "attachment"
+msgid_plural "%count attachments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: attachment.module:128
+msgid "add attachments"
+msgstr ""
+
+#: attachment.module:0
+msgid "attachment"
+msgstr ""
+

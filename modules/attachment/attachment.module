@@ -1,0 +1,401 @@
+<?php
+// $Id: attachment.module,v 1.15.2.2 2006/09/28 09:53:13 robertDouglass Exp $
+
+define(ATTACHMENT_EXTENSION_WHITELIST, variable_get('attachment_text_rename_whitelist', 'jpg jpeg gif png tiff txt html doc xls pdf ppt pps odt mp3 ogg wav wmv mpg'));
+
+function attachment_form_alter($form_id, &$form) {
+  $type = $form['type']['#value'];
+
+  switch ($form_id) {
+    // node edit form
+    case $type .'_node_form':
+      if (user_access('add attachments') && (variable_get('attachment_node_'. $type, 0) == 1)) {
+        $node = $form['#node'];
+        if (!isset($node->attachments)) {
+          $ret = attachment_load($node);
+          $node->attachments = $ret['attachments'];
+        }
+        $form['#attributes'] = array('enctype' => 'multipart/form-data');
+
+        $form['attachments'] = array('#type'=>'fieldset', '#title'=>t('Attachments'), '#tree'=>true, '#collapsible'=>true, '#weight'=>1);
+        $form['attachments']['#theme'] = 'attachment_form';
+
+        foreach ((array)$node->attachments as $key=>$attachment) {
+          $fields = array('aid','fid','filename','size','working');
+          foreach($fields as $field) {
+            $form['attachments'][$key][$field] = array('#type'=>'hidden', '#value'=>$attachment[$field]);
+          }
+
+          $form['attachments'][$key]['deleted'] = array('#type'=>'checkbox');
+          $form['attachments'][$key]['hidden'] = array('#type'=>'checkbox', '#return_value'=>1, '#default_value'=>$attachment['hidden']);
+          $form['attachments'][$key]['title'] = array('#type'=>'textfield', '#size'=>30, '#maxlength'=>255, '#default_value'=>$attachment['title']);
+          $form['attachments'][$key]['description'] = array('#type'=>'textfield', '#size'=>100, '#maxlength'=>255, '#default_value'=>$attachment['description']);
+          $form['attachments'][$key]['display'] = array('#type'=>'markup', '#value'=> '<strong>Filename:</strong>'. $attachment['filename'] .'<br /><strong>URL:</strong><span class="attachment-url">'. module_invoke('filemanager', 'url', $attachment['fid'], FALSE, TRUE) .'<br /><strong>Size:</strong>' . format_size($attachment['size']) . '</span>');
+        }
+
+        $form['attachments']['commands']['attachment_file'] = array('#type'=>'file', '#title'=>t('File'), '#size'=>40, '#tree'=>false);
+        $form['attachments']['commands']['fileop_add'] = array('#type'=>'button', '#name'=>'fileop', '#value'=>t('Add'), '#tree'=>false);
+      }
+      break;
+
+    // node settings form
+    case $type .'_node_settings':
+      $form['workflow']['attachment_node_'. $type] = array(
+        '#type'=>'radios',
+        '#title'=>t('Attachments'),
+        '#default_value'=>variable_get('attachment_node_'. $type, 0),
+        '#options'=>array(0=>t('Disabled'), 1=>t('Enabled')),
+      );
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi.
+ */
+function attachment_nodeapi(&$node, $op, $arg = 0, $arg2 = 0) {
+  switch ($op) {
+    case 'load':
+      return attachment_load($node);
+    case 'view':
+      foreach ((array)$node->attachments as $attachment) {
+        if ($attachment['working']) {
+          $file = module_invoke('filemanager', 'get_file_info', $attachment['fid']);
+          $workingurl = str_replace('&amp;', '&', module_invoke('filemanager', 'url', $file, TRUE));
+          $activeurl = str_replace('&amp;', '&', module_invoke('filemanager', 'url', $file, FALSE));
+          $node->body = str_replace($activeurl, $workingurl, $node->body);
+          $node->teaser = str_replace($activeurl, $workingurl, $node->teaser);
+        }
+      }
+
+      // If this is not a teaser add our attachment list to the end of the body
+      if (_attachment_countvisible($node)>0) {
+        if (!$arg) {
+          $node->body .= '<br /><a name="attachments"></a>' . theme('attachments', $node);
+        }
+        if (variable_get('attachment_display_teaser', 0)) {
+          $node->teaser .= '<br /><a name="attachments"></a>' . theme('attachments', $node);
+        }
+      }
+      return;
+
+    case 'insert':
+    case 'update':
+      foreach ((array)$node->attachments as $attachment) {
+        if (!$attachment['deleted']) {
+          module_invoke('filemanager', 'promote_working', $attachment['fid']);
+          if ($attachment['aid']) {
+            db_query("UPDATE {attachment} SET title='%s', description = '%s', size=%d, hidden='%s' WHERE aid=%d", $attachment['title'], $attachment['description'], $attachment['size'], $attachment['hidden'], $attachment['aid']);
+          }
+          else {
+             $aid = db_next_id('{attachment}_aid');
+             db_query("INSERT INTO {attachment} (aid,title,description,nid,fid,filename,size,hidden) VALUES (%d,'%s','%s',%d,%d,'%s',%d,'%s')", $aid, $attachment['title'],$attachment['description'],$node->nid, $attachment['fid'], $attachment['filename'], $attachment['size'], $attachment['hidden']);
+          }
+        }
+        else {
+          module_invoke('filemanager', 'delete', $attachment['fid']);
+          if ($attachment['aid']) {
+            db_query("DELETE FROM {attachment} WHERE aid=%d",$attachment['aid']);
+          }
+        }
+      }
+      return;
+
+    case 'delete':
+      foreach ((array)$node->attachments as $attachment) {
+        module_invoke('filemanager', 'delete', $attachment['fid']);
+        if ($attachment['aid']) {
+          db_query("DELETE FROM {attachment} WHERE aid=%d",$attachment['aid']);
+        }
+      }
+      return;
+
+    case 'prepare':
+      if (isset($_POST['edit']['attachments'])) {
+        $node->attachments = $_POST['edit']['attachments'];
+      }
+
+      if ($_POST['fileop'] == t('Add')) {
+        attachment_add($node);
+      }
+
+      return;
+  }
+}
+
+/**
+ * Implementation of hook_perm()
+ */
+function attachment_perm() {
+  return array('add attachments');
+}
+
+/**
+ * Implementation of hook_settings()
+ */
+function attachment_settings() {
+  $form['display'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Display settings')
+  );
+  $form['display']['attachment_display_teaser'] = array(
+    '#type' => 'checkbox', '#title' => t('Display attachments in teaser'),
+    '#default_value' => variable_get('attachment_display_teaser', 0),
+    '#return_value' => 1,
+    '#description' => t('If checked attachment file lists will be added to the bottom of teasers.')
+  );
+
+  $form['security'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Security settings')
+  );
+  $form['security']['attachment_private_files'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Private files'),
+    '#default_value' => variable_get('attachment_private_files', 0),
+    '#return_value' => 1,
+    '#description' => t('If checked attachments will be streamed through the private directory and node access security will be enforced.  When unchecked public URLs can be accessed by anyone with the URL regardless if they are logged in or have access to that node.  There is a server load impact to using private files.  Changes to this setting only affect new attachments it will not update any existing attachments.')
+  );
+  $form['security']['attachment_text_rename_whitelist'] = array(
+    '#type' => 'textarea',
+    '#title' => t('File extension whitelist'),
+    '#default_value' => ATTACHMENT_EXTENSION_WHITELIST,
+    '#description' => t('List of extensions that are allowed to be uploaded without modification. All other extensions can still be uploaded, but they will be renamed to have a .txt file extension to protect your server from attackers.')
+  );
+
+  return $form;
+}
+
+/**
+ * Implementation of hook_file_areas()
+ */
+function attachment_filemanager_areas() {
+  return array(array('area'=>'attachments','name'=>t('Attachments'),'description'=>t('Area where all node attachments are stored.')));
+}
+
+/**
+ * Implementation of hook_help()
+ */
+function attachment_help($section) {
+  switch ($section) {
+    case 'admin/modules#description':
+      return t('Adds support for attaching files to nodes and downloading them.');
+    case 'admin/help#attachment':
+      return t('<p>Attachments are files uploaded while creating nodes. These files can be used to add images to stories, blogs, etc as well as just adding documents for download.</p>
+                <p>There are two factors used to determine whether a user can add attachments to the node they are creating.  First the user is checked to make sure they have <em>add attachments</em> permission.  These permissions can be set on the <a href="%permissionurl%">permissions</a> page.  Second attachments must be enabled for that particular node type.  You can enable nodes on the <a href="%nodeconfigurl%">default workfow</a> page.</p>', array('%permissionurl' => url('admin/user/configure/permission'), '%nodeconfigurl' => url('admin/node/configure/defaults')));
+   }
+}
+
+/**
+ * Implementation of hook_link()
+ */
+function attachment_link($type, $node = 0, $main = 0) {
+  $links = array();
+
+  switch($type) {
+    case 'node':
+      if ($main == 1 && !variable_get('attachment_display_teaser', 0)) {
+        $count = _attachment_countvisible($node);
+        if ($count > 0) {
+          $links[] = l(format_plural($count, 'attachment', '%count attachments'), "node/$node->nid", array('title' => t('View attachment list')), NULL, "attachments");
+        }
+      }
+      break;
+  }
+
+  return $links;
+}
+
+/**
+ * Counts the number of visible attachments
+ */
+function _attachment_countvisible($node) {
+  $count = 0;
+  foreach((array)$node->attachments as $attachment) {
+    if (!$attachment['hidden'] && !$attachment['deleted']) {
+      $count++;
+    }
+  }
+
+  return $count;
+}
+
+function theme_attachment_form($form) {
+  $output = '';
+  $header = array(
+    t('Delete'),
+    t('Hidden'),
+    t('Title'),
+    t('Description'),
+  );
+
+  $rows = array();
+  foreach (element_children($form) as $key) {
+    if ($key{0} != 'c') {
+      $row = array();
+      $row[0]['data'] = form_render($form[$key]['display']);
+      $row[0]['colspan'] = '4';
+      $rows[] = $row;
+      $row = array(
+        form_render($form[$key]['deleted']),
+        form_render($form[$key]['hidden']),
+        form_render($form[$key]['title']),
+        form_render($form[$key]['description']),
+      );
+      $rows[] = $row;
+    }
+  }
+
+  if (count($rows) > 0) {
+    $output .= theme('table', $header, $rows);
+  }
+
+  $output .= form_render($form);
+
+  return $output;
+}
+
+/**
+ * Munge the filename as needed for security purposes. Protects site from having
+ * attacments executed as scripts.
+ *
+ * @param object $file
+ *   The $file object as obtained by file_check_upload('attachment_file');
+ */
+function attachment_munge_file(&$file) {
+  $whitelist = array_unique(split(' +', ATTACHMENT_EXTENSION_WHITELIST));
+  $filename_parts = explode('.', $file->filename);
+  $new_filename = array_shift($filename_parts); // Remove file basename.
+  $final_extension = array_pop($filename_parts); // Remove final extension.
+
+  foreach($filename_parts as $filename_part) {
+    $new_filename .= ".$filename_part";
+    if (!in_array($filename_part, $whitelist) && preg_match("/^[a-zA-Z]{2,5}\d?$/", $filename_part)) {
+      $new_filename .= '_';
+    }
+  }
+
+  $file->filename = "$new_filename.$final_extension";
+  if ($final_extension == 'txt') {
+    $file->filemime = 'text/plain';
+  }
+}
+
+/**
+ * Callback function to add an attachment to a node being edited.
+ */
+function attachment_add(&$node) {
+  $file = file_check_upload('attachment_file');
+  if (!$file) {
+    form_set_error('attachment_file', t('No file selected.'));
+    return $node;
+  }
+
+  // protect from uploaded files being executed as scripts
+  attachment_munge_file($file);
+
+  $new_attachment['fid'] = FALSE;
+  $new_attachment['filename'] = $file->filename;
+  $new_attachment['deleted'] = FALSE;
+  $new_attachment['working'] = TRUE;
+  $new_attachment['size'] = $file->filesize;
+
+  // If we are uploading a file with the same name as an existing
+  // attachment then we should use the same fid and remove the
+  // existing attachment from the array.
+  foreach ((array)$node->attachments as $key => $attachment) {
+    if ($attachment['filename'] == $new_attachment['filename']) {
+      $new_attachment['fid'] = $attachment['fid'];
+      $remove_key = $key;
+    }
+  }
+  if (isset($remove_key)) {
+    array_splice($node->attachments, $key, 1);
+  }
+  else {
+    $new_attachment['title'] = $file->filename;
+    $new_attachment['description'] = '';
+    $node->attachmentcount++;
+  }
+
+  // Move the upload file into working filestore
+  $file = module_invoke('filemanager', 'add_upload', 'attachment_file', 'attachments', variable_get('attachment_private_files', 0), $new_attachment["fid"]);
+  if (!$file) {
+    form_set_error('attachment_file', t('Error saving upload to filestore.'));
+    return $node;
+  }
+  $new_attachment['fid'] = $file->fid;
+
+  $node->attachments[] = $new_attachment;
+}
+
+/**
+ * Load the attachments for the given node
+ */
+function attachment_load($node) {
+  $result = db_query("SELECT aid, title, description, fid, filename, size, hidden FROM {attachment} WHERE nid = %d", $node->nid);
+  while ($attachment = db_fetch_array($result)) {
+    $attachment['deleted'] = FALSE;
+    $attachment['working'] = FALSE;
+    $attachments[] = $attachment;
+  }
+  $fields['attachments'] = $attachments;
+  return $fields;
+}
+
+function attachment_filemanager_download($file) {
+  if ($file->area == 'attachments') {
+    // check if current user has right to view the node this file is attached to.
+    $nid = db_result(db_query("SELECT nid FROM {attachment} WHERE {attachment}.fid = %d", $file->fid));
+    $node = node_load(array('nid'=>$nid));
+    if (node_access('view', $node)) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+  }
+}
+
+/**
+ * @addtogroup themeable
+ * @{
+ */
+
+/**
+ * Formats a list of attachments for a given node.
+ */
+function theme_attachments($node) {
+  $output  = "<div class=\"attachments\">\n";
+
+  $attributes['class'] = 'attachment-list';
+
+  $header[0]['data'] = t('Filename/Title');
+  $header[0]['class'] = 'filename';
+  $header[1]['data'] = t('Size');
+  $header[1]['class'] = 'size';
+
+  foreach ((array)$node->attachments as $attachment) {
+    if (!$attachment['hidden'] && !$attachment['deleted']) {
+      $text = empty($attachment['title']) ? $attachment['filename'] : ($attachment['title'] . ' (' . $attachment['filename'] . ')');
+      $attrib = empty($attachment['description']) ? array() : array('title' => $attachment['description']);
+      $row[0]['data'] = l($text, module_invoke('filemanager', 'url', $attachment['fid']), $attrib);
+      $row[0]['data'] = module_invoke('filemanager', 'l', $text, $attachment['fid'], FALSE, $attrib, TRUE);
+      $row[0]['class'] = 'filename';
+      $row[1]['data'] = format_size($attachment['size']);
+      $row[1]['class'] = 'size';
+      $rows[] = $row;
+    }
+  }
+  if (count($rows) > 0) {
+    $output .= theme('table', $header, $rows, $attributes);
+  }
+
+  $output .= "</div>\n";
+
+  return $output;
+}
+/**
+ * @} end of addtogroup themeable
+ */
+
