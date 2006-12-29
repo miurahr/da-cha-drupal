@@ -1,0 +1,37 @@
+Article Module Changelog
+
+2006-4-15
+  * Improved breadcrumb test - http://drupal.org/node/27529
+
+2006-3-17
+  * Update for Drupal 4.7 forms API - http://drupal.org/node/40715
+
+2005-4-2
+  * Fixed an indentation bug with the index list. (Thanks Roderik)
+
+2005-3-25
+  * Added more admin options.
+    - Group recent article box options together on the main article settings page.
+    - Added configurable titles for the recent article box and block.
+
+2005-3-20
+  * Updated code to work with Drupal 4.6.
+    - Moved block configuration to the block administration page.
+    - Replaced direct module calls with module_invoke calls.
+    - Removed node_access_join_sql(), node_access_where_sql() from SQL statements.
+    - Added db_rewrite_sql() calls to SQL statements.
+  * Fixed Several issues.
+    - Articles don't display in categories - http://drupal.org/node/14329
+    - Strict warnings when running under PHP5 - http://drupal.org/node/15000 (thanks for the patch lyk0s)
+    - Added Depth option to the admin settings - http://drupal.org/node/17583
+  * Hopefully more changes to come before Drupal 4.6
+
+2004-11-2
+  * Applied provided patches to make the module 4.5 complient.
+  * Added new admin settings to provide greater control over the recent articles blocks.
+
+2004-4-3 Nick Young-Soares <drupal at codemonkeyx dot net>
+  * Modified theme calls to work with the new Drupal 4.4 theme system.
+
+2003-11-7 Nick Young-Soares <drupal at codemonkeyx dot net>
+  * Initial release.

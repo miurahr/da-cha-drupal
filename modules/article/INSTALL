@@ -1,0 +1,29 @@
+********************************************************************
+                     D R U P A L    M O D U L E
+********************************************************************
+Name: Article module
+Author: Nick Young-Soares
+Email: drupal at codemonkeyx dot net
+
+********************************************************************
+INSTALLATION:
+
+Let's do the easy stuff first. Copy the article directory into
+your Drupal modules/ directory.  Login as administrator and click on
+the administer link to enter your admin interface.
+
+Once there, navigate to administer -> modules menu.  You should now see the
+article module listed. Enable this module by clicking the box next
+to it and save your configuration via the button at the bottom of
+the page.
+
+Next goto the settings -> article menu.
+
+The most important setting here is the "Article Vocabularies" section. The
+vocabularies that you select here will determine which categories and nodes
+will be displayed on the articles index page.
+
+Once you have associated a vocabulary with the Article module you should be
+ready to use it. If you already had nodes in the associated vocabularies then
+they should already show up in the article index. If you do not have nodes then
+add a couple to test out the module.

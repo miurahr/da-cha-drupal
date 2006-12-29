@@ -1,0 +1,137 @@
+# LANGUAGE translation of Drupal (article.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: article.module,v 1.23.2.2 2006/07/22 22:45:25 msameer
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-07-22 22:52+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: article.module:28;38;46;173;221
+msgid "Latest Articles"
+msgstr ""
+
+#: article.module:35
+msgid "more"
+msgstr ""
+
+#: article.module:35
+msgid "Read more articles."
+msgstr ""
+
+#: article.module:45
+msgid "Block Title"
+msgstr ""
+
+#: article.module:49
+msgid "Title of the Articles block."
+msgstr ""
+
+#: article.module:53
+msgid "Recent Articles to Display"
+msgstr ""
+
+#: article.module:56
+msgid "Sets the number of recent articles that will be displayed in the Recent Articles block."
+msgstr ""
+
+#: article.module:82
+msgid "Allow users to view nodes of multiple types in a central location."
+msgstr ""
+
+#: article.module:102
+msgid "articles"
+msgstr ""
+
+#: article.module:102
+msgid "Article listings."
+msgstr ""
+
+#: article.module:116
+msgid "Article listings"
+msgstr ""
+
+#: article.module:138
+msgid "Article Vocabularies"
+msgstr ""
+
+#: article.module:143
+msgid "Select the vocabularies which contain the Article categories. All the vocabularies you select here will show up on the Article index."
+msgstr ""
+
+#: article.module:147
+msgid "Overview Title"
+msgstr ""
+
+#: article.module:148
+msgid "Articles"
+msgstr ""
+
+#: article.module:151
+msgid "Title of the Articles box."
+msgstr ""
+
+#: article.module:155
+msgid "Index Depth"
+msgstr ""
+
+#: article.module:158
+msgid "Defines how many levels of terms should be displayed on any given article index page. For example, if you select 1 then only one level of the Article index tree will be displayed at a time."
+msgstr ""
+
+#: article.module:161
+msgid "Recent Box Settings"
+msgstr ""
+
+#: article.module:164
+msgid "Recent Articles Box"
+msgstr ""
+
+#: article.module:165
+msgid "Disabled"
+msgstr ""
+
+#: article.module:165
+msgid "Enabled"
+msgstr ""
+
+#: article.module:167
+msgid "Enables or Disables the recent articles box on the article index page."
+msgstr ""
+
+#: article.module:176
+msgid "Title of the Recent Articles Box on the Article index page."
+msgstr ""
+
+#: article.module:182
+msgid "Articles to Display"
+msgstr ""
+
+#: article.module:183
+msgid "Sets the number of recent articles that will be displayed in the Recent Articles box. (0 = not displayed)."
+msgstr ""
+
+#: article.module:210
+msgid "Sub Categories"
+msgstr ""
+
+#: article.module:225
+msgid "Article Categories"
+msgstr ""
+
+#: article.module:450
+msgid "Article"
+msgstr ""
+
+#: article.module:0
+msgid "article"
+msgstr ""
+

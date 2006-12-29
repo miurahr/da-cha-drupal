@@ -1,0 +1,123 @@
+# LANGUAGE translation of Drupal (article.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: article.module,v 1.12 2005/04/02 18:26:40 codemonkeyx
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: article 4.6\n"
+"POT-Creation-Date: 2006-01-25 21:13+0100\n"
+"PO-Revision-Date: 2006-01-29 16:05+0100\n"
+"Last-Translator: Uccio <ucciopan@aicomputer.it>\n"
+"Language-Team: drupalitalia.org <ucciopan@aicomputer.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: article.module:28;38;43;124;162
+msgid "Latest Articles"
+msgstr "Ultimi articoli"
+
+#: article.module:35
+msgid "more"
+msgstr "avanti"
+
+#: article.module:35
+msgid "Read more articles."
+msgstr "Vedi altri articoli."
+
+#: article.module:43
+msgid "Title of the Articles block."
+msgstr "Titolo del box \"Articoli\""
+
+#: article.module:44
+msgid "Recent Articles to Display"
+msgstr "Articoli Recenti da mostrare"
+
+#: article.module:44
+msgid "Sets the number of recent articles that will be displayed in the Recent Articles block."
+msgstr "Imposta il numero di articoli che saranno mostrati nel box degli Articoli Recenti"
+
+#: article.module:68
+msgid "Allow users to view nodes of multiple types in a central location."
+msgstr "Consenti agli utenti di vedere più tipi di nodi in posizione privilegiata."
+
+#: article.module:88
+msgid "Article listings."
+msgstr "Elenco degli Articoli"
+
+#: article.module:102
+msgid "Article listings"
+msgstr "Elenco degli Articoli"
+
+#: article.module:119
+msgid "Article Vocabularies"
+msgstr "Categorie di Articoli"
+
+#: article.module:119
+msgid "Select the vocabularies which contain the Article categories. All the vocabularies you select here will show up on the Article index."
+msgstr "Scegli la categoria (\"vocabularies\") che contiene la categoria degli Articoli. Tutte le categorie scelte qui saranno mostrate nella pagina degli Articoli"
+
+#: article.module:120;391
+msgid "Articles"
+msgstr "Articoli"
+
+#: article.module:120
+msgid "Title of the Articles box."
+msgstr "Titolo del box \"Articoli\""
+
+#: article.module:121
+msgid "Index Depth"
+msgstr "Posizione dell'indice"
+
+#: article.module:121
+msgid "Defines how many levels of terms should be displayed on any given article index page. For example, if you select 1 then only one level of the Article index tree will be displayed at a time."
+msgstr "Stabilisce la profondità di ricerca nelle sottocategorie per nuovi articoli in ogni categoria principale. Ad esempio: se selezioni 1 solo un livello (il primo) della gerarchia sarà esplorato per quella categoria."
+
+#: article.module:123
+msgid "Recent Articles Box"
+msgstr "Articoli Recenti"
+
+#: article.module:123
+msgid "Disabled"
+msgstr "Nascondi"
+
+#: article.module:123
+msgid "Enabled"
+msgstr "Mostra"
+
+#: article.module:123
+msgid "Enables or Disables the recent articles box on the article index page."
+msgstr "Abilita o disabilita il box degli Articoli Recenti nella pagina principale degli Articoli"
+
+#: article.module:124
+msgid "Title of the Recent Articles Box on the Article index page."
+msgstr "Titolo del box per gli Articoli Recenti nella pagina principale degli Articoli"
+
+#: article.module:125
+msgid "Articles to Display"
+msgstr "Articoli da visualizzare"
+
+#: article.module:125
+msgid "Sets the number of recent articles that will be displayed in the Recent Articles box. (0 = not displayed)."
+msgstr "Indica il numero di articoli che saranno visualizzati nel box degli articoli recenti. (Scegli 0 per non mostrarli)"
+
+#: article.module:126
+msgid "Recent Box Settings"
+msgstr "Ultime impostazioni del box"
+
+#: article.module:151
+msgid "Sub Categories"
+msgstr "Sotto categorie"
+
+#: article.module:166
+msgid "Article Categories"
+msgstr "Tipi di articolo"
+
+#: article.module:0
+msgid "article"
+msgstr "Articoli Recenti"
+

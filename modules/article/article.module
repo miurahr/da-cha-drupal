@@ -1,0 +1,554 @@
+<?php
+// $Id: article.module,v 1.23.2.5 2006/07/24 08:08:53 msameer Exp $
+
+/**
+  Article Module - an easy to use intergrated article management module.
+
+  The article module allows for articles to be organized and displayed in
+  a cenrtalized location. In essence it is a specialized taxonomy display
+  module with some specific features that make it sutible for articles.
+
+  @author Nicholas Young-Soares
+  @package module_article
+
+  @defgroup module_article an easy to use intergrated article management module.
+  @{
+**/
+
+/**
+  Hook Block - displays the latest articles list in a block.
+
+  @param op the operation to be preformed. (default="list")
+  @param delta the block to be displayed. (default=0)
+
+  @return an array containin the block output.
+**/
+function article_block($op = 'list', $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks[0]['info'] = t('Latest Articles');
+    return $blocks;
+  }
+  elseif ($op == 'view' && user_access('access content')) {
+    $content = module_invoke('node', 'title_list', article_get_latest(variable_get('article_recent_block', '5')));
+
+    if ($content) {
+      $content .= theme('more_info', l(t('more'), 'article', array('title' => t('Read more articles.'))));
+    }
+
+    $blocks['subject'] = variable_get('article_block_title', t('Latest Articles'));
+    $blocks['content'] = $content;
+    return $blocks;
+  }
+  elseif ($op == 'configure' && $delta == 0) {
+    $form['article_block_title'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Block Title'),
+      '#default_value' => variable_get('article_block_title', t('Latest Articles')),
+      '#size' => 35,
+      '#maxlength' => 255,
+      '#description' => t('Title of the Articles block.')
+    );
+    $form['article_recent_block'] = array(
+      '#type' => 'select',
+      '#title' => t('Recent Articles to Display'),
+      '#options' => drupal_map_assoc(array(5, 10, 15, 20)),
+      '#default_value' => variable_get('article_recent_block', 5),
+      '#description' => t('Sets the number of recent articles that will be displayed in the Recent Articles block.'),
+      '#multiple' => false
+    );
+    return $form;
+  }
+  elseif ($op == 'save' && $delta == 0) {
+    variable_set('article_recent_block', $edit['article_recent_block']);
+    variable_set('article_block_title', $edit['article_block_title']);
+  }
+}
+
+
+/**
+  Hook Help - displays help and general information about the module.
+
+  @param section specifies the section to display help for.
+
+  @return a formated string containing the help output.
+**/
+function article_help($section) {
+  global $base_url;
+
+  $output = '';
+  switch ($section) {
+      case 'admin/help#article':
+      case 'admin/modules#description':
+      $output = t('Allow users to view nodes of multiple types in a central location.');
+      break;
+  }
+
+  return $output;
+}
+
+/**
+  Hook Link - returns links to the article module.
+
+  @param type specifies the type of link to display. (page or admin)
+  @param node
+
+  @return an array of links.
+**/
+function article_link($type, $node = 0) {
+
+  $links = array();
+
+  if ($type == 'page' && user_access('access content')) {
+    $links[] = l(variable_get('article_title', t('articles')), 'article', array('title' => t('Article listings.')));
+  }
+
+  return $links;
+}
+
+/**
+  Hook Menu - sets up article entries in the main menu..
+
+  @return an array of menu items.
+**/
+function article_menu($may_cache) {
+  $items = array();
+
+  $items[] = array('path' => 'article', 'title' => variable_get('article_title', t('Articles')), 'callback' => 'article_page', 'access' => user_access('access content'), 'type' => MENU_CALLBACK);
+
+  return $items;
+}
+
+/**
+  Hook Settings - admin settings for the article module.
+
+  @return a formatted settings form.
+**/
+function article_settings() {
+  $select = array();
+
+  $vocabularies = module_invoke('taxonomy', 'get_vocabularies');
+  if (is_array($vocabularies) && count($vocabularies) > 0) {
+    foreach ($vocabularies as $vocabulary) {
+      $select[$vocabulary->vid] = $vocabulary->name;
+    }
+  }
+
+    $form['article_vocab'] = array(
+      '#type' => 'select',
+      '#title' => t('Article Vocabularies'),
+      '#size' => min(9, count($select)),
+      '#options' => $select,
+      '#multiple' => TRUE,
+      '#default_value' => variable_get('article_vocab', ''),
+      '#description' => t('Select the vocabularies which contain the Article categories. All the vocabularies you select here will show up on the Article index.'),
+    );
+    $form['article_title'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Overview Title'),
+      '#default_value' => variable_get('article_title', t('Articles')),
+      '#size' => 35,
+      '#maxlength' => 255,
+      '#description' => t('Title of the Articles box.')
+    );
+    $form['article_index_depth'] = array(
+      '#type' => 'select',
+      '#title' => t('Index Depth'),
+      '#options' => array(0 => 'All Terms', 1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6),
+      '#default_value' => variable_get('article_index_depth', 0),
+      '#description' => t('Defines how many levels of terms should be displayed on any given article index page. For example, if you select 1 then only one level of the Article index tree will be displayed at a time.'),
+      '#multiple' => false
+    );
+    $form['recent_group'] = array('#type' => 'fieldset', '#title' => t('Recent Box Settings'));
+    $form['recent_group']['article_recent_box_enable'] = array(
+      '#type' => 'radios',
+      '#title' => t('Recent Articles Box'),
+      '#options' => array(t('Disabled'), t('Enabled')),
+      '#default_value' => variable_get('article_recent_box_enable', 1),
+      '#description' => t('Enables or Disables the recent articles box on the article index page.'),
+      '#required' => false
+    );
+    $form['recent_group']['article_recent_box_title'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Box Title',
+      '#default_value' => variable_get('article_recent_box_title', t('Latest Articles')),
+      '#size' => 35,
+      '#maxlength' => 255,
+      '#description' => t('Title of the Recent Articles Box on the Article index page.')
+    );
+    $form['recent_group']['article_recent_display'] = array(
+      '#type' => 'select',
+      '#options' => drupal_map_assoc(array(5, 10, 15)),
+      '#default_value' => variable_get('article_recent_display', '5'),
+      '#title' => t('Articles to Display'),
+      '#description' => t('Sets the number of recent articles that will be displayed in the Recent Articles box. (0 = not displayed).'),
+      '#multiple' => false
+    );
+
+  return $form;
+}
+
+/**
+ Hook Page - displays the main article page.
+
+ @return null.
+**/
+function article_page() {
+  $body = '';
+
+  if (arg(1) == 'feed') {
+    module_invoke('node', 'feed', module_invoke('taxonomy', 'select_nodes', article_get_article_terms(), 'or', 0, FALSE));
+  }
+  else {
+    if (arg(1) != NULL) {
+      $breadcrumb = drupal_get_breadcrumb();
+      $term = article_build_breadcrumbs($breadcrumb);
+      drupal_set_breadcrumb($breadcrumb);
+
+      if ($term != NULL) {
+        $content = article_index($term->tid);
+        if ($content != '') {
+          $body = theme('box', $term->name . '- '. t('Sub Categories'), $content);
+        }
+
+        $terms = array_merge(array($term->tid), array_map('_article_get_tid_from_term', module_invoke('taxonomy', 'get_children', $term->tid)));
+        print theme('page', $body . module_invoke('taxonomy', 'render_nodes', module_invoke('taxonomy', 'select_nodes', $terms)));
+      }
+    }
+    else {
+      $body = '';
+
+      if (variable_get('article_recent_box_enable', 1)) {
+        $body = theme('box', variable_get('article_recent_box_title', t('Latest Articles')), module_invoke('node', 'title_list', article_get_latest(variable_get('article_recent_display', '5'))) . theme('more_info', theme_feed_icon("article/feed")));
+      }
+      $content = article_index();
+      if ($content != '') {
+        print theme('page', $body . theme('box', t('Article Categories'), $content));
+      }
+    }
+  }
+}
+
+/**
+  Constructs a url from the current url arguments list.
+
+  @return a string containing a formated URL.
+**/
+function article_get_current_url() {
+  $arg_index = 1;
+  $url = arg(0);
+  while ($argument = arg($arg_index)) {
+    $url .= '/'. urlencode($argument);
+    $arg_index++;
+  }
+  return $url;
+}
+
+
+/**
+ Constructs the article index page, using theme functions.
+
+ @return a string containing the output ready for display.
+**/
+function article_index($tid = 0) {
+  $output = '';
+  $vocabularies = article_get_vocabularies();
+  foreach ($vocabularies as $vocab) {
+    $max_depth = variable_get('article_index_depth', 0);
+    $vocab_tree = module_invoke('taxonomy', 'get_tree', $vocab->vid, $tid, -1, ($max_depth <= 0) ? NULL : $max_depth);
+    $content = '';
+
+    while (current($vocab_tree) != NULL) {
+      $content .= article_build_index($vocab_tree, article_get_current_url());
+    }
+
+    if ($content != '') {
+      $output .= theme('article_index', $vocab->name, $content);
+    }
+  }
+
+  return $output;
+}
+
+
+/**
+ Recursivly traverses the term tree to construct the index.
+
+ @return string the output for this tree.
+**/
+function article_build_index(&$tree, $parent_url) {
+  $output = '';
+
+  if ($tree == array()) {
+    return '';
+  }
+
+  do {
+    $cur = current($tree);
+    $nex = next($tree);
+    if ($nex === false) {
+      $next_depth = -1;
+    }
+    else {
+      $next_depth = $nex->depth;
+    }
+
+    $cur->link = $parent_url . '/' . rawurlencode(trim($cur->name));
+
+    $cur->children = '';
+    if ($next_depth > $cur->depth) {
+      $cur->children = article_build_index($tree, $cur->link);
+
+      // sync $next_depth, because 'next item' may be shoved forward
+      // Thanks for the patch Roderik.
+      $nex = current($tree);
+      if ($nex === false) {
+        $next_depth = -1;
+      }
+      else {
+        $next_depth = $nex->depth;
+      }
+    }
+
+    $cur->count = module_invoke('taxonomy', 'term_count_nodes', ($cur->tid));
+
+    $output .= theme('article_index_item', $cur);
+  } while ($cur->depth == $next_depth);
+
+  return theme('article_list', $output);
+}
+
+
+/**
+ Gets all the vocabularies that are associated with the article module.
+
+ @return array the vocabularies.
+**/
+function article_get_vocabularies() {
+  $allvocabularies = module_invoke('taxonomy', 'get_vocabularies');
+  $article_vocabs = variable_get('article_vocab', array());
+  $vocabularies = array();
+  foreach ($article_vocabs as $vocab) {
+    $vocabularies[] = $allvocabularies[$vocab];
+  }
+  return $vocabularies;
+}
+
+
+/**
+ Get all the terms associated with Articles.
+
+ @return an array of unique term ids.
+**/
+function article_get_article_terms() {
+  $vocabs = article_get_vocabularies();
+  $tids = array();
+  foreach ($vocabs as $vocab) {
+    $tids = array_merge($tids, article_tax_get_terms($vocab->vid));
+  }
+  return array_unique($tids);
+}
+
+
+/**
+ Get all the terms in a given vocabulary.
+
+ @return an array of unique term ids.
+**/
+function article_tax_get_terms($vid) {
+  $result = db_query('SELECT tid FROM {term_data} WHERE vid = %d', $vid);
+  $tids = array();
+  while ($term = db_fetch_array($result)) {
+    $tids[] = $term['tid'];
+  }
+  return array_unique($tids);
+}
+
+
+/**
+ Get the latest articles
+
+ @return a database query result.
+**/
+function article_get_latest($count = 0) {
+   $tids = article_get_article_terms();
+   return article_select_nodes($tids, 'or', 0, FALSE, $count);
+}
+
+/**
+ * Finds all nodes that match selected taxonomy conditions.
+ * This is just a copy of taxonomy_select_nodes() but
+ * includes node title field in the selection.
+ * Is this useful or try to find a taxonomy function
+ * to achieve this?
+ *
+ * @param $tids
+ *   An array of term IDs to match.
+ * @param $operator
+ *   How to interpret multiple IDs in the array. Can be "or" or "and".
+ * @param $depth
+ *   How many levels deep to traverse the taxonomy tree. Can be a nonnegative
+ *   integer or "all".
+ * @param $pager
+ *   Whether the nodes are to be used with a pager (the case on most Drupal
+ *   pages) or not (in an XML feed, for example).
+ * @return
+ *   A resource identifier pointing to the query results.
+ */
+function article_select_nodes($tids = array(), $operator = 'or', $depth = 0, $pager = TRUE, $count = 0) {
+  if (count($tids) > 0) {
+    // For each term ID, generate an array of descendant term IDs to the right depth.
+    $descendant_tids = array();
+    if ($depth === 'all') {
+      $depth = NULL;
+    }
+    foreach ($tids as $index => $tid) {
+      $term = module_invoke('taxonomy', 'get_term', $tid);
+      $tree = module_invoke('taxonomy', 'get_tree', $term->vid, $tid, -1, $depth);
+      $descendant_tids[] = array_merge(array($tid), array_map('_article_get_tid_from_term', $tree));
+    }
+
+    if ($operator == 'or') {
+      $str_tids = implode(',', call_user_func_array('array_merge', $descendant_tids));
+      $sql = 'SELECT DISTINCT n.nid, n.title, n.sticky, n.created FROM {node} n INNER JOIN {term_node} tn ON n.nid = tn.nid WHERE tn.tid IN ('. $str_tids .') AND n.status = 1 ORDER BY n.sticky DESC, n.created DESC';
+      $sql_count = 'SELECT COUNT(n.nid) FROM {node} n INNER JOIN {term_node} tn ON n.nid = tn.nid WHERE tn.tid IN ('. $str_tids .') AND n.status = 1';
+    }
+    else {
+      $joins = '';
+      $wheres = '';
+      foreach ($descendant_tids as $index => $tids) {
+        $joins .= ' INNER JOIN {term_node} tn'. $index .' ON n.nid = tn'. $index .'.nid';
+        $wheres .= ' AND tn'. $index .'.tid IN ('. implode(',', $tids) .')';
+      }
+      $sql = 'n.nid, n.title, n.sticky, n.created FROM {node} n '. $joins .' WHERE n.status = 1 AND '. $wheres .' ORDER BY n.sticky DESC, n.created DESC';
+      $sql_count = 'SELECT COUNT(n.nid) FROM {node} n '. $joins .' WHERE n.status = 1 AND '. $wheres;
+    }
+
+    if ($pager && ($count > 0)) {
+      $result = pager_query(db_rewrite_sql($sql), variable_get('default_nodes_main', 10) , 0, db_rewrite_sql($sql_count));
+    }
+    else {
+      $count = ($count > 0) ? $count : 15;
+      $result = db_query_range(db_rewrite_sql($sql), 0, $count);
+    }
+  }
+
+  return $result;
+}
+
+/**
+ Builds a breadcrumb list.
+
+ @param breadcrumb a reference to the breadcrumb array. New items will be appending to this array.
+
+ @return returns a term object if the last item in the url is a term, otherwise returns NULL.
+**/
+function article_build_breadcrumbs(&$breadcrumb) {
+  if (arg(1) != NULL) {
+    $i = 1;
+    $url = 'article';
+    $breadcrumb[] = l(drupal_ucfirst(variable_get('article_title', t('Article'))), $url);
+    while (arg($i) != NULL) {
+      $last_term = rawurldecode(_article_arg($i));
+      $url = $url . '/' . urlencode($last_term);
+      $breadcrumb[] = l(drupal_ucfirst($last_term), $url);
+      $i++;
+    }
+
+    $term = current(module_invoke('taxonomy', 'get_term_by_name', $last_term));
+    return $term;
+  }
+  return NULL;
+}
+
+/**
+ Helper function for array map purposes.
+ @param term the term object from which the tid will be extracted.
+
+ @return the tid member of $term.
+**/
+function _article_get_tid_from_term($term) {
+  return $term->tid;
+}
+/**  @} End of the module_article group **/
+
+
+/**
+  @addtogroup theme_system
+
+  Article module specific theme functions.
+  @{
+**/
+
+
+/**
+ Controls the output of the rendered index list.
+
+ @return string the output for the index list.
+**/
+function theme_article_index(&$name, &$index_list) {
+  if ($index_list != '') {
+    return "<div class=\"item-list\">\n$index_list\n</div>\n";
+  }
+  return '';
+}
+
+
+/**
+ Displays a single one level list. Called for each group of items at the same depth.
+
+ @return string the output for this list.
+**/
+function theme_article_list(&$output) {
+  if ($output != '') {
+    return "<ul>$output</ul>\n";
+  }
+  return '';
+}
+
+
+/**
+ Displays a single index item.
+
+ @return string the output for this item.
+**/
+function theme_article_index_item(&$term) {
+  $description = ($term->description != '') ? '<p class="article-desc">'. $term->description .'</p>' : '';
+  if ($term->count > 0) {
+    return '<li><div class="article-title">'. l($term->name ." ($term->count)", $term->link) .'</div>'. $description.$term->children .'</li>';
+  }
+  else {
+    return '<li><div class="article-title">'. $term->name ." ($term->count)</div>". $description.$term->children .'</li>';
+  }
+}
+
+
+/**
+ Displays more information content, suck as "more" links, and
+ feed images.
+
+ @return formatted string containing the output.
+**/
+function theme_more_info($content) {
+  return "<div class=\"more-link\">$content</div>";
+}
+
+/**  @} End of addtogroup theme_system **/
+
+// For a strange reason, php strips ++ from the $_GET array
+// (that's why I can't use arg() here directly)
+// This function is an ugly hack to workaround this.
+// NOTE: the whole thing will also break if we have a term with slashes.
+function _article_arg($n) {
+  $q = $_SERVER["QUERY_STRING"];
+
+  if ($q) {
+    $n--;
+    $paths = explode('/', $q);
+    array_shift($paths);
+    return $paths["$n"];
+  } else {
+    return arg($n);
+  }
+}
+
+?>
