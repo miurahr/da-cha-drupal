@@ -1,0 +1,15 @@
+
+3/25/05 - crunchywelch
+- port to 4.6
+- complete reworking of UI to include tabs
+- better confirmation screens for creating and editing
+- better hook_help implementation
+- update hook_link to work with new 4.6 event module
+- remove db tables rsvp_event and rsvp_user_prefs
+- rename db table rsvp_to_user to rsvp_invite
+- removed user preferences in favor of good defaults
+- user permissions audit
+- better email address input validation
+- invitation url by hash value access is always allowed
+- all html broken out into rsvp.theme file and theme functions
+- pruned rsvp.css
