@@ -1,0 +1,29 @@
+Google Sitemap Module
+
+Installation Instructions:
+
+1. Place gsitemap.module in your modules directory.
+
+2. Create the gsitemap table in your database.  The table definition is stored 
+   in gsitemap.sql.  You can add it in one of two ways:
+   
+     i. Copy the contents of the file into an SQL window in a database 
+        management tool (such as phpMyAdmin).
+  
+     ii. Run the following command from a shell prompt:
+
+         mysql -u <user> -p <database> < gsitemap.sql
+
+         where <user> is the mysql username and <database> is the database name.
+
+         NOTE: While gsitemap should work with postgreSQL, it has not been 
+               tested.  If you have difficulties using gsitemap with 
+               postgreSQL, please submit a support request.
+
+         NOTE: If you have specified a database_prefix, you must add it to
+               `gsitemap` in gsitemap.sql before merging that file.
+
+3. Enable this module at: administer > modules
+
+4. The sitemap is now operational at q=gsitemap.  Configure advanced options at
+   administer > settings > gsitemap. 

@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS gsitemap;
+CREATE TABLE gsitemap (
+  nid int(10) unsigned primary key,
+  last_changed int(11),
+  previously_changed int(11),
+  last_comment int(11),
+  previous_comment int(11),
+  priority_override decimal(2,1));

@@ -1,0 +1,31 @@
+<?php
+// $Id: gsitemap.install, v4.7.0
+
+function gsitemap_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("CREATE TABLE {gsitemap} (
+        nid int(10) unsigned primary key,
+            last_changed int(11),
+            previously_changed int(11),
+            last_comment int(11),
+            previous_comment int(11),
+            priority_override decimal(2,1)
+              ) /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      break;
+    case 'pgsql':
+      db_query("CREATE TABLE {gsitemap} (
+        nid integer PRIMARY KEY, 
+            last_changed integer, 
+            previously_changed integer, 
+            last_comment integer, 
+            previous_comment integer, 
+            priority_override real);");
+      break;
+  }
+}
+
+function gsitemap_update_1() {
+  return _system_update_utf8(array('gsitemap'));
+}
