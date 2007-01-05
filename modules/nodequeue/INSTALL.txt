@@ -1,0 +1,12 @@
+Requirements
+------------
+
+This module requires Drupal 4.7.0.
+
+Installation
+------------
+
+1. untar the nodequeue module into /modules, or copy this directory there.
+2. Activate the module on the administer >> modules page
+3. Create a node queue on administer >> node queue
+
