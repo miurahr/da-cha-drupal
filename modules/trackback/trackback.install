@@ -1,0 +1,76 @@
+<?php
+
+
+
+function trackback_install() {
+  drupal_set_message('Installing trackback');
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("CREATE TABLE trackback_received (
+                  trid int(10) unsigned NOT NULL,
+                  nid int(10) unsigned NOT NULL,
+                  created int(11) NOT NULL,
+                  site varchar(255) NOT NULL,
+                  name varchar(60) default NULL,
+                  subject varchar(64) NOT NULL,
+                  url varchar(255) NOT NULL,
+                  excerpt varchar(255) NOT NULL,
+                  status tinyint(1) unsigned default '0',
+                  PRIMARY KEY (trid),
+                  KEY nid (nid)
+               )");
+               
+      db_query("CREATE TABLE trackback_sent (
+                  nid int(10) unsigned NOT NULL,
+                  url varchar(255) NOT NULL default '',
+                  successful tinyint(1) NOT NULL,
+                  PRIMARY KEY (nid, url)
+                )");
+                
+      db_query("CREATE TABLE trackback_node (
+                  nid int(10) unsigned NOT NULL default '0',
+                  awaiting_cron tinyint(1) NOT NULL default '0',
+                  can_receive tinyint(1) NOT NULL default '0',
+                  PRIMARY KEY (nid)
+                )");
+      break;
+    
+    case 'pgsql':
+      db_query("CREATE TABLE trackback_received (
+                  nid integer NOT NULL,
+                  trid integer NOT NULL,
+                  created integer NOT NULL,
+                  site varchar(255) NOT NULL,
+                  name varchar(60) NOT NULL,
+                  subject varchar(64) NOT NULL,
+                  url varchar(255) NOT NULL,
+                  excerpt varchar(255) NOT NULL,
+                  status smallint default '0',
+                  PRIMARY KEY (trid)
+                )");
+                
+      db_query("CREATE TABLE trackback_sent (
+                  nid integer NOT NULL,
+                  url varchar(255) NOT NULL default '',
+                  successful smallint NOT NULL,
+                  PRIMARY KEY (nid, url)
+                )");
+                
+      db_query("CREATE TABLE trackback_node (
+                  nid integer NOT NULL,
+                  awaiting_cron smallint NOT NULL,
+                  can_receive smallint NOT NULL,
+                  PRIMARY KEY (nid)
+                )");
+      break;
+  }
+}
+
+
+function trackback_update_1() {
+  return _system_update_utf8(array('trackback_received', 'trackback_sent', 'trackback_node'));
+}
+
+
+?>

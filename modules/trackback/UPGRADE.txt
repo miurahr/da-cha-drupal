@@ -1,0 +1,27 @@
+INSTRUCTIONS FOR UPGRADING:
+
+(1) Get the latest trackback.module file from CVS.
+
+(2) Perform your regular Drupal upgrade as you would by going
+    to http://example.com/update.php where "example.com/" should
+    be the domain (and path if applicable) of your Drupal site.
+
+(3) After doing the standard core Drupal database update in (2),
+    copy the trackback_upgrade.php file, to the root
+    directory of your Drupal installation (i.e., the same directory
+    as your index.php file).
+
+(4) Now, to run the trackback_upgrade script, point
+    your browser to http://example.com/trackback_upgrade.php.
+
+(5) If something doesn't seem to work, complain:
+
+    http://drupal.org/project/issues/trackback
+    
+    (I get an e-mail everytime something is posted at this URL.)
+
+    -Ankur Rishi
+     maintainer
+
+
+
