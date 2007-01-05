@@ -1,0 +1,45 @@
+diff -ruN -x .svn -x config -x program roundcubemail/index.php ../../../nfs_depot/web_dev/drupal/modules/rcmail/roundcubemail/index.php
+--- roundcubemail/index.php	2006-05-05 19:09:12.000000000 +0200
++++ ../../../nfs_depot/web_dev/drupal/modules/rcmail/roundcubemail/index.php	2006-05-21 18:12:43.000000000 +0200
+@@ -39,7 +39,12 @@
+  $Id: patch_ab_rc.txt,v 1.2 2006/05/23 14:18:12 polyformalsp Exp $
+ 
+ */
+-
++//bof rcmail_module
++session_start();
++if ($_GET['do'] == 'login'){ 
++$_POST['_action'] = 'login';
++}
++//eof rcmail_module
+ define('RCMAIL_VERSION', '0.1-20060505');
+ 
+ // define global vars
+@@ -116,7 +121,27 @@
+ 
+ // init necessary objects for GUI
+ load_gui();
++//bof rcmail_module
+ 
++if ($_GET['do'] == 'login'){
++include_once('../rcmail.module');
++	global $DB, $CACHE_KEYS;
++    $DB->query("SELECT users.data FROM " .
++		"     sessions, users
++              WHERE  sessions.sid = '".session_id()."'" .
++       		"and sessions.uid=users.uid" .
++               		"");
++	$IDENTITY_RECORD = $DB->fetch_assoc();
++	$sdb=unserialize($IDENTITY_RECORD[data]);
++	//print_r ($sdb);
++
++$_POST['_user'] = $sdb[rcmail_username];
++//$_POST['_pass'] = _decrypt($sdb[rcmail_password]);
++$_POST['_pass'] = $sdb[rcmail_password];
++$_POST['_action'] = 'login';
++$_POST['_host'] = $sdb[rcmail_server];
++}
++//eof rcmail_module
+ 
+ // check DB connections and exit on failure
+ if ($err_str = $DB->is_error())

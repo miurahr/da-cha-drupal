@@ -1,0 +1,179 @@
+<?php
+/* $Id: rcmail.module,v 1.2 2006/05/23 14:18:12 polyformalsp Exp $ */
+
+/** 
+ * @file
+ * Integration of the roundcube webmail client in drupal.
+ * 
+ */
+ 
+/**
+ * Implementation of hook_help().
+ *
+ * Throughout Drupal, hook_help() is used to display help text at the top of
+ * pages. Some other parts of Drupal pages get explanatory text from these hooks
+ * as well. We use it here to provide a description of the module on the
+ * module administration page.
+ */
+function rcmail_help($section) {
+  switch($section) {
+	case 'admin/modules#description' :
+	  return t('integration of roundcubemail IMAP client');
+      default :
+      return;
+  }
+}
+
+function rcmail_settings() {
+  // only administrators can access this function
+  if (!user_access('adminster rcmail')) {
+  return message_access();
+  }
+
+$form["rcmail_iframe_width"] = array(
+  '#type' => 'textfield',
+  '#title' => t("iframe width"),
+  '#default_value' => variable_get("rcmail_iframe_width", "850"),
+  '#size' => 10,
+  '#maxlength' => 15,
+  '#description' => t("Enter width of the iframe. Optimum is 850px"),
+);  
+
+$form["rcmail_iframe_height"] = array(
+  '#type' => 'textfield',
+  '#title' => t("iframe height"),
+  '#default_value' => variable_get("rcmail_iframe_height", "550"),
+  '#size' => 10,
+  '#maxlength' => 15,
+  '#description' => t("Enter width of the iframe. Optimum is 550px"),
+);
+  drupal_get_form('rcmail',$form);
+} 
+
+function rcmail_perm() {
+  return array('use rcmail', 'adminster rcmail');
+} 
+
+/**
+ * hook_menu() implementation
+ */
+
+
+/**
+ * Implementation of hook_user().
+ *
+ * Grab the settings of the imap account for each user
+ */
+function rcmail_user($type, &$edit, &$user, $category = NULL) {
+  switch ($type) {
+  case 'form':
+    if ($category == 'account' && user_access('use rcmail')) {
+    //$user_status = $edit['rcmail_status'] != NULL ? $edit['rcmail_status'] : ($user->rcmail_status != NULL ? $user->rcmail_status : variable_get('rcmail_default_state', 0));
+
+    $dec=$edit['rcmail_password'];
+   
+    $form['rcmail_settings'] = array(
+   '#type' => 'fieldset',
+   '#title' => t('Roundcubemail Settings for your IMAP account'),
+   '#collapsible' => TRUE,
+   '#weight' => 4); 
+      
+   $form['rcmail_settings']['rcmail_username'] = array(
+  '#type' => 'textfield',
+  '#title' => t('user'),
+  '#default_value' => $edit['rcmail_username'],
+  '#size' => 20,
+  '#maxlength' => 20,
+  '#description' => t('Enter the username of your IMAP account.'),
+);
+
+$form['rcmail_settings']['rcmail_password'] = array(
+  '#type' => 'password',
+  '#title' => t('password'),
+  '#default_value' => $dec,
+  '#size' => 20,
+  '#maxlength' => 20,
+  '#description' => t('Enter your the password of your IMAP account.'),
+);
+
+   $form['rcmail_settings']['rcmail_server'] = array(
+  '#type' => 'textfield',
+  '#title' => t('server'),
+  '#default_value' => $edit['rcmail_server'],
+  '#size' => 20,
+  '#maxlength' => 20,
+  '#description' => t('Enter the servername of your IMAP account.'),
+);
+
+  return $form;
+  
+  } //eof if
+  
+  case 'update': 
+  global $form_values;
+  $dec=$form_values['rcmail_password'];
+  //$enc='foo'._encrypt($dec);
+  return $edit['rcmail_password'] = $dec;
+  } //eof switch $type
+}
+
+/**
+ * hook_menu() implementation
+ */
+function rcmail_menu() {
+  $items[] = array(
+    'path' => 'rcmail',
+    'title' => t('roundcubemail'),
+    'callback' => 'rcmail_page',
+    'access' => (user_access('use rcmail'))
+    );
+  return $items;
+}
+
+
+/**
+ * callback to return the iframe with roundcube inside
+ */
+function rcmail_page(){
+  global $user;
+  $content='<iframe width="850" height="550" src="./modules/rcmail/roundcubemail/index.php?do=login">foo</iframe>';
+  print theme('page', $content);
+}
+
+/**
+ * decrypt the password of imap account stored in drupals users settings
+ * callback from roundcubemail/index.php
+ * @param $enc
+ *   an encrypted string
+ * @return
+ *   return the decrypted string
+ */
+function _decrypt($enc) {
+  $key='zugbz766fhgfv';
+  $iv_size = mcrypt_get_iv_size(MCRYPT_XTEA, MCRYPT_MODE_ECB);
+  $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+  $dec = mcrypt_decrypt(MCRYPT_XTEA, $key, $enc, MCRYPT_MODE_ECB, $iv);
+  return $dec;
+}
+
+/**
+ * encrypt the password grabed from the user settings
+ * 
+ * @param $dec
+ *   an plain text string
+ * @return
+ *   return the encrypted string
+ */
+function _encrypt($dec) {
+  $key='zugbz766fhgfv';
+  $iv_size = mcrypt_get_iv_size(MCRYPT_XTEA, MCRYPT_MODE_ECB);
+  $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+  $enc = mcrypt_encrypt(MCRYPT_XTEA, $key, $dec, MCRYPT_MODE_ECB, $iv);
+  return $key;
+}
+
+function _testfunc(){
+echo "foo";
+}
+    
+?>
