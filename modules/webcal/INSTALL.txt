@@ -1,0 +1,39 @@
+$Id: INSTALL.txt,v 1.4.2.1 2006/11/27 23:37:38 jaredwiltshire Exp $
+
+1. Install webcalendar somewhere where it will be accessible below the path
+   of you Drupal install. E.g. if your drupal site is accessible at
+   "www.mysite.com/drupal/" webcalendar would have to be installed at
+   "www.mysite.com/drupal/webcal/". This is due to restrictions browsers place
+   on reading cookies.
+   If possible install the webcal tables in the same database as the drupal
+   tables.
+
+2. Copy the webcal folder into your modules directory
+
+3. Enable the module in drupal
+
+4. Configure the webcal module in Drupal:
+   administer->settings->webcal
+
+5. Set the permissions for accesing webcal in Drupal:
+   access webcal = user can view public calendar
+   administer webcal = user can change the webcal settings in drupal
+                       (eg path to webcal, iframe properties)
+   login to webcal = user has they're own calendar
+   webcal admin = user is a webcal admin
+
+6. a) If you are using WebCalendar 1.1.x:
+   Copy login-app.php into your webcalendar root directory (overwrite the
+   existing file) & rename user-app-drupal-1.1.x.php to user-app-drupal.php
+   and copy into your webcalendar ./includes directory.
+
+   b) If you are using WebCalendar 1.0.x:
+   Rename user-app-drupal-1.0.x.php to user-app-drupal.php and copy into your
+   webcalendar ./includes directory.
+
+7. Edit the settings in the config section at the top of user-app-drupal.php
+
+8. Edit ./includes/settings.php in the webcalendar directory and change the
+   user_inc line to "user_inc: user-app-drupal.php" (without the quotes)
+
+9. Click the calendar link on your menu and you should see webcalendar

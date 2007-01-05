@@ -1,0 +1,102 @@
+<?php
+/* $Id: webcal.module,v 1.4 2006/11/22 11:50:55 jaredwiltshire Exp $ */
+
+/*
+ * The webcal module provides a way to integrate the WebCalendar PHP calendar script with Drupal
+ */
+
+function webcal_help($section) {
+  switch($section) {
+    case 'admin/help#webcal':
+      return '<p>' . t('The webcal module provides a way to integrate the WebCalendar PHP calendar script with Drupal') . '</p>';
+    case 'admin/modules#description':
+      return t('Integrates WebCalendar into your drupal site.');
+    }
+}
+  
+function webcal_menu($may_cache) {
+  if($may_cache) {
+    $items[] = array(
+      'path' => 'webcal',
+      'title' => t('calendar'),
+      'access' => user_access('access webcal'),
+      'callback' => 'webcal_page'
+    );
+  }
+  
+  return $items;
+}
+
+function webcal_perm() {
+  return array("access webcal", "login to webcal", "administer webcal", "webcal admin");
+}
+
+// Displays the webcal settings page
+function webcal_settings()
+{
+  $form['webcal'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('WebCalendar settings')
+  );
+  $form['webcal']['webcal_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Path"),
+    '#default_value' => variable_get("webcal_path", "webcalendar/"),
+    '#size' => '50',
+    '#maxlength' => '100',
+    '#description' => t("Path to the WebCalendar application (absolute or relative).  Use a trailing slash.")
+  );
+  $form['webcal']['webcal_view'] = array(
+    '#type' => 'select',
+    '#title' => t("Start view"),
+    '#default_value' => variable_get("webcal_view","month"),
+    '#options' => array("month" => "Month", "day" => "Day", "year" => "Year"),
+    '#description' => t("View calendar will initially display.")
+  );
+  $form['webcal']['webcal_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t("IFrame width"),
+    '#default_value' => variable_get("webcal_width", "100%"),
+    '#size' => '6',
+    '#maxlength' => '6',
+    '#description' => t("Sets the width of the IFrame. Enter a number and units (px, %, em). E.g. 100%")
+  );
+  $form['webcal']['webcal_height'] = array(
+    '#type' => 'textfield',
+    '#title' => t("IFrame height"),
+    '#default_value' => variable_get("webcal_height", "720px"),
+    '#size' => '6', '#maxlength' => '6',
+    '#description' => t("Sets the height of the IFrame. Enter a number and units (px, %, em). E.g. 600px")
+  );
+  $form['webcal']['webcal_scroll'] = array(
+    '#type' => 'select',
+    '#title' => t('Scrolling IFrame'),
+    '#default_value' => variable_get("webcal_scroll", true),
+    '#options' => array(false => "No", true => "Yes"),
+    '#description' => t("Should scrollbars be displayed if calendar is too large to fit in the IFrame.")
+  );
+  
+  return $form;
+}
+
+function webcal_page(){
+  $path = variable_get("webcal_path","webcalendar/");
+  $view = variable_get("webcal_view","month");
+  $width = variable_get("webcal_width","100%");
+  $height = variable_get("webcal_height","720px");
+  $scrolling = variable_get("webcal_scroll", true);
+
+  $output = '<iframe src="' . $path . $view . '.php" id="webcal" frameborder="0"';
+  if (!$scrolling) {
+    $output .= ' scrolling="no"';
+  }
+  
+  if ($width && $height) {
+    $output .= ' style="width: ' . $width . '; height: ' . $height . '"';
+  }
+  
+  $output .= '><p>Sorry your browser doesn\'t support iframes\'s.</p></iframe>';
+  return $output;
+}
+
+?>
