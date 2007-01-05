@@ -1,0 +1,347 @@
+<?php
+/* $Id: url_profile_technorati.module,v 1.1 2006/12/15 20:29:12 alexb Exp $ */
+
+/**
+ * @file
+ * Gather information about URL from Technorati.
+ * Sponsored by Development Seed.
+ */
+
+/*
+   Copyright (C) 2006 by Marcin Konicki <ahwayakchih@gmail.com>
+   Also depends on other modules from Drupal basic distribution and, in some cases, may contain parts of their code.
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the LICENSE file for more details.
+*/
+
+define('UPT_LIMITUSERWARNINGS', false);
+
+/**
+ * Implementation of hook_help().
+ */
+function url_profile_technorati_help($section) {
+  switch ($section) {
+    case 'admin/help#url_profile_technorati':
+      return t('Retrieves information about URLs from Technorati. <em>Requires leech and url_profile module</em>.');
+    case 'admin/modules#description':
+      return t('Retrieves information about URLs from Technorati. <em>Requires leech and url_profile module</em>.');
+  }
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function url_profile_technorati_perm() {
+  return array('view technorati data');
+}
+
+/**
+ * Implementation of hook_settings().
+ */
+function url_profile_technorati_settings() {
+  $form = array();
+
+  $form['url_profile_technorati_apikey'] = array(
+    '#type' => 'textfield',
+    '#title' => t('API key'),
+    '#default_value' => variable_get('url_profile_technorati_apikey', ''),
+    '#size' => 60,
+    '#maxlength' => 60,
+    '#description' => t('To use any of the Technorati APIs You need to have a API key. You can get it from %link', array('%link' => l('http://www.technorati.com/developers/apikey.html', 'http://www.technorati.com/developers/apikey.html')))
+  );
+
+  $form['url_profile_technorati_cosmos'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Get cosmos info'),
+    '#default_value' => variable_get('url_profile_technorati_cosmos', 1),
+    '#description' => t('If enabled, module will download info about latest 10 inbound links.')
+  );
+
+  $form['url_profile_technorati_bloginfo'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Get blog info'),
+    '#default_value' => variable_get('url_profile_technorati_bloginfo', 1),
+    '#description' => t('If enabled, module will download info about blog.')
+  );
+
+  $form['url_profile_technorati_tags'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Get top tags'),
+    '#default_value' => variable_get('url_profile_technorati_tags', 1),
+    '#description' => t('If enabled, module will download list of top tags used on blog (if link points to blog). This option needs "Get blog info" option to be enabled.')
+  );
+  $form['url_profile_technorati_use_title'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use Technorati title'),
+    '#default_value' => variable_get('url_profile_technorati_use_title', 0),
+    '#description' => t('If enabled, module will overwrite title of URL profiles with the title retrieved from Technorati.'),
+  );
+  
+  return $form;
+}
+
+/**
+ * get technorati info from database (= cache). on top of that, cache result in static array
+ *
+ * @param unknown_type $upid
+ * @return unknown
+ */
+function _url_profile_technorati_getcachedinfo($upid) {
+  
+  static $t_info;
+  if (isset($t_info[$upid]))
+    return $t_info[$upid];
+  
+  $result = db_query_range('SELECT * FROM {url_profile_technorati} WHERE upid = %d ORDER BY checked DESC', $upid, 0, 1);
+  
+  if ($result) {
+    $technorati = db_fetch_object($result);
+    if ($technorati->upid) {
+      $technorati->latest_inbound = unserialize($technorati->latest_inbound);
+      $technorati->tags = unserialize($technorati->tags);
+      $t_info[$upid] = $technorati;
+      return $technorati;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_url_profile().
+ */
+function url_profile_technorati_url_profile(&$url, $op, $arg = NULL) {
+  switch ($op) {
+    case 'list':
+      break;
+
+    case 'load':
+      // do not load technorati info, if url is no source url
+      
+      if ($url->source_upid != 0) 
+        break;
+        
+      if ($technorati = _url_profile_technorati_getcachedinfo($url->upid)){
+        $url->technorati = $technorati;
+      }
+      else {
+        unset($url->technorati);
+      }
+      break;
+
+    case 'insert':
+      break;
+
+    case 'update':
+      break;
+
+    case 'delete':
+      db_query('DELETE FROM {url_profile_technorati} WHERE upid = %d', $url->upid);
+      break;
+
+    case 'check':
+      _url_profile_technorati_check($url);
+      break;
+
+    case 'view':
+      if (user_access('view technorati data')) {
+        return theme('url_profile_technorati', $url, $arg);
+      }
+      break;
+
+    default:
+      break;
+  }
+}
+
+function theme_url_profile_technorati($url, $display) {
+  // Warning: definitely this is not the best place to do this calculcation!
+  if (    isset($url->technorati->inboundlinks) 
+       || isset($url->technorati->tags) 
+       || isset($url->technorati->blog_title) 
+       || isset($url->technorati->blog_rank)) {
+    if ($url->technorati->inboundlinks == 0) {
+      $url->technorati->inboundlinks = count($url->technorati->latest_inbound);
+    }
+    foreach ($url->technorati->tags as $tag) {
+      $technoratitags .= ' '. $tag->name .'('. $tag->count .'),';
+    }
+    $table = array(
+    array(t('Title'), $url->technorati->blog_title),
+    array(t('Blog Rank'), $url->technorati->blog_rank),
+    array(t('Inbound links'), $url->technorati->inboundlinks),
+    array(t('Top tags'), $technoratitags),
+    );
+  } 
+  else {
+    $table = array(
+    array(t('Title'), t('Technorati information has not been retrieved yet.'))
+    );
+  }
+    
+  $output = '<h2>Technorati info</h2>';
+  $output.= theme_table(array(), $table, array()) . $retrieve;
+  return $output;
+}
+
+function _url_profile_technorati_check(&$url) {
+  $key = variable_get('url_profile_technorati_apikey', '');
+  if (strlen($key) < 1) {
+    return;
+  }
+
+  $log = new StdClass();
+  $log->upid = $url->upid;
+
+  // First get info from cosmos
+  // http://api.technorati.com/cosmos?key=[apikey]&url=[blog url]&type=[link|weblog]&current=[yes|no]&limit=[count]&highlight=[0|1]&format=[xml|rss]
+  if (variable_get('url_profile_technorati_cosmos', 1)) {
+    $data = 'key='. $key .'&url='. urlencode($url->url) .'&type=link&current=yes&limit=10&highlight=0&format=xml';
+    $connection = drupal_http_request('http://api.technorati.com/cosmos?'.$data);
+    $log->latest_inbound = array();
+    if ($connection->code == 200 && trim($connection->data)) {
+      $xml = _url_profile_technorati_parse($connection->data);
+      $result = &$xml[0]['tapi'][0]['document'][0]['result'][0];
+      if ($result && $result['url'][0]['_value'] && $xml[0]['tapi'][0]['document'][0]['item']) {
+        foreach ($xml[0]['tapi'][0]['document'][0]['item'] as $item) {
+          $temp = new StdClass();
+          $temp->title = $item['weblog'][0]['name'][0]['_value'];
+          $temp->url = $item['weblog'][0]['url'][0]['_value'];
+          $temp->link = $item['nearestpermalink'][0]['_value'];
+          $temp->points_to = $item['linkurl'][0]['_value'];
+          $temp->link_date = $item['linkcreated'][0]['_value'];
+          $log->latest_inbound[] = $temp;
+        }
+      } else if (strstr($result['error'][0]['_value'], 'You have used up your daily') !== FALSE) {
+        if (UPT_LIMITUSERWARNINGS) 
+          drupal_set_message(t('Hit technorati API daily limit.'));
+        watchdog("url_profile_url", t('Hit technorati API daily limit.'));
+        return;
+      }
+    }
+  }
+
+  // Now if it is url to weblog get info about blog
+  // http://api.technorati.com/bloginfo?key=[apikey]&url=[blog url]&format=[xml|rss]
+  if (variable_get('url_profile_technorati_bloginfo', 1)) {
+    $data = 'key='. $key .'&url='. urlencode($url->url) .'&format=xml';
+    $connection = drupal_http_request('http://api.technorati.com/bloginfo?'.$data);
+    if ($connection->code == 200 && trim($connection->data)) {
+      $xml = _url_profile_technorati_parse($connection->data);
+      $result = &$xml[0]['tapi'][0]['document'][0]['result'][0];
+      if ($result && $result['weblog'][0]['url'][0]['_value']) {
+        $log->blog_title = $result['weblog'][0]['name'][0]['_value'];
+        $log->blog_rank = $result['weblog'][0]['rank'][0]['_value'];
+        $log->inboundlinks = $result['weblog'][0]['inboundlinks'][0]['_value'];
+        $log->inboundblogs = $result['weblog'][0]['inboundblogs'][0]['_value'];
+      } else if (strstr($result['error'][0]['_value'], 'You have used up your daily') !== FALSE) {
+        if (UPT_LIMITUSERWARNINGS) {
+          drupal_set_message(t('Hit technorati API daily limit.'));
+        }
+        watchdog("url_profile_url", t('Hit technorati API daily limit.'));
+        return;
+      }
+    }
+  }
+
+  // Now if it wasn't url to weblog get info from search api
+  // http://api.technorati.com/search?key=[apikey]&query=[word+word]&format=[xml|rss]&limit=[count]
+  if (!$log->blog_title) {
+    // TODO: for now search results are not useful for us.
+    //       According to Technorati's description they are more for "words" than URLs checking
+/*
+    $data = 'key='. $key .'&query="'. urlencode($url->url) .'"&format=xml&limit=10';
+    $connection = drupal_http_request('http://api.technorati.com/search/'.$data);
+    if ($connection->code == 200 && trim($connection->data)) {
+      $xml = _url_profile_technorati_parse($connection->data);
+      $result = &$xml[0]['tapi'][0]['document'][0]['item'];
+      if ($result && $result[0]['title'][0]['_value']) {
+      }
+    }
+*/
+  }
+
+  // Now if it was url to weblog get info about top tags used by it
+  // http://api.technorati.com/blogposttags?key=[apikey]&url=[blog url]&limit=[count]
+  $log->tags = array();
+  if ($log->blog_title && variable_get('url_profile_technorati_tags', 1)) {
+    $data = 'key='. $key .'&url='. urlencode($url->url) .'&limit=10';
+    $connection = drupal_http_request('http://api.technorati.com/blogposttags?'.$data);
+    if ($connection->code == 200 && trim($connection->data)) {
+      $xml = _url_profile_technorati_parse($connection->data);
+      $result = &$xml[0]['tapi'][0]['document'][0]['item'];
+      if ($result && $result[0]['tag'][0]['_value']) {
+        foreach ($result as $item) {
+          $temp = new StdClass();
+          $temp->name = $item['tag'][0]['_value'];
+          $temp->count = $item['posts'][0]['_value'];
+          $log->tags[] = $temp;
+        }
+      } else if (strstr($result['error'][0]['_value'], 'You have used up your daily') !== FALSE) {
+        if (UPT_LIMITUSERWARNINGS){ 
+          drupal_set_message(t('Hit technorati API daily limit.'));
+        }
+        watchdog("url_profile_url", t('Hit technorati API daily limit.'));
+        return;
+      }
+    }
+  }
+
+  $log->checked = time();
+
+  if (count($log->latest_inbound) > 0 || count($log->tags) > 0 || $log->blog_rank) {
+    db_query("INSERT INTO {url_profile_technorati} (upid, checked, blog_title, blog_rank, inboundlinks, inboundblogs, latest_inbound, tags) VALUES (%d, %d, '%s', %d, %d, %d, '%s', '%s')", $log->upid, $log->checked, check_plain($log->blog_title), $log->blog_rank, $log->inboundlinks, $log->inboundblogs, serialize($log->latest_inbound), serialize($log->tags));
+    if (variable_get('url_profile_technorati_use_title', 0) && ($url->criteria == "")) {
+      if (trim($log->blog_title) != "") {
+        db_query("UPDATE {url_profile_url} SET title = '%s' WHERE upid = %d", $log->blog_title, $log->upid);
+      }
+    }
+  }
+
+  $url->technorati = $log;
+}
+
+function _url_profile_technorati_parse(&$text) {
+  // TODO: instead of catching value string, catch only closing tag of start and opening tag end
+  //       whole xml is already in memory, so there's no need to copy it
+  //       we can just remember offsets :)
+
+  preg_match_all('%(?<=\<)(\w+)(| .*?)(?=\/>|\>(.*?)(\<\/\1\>))%s', $text, $matches, PREG_SET_ORDER |   PREG_OFFSET_CAPTURE);
+
+  $tree = array(array('_value' => $text, '_start' => 0, '_end' => strlen($text)));
+  $parents = array(&$tree[0]);
+  foreach ($matches as $tag) {
+    $item = array();
+
+    $name = strtolower($tag[1][0]);
+    if ($tag[2][0]) {
+      $item['_attribs_value'] = $tag[2][0];
+      // Parse attribs
+      $attribs = array();
+      preg_match_all('/(\w+)((\s*=\s*"(.*?)")|(\s*=\s*\'(.*?)\')|(\s*=\s*(\w+))|())/s', $tag[2][0], $attribs, PREG_SET_ORDER);
+      foreach ($attribs as $attr) {
+        $item[$attr[1]] = end($attr);
+      }
+    }
+    if ($tag[3][0]) {
+      $item['_value'] = $tag[3][0];
+      $item['_value_start'] = $tag[3][1];
+      $item['_value_end'] = ($tag[4] ?  $tag[4][1]-1 : strlen($tag[3][0]));
+    }
+    $item['_start'] = $tag[1][1];
+    $item['_end'] = ($tag[4] ? $tag[4][1] : $tag[1][1]);
+
+    $p = &$parents[count($parents)-1];
+    while ($item['_start'] > $p['_end']) {
+      array_pop($parents);
+      $p = &$parents[count($parents)-1];
+    }
+    $p[$name][] = $item;
+    $parents[] = &$p[$name][count(&$p[$name])-1];
+  }
+
+  return $tree;
+}
