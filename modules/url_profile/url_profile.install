@@ -8,7 +8,7 @@ function url_profile_install() {
       db_query("
 CREATE TABLE url_profile_url (
 `upid` int(10) NOT NULL default '0',
-`url` TEXT character set utf8 NOT NULL DEFAULT '',
+`url` TEXT NOT NULL DEFAULT '',
 `checked` int(11) NOT NULL default '0',
 `valid` int(1) NOT NULL default '0',
 `created` int(11) NOT NULL default '0',
