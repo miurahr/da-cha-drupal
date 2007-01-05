@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * Implementation of hook_install().
+ */
+function flexinode_install() {
+  drupal_set_message('Installing flexinode');
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      db_query("CREATE TABLE {flexinode_field} (
+        field_id int(10) unsigned NOT NULL default '0',
+        ctype_id int(10) unsigned NOT NULL default '0',
+        label varchar(255) NOT NULL default '',
+        default_value mediumtext NOT NULL default '',
+        weight int(10) NOT NULL default '0',
+        required int(1) NOT NULL default '0',
+        show_teaser int(1) NOT NULL default '0',
+        show_table int(1) NOT NULL default '0',
+        rows int(10) unsigned NOT NULL default '0',
+        field_type varchar(255) NOT NULL default '',
+        options text NOT NULL default '',
+        description varchar(255) NOT NULL default '',
+        PRIMARY KEY field_id (field_id),
+        KEY ctype_id (ctype_id)
+      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+
+      db_query("CREATE TABLE {flexinode_type} (
+        ctype_id int(10) unsigned NOT NULL default '0',
+        name varchar(255) NOT NULL default '',
+        description varchar(255) NOT NULL default '',
+        help text NOT NULL default '',
+        PRIMARY KEY ctype_id (ctype_id)
+      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+
+      db_query("CREATE TABLE {flexinode_data} (
+        nid int(10) unsigned NOT NULL default '0',
+        field_id int(10) unsigned NOT NULL default '0',
+        textual_data mediumtext NOT NULL default '',
+        numeric_data int(10) unsigned NOT NULL default '0',
+        serialized_data mediumtext NOT NULL default '',
+        PRIMARY KEY id (nid,field_id)
+      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+
+      $success = TRUE;
+      break;
+
+    case 'pgsql':
+      db_query("CREATE TABLE {flexinode_field} (
+        field_id int NOT NULL default '0',
+        ctype_id int NOT NULL default '0',
+        label varchar(255) NOT NULL default '',
+        default_value text NOT NULL default '',
+        weight int NOT NULL default '0',
+        required int NOT NULL default '0',
+        show_teaser int NOT NULL default '0',
+        show_table int NOT NULL default '0',
+        rows int NOT NULL default '0',
+        field_type varchar(255) NOT NULL default '',
+        options text NOT NULL default '',
+        description varchar(255) NOT NULL default '',
+        PRIMARY KEY (field_id)
+      );");
+      db_query("CREATE INDEX flexinode_field_ctype_id ON {flexinode_field}(ctype_id);");
+
+      db_query("CREATE TABLE {flexinode_type} (
+        ctype_id int NOT NULL default '0',
+        name varchar(255) NOT NULL default '',
+        description varchar(255) NOT NULL default '',
+        help text NOT NULL default '',
+        PRIMARY KEY (ctype_id)
+      );");
+
+      db_query("CREATE TABLE {flexinode_data} (
+        nid int NOT NULL default '0',
+        field_id int NOT NULL default '0',
+        textual_data text NOT NULL default '',
+        numeric_data int NOT NULL default '0',
+        serialized_data text NOT NULL default '',
+        PRIMARY KEY (nid,field_id)
+      );");
+      db_query("CREATE SEQUENCE flexinode_ctype_seq INCREMENT 1 START 1;");
+      db_query("CREATE SEQUENCE flexinode_field_seq INCREMENT 1 START 1;");
+
+      $success = TRUE;
+      break;
+  } // End case
+
+  if ($success) {
+    drupal_set_message(t('Flexinode module installed tables successfully.'));
+  }
+  else {
+    drupal_set_message(t('The installation of flexinode module was unsuccessful.'), 'error');
+  }
+}
+
+/*
+ * update module for UTF.
+ */
+function flexinode_update_1() {
+  return _system_update_utf8(array('flexinode_data', 'flexinode_field', 'flexinode_type'));
+}
+
+?>

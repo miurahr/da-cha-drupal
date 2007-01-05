@@ -1,0 +1,189 @@
+$Id: CHANGELOG.txt,v 1.2 2006/04/29 18:44:11 ber Exp $
+
+29/04/06
+- Textfield now users proper teaser generation
+- Flexinode has proper -read more- support
+
+26/04/06
+- Lots of minor bugfixes, to make flexinode 4.7 compatible
+- removed flexinode_node_name, in favour of the Drupal API. See #31880 for more information
+- removed private required-validation. Form API takes care of that now.
+
+10/11/05
+- port to 4.7
+- re-implemented the admin UI, moved them to tabs and made the field adds dropdown instead of links
+- removed search cruft since it was not being utilized, and broken
+- general code cleanup
+
+4/15/05
+- Drupal 4.6 fixes.
+
+3/19/05
+- add flexinode_api 'rss item' hook to allow fields to insert rss information in feeds
+- add flexinode/feed/$ctype path for flexinode based rss feeds
+
+3/8/05
+- Various Drupal 4.6 fixes.
+
+1/27/05
+- Removed PHP notices.
+- Added cron hook.
+
+1/13/05
+- Fixed a DB prefixing bug.
+- Fixed error in table view pager.
+- Labels for empty text areas do not show.
+- Corrected overly-permissive node access rights.
+- Corrected duplicated listings when using node access modules.
+
+9/16/04
+- Updated for menu caching.
+- Fixed "date/time resets to 'now'" bug.
+
+8/16/04
+- Updated for filter format support.
+- Fixed an incorrect node access table query in tabular view.
+- Fixed "edit this node" links.
+- Provide alt attribute for images.
+- Changed teaser handling to alleviate "unclosed DIV" problem.
+- Added new hook for field types to produce settings page elements.
+- Added Imagemagick location to settings page.
+
+7/14/04
+- Quick fix for default tab changes in core.
+
+7/8/04
+- Updated for new hook_form() and form_set_error() syntax.
+- Updated to handle standardized "required field" marker.
+- Added drupal_goto() calls in the admin interface to provide better post-action
+  user experience and simplify code.
+
+6/30/04
+- Added caching to flexinode_content_types() to reduce SQL queries.
+
+6/22/04
+- Fixed a potential bad implode when displaying tables.
+
+6/20/04
+- Changed "static" to "sticky".
+- Fix for URL changes in hook_help().
+
+6/18/04
+- Updated for today's hook_menu() and "local tasks" patch.
+
+6/17/04
+- Restored truncating behavior for the teaser. Now every field is run through
+  node_teaser() before being inserted in the teaser, so <!--break--> can be used
+  if desired.
+- Merged in some of Gerhard's changes to the image module, which will hopefully
+  fix image upload problems.
+- Fixed names of "add" menu items (again).
+
+6/16/04
+- Field types are now scanned automatically inside the modules/flexinode folder.
+- Separated displayed names of field types from the file names.
+- "Description" field deprecated; instead, use a text area field. This
+  allows the field to be reordered or removed entirely.
+- Added a database updating function. Run this to upgrade from old versions.
+- Default values of text areas can now span multiple lines.
+- "Read More" link shows up again like it used to.
+- Drupal indexed search should work now, since the body now contains the
+  rendered node.
+- Administrator can determine which fields show up in the teaser.
+- Proper handling of multiple error messages for one field.
+- Better default theme functions for CSS styling.
+- Better error checking in hook_file_download().
+- Administrator can determine which fields show up in the table.
+
+6/15/04
+- Better comments throughout.
+- Added checks for missing arguments in URLs, to prevent SQL errors being thrown.
+- Fixed table handling for empty cells.
+
+6/14/04
+- Fixed separator module name and content type.
+- Added short filter tips to body field.
+- Single quotes to double quotes
+- Changed permission strings to avoid backslash escaping
+
+2/20/04
+- Fixed small bug when showing node type names on taxonomy vocabulary form.
+- Added taxonomy selection form to node edit page.
+
+2/13/04
+- Finished include file migration.
+
+2/10/04
+- Migrated more code into the includes.
+- Added custom search forms. Searches can be narrowed by any field that is
+  a checkbox or dropdown. Date ranges should be added in the future. Go to
+  flexinode/search/1 to try the search (where 1 is the content type ID).
+
+2/9/04
+- Split code into several include files. This task is not complete, but
+  now that the files exist updates in the future will be easier.
+- Small change to the new DB schema that allows files to be sorted
+  correctly. I now believe the schema to be future-proof, and will attempt
+  to support upgrade paths from now on.
+
+2/8/04
+- Resurrected the table view for content types. Go to flexinode/table/1 to
+  view it (where 1 is the content type ID). This now has a column for
+  every non-textarea field; the limit of four columns no longer applies.
+
+2/6/04
+- Brand new DB schema, which may allow bringing back the table view in a
+  cleaner fashion, and also allow for custom searches ala project.module.
+- Fixed file and image removal during node updates.
+- Released in contributions repository.
+- Changed dropdown storage to use numbers rather than text (will make
+  sorting friendlier later).
+
+1/28/04
+- Removed support for table view, thus cleaning up code and DB schema.
+- Added many more theming options for node display.
+- Improved permissions scheme to match "normal" node types.
+- Added some missing translation calls for node type names.
+
+1/27/04
+- Multiple node types patch is in core!
+- Updated to work with this change; some of the API was refactored.
+
+1/15/04
+- Cleaned up admin URLs using new menu system.
+
+1/12/04
+- Added file/image support using new file API.
+- Updated for pager include changes.
+- Cleaned up checkbox output.
+- Added support for date/time fields.
+
+12/8/03
+- Updated to work with recent theme and menu changes in Drupal CVS.
+- Code refactored for cleanliness.
+
+10/13/03
+- "Read More" link is now forced when viewing teasers.
+- Updated for changes to menu/help system.
+- First pass at providing help text.
+- Split _admin into separate functions to reduce calls to arg().
+- New "list" page mode.
+- Body is now properly filtered before output.
+
+10/6/03
+- Squelched some "empty array" warnings.
+- Updated module for "path" patch to CVS.
+- Fixed table pager.
+- Themes now can reference $node->original_body, which does not contain
+  any custom fields.
+
+9/29/03
+- User can now specify descriptions for fields.
+- Updated to work with "integrated admin menu" patch to CVS.
+- Now relies on "many node types, one module" patch in for_review.
+  Because of this, the interface is cleaner, and taxonomy vocabularies
+  can be assigned to individual content types rather than to all
+  flexinode types.
+
+9/24/03
+- Initial version.

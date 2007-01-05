@@ -1,0 +1,27 @@
+$Id: INSTALL.txt,v 1.1 2006/04/29 13:57:29 ber Exp $
+
+If upgrading from a previous version, see notes below.
+
+Installation:
+
+1) Place these files into modules/flexinode:
+     flexinode.module
+     flexinode.install
+     field_checkbox.inc
+     field_file.inc
+     field_image.inc
+     field_select.inc
+     field_textarea.inc
+     field_textfield.inc
+     field_timestamp.inc
+
+2) Enable the flexinode module in Drupal, at:
+   administration -> site configuration -> modules
+
+3) Create new flexible content types, at:
+   administration -> content on the 'content types' and 'add content type' tabs
+
+
+Upgrading:
+To perform possible update to your database, tend your browser at /update.php
+and perform updates if needed.

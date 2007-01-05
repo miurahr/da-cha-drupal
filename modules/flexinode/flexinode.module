@@ -1,0 +1,1146 @@
+<?php
+// $Id: flexinode.module,v 1.77.2.1 2006/08/22 12:11:32 ber Exp $
+
+// Copyright 2003-2004 Jonathan Chaffer. See LICENSE for redistribution allowances.
+
+/**
+ * Return a list of all installed field types.
+ */
+function flexinode_field_types() {
+  static $types;
+
+  if (!isset($types)) {
+    $types = array();
+    $path = drupal_get_path('module', 'flexinode');
+    $files = file_scan_directory($path, '^field_.*\.inc$');
+    foreach ($files as $filename => $file) {
+      include_once($filename);
+      $function = 'flexinode_'. $file->name .'_name';
+      if(function_exists($function)) {
+        $types[] = substr($file->name, 6);
+      }
+    }
+  }
+  return $types;
+}
+
+// Load all installed field types.
+flexinode_field_types();
+
+/**
+ * Implementation of hook_help().
+ */
+function flexinode_help($section) {
+  switch ($section) {
+    case 'admin/help#flexinode':
+      $output = '<p>'. t('The flexinode module allows administrators to create simple new content types.  Administrators find it very useful to create new types of content without having to program a new content module.') .'</p>';
+      $output .= '<p>'. t('When creating a new flexinode, administrators are presented with a flexinode form to create their new content type.  Once administrators have created their flexinode they can accept the format or choose to theme the content type to change it\'s presentation.  For users, creating content that is a flexinode is just like adding other content. The flexinode content type will show up alongside all normal content.') .'</p>';
+      $output .= t('<p>You can</p>
+<ul>
+<li>create a flexinode content type at <a href="%admin-node-types" title="administer content types to add a flexinode"> administer &gt;&gt; content &gt;&gt; content types</a> and select <strong>add content type</strong>.</li>
+<li><a href="%node-add" title="create a new flexinode type">create content &gt;&gt; add type.</a></li>
+<li>administer flexinode at <a href="%admin-settings-flexinode">administer &gt;&gt; settings &gt;&gt; flexinode</a>.</li>
+', array('%admin-node-types' => url('admin/node/types'), '%node-add' => url('node/add'), '%admin-settings-flexinode' => url('admin/settings/flexinode'))) .'</ul>';
+      $output .= '<p>'. t('For more information please read the configuration and customization handbook <a href="%flexinode">Flexinode page</a>.', array('%flexinode' => 'http://www.drupal.org/handbook/modules/flexinode/')) .'</p>';
+      return $output;
+    case 'admin/modules#description':
+      return t('Allows administrators to define their own content types.');
+    case 'admin/node/types':
+      return t('You may manage your own content types here. These will all have a "title" field to start off, and contain additional fields that you specify. Choose the "add content type" tab to add a new type. Make a selection below to edit an existing type or field. To delete a field or entire content type, first open the editing form for that field or type.');
+    case 'admin/node/type':
+      return t('Once you create a content type here you will be able to add additional fields to it on the "content types" tab.');
+  }
+
+  $output = '';
+
+  if (strpos($section, 'node/add') === 0) {
+    foreach (flexinode_content_types() as $type => $name) {
+      if ($section == 'node/add#flexinode-' . $type) {
+        $ctype = flexinode_load_content_type($type);
+        $output .= t($ctype->description);
+      }
+      if ($section == 'node/add/flexinode-' . $type) {
+        $ctype = flexinode_load_content_type($type);
+        $output .= t($ctype->help);
+      }
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function flexinode_perm() {
+  $perms = array('administer content types');
+  foreach (flexinode_content_types() as $ctype) {
+    $perms[] = 'create '. $ctype->name .' content';
+    $perms[] = 'edit own '. $ctype->name .' content';
+    $perms[] = 'edit any '. $ctype->name .' content';
+  }
+  return $perms;
+}
+
+/**
+ * Implementation of hook_settings().
+ */
+function flexinode_settings() {
+  //$output = implode("\n", flexinode_invoke_all('settings'));
+  $form['flexinode_list_count'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Number of posts in flexinode listings'),
+    '#description' => t('Number of posts to show on flexinode listing pages.'),
+    '#default_value' => variable_get('flexinode_list_count', 10),
+    
+    );
+  return $form;
+}
+
+/**
+ * Implementation of hook_link().
+ */
+function flexinode_link($type, $node = 0, $teaser = FALSE) {
+  $links = array();
+
+  if ($type == 'node' && strpos($node->type, 'flexinode-') === 0) {
+    /* Don't display a redundant edit link if they are node administrators */
+    if (flexinode_access('update', $node) && !user_access('administer nodes')) {
+      $links[] = l(t('edit this %nodename', array('%nodename' => node_get_name($node))), 'node/'. $node->nid .'/edit');
+    }
+  }
+
+  return $links;
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function flexinode_menu($may_cache) {
+  $items = array();
+
+  if ($may_cache) {
+    $admin_access = user_access('administer content types');
+    foreach (flexinode_content_types() as $ctype) {
+      $items[] = array(
+        'path' => 'node/add/flexinode-'. $ctype->ctype_id,
+        'title' => t($ctype->name),
+        'access' => user_access('create '. $ctype->name .' content') or $admin_access
+        );
+    }
+
+    // listing menu items
+    $items[] = array(
+      'path' => 'flexinode/list',
+      'title' => t('list view'),
+      'callback' => 'flexinode_page_list',
+      'access' => user_access('access content'),
+      'type' => MENU_CALLBACK,
+      );
+    $items[] = array(
+      'path' => 'flexinode/table',
+      'title' => t('tabular view'),
+      'callback' => 'flexinode_page_table',
+      'access' => user_access('access content'),
+      'type' => MENU_CALLBACK,
+      );
+    $items[] = array(
+      'path' => 'flexinode/feed',
+      'title' => t('rss feed'),
+      'callback' => 'flexinode_feed',
+      'access' => user_access('access content'),
+      'type' => MENU_CALLBACK,
+      );
+
+    // admin menu items
+    $items[] = array(
+      'path' => 'admin/node/types',
+      'title' => t('content types'),
+      'callback' => 'flexinode_page_admin',
+      'access' => $admin_access,
+      'type' => MENU_LOCAL_TASK,
+      );
+    $items[] = array(
+      'path' => 'admin/node/type',
+      'title' => t('add content type'),
+      'callback' => 'flexinode_content_type_form',
+      'access' => $admin_access,
+      'type' => MENU_LOCAL_TASK,
+      );
+    $items[] = array(
+      'path' => 'admin/node/type/delete',
+      'title' => t('delete content type'),
+      'callback' => 'flexinode_confirm_delete_content_type',
+      'access' => $admin_access,
+      'type' => MENU_CALLBACK,
+      );
+    $items[] = array(
+      'path' => 'admin/node/field',
+      'title' => t('edit fields'),
+      'callback' => 'flexinode_admin_field',
+      'access' => $admin_access,
+      'type' => MENU_CALLBACK,
+      );
+    $items[] = array(
+      'path' => 'flexinode/update',
+      'title' => t('update'),
+      'callback' => 'flexinode_page_admin_update',
+      'access' => $admin_access,
+      'type' => MENU_CALLBACK,
+      );
+  }
+
+  return $items;
+}
+
+/**
+ * MENU CALLBACKS
+ */
+
+/**
+ * Menu callback; presents a listing of all nodes of one type.
+ */
+function flexinode_page_list($ctype_id = 0) {
+
+  if (!$ctype_id) {
+    drupal_not_found();
+  }
+
+  $output = '';
+  $ctype = flexinode_load_content_type($ctype_id);
+
+  if ($ctype_id) {
+    $type = 'flexinode-' . db_escape_string($ctype_id);
+  }
+  else {
+    $type = 'flexinode-%';
+  }
+  $result = pager_query(db_rewrite_sql("SELECT n.nid FROM {node} n WHERE n.status = 1 AND n.type LIKE '%s' ORDER BY n.sticky DESC, n.created DESC"), variable_get('flexinode_list_count', 10), 0, NULL, $type);
+
+  while ($node = db_fetch_object($result)) {
+    $output .= node_view(node_load($node->nid), 1);
+  }
+  $output .= theme('pager', NULL, variable_get('flexinode_list_count', 10));
+
+  drupal_set_title(t($ctype->name));
+  return $output ? $output : drupal_not_found();
+}
+
+/**
+ * Menu callback; presents a tabular view of nodes of one type.
+ */
+function flexinode_page_table($ctype_id = 0) {
+  if (!$ctype_id) {
+    drupal_not_found();
+  }
+
+  $output = '';
+  $ctype = flexinode_load_content_type($ctype_id);
+
+  // Build the query.
+  $fields_to_select = array();
+  $table_joins = array();
+  $where_clauses = array();
+
+  foreach ($ctype->fields as $field) {
+    $fieldname = 'flexinode_'. $field->field_id;
+
+    $fields_to_select[] = flexinode_invoke('db_select', $field);
+    $table_joins[] = 'LEFT JOIN {flexinode_data} '. $fieldname .' ON n.nid = '. $fieldname .'.nid';
+    $where_clauses[] = $fieldname .'.field_id = '. $field->field_id;
+  }
+
+  $type = 'flexinode-' . db_escape_string($ctype_id);
+  $extra_fields = count($fields_to_select) > 0 ? ', ' . implode(', ', $fields_to_select) : '';
+  $extra_where = count($where_clauses) > 0 ? ' AND ' . implode(' AND ', $where_clauses) : '';
+  $sql = 'SELECT n.nid, n.title '. $extra_fields .' FROM {node} n '. implode(' ', $table_joins) ." WHERE n.status = 1 AND n.type = '$type'". $extra_where;
+
+  // Build the columns.
+  $header[] = array('data' => t('title'), 'field' => 'n.title');
+  foreach ($ctype->fields as $field) {
+    if ($field->show_table) {
+      $fieldname = 'flexinode_'. $field->field_id;
+
+      $sort_column = flexinode_invoke('db_sort_column', $field);
+      if ($sort_column) {
+        $header[] = array('data' => t($field->label), 'field' => $sort_column);
+      }
+      else {
+        $header[] = array('data' => t($field->label));
+      }
+    }
+  }
+
+  $sql .= tablesort_sql($header);
+
+  // Build the rows.
+  $rows = array();
+  $nodes = pager_query(db_rewrite_sql($sql), 20);
+  while ($node = db_fetch_object($nodes)) {
+    $row = array(l($node->title, 'node/' . $node->nid));
+    foreach ($ctype->fields as $field) {
+      if ($field->show_table) {
+        $data = flexinode_invoke('format', $field, $node, TRUE);
+        $row[] = $data ? $data : '';
+      }
+    }
+    $rows[] = $row;
+  }
+  if ($rows) {
+    $output .= theme('table', $header, $rows);
+    $output .= theme('pager', NULL, 20);
+  }
+  else {
+     $output .= theme('box', t('Your search yielded no results'), search_help('search#noresults'));
+  }
+
+  drupal_set_title(t('%type search results', array('%type' => t($ctype->name))));
+  return $output;
+}
+
+/**
+ * Menu callback; handles rss feeds for flexinode types.
+ */
+function flexinode_feed($ctype_id = NULL) {
+  global $base_url;
+
+  if (!$ctype_id) {
+    drupal_not_found();
+  }
+
+  $ctype = flexinode_load_content_type($ctype_id);
+
+  if ($ctype_id) {
+    $type = 'flexinode-' . db_escape_string($ctype_id);
+  }
+  else {
+    $type = 'flexinode-%';
+  }
+
+ $nodes = db_query_range(db_rewrite_sql("SELECT n.nid FROM {node} n WHERE n.status = 1 AND n.type LIKE '%s' ORDER BY n.sticky DESC, n.created DESC"), $type, 0, variable_get('feed_default_items', 10));
+
+  $channel= array(
+    'title'       => variable_get('site_name', 'drupal') .' - '. $ctype->name .t(' feed'),
+    'link'        => $base_url .'/flexinode/list/'. $ctype_id
+  );
+
+  node_feed($nodes, $channel);
+}
+
+/**
+ * Menu callback; presents an overview of all admin-defined content types.
+ */
+function flexinode_page_admin($ctype_id = NULL) {
+  $content_types = flexinode_content_types();
+
+  $first = ($ctype_id ? FALSE : TRUE);
+  $output = '';
+  foreach ($content_types as $ctype) {
+    $ctype = flexinode_load_content_type($ctype->ctype_id);
+    $ctype->links[] = l(t('edit content type'), 'admin/node/type/' . $ctype->ctype_id);
+    $ctype->links[] = l(t('settings'), 'admin/settings/content-types/flexinode-' . $ctype->ctype_id);
+
+    
+    $ctype->controls = flexinode_field_select($ctype->ctype_id);
+
+    foreach ($ctype->fields as $field) {
+      $ctype->fieldlist[] = $field->label . ' (' . l(t('edit field'), 'admin/node/field/' . $field->field_id) .')';
+    }
+
+    $output .= theme('flexinode_type', $ctype, ($first || ($ctype_id == $ctype->ctype_id)));
+    $first = FALSE;
+  }
+  
+  if (strlen($output) == 0) {
+    $output = '<p>'. t('No flexinode content types have been defined. You can <a href="%url">add a new content type</a>.', array('%url' => url('admin/node/type'))) .'</p>';
+  }
+
+  drupal_add_js('misc/collapse.js');
+  return $output;
+}
+
+/**
+ * Menu callback; presents a form to edit an existing field in a content type.
+ */
+function flexinode_admin_field($field_id = NULL) {
+
+  $op = $_POST['op'];
+
+  $crumbs = drupal_get_breadcrumb();
+  $crumbs[] = l('content types', 'admin/node/types');
+  drupal_set_breadcrumb($crumbs);
+
+  switch ($op) {
+    case t('Add field'):
+      $output = flexinode_field_form();
+      break;
+    case t('Confirm'):
+      $field = flexinode_load_field($field_id);
+      flexinode_delete_field($field);
+      drupal_goto('admin/node/types/'. $field->ctype_id);
+      break;
+    case t('Delete'):
+      $field = flexinode_load_field($field_id);
+      $output = flexinode_confirm_delete_field($field);
+      break;
+    case t('More'):
+    default:
+      $output = flexinode_field_form($field_id);
+      break;
+  }
+
+  return $output;
+}
+
+/**
+ * Perform database updates from older versions.
+ *
+ * This is a temporary solution until the install system becomes part of
+ * the Drupal core.
+ */
+function flexinode_page_admin_update($update_num = 0) {
+  switch ($update_num) {
+    case 1:
+      db_query("ALTER TABLE {flexinode_field} MODIFY default_value MEDIUMTEXT NOT NULL");
+      db_query("ALTER TABLE {flexinode_field} ADD show_teaser INT(1) UNSIGNED DEFAULT '0' NOT NULL");
+      db_query("ALTER TABLE {flexinode_field} ADD show_table INT(1) UNSIGNED DEFAULT '0' NOT NULL");
+
+      foreach (flexinode_content_types() as $type) {
+        $field_id = flexinode_save_field(array('label' => 'Description', 'default_value' => '', 'rows' => 10, 'required' => 0, 'weight' => 0, 'ctype_id' => $type->ctype_id, 'field_type' => 'textarea', 'options' => NULL, 'description' => ''));
+        $result = db_query("SELECT body, nid FROM {node} WHERE type = 'flexinode-%d'", $type->ctype_id);
+        while ($node = db_fetch_object($result)) {
+          db_query("INSERT INTO {flexinode_data} (nid, field_id, textual_data) VALUES (%d, %d, '%s')", $node->nid, $field_id, $node->body);
+        }
+      }
+
+      $output = 'Update complete.';
+      break;
+
+    default:
+      $output = '<p>Which update do you wish to perform?</p>';
+      $output .= '<dl>';
+      $output .= '<dt>'. l('6/16/04', 'flexinode/update/1') .'</dt>';
+      $output .= '<dd>Allows multiline default values for text areas. Allows administrator to configure which fields appear in the teaser and the tabular view. Deprecates special "Description" field in favor of using only basic textarea fields.</dd>';
+      $output .= '</dl>';
+  }
+  return $output;
+}
+
+/**
+ * CORE HOOKS
+ */
+
+/**
+ * Implementation of hook_node_info().
+ */
+function flexinode_node_info() {
+  $types = array();
+  foreach (flexinode_content_types() as $type => $name) {
+    $types['flexinode-'. $name->ctype_id] =
+              array('name' => $name->name ? t($name->name) : t('flexible content'),
+                    'base' => 'flexinode');
+  }
+  return $types;
+}
+
+
+/**
+ * Implementation of hook_access().
+ */
+function flexinode_access($op, $node) {
+  global $user;
+
+  if (!is_object($node)) {
+    $type = $node;
+    $node = new StdClass();
+    $node->type = $type;
+  }
+
+  if ($op == 'create') {
+    return user_access('create '. node_get_name($node) .' content');
+  }
+
+  if ($op == 'update') {
+    foreach ($node as $fieldname => $field) {
+      if (preg_match('!flexinode_[0-9]+_format!', $fieldname) && !filter_access($field)) {
+        return FALSE;
+      }
+    }
+  }
+
+  if ($op == 'update' || $op == 'delete') {
+    if (user_access('edit any '. node_get_name($node) .' content')) {
+      return TRUE;
+    }
+    elseif (user_access('edit own '. node_get_name($node) .' content') && ($user->uid == $node->uid)) {
+      return TRUE;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_load().
+ */
+function flexinode_load($node) {
+  $ctype = flexinode_load_content_type(substr($node->type, 10));
+
+  // build the query
+  $fields_to_select = array();
+  $table_joins = array();
+
+  foreach ($ctype->fields as $field) {
+    $fieldname = 'flexinode_'. $field->field_id;
+
+    $fields_to_select[] = flexinode_invoke('db_select', $field);
+    $table_joins[] = 'LEFT JOIN {flexinode_data} '. $fieldname .' ON n.nid = '. $fieldname .'.nid AND '. $fieldname .'.field_id = ' . $field->field_id;
+  }
+
+  if (count($fields_to_select) > 0) {
+    // make the query
+    $flexinode = db_fetch_object(db_query('SELECT '. implode(', ', $fields_to_select) .' FROM {node} n '. implode(' ', $table_joins) .' WHERE n.nid = %d', $node->nid));
+
+    // unserialize necessary fields
+    foreach ($ctype->fields as $field) {
+      $fieldname = 'flexinode_'. $field->field_id;
+      $field_data = flexinode_invoke('load', $field, $flexinode);
+      if ($field_data) {
+        $flexinode->$fieldname = $field_data;
+      }
+    }
+  }
+
+  $flexinode->ctype_id = $ctype->ctype_id;
+
+  return $flexinode;
+}
+
+/**
+ * Implementation of hook_insert().
+ */
+function flexinode_insert($node) {
+  $ctype = flexinode_load_content_type($node->ctype_id);
+  foreach ($ctype->fields as $field) {
+    flexinode_invoke('insert', $field, $node);
+  }
+}
+
+/**
+ * Implementation of hook_update().
+ */
+function flexinode_update($node) {
+  $ctype = flexinode_load_content_type($node->ctype_id);
+  foreach ($ctype->fields as $field) {
+    flexinode_invoke('delete', $field, $node, FALSE);
+  }
+  db_query('DELETE FROM {flexinode_data} WHERE nid = %d', $node->nid);
+  foreach ($ctype->fields as $field) {
+    flexinode_invoke('insert', $field, $node);
+  }
+}
+
+/**
+ * Implementation of hook_delete().
+ */
+function flexinode_delete($node) {
+  $ctype = flexinode_load_content_type($node->ctype_id);
+  foreach ($ctype->fields as $field) {
+    flexinode_invoke('delete', $field, $node, TRUE);
+  }
+  db_query('DELETE FROM {flexinode_data} WHERE nid = %d', $node->nid);
+}
+
+/**
+ * Implementation of hook_form().
+ */
+function flexinode_form(&$node, &$param) {
+  // Set form parameters so we can accept file uploads.
+  $form['#attributes'] = array('enctype' => 'multipart/form-data');
+
+  if (!isset($node->ctype_id)) {
+    $node->ctype_id = substr($node->type, 10);
+  }
+  $ctype = flexinode_load_content_type($node->ctype_id);
+
+  foreach ($ctype->fields as $field) {
+    $items = flexinode_invoke('form', $field, $node);
+    // if anyone knows a better way to pass back an array and key value at the same time without passing the $form by
+    // ref I would like to know ;)
+    foreach($items as $key => $item) {
+      $form[$key] = $item;
+    }
+  }
+
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#default_value' => $node->title,
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#required' => TRUE,
+    );
+
+  $form['ctype_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $node->ctype_id,
+    );
+
+  return $form;
+}
+
+/**
+ * Implementation of hook_validate().
+ */
+function flexinode_validate($node) {
+  if (isset($node->ctype_id)) {
+    $ctype = flexinode_load_content_type($node->ctype_id);
+    foreach ($ctype->fields as $field) {
+      $fieldname = 'flexinode_'. $field->field_id;
+      $validation = flexinode_invoke('validate', $field, $node);
+    }
+  }
+}
+
+/**
+ * Implementation of hook_submit().
+ */
+function flexinode_submit(&$node) {
+  if (isset($node->ctype_id)) {
+    $ctype = flexinode_load_content_type($node->ctype_id);
+    foreach ($ctype->fields as $field) {
+      if ($result = flexinode_invoke('execute', $field, $node)) {
+        $fieldname = 'flexinode_'. $field->field_id;
+        $node->$fieldname = $result;
+      }
+    }
+    // Pre-render the body and teaser fields, so the Drupal search works.
+    $node = flexinode_content($node);
+  }
+}
+
+/**
+ * Implementation of hook_view().
+ */
+function flexinode_view(&$node, $teaser = FALSE, $page = FALSE) {
+  $node = flexinode_content($node, $teaser);
+}
+
+function flexinode_content($node, $teaser = FALSE) {
+  if (isset($node->ctype_id)) {
+    $ctype = flexinode_load_content_type($node->ctype_id);
+
+    $node->readmore = FALSE;
+    $node->body = '<div class="flexinode-body flexinode-'. $node->ctype_id .'">';
+    $node->teaser = '<div class="flexinode-body flexinode-'. $node->ctype_id .'">';
+
+    foreach ($ctype->fields as $field) {
+      $fieldname = 'flexinode_'. $field->field_id;
+      if (isset($node->$fieldname)) {
+        $body_data = flexinode_invoke('format', $field, $node, FALSE);
+        $teaser_data = flexinode_invoke('format', $field, $node, TRUE);
+        if (!empty($body_data) && $body_data) {
+          $node->body .= theme('flexinode_'. $field->field_type, $field->field_id, $field->label, $node->$fieldname, $teaser ? $teaser_data : $body_data);
+          if ($field->show_teaser) {
+            if ($body_data != $teaser_data) {
+              $node->readmore = TRUE;
+            }
+            $node->teaser .= theme('flexinode_'. $field->field_type, $field->field_id, $field->label, $node->$fieldname, $teaser_data);
+          }
+          else {
+            $node->readmore = TRUE;
+          }
+        }
+      }
+    }
+
+    $node->body .= '</div>';
+    $node->teaser .= '</div>';
+
+    return $node;
+  }
+}
+
+/**
+ * Implementation of hook_file_download().
+ */
+function flexinode_file_download($file) {
+  if (!$file) return false;
+  $result = db_fetch_object(db_query("SELECT f.* FROM {flexinode_data} f WHERE f.textual_data = '%s'", $file));
+  if (!$result) return false;
+  $filedb = unserialize($result->serialized_data);
+  if ($filedb->type) {
+    return array('Content-type: '. $filedb->type, 'Content-Disposition: attachment; filename="'. $file .'"');
+  }
+  if ($path = file_create_path($file)) {
+    list($width, $height, $type, $attr) = getimagesize($path);
+    $types = array(
+      IMAGETYPE_GIF => 'image/gif',
+      IMAGETYPE_JPEG => 'image/jpeg',
+      IMAGETYPE_PNG => 'image/png',
+      IMAGETYPE_SWF => 'application/x-shockwave-flash',
+      IMAGETYPE_PSD => 'image/psd',
+      IMAGETYPE_BMP => 'image/bmp',
+      IMAGETYPE_TIFF_II => 'image/tiff',
+      IMAGETYPE_TIFF_MM  => 'image/tiff',
+      IMAGETYPE_JPC => 'application/octet-stream',
+      IMAGETYPE_JP2 => 'image/jp2',
+      IMAGETYPE_JPX => 'application/octet-stream',
+      IMAGETYPE_JB2 => 'application/octet-stream',
+      IMAGETYPE_SWC => 'application/x-shockwave-flash',
+      IMAGETYPE_IFF => 'image/iff',
+      IMAGETYPE_WBMP => 'image/vnd.wap.wbmp',
+      IMAGETYPE_XBM => 'image/xbm'
+    );
+    if (isset($types[$type])) {
+      return array('Content-type: '. $types[$type], 'Content-Disposition: attachment; filename="'. $file .'"');
+    }
+    else {
+      $type = (function_exists('mime_content_type') ? mime_content_type($path) : 'application/x-download');
+      return array('Content-type: '. $type, 'Content-Disposition: attachment; filename="'. $file .'"');
+    }
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi().
+ */
+function flexinode_nodeapi(&$node, $op, $teaser, $page) {
+  switch ($op) {
+    case 'rss item':
+      if (isset($node->ctype_id)) {
+        $keys = array();
+        $ctype = flexinode_load_content_type($node->ctype_id);
+        foreach ($ctype->fields as $field) {
+          $fieldname = 'flexinode_'. $field->field_id;
+          $key = array();
+          if (isset($node->$fieldname)) {
+            $key = flexinode_invoke('rss', $field, $node);
+            if(count($key)) {
+              $keys[] = $key;
+            }
+          }
+        }
+        return $keys;
+      }
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_cron().
+ */
+function flexinode_cron() {
+  flexinode_invoke_all('cron');
+}
+
+/**
+ * FLEXINODE CONTENT TYPE FUNCTIONS
+ */
+
+/**
+ * Return a list of content types.
+ *
+ * The returned array contains basic information about each type, but the heavy
+ * lifting of loading all field descriptions, for example, is not yet done.
+ */
+function flexinode_content_types() {
+  static $types;
+  if (!isset($types)) {
+    $types = array();
+    $result = db_query('SELECT * FROM {flexinode_type}');
+    while ($type = db_fetch_object($result)) {
+      $types[$type->ctype_id] = $type;
+    }
+  }
+  return $types;
+}
+
+/**
+ * Return a content type object.
+ */
+function flexinode_load_content_type($ctype_id) {
+  static $content_types;
+
+  if (isset($content_types[$ctype_id])) {
+    return $content_types[$ctype_id];
+  }
+
+  $ctype = db_fetch_object(db_query('SELECT * FROM {flexinode_type} WHERE ctype_id = %d', $ctype_id));
+
+  $ctype->fields = array();
+  $result = db_query('SELECT * FROM {flexinode_field} WHERE ctype_id = %d ORDER BY weight ASC, label ASC', $ctype_id);
+  while ($field = db_fetch_object($result)) {
+    $field->options = unserialize($field->options);
+    $ctype->fields[] = $field;
+  }
+
+  $content_types[$ctype_id] = $ctype;
+  return $ctype;
+}
+
+/**
+ * Render a form for the editing of a content type.
+ */
+function flexinode_content_type_form($ctype_id = NULL) {
+  if ($ctype_id) {
+    $ctype = flexinode_load_content_type($ctype_id);
+  }
+
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Content type name'),
+    '#default_value' => $ctype->name,
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#required' => TRUE,
+    );
+  $form['description'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Description'),
+    '#default_value' => $ctype->description,
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#description' => t('A one-line description of the content type.'),
+    );
+  $form['help'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Help text'),
+    '#default_value' => $ctype->help,
+    '#size' => 60,
+    '#maxlength' => 5,
+    '#description' => t('Instructions to present to the user when adding new content of this type.'),
+    );
+  $form['ctype_id'] = array('#type' => 'hidden', '#value' => $ctype_id);
+  $form['submit'] = array('#type' => 'submit', '#value' => t('Submit'));
+
+  if ($ctype_id) {
+    $form['delete'] = array('#type' => 'submit', '#value' => t('Delete'));
+  }
+
+  return drupal_get_form('flexinode_content_type_form', $form);
+}
+
+/**
+ * flexinode_content_type_form hook_validate callback function.
+ */
+function flexinode_content_type_form_validate($form_id, $edit) {
+  if (!$edit['name']) {
+    form_set_error('name', t('You must give this content type a name.'));
+  }
+}
+
+/**
+ * flexinode_content_type_form hook_submit callback function.
+ */
+function flexinode_content_type_form_submit($form_id, $edit) {
+  if($_POST['op'] == t('Delete')) {
+    drupal_goto('admin/node/type/delete/'. $edit['ctype_id']);
+  }
+  if ($edit['ctype_id']) {
+    $ctype_id = $edit['ctype_id'];
+
+    $former_ctype = flexinode_load_content_type($ctype_id);
+
+    db_query("UPDATE {flexinode_type} SET name = '%s', description = '%s', help = '%s' WHERE ctype_id = %d", $edit['name'], $edit['description'], $edit['help'], $ctype_id);
+
+    drupal_set_message(t('updated content type "%name".', array('%name' => $edit['name'])));
+  }
+  else {
+    $ctype_id = db_next_id('{flexinode_ctype}');
+
+    db_query("INSERT INTO {flexinode_type} (name, description, help, ctype_id) VALUES ('%s', '%s', '%s', %d)", $edit['name'], $edit['description'], $edit['help'], $ctype_id);
+
+    drupal_set_message(t('created new content type "%name".', array('%name' => $edit['name'])));
+  }
+
+  // update the cached "create content" menu
+  menu_rebuild();
+  drupal_goto('admin/node/types/'. $ctype_id);
+}
+
+/**
+ * Generate a confirmation page for the deletion of a custom content type.
+ */
+function flexinode_confirm_delete_content_type($ctype_id) {
+  if($_POST['op'] == t('Confirm')) {
+    flexinode_delete_content_type($ctype_id);
+    drupal_goto('admin/node/types');
+  }
+
+  $ctype = flexinode_load_content_type($ctype_id);
+  $form['ctype_id'] = array(
+    '#type' => 'hidden',
+    '#value' =>  $ctype_id,
+    );
+  $form['name'] = array(
+    '#type' => 'hidden',
+    '#value' =>  $ctype->name,
+    );
+  return confirm_form('flexinode_confirm_delete_content_type', $form, t('Are you sure you want to delete the content type "%name"? All nodes of this type will be lost.', array('%name' => $ctype->name)), 'admin/node/type/'. $ctype_id);
+}
+
+/**
+ * Delete a custom content type from the database.
+ */
+function flexinode_delete_content_type($ctype_id) {
+  // TODO: Delete files as appropriate.
+  db_query('DELETE FROM {flexinode_type} WHERE ctype_id = %d', $ctype_id);
+  db_query('DELETE FROM {flexinode_field} WHERE ctype_id = %d', $ctype_id);
+  $result = db_query("SELECT nid FROM {node} WHERE type = '%s'", 'flexinode-' . $ctype_id);
+  while ($node = db_fetch_object($result)) {
+    db_query('DELETE FROM {flexinode_data} WHERE nid = %d', $node->nid);
+  }
+  db_query("DELETE FROM {node} WHERE type = '%s'", 'flexinode-' . $ctype_id);
+
+  drupal_set_message(t('deleted content type'));
+
+  // update the cached "create content" menu
+  menu_rebuild();
+}
+
+/**
+ * FLEXINODE FIELD FUNCTIONS
+ */
+
+/**
+ * Invoke a field hook.
+ *
+ * Each field type has different behavior, so the differences are separated out
+ * into include files which themselves behave much like Drupal modules.
+ */
+function flexinode_invoke($hook, $field, $a1 = NULL, $a2 = NULL, $a3 = NULL) {
+  $type = is_string($field) ? $field : $field->field_type;
+  $function = 'flexinode_field_'. $type .'_'. $hook;
+
+  if (function_exists($function)) {
+    return ($function($field, $a1, $a2, $a3));
+  }
+}
+
+/**
+ * Invoke a field hook for all field types.
+ */
+function flexinode_invoke_all($hook, $a1 = NULL, $a2 = NULL, $a3 = NULL) {
+  $result = array();
+  foreach (flexinode_field_types() as $type) {
+    $function = 'flexinode_field_'. $type .'_'. $hook;
+    if (function_exists($function)) {
+      $result = array_merge($result, $function($a1, $a2, $a3));
+    }
+  }
+  return $result;
+}
+
+/**
+ * Generate a form for the editing of a content type field.
+ * @param field_id can be either a field_id, or string containing the field type for new fields
+ */
+function flexinode_field_form($field_id = NULL, $ctype_id = NULL) {
+  if(is_numeric($field_id)) {
+    $field = flexinode_load_field($field_id);
+  }
+  else {
+    $field->field_type = $_POST['edit']['field_type'];
+    $ctype_id = $_POST['edit']['ctype_id'];
+  }
+
+  $form['label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Field label'),
+    '#default_value' => $field->label,
+    '#required' => TRUE,
+    );
+  $form['description'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Description'),
+    '#default_value' => $field->description,
+    '#description' => t('A brief description of the field, to be displayed on the content submission form.'),
+    );
+
+  $form[] = flexinode_invoke('config', $field);
+
+  $form['required'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Required field'),
+    '#default_value' => $field->required,
+    '#description' => t('Whether the user must fill in the field when creating content.'),
+    );
+  $form['show_teaser'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show in teaser'),
+    '#default_value' => $field->show_teaser,
+    '#description' => t('Whether this field should be shown as part of the teaser.'),
+    );
+  $form['show_table'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show in table'),
+    '#default_value' =>  $field->show_table,
+    '#description' => t('Whether this field should be shown as part of this content type\'s <a href="%table">tabular view</a>.', array('%table' => url('flexinode/table/'. $field->ctype_id))),
+    );
+  $form['weight'] = array(
+    '#type' => 'weight',
+    '#title' => t('Weight'),
+    '#default_value' => $field->weight,
+    '#delta' => 10,
+    '#description' => t('Optional. On the content editing form, the heavier fields will sink and the lighter fields will be positioned nearer the top.'),
+    );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+    );
+
+  $form['ctype_id'] = array(
+    '#type' => 'hidden',
+    '#value' => $ctype_id,
+    );
+  $form['field_type'] = array(
+    '#type' => 'hidden',
+    '#value' => $field->field_type,
+    );
+
+  $form['#action'] = url('admin/node/field/'. $field_id);
+
+  if ($field->field_id) {
+    $form['delete'] = array(
+      '#type' => 'submit',
+      '#value' => t('Delete'),
+      );
+    $form['field_id'] = array(
+      '#type' => 'hidden',
+      '#value' => $field->field_id,
+      );
+    $form['ctype_id'] = array(
+      '#type' => 'hidden',
+      '#value' => $field->ctype_id,
+      );
+  }
+
+  return drupal_get_form('flexinode_field_form', $form);
+}
+
+/**
+ * flexinode_field_form hook_validate callback function.
+ */
+function flexinode_field_form_validate($form_id, $edit) {
+  if (!$edit['label']) {
+    form_set_error('label', t('You must give this field type a label.'));
+  }
+}
+
+/**
+ * flexinode_field_form hook_submit callback function.
+ */
+function flexinode_field_form_submit($form_id, $edit) {
+  flexinode_save_field($edit);
+  drupal_goto('admin/node/types/'. $edit['ctype_id']);
+}
+
+/**
+ * Ensure that all required information for a custom field has been filled in.
+ */
+function flexinode_validate_field($edit) {
+  $errors = array();
+  if (isset($edit['label']) && !$edit['label']) {
+    $errors['label'] = t('You must give this field a label.');
+  }
+  foreach ($errors as $name => $message) {
+    form_set_error($name, $message);
+  }
+  return count($errors) == 0;
+}
+
+/**
+ * Builds and returns the field select form.
+ */
+function flexinode_field_select($ctype_id = NULL) {
+  $form = $options = array();
+  foreach (flexinode_field_types() as $field) {
+    $options[$field] = t('add %fieldtype', array('%fieldtype' => flexinode_invoke('name', $field)));
+  }
+  $form['#action'] = url('admin/node/field/');
+  $form['#redirect'] = FALSE;
+  $form['field_type'] = array(
+    '#type' => 'select',
+    '#options' => $options,
+    );
+  $form['ctype_id'] = array(
+    '#type' => 'hidden',
+    '#default_value' => $ctype_id,
+    );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add field'),
+    );
+  return drupal_get_form('flexinode_field_select', $form);
+}
+
+/**
+ * Save a custom field to the database.
+ */
+function flexinode_save_field($edit) {
+  // hey, if you can figure out how to use formapi to pass back an array properly, be my guest. bleagh.
+  if(is_array($_POST['edit']['options'])) {
+    $options = $_POST['edit']['options'];
+  }
+  else {
+    $options = array_merge(array(0 => 0), explode('|', $edit['options']));
+    unset($options[0]);
+  }
+
+  if ($edit['field_id']) {
+    $field_id = $edit['field_id'];
+
+    db_query("UPDATE {flexinode_field} SET label = '%s', default_value = '%s', rows = %d, required = %d, show_teaser = %d, show_table = %d, weight = %d, ctype_id = %d, field_type = '%s', options = '%s', description = '%s' WHERE field_id = %d", $edit['label'], $edit['default_value'], $edit['rows'], $edit['required'], $edit['show_teaser'], $edit['show_table'], $edit['weight'], $edit['ctype_id'], $edit['field_type'], serialize($options), $edit['description'], $field_id);
+
+    drupal_set_message(t('updated field "%name".', array('%name' => $edit['label'])));
+  }
+  else {
+    $field_id = db_next_id('{flexinode_field}');
+
+    db_query("INSERT INTO {flexinode_field} (label, default_value, rows, required, show_teaser, show_table, weight, ctype_id, field_type, options, description, field_id) VALUES ('%s', '%s', %d, %d, %d, %d, %d, %d, '%s', '%s', '%s', %d)", $edit['label'], $edit['default_value'], $edit['rows'], $edit['required'], $edit['show_teaser'], $edit['show_table'], $edit['weight'], $edit['ctype_id'], $edit['field_type'], serialize($options), $edit['description'], $field_id);
+
+    drupal_set_message(t('created new field "%name".', array('%name' => $edit['label'])));
+  }
+
+  return $field_id;
+}
+
+/**
+ * Return a field object.
+ */
+function flexinode_load_field($field_id) {
+  $field = db_fetch_object(db_query('SELECT * FROM {flexinode_field} WHERE field_id = %d', $field_id));
+  $field->options = unserialize($field->options);
+  return $field;
+}
+
+/**
+ * Generate a confirmation page prior to deleting a custom field.
+ */
+function flexinode_confirm_delete_field($field) {
+  return confirm_form('delete_field', array(), t('Are you sure you want to delete field "%name"? All data in this field will be lost.', array('%name' => $field->label)), 'admin/node/field/'. $field->field_id);
+}
+
+/**
+ * Delete a custom field from the database.
+ */
+function flexinode_delete_field($field) {
+  // TODO: Delete files as appropriate.
+  db_query('DELETE FROM {flexinode_field} WHERE field_id = %d', $field->field_id);
+  db_query('DELETE FROM {flexinode_data} WHERE field_id = %d', $field->field_id);
+
+  drupal_set_message(t('deleted field %name', array('%name' => $field->label)));
+}
+
+/**
+ * THEME FUNCTIONS
+**/
+
+function theme_flexinode_type($type, $first) {
+  $output = "<div><fieldset class=\"collapsible\"><legend>". $type->name ."</legend>\n";
+  $output .= "  <p class=\"description\">". $type->description ." (". theme('links', $type->links) .")</p>\n";
+  $output .= "  <p class=\"fields\">\n";
+  $output .= theme('item_list', $type->fieldlist, t('Field list'));
+  $output .= $type->controls ."</p>\n";
+  $output .= "</fieldset></div>\n";
+  return $output;
+}
