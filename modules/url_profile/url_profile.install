@@ -5,22 +5,23 @@ function url_profile_install() {
   switch ($GLOBALS['db_type']) {
     case 'mysqli':
     case 'mysql':
-      db_query("CREATE TABLE {url_profile_url} (
-                  `upid` int(10) NOT NULL default '0',
-                  `url` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
-                  `checked` int(11) NOT NULL default '0',
-                  `valid` int(1) NOT NULL default '0',
-                  `created` int(11) NOT NULL default '0',
-                  `custom` int(1) NOT NULL default '0',
-                  `criteria` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
-                  `title` varchar(255) character set utf8 NOT NULL default '',
-                  `child_nodes` int(11) NOT NULL default '0',
-                  PRIMARY KEY  (`upid`),
-                  UNIQUE KEY `url` (`url`(255), `criteria`),
-                  INDEX `created` ( `created` ),
-                  INDEX `valid` ( `valid` ),
-                  INDEX `child_nodes` ( `child_nodes` )
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+      db_query("
+CREATE TABLE url_profile_url (
+`upid` int(10) NOT NULL default '0',
+`url` TEXT character set utf8 NOT NULL DEFAULT '',
+`checked` int(11) NOT NULL default '0',
+`valid` int(1) NOT NULL default '0',
+`created` int(11) NOT NULL default '0',
+`custom` int(1) NOT NULL default '0',
+`criteria` varchar(255) character set utf8 NOT NULL DEFAULT '',
+`title` varchar(255) character set utf8 NOT NULL default '',
+`child_nodes` int(11) NOT NULL default '0',
+PRIMARY KEY (`upid`),
+UNIQUE KEY `url` (`url`(245), `criteria`),
+INDEX `created` ( `created` ),
+INDEX `valid` ( `valid` ),
+INDEX `child_nodes` ( `child_nodes` )
+) ENGINE=MyISAM;");
 
       db_query("CREATE TABLE {url_profile_node} (
         `upid` int(10) NOT NULL default 0,
