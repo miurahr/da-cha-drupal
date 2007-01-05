@@ -1,0 +1,277 @@
+# Translation of Drupal Module service_links - http://drupal.org/node/40790
+# Frank Holldorff <frank.holldorff@erdfisch.de>, 2006
+# Generated from: service_links.module,v 1.4.2.2
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: de 0.1\n"
+"POT-Creation-Date: 2006-07-21 13:25+0200\n"
+"PO-Revision-Date: 2006-07-24 14:15+0100\n"
+"Last-Translator: Frank Holldorff <frank.holldorff@erdfisch.de>\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: service_links.module:16
+msgid "Add Digg, del.icio.us, reddit, Technorati etc. links to nodes."
+msgstr "Digg, del.icio.us, reddit, Technorati etc. Links dem Node hinzufügen"
+
+#: service_links.module:19
+msgid "<p>Here you can configure the service links.</p>"
+msgstr "<p>Service Links konfigurieren</p>"
+
+#: service_links.module:39
+#, fuzzy
+msgid "Node types"
+msgstr "Node Typen"
+
+#: service_links.module:40
+msgid "Set the node types you want to display links for."
+msgstr "Setzen die Node Typen für die Service Links angezeigt werden sollen"
+
+#: service_links.module:44
+msgid "Types"
+msgstr "Arten"
+
+#: service_links.module:51
+msgid "What bookmark links to show"
+msgstr "Welche Bookmark-Links sollen gezeigt werden"
+
+#: service_links.module:55
+msgid "Show del.icio.us link"
+msgstr "Zeige  del.icio.us Link"
+
+#: service_links.module:61
+msgid "Show Mister-Wong link"
+msgstr "Zeige Mister-Wong Link"
+
+#: service_links.module:67
+msgid "Show Taggle link"
+msgstr "Zeige Taggle Link"
+
+#: service_links.module:73
+msgid "Show Yigg link"
+msgstr "Zeige Yigg Link"
+
+#: service_links.module:79
+msgid "Show Digg link"
+msgstr "Zeige Digg Link"
+
+#: service_links.module:85
+msgid "Show Reddit link"
+msgstr "Zeige Reddit Link"
+
+#: service_links.module:91
+msgid "Show ma.gnolia.com link"
+msgstr "Zeige ma.gnolia.com Link"
+
+#: service_links.module:97
+msgid "Show Newsvine link"
+msgstr "Zeige Newsvine Link"
+
+#: service_links.module:103
+msgid "Show Furl link"
+msgstr "Zeige Furl Link"
+
+#: service_links.module:109
+msgid "Show Google link"
+msgstr "Zeige Google Link"
+
+#: service_links.module:115
+msgid "Show Yahoo link"
+msgstr "Zeige Yahoo Link"
+
+#: service_links.module:122
+msgid "What search links to show"
+msgstr "Welche Suche soll angezeigt werden"
+
+#: service_links.module:126
+msgid "Show Technorati link"
+msgstr "Zeige Technorati Link"
+
+#: service_links.module:132
+msgid "Show IceRocket link"
+msgstr "Zeige IceRocket Link"
+
+#: service_links.module:138
+msgid "Show PubSub link"
+msgstr "Zeige PubSub Link"
+
+#: service_links.module:145
+msgid "Where and how to show the links"
+msgstr "Wo und wie die Links gezeigt werden sollen"
+
+#: service_links.module:149
+msgid "Service links in links"
+msgstr "Service Link in den Links"
+
+#: service_links.module:151;158
+msgid "Disabled"
+msgstr "deaktiviert"
+
+#: service_links.module:151;158
+msgid "Teaser view"
+msgstr "Vorschau der gekürzten Fassung"
+
+#: service_links.module:151;158
+msgid "Full-page view"
+msgstr "Vorschau der vollständigen Fassung"
+
+#: service_links.module:151;158
+msgid "Teasers and full-page view"
+msgstr "Vorschau der gekürzten und vollständigen Fassung"
+
+#: service_links.module:152
+msgid "When to display the services in the links section."
+msgstr "Wenn die Dienste in dem Linkbereich angezeigt werden soll."
+
+#: service_links.module:156
+msgid "Service links in nodes"
+msgstr "Service Links in den Nodes"
+
+#: service_links.module:159
+msgid "When to display the services after the node text."
+msgstr ""
+
+#: service_links.module:163
+msgid "Link style"
+msgstr "Link Style"
+
+#: service_links.module:165
+msgid "Text links"
+msgstr "Links als Text"
+
+#: service_links.module:165
+msgid "Image links"
+msgstr "Links als Icon"
+
+#: service_links.module:165
+msgid "Image and text links"
+msgstr "Links als Icon und Text"
+
+#: service_links.module:247
+msgid "delicious"
+msgstr "delicious"
+
+#: service_links.module:247
+msgid "Bookmark this post on del.icio.us."
+msgstr "Speichere diesen Beitrag bei del.icio.us."
+
+#: service_links.module:250
+msgid "mrwong"
+msgstr "mrwong"
+
+#: service_links.module:250
+msgid "Bookmark this post on mister-wong.de."
+msgstr "Speichere diesen Beitrag bei mister-wong.de"
+
+#: service_links.module:253
+msgid "taggle"
+msgstr "taggle"
+
+#: service_links.module:253
+msgid "Bookmark this post on taggle.de."
+msgstr "Speichere diesen Beitrag bei taggle.de"
+
+#: service_links.module:256
+msgid "yigg"
+msgstr "yigg"
+
+#: service_links.module:256
+msgid "Bookmark this post on yigg.de."
+msgstr "Speichere diesen Beitrag bei yigg.de"
+
+#: service_links.module:259
+msgid "digg"
+msgstr "digg"
+
+#: service_links.module:259
+msgid "Digg this post on digg.com."
+msgstr "Digg diesen Beitrag bei digg.com"
+
+#: service_links.module:262
+msgid "reddit"
+msgstr "reddit"
+
+#: service_links.module:262
+msgid "Submit this post on reddit.com."
+msgstr "Übersende diesen Beitrag an reddit.com"
+
+#: service_links.module:265
+msgid "magnoliacom"
+msgstr "magnoliacom"
+
+#: service_links.module:265
+msgid "Submit this post on ma.gnolia.com."
+msgstr "Übersende diesen Beitrag an ma.gnolia.com"
+
+#: service_links.module:268
+msgid "newsvine"
+msgstr "newsvine"
+
+#: service_links.module:268
+msgid "Submit this post on newsvine.com."
+msgstr "Übersende diesen Beitrag an newsvine.com"
+
+#: service_links.module:271
+msgid "furl"
+msgstr "furl"
+
+#: service_links.module:271
+msgid "Submit this post on furl.net."
+msgstr "Übersende diesen Beitrag an furl.net"
+
+#: service_links.module:274
+msgid "google"
+msgstr "google"
+
+#: service_links.module:274
+msgid "Bookmark this post on Google."
+msgstr "Bookmarke diesen Beitrag auf Google"
+
+#: service_links.module:277
+msgid "yahoo"
+msgstr "yahoo"
+
+#: service_links.module:277
+msgid "Bookmark this post on Yahoo."
+msgstr "Bookmarke diesen Beitrag auf "
+
+#: service_links.module:280
+msgid "technorati"
+msgstr "technorati"
+
+#: service_links.module:280
+msgid "Search Technorati for links to this post."
+msgstr "Durchsuche Technorati nach Verweisen zu diesem Beitrag"
+
+#: service_links.module:283
+msgid "icerocket"
+msgstr "icerocket"
+
+#: service_links.module:283
+msgid "Search IceRocket for links to this post."
+msgstr "Durchsuche IceRocket nach Verweisen zu diesem Beitrag"
+
+#: service_links.module:286
+msgid "pubsub"
+msgstr "pubsub"
+
+#: service_links.module:286
+msgid "Search PubSub for links to this post."
+msgstr "Durchsuche PubSub nach Verweisen zu diesem Beitrag"
+
+#: service_links.module:318
+msgid "Bookmark/Search this post with: "
+msgstr "Bookmarke/Suche diesen Beitrag mit:"
+
+#: service_links.module:29
+msgid "use service links"
+msgstr "Benutze Service Links"
+
+#: service_links.module:0
+msgid "service_links"
+msgstr "service_links"
+

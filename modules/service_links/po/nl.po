@@ -1,0 +1,261 @@
+# LANGUAGE translation of Drupal (service_links.module)
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-10-22 15:07+0200\n"
+"PO-Revision-Date: 2006-11-22 23:43+0100\n"
+"Last-Translator: Bart Van Herreweghe <bart.vanherreweghe@premier.fed.be>\n"
+"Language-Team: Nederlands <nl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: service_links.module:16
+msgid "Add Digg, del.icio.us, reddit, Technorati etc. links to nodes."
+msgstr "Voeg linknodes toe aan Digg, del.icio.us, reddit, Technorati etc."
+
+#: service_links.module:19
+msgid "<p>Here you can configure the service links.</p>"
+msgstr "<p>Hier kan je de service links configureren.</p>"
+
+#: service_links.module:39
+msgid "Node types"
+msgstr "Node types"
+
+#: service_links.module:40
+msgid "Set the node types you want to display links for."
+msgstr "Voor welke nodes wilt u de links tonen."
+
+#: service_links.module:44
+msgid "Types"
+msgstr "Types"
+
+#: service_links.module:51
+msgid "What bookmark links to show"
+msgstr "Welke bookmark links moeten getoond worden"
+
+#: service_links.module:55
+msgid "Show del.icio.us link"
+msgstr "Toon del.icio.us link"
+
+#: service_links.module:61
+msgid "Show Digg link"
+msgstr "Toon Digg link"
+
+#: service_links.module:73
+msgid "Show Reddit link"
+msgstr "Toon Reddit link"
+
+#: service_links.module:79
+msgid "Show ma.gnolia.com link"
+msgstr "Toon ma.gnolia.com link"
+
+#: service_links.module:85
+msgid "Show Newsvine link"
+msgstr "Toon Newsvine link"
+
+#: service_links.module:91
+msgid "Show Furl link"
+msgstr "Toon Furl link"
+
+#: service_links.module:97
+msgid "Show Google link"
+msgstr "Toon Google link"
+
+#: service_links.module:103
+msgid "Show Yahoo link"
+msgstr "Toon Yahoo link"
+
+#: service_links.module:110
+msgid "What search links to show"
+msgstr "Welke zoeklinken tonen"
+
+#: service_links.module:114
+msgid "Show Technorati link"
+msgstr "Toon Technorati link"
+
+#: service_links.module:120
+msgid "Show IceRocket link"
+msgstr "Toon IceRocket link"
+
+#: service_links.module:126
+msgid "Show PubSub link"
+msgstr "Toon PubSub link"
+
+#: service_links.module:133
+msgid "When and how to show the links"
+msgstr "Wanneer en hoe links tonen"
+
+#: service_links.module:137
+#, fuzzy
+msgid "Service links in links"
+msgstr "Service links in links"
+
+#: service_links.module:139;146
+msgid "Disabled"
+msgstr "Gedesactiveerd"
+
+#: service_links.module:139;146
+msgid "Teaser view"
+msgstr "Teaser weergeven"
+
+#: service_links.module:139;146
+msgid "Full-page view"
+msgstr "Volledige pagina weergeven"
+
+#: service_links.module:139;146
+msgid "Teasers and full-page view"
+msgstr "Teaser en volledige weergeven"
+
+#: service_links.module:140
+msgid "When to display the services in the links section."
+msgstr "Wanneer de services tonen in de links rubriek."
+
+#: service_links.module:144
+#, fuzzy
+msgid "Service links in nodes"
+msgstr "Service links in nodes"
+
+#: service_links.module:147
+#, fuzzy
+msgid "When to display the services after the node text."
+msgstr "Wanneer de services tonen na de tekstnode."
+
+#: service_links.module:151
+#, fuzzy
+msgid "Service links style"
+msgstr "Service links stijl"
+
+#: service_links.module:153
+msgid "Text links"
+msgstr "Tekst links"
+
+#: service_links.module:153
+msgid "Image links"
+msgstr "Beelden links"
+
+#: service_links.module:153
+msgid "Image and text links"
+msgstr "Beelden en tekst links"
+
+#: service_links.module:159
+msgid "Aggregator2 settings"
+msgstr "Aggregator2 instellingen"
+
+#: service_links.module:163
+msgid "Use link to original article aggregated by aggregator2 module"
+msgstr "Gebruik link naar origineel artikel geaggregeerd door de aggregator2 module"
+
+#: service_links.module:242
+#, fuzzy
+msgid "Service links"
+msgstr "Service links"
+
+#: service_links.module:250
+#, fuzzy
+msgid "Bookmark/Search this post"
+msgstr "Boekmark/zoek dit bericht"
+
+#: service_links.module:277
+msgid "delicious"
+msgstr "delicious"
+
+#: service_links.module:277
+#, fuzzy
+msgid "Bookmark this post on del.icio.us."
+msgstr "Bookmark dit bericht op del.icio.us."
+
+#: service_links.module:280
+msgid "digg"
+msgstr "digg"
+
+#: service_links.module:280
+msgid "Digg this post on digg.com."
+msgstr "Digg dit bericht op digg.com."
+
+#: service_links.module:286
+msgid "reddit"
+msgstr "reddit"
+
+#: service_links.module:286
+msgid "Submit this post on reddit.com."
+msgstr "Voeg dit bericht toe aan reddit.com."
+
+#: service_links.module:289
+msgid "magnoliacom"
+msgstr "magnolia.com"
+
+#: service_links.module:289
+msgid "Submit this post on ma.gnolia.com."
+msgstr "Verzend dit bericht naar ma.gnolia.com."
+
+#: service_links.module:292
+msgid "newsvine"
+msgstr "newsvine"
+
+#: service_links.module:292
+msgid "Submit this post on newsvine.com."
+msgstr "Verzend dit bericht naar newsvine.com."
+
+#: service_links.module:295
+msgid "furl"
+msgstr "furl"
+
+#: service_links.module:295
+msgid "Submit this post on furl.net."
+msgstr "Verzend dit bericht naar furl.net."
+
+#: service_links.module:298
+msgid "google"
+msgstr "google"
+
+#: service_links.module:298
+msgid "Bookmark this post on Google."
+msgstr "Bookmark dit bericht op Google."
+
+#: service_links.module:301
+msgid "yahoo"
+msgstr "yahoo"
+
+#: service_links.module:301
+msgid "Bookmark this post on Yahoo."
+msgstr "Bookmark dit bericht op Yahoo."
+
+#: service_links.module:304
+msgid "technorati"
+msgstr "technorati"
+
+#: service_links.module:304
+msgid "Search Technorati for links to this post."
+msgstr "Zoek in Technorati naar links voor dit bericht."
+
+#: service_links.module:307
+msgid "icerocket"
+msgstr "icerocket"
+
+#: service_links.module:307
+msgid "Search IceRocket for links to this post."
+msgstr "Zoek in IceRocket naar links voor dit bericht."
+
+#: service_links.module:310
+msgid "pubsub"
+msgstr "pubsub"
+
+#: service_links.module:310
+msgid "Search PubSub for links to this post."
+msgstr "Zoek in PubSub naar links voor dit bericht."
+
+#: service_links.module:338
+msgid "Bookmark/Search this post with: "
+msgstr "Bookmark/zoek dit bericht met:"
+
+#: service_links.module:29
+msgid "use service links"
+msgstr "gebruik service links"
+
+#: service_links.module:0
+msgid "service_links"
+msgstr "service_links"
+
