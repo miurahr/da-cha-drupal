@@ -917,11 +917,14 @@ function url_profile_save(&$url, $checked = NULL, $valid = NULL, $criteria = "",
   }
   else {
     db_query("UPDATE {url_profile_url} SET url = '%s', checked = %d, valid = %d, custom = %d, criteria = '%s', title = '%s' WHERE upid = %d", $url->url, $url->checked, $url->valid, $url->custom, $url->criteria, $url->title, $url->upid);
-    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = (SELECT COUNT(*)
-                                                                FROM {url_profile_node} un 
-                                                                WHERE un.upid = %d
-                                                               ) 
-              WHERE uu.upid = %d', $url->upid, $url->upid);
+    // hack --miura
+    $temp = db_result(db_query('SELECT COUNT(*) FROM {url_profile_node} un WHERE un.upid = %d', $url->upid));
+    db_query('UPDATE UPDATE {url_profile_url} uu SET uu.child_nodes = %d  WHERE uu.upid = %d',  $temp, $url->upid);
+//    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = (SELECT COUNT(*)
+//                                                                FROM {url_profile_node} un 
+//                                                                WHERE un.upid = %d
+//                                                               ) 
+//              WHERE uu.upid = %d', $url->upid, $url->upid);
     url_profile_invoke($url, 'update');
   }
 
@@ -1074,11 +1077,13 @@ function _url_profile_switch($upids_from, $upids_to) {
     foreach ($nids as $nid) {
       db_query('INSERT INTO {url_profile_node}(upid, nid) VALUES(%d, %d)', $upid, $nid);
     }
-    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = (SELECT COUNT(*)
-                                                                FROM {url_profile_node} un 
-                                                                WHERE un.upid = %d
-                                                               ) 
-              WHERE uu.upid = %d', $upid, $upid);
+    $temp = db_result(db_query('SELECT COUNT(*) FROM {url_profile_node} un WHERE un.upid = %d', $url->upid));
+    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = %d  WHERE uu.upid = %d', $temp, $upid);
+//    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = (SELECT COUNT(*)
+//                                                                FROM {url_profile_node} un 
+//                                                                WHERE un.upid = %d
+//                                                               ) 
+//              WHERE uu.upid = %d', $upid, $upid);
   }
 }
 
