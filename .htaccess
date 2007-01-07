@@ -83,6 +83,8 @@ DirectoryIndex index.php
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+
+  RewriteRule ^Articles/(.*)$ http://lwn.net/Articles/$1
 </IfModule>
 
 # $Id: .htaccess,v 1.73 2006/04/14 09:08:26 killes Exp $
