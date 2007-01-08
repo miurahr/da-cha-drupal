@@ -1,4 +1,4 @@
-// $Id: textarea.js,v 1.9 2006/04/14 13:48:56 killes Exp $
+// $Id: textarea.js,v 1.9.2.2 2006/12/01 14:57:29 killes Exp $
 
 if (isJsEnabled()) {
   addLoadEvent(textAreaAutoAttach);

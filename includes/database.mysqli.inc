@@ -1,5 +1,5 @@
 <?php
-// $Id: database.mysqli.inc,v 1.17.2.2 2006/09/26 14:14:33 killes Exp $
+// $Id: database.mysqli.inc,v 1.17.2.5 2007/01/01 17:52:00 killes Exp $
 
 /**
  * @file
@@ -75,16 +75,6 @@ function db_connect($url) {
 
   /* Force UTF-8 */
   mysqli_query($connection, 'SET NAMES "utf8"');
-
-  /**
-   * from: http://bugs.php.net/bug.php?id=33772
-   * Write and Close handlers are called after destructing objects since PHP
-   * 5.0.5. Thus destructors can use sessions but session handler can't use
-   * objects. In prior versions, they were called in the opposite order. It
-   * is possible to call session_write_close() from the destructor to solve
-   * this chicken and egg problem.
-   */
-  register_shutdown_function('session_write_close');
 
   return $connection;
 }
@@ -231,11 +221,6 @@ function db_affected_rows() {
  * User-supplied arguments to the query should be passed in as separate parameters
  * so that they can be properly escaped to avoid SQL injection attacks.
  *
- * Note that if you need to know how many results were returned, you should do
- * a SELECT COUNT(*) on the temporary table afterwards. db_num_rows() and
- * db_affected_rows() do not give consistent result across different database
- * types in this case.
- *
  * @param $query
  *   A string containing an SQL query.
  * @param ...
@@ -364,6 +349,23 @@ function db_lock_table($table) {
  */
 function db_unlock_tables() {
   db_query('UNLOCK TABLES');
+}
+
+/**
+ * Wraps the given table.field entry with a DISTINCT(). The wrapper is added to
+ * the SELECT list entry of the given query and the resulting query is returned.
+ * This function only applies the wrapper if a DISTINCT doesn't already exist in
+ * the query.
+ *
+ * @param $table Table containing the field to set as DISTINCT
+ * @param $field Field to set as DISTINCT
+ * @param $query Query to apply the wrapper to
+ * @return SQL query with the DISTINCT wrapper surrounding the given table.field.
+ */
+function db_distinct_field($table, $field, $query) {
+  $field_to_select = 'DISTINCT('. $table .'.'. $field .')';
+  // (?<!text) is a negative look-behind (no need to rewrite queries that already use DISTINCT).
+  return preg_replace('/(SELECT.*)('. $table .'\.)?(?<!DISTINCT\()(?<!DISTINCT\('. $table .'\.)'. $field .'(.*FROM )/AUsi', '\1'. $field_to_select .'\3', $query);
 }
 
 /**

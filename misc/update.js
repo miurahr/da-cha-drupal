@@ -1,4 +1,4 @@
-// $Id: update.js,v 1.8 2006/03/28 09:29:23 killes Exp $
+// $Id: update.js,v 1.8.2.2 2006/12/01 14:57:29 killes Exp $
 
 if (isJsEnabled()) {
   addLoadEvent(function() {

@@ -1,5 +1,5 @@
 <?php
-// $Id: updates.inc,v 1.224.2.6 2006/06/08 21:25:50 dries Exp $
+// $Id: updates.inc,v 1.224.2.9 2007/01/04 22:01:17 killes Exp $
 
 function system_update_110() {
   $ret = array();
@@ -508,8 +508,8 @@ function system_update_133() {
   if ($GLOBALS['db_type'] == 'mysql') {
     $ret[] = update_sql("CREATE TABLE {contact} (
       subject varchar(255) NOT NULL default '',
-      recipients longtext NOT NULL default '',
-      reply longtext NOT NULL default ''
+      recipients longtext NOT NULL,
+      reply longtext NOT NULL
       )");
     $ret[] = update_sql("ALTER TABLE {users} ADD login int(11) NOT NULL default '0'");
   }
@@ -2009,6 +2009,35 @@ function system_update_182() {
   if ($GLOBALS['db_type'] == 'pgsql') {
     $ret[] = update_sql('ALTER TABLE {locales_target} DROP CONSTRAINT {locales_target}_lid_key');
     $ret[] = update_sql('CREATE INDEX {locales_target}_lid_idx ON {locales_target} (lid)');
+  }
+
+  return $ret;
+}
+
+/**
+ * Cid matching by MySQL should be case-sensitive.
+ */
+function system_update_183() {
+  $ret = array();
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      $ret[] = update_sql("ALTER TABLE {cache} CHANGE cid cid varchar(255) BINARY NOT NULL default ''");
+      break;
+  }
+  return $ret;
+}
+
+function system_update_184() {
+  $ret = array();
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      $ret[] = update_sql("ALTER TABLE {access} CHANGE aid aid int(10) NOT NULL AUTO_INCREMENT ");
+      $ret[] = update_sql("ALTER TABLE {boxes} CHANGE bid bid int NOT NULL AUTO_INCREMENT ");
+      break;
+    case 'pgsql':
+       // No database update required for PostgreSQL because it already uses big SERIAL numbers.
   }
 
   return $ret;

@@ -1,5 +1,5 @@
 <?php
-// $Id: database.inc,v 1.56.2.1 2006/08/24 06:46:45 killes Exp $
+// $Id: database.inc,v 1.56.2.3 2007/01/04 19:45:04 killes Exp $
 
 /**
  * @file
@@ -278,37 +278,35 @@ function db_rewrite_sql($query, $primary_table = 'n', $primary_field = 'nid',  $
   list($join, $where, $distinct) = _db_rewrite_sql($query, $primary_table, $primary_field, $args);
 
   if ($distinct) {
-    $field_to_select = 'DISTINCT('. $primary_table .'.'. $primary_field .')';
-    // (?<!text) is a negative look-behind (no need to rewrite queries that already use DISTINCT).
-    $query = preg_replace('/(SELECT.*)('. $primary_table .'\.)?(?<!DISTINCT\()(?<!DISTINCT\('. $primary_table .'\.)'. $primary_field .'(.*FROM )/AUsi', '\1'. $field_to_select .'\3', $query);
+    $query = db_distinct_field($primary_table, $primary_field, $query);
   }
 
   if (!empty($where) || !empty($join)) {
     if (!empty($where)) {
-      $new = " WHERE $where ";
+      $new = "WHERE $where ";
     }
     $new = " $join $new";
     if (strpos($query, 'WHERE')) {
-      $replace = 'WHERE';
-      $add = 'AND';
+      $query = str_replace('WHERE', $new .'AND (', $query);
+      $insert = ') ';
     }
-    elseif (strpos($query, 'GROUP')) {
+    else {
+      $insert = $new;
+    }
+    if (strpos($query, 'GROUP')) {
       $replace = 'GROUP';
-      $add = 'GROUP';
     }
     elseif (strpos($query, 'ORDER')) {
       $replace = 'ORDER';
-      $add = 'ORDER';
     }
     elseif (strpos($query, 'LIMIT')) {
       $replace = 'LIMIT';
-      $add = 'LIMIT';
     }
     else {
-      $query .= $new;
+      $query .= $insert;
     }
     if (isset($replace)) {
-      $query = str_replace($replace, "$new $add ", $query);
+      $query = str_replace($replace, $insert . $replace, $query);
     }
   }
 

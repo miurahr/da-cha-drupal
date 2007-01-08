@@ -1,4 +1,4 @@
-// $Id: autocomplete.js,v 1.11 2006/04/17 20:48:25 dries Exp $
+// $Id: autocomplete.js,v 1.11.2.2 2006/12/01 14:51:36 killes Exp $
 
 // Global Killswitch
 if (isJsEnabled()) {

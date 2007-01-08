@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.537.2.14 2006/10/18 20:14:42 killes Exp $
+// $Id: common.inc,v 1.537.2.20 2007/01/01 22:10:37 killes Exp $
 
 /**
  * @file
@@ -165,8 +165,6 @@ function drupal_get_headers() {
  *   The array to be processed e.g. $_GET
  * @param $exclude
  *   The array filled with keys to be excluded. Use parent[child] to exclude nested items.
- * @param $urlencode
- *   If TRUE, the keys and values are both urlencoded.
  * @param $parent
  *   Should not be passed, only used in recursive calls
  * @return
@@ -211,8 +209,8 @@ function drupal_get_destination() {
     return 'destination='. urlencode($_REQUEST['destination']);
   }
   else {
-    // Use $_REQUEST here to retrieve the original path.
-    $path = isset($_REQUEST['q']) ? drupal_get_path_alias($_REQUEST['q']) : '';
+    // Use $_GET here to retrieve the original path in source form.
+    $path = isset($_GET['q']) ? $_GET['q'] : '';
     $query = drupal_query_string_encode($_GET, array('q'));
     if ($query != '') {
       $path .= '?'. $query;
@@ -255,10 +253,10 @@ function drupal_get_destination() {
  */
 function drupal_goto($path = '', $query = NULL, $fragment = NULL) {
   if (isset($_REQUEST['destination'])) {
-    extract(parse_url($_REQUEST['destination']));
+    extract(parse_url(urldecode($_REQUEST['destination'])));
   }
   else if (isset($_REQUEST['edit']['destination'])) {
-    extract(parse_url($_REQUEST['edit']['destination']));
+    extract(parse_url(urldecode($_REQUEST['edit']['destination'])));
   }
 
   $url = url($path, $query, $fragment, TRUE);
@@ -517,6 +515,24 @@ function _fix_gpc_magic(&$item) {
 }
 
 /**
+ * Helper function to strip slashes from $_FILES skipping over the tmp_name keys
+ * since PHP generates single backslashes for file paths on Windows systems.
+ *
+ * tmp_name does not have backslashes added see
+ * http://us2.php.net/manual/en/features.file-upload.php#42280
+ */
+function _fix_gpc_magic_files(&$item, $key) {
+  if ($key != 'tmp_name') {
+    if (is_array($item)) {
+      array_walk($item, '_fix_gpc_magic_files');
+    }
+    else {
+      $item = stripslashes($item);
+    }
+  }
+}
+
+/**
  * Correct double-escaping problems caused by "magic quotes" in some PHP
  * installations.
  */
@@ -527,7 +543,7 @@ function fix_gpc_magic() {
     array_walk($_POST, '_fix_gpc_magic');
     array_walk($_COOKIE, '_fix_gpc_magic');
     array_walk($_REQUEST, '_fix_gpc_magic');
-    array_walk($_FILES, '_fix_gpc_magic');
+    array_walk($_FILES, '_fix_gpc_magic_files');
     $fixed = true;
   }
 }

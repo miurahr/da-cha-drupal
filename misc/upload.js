@@ -1,4 +1,4 @@
-// $Id: upload.js,v 1.8.2.1 2006/05/05 11:57:19 killes Exp $
+// $Id: upload.js,v 1.8.2.3 2006/12/01 14:57:29 killes Exp $
 
 // Global killswitch
 if (isJsEnabled()) {

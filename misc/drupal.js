@@ -1,4 +1,4 @@
-// $Id: drupal.js,v 1.22.2.2 2006/08/19 19:55:20 killes Exp $
+// $Id: drupal.js,v 1.22.2.4 2006/12/01 14:57:29 killes Exp $
 
 /**
  * Only enable Javascript functionality if all required features are supported.

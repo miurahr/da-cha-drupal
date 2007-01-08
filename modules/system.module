@@ -1,12 +1,12 @@
 <?php
-// $Id: system.module,v 1.320.2.11 2006/10/18 20:14:42 killes Exp $
+// $Id: system.module,v 1.320.2.19 2007/01/04 22:01:17 killes Exp $
 
 /**
  * @file
  * Configuration system that lets administrators modify the workings of the site.
  */
 
-define('VERSION', '4.7.4');
+define('VERSION', '4.7.5');
 
 /**
  * Implementation of hook_help().
@@ -41,7 +41,7 @@ function system_help($section) {
     case 'admin/themes/settings/'. arg(3):
       $reference = explode('.', arg(3), 2);
       $theme = array_pop($reference);
-      return t('<p>These options control the display settings for the <code>%template</code> theme. When your site is displayed using this theme, these settings will be used. By clicking "Reset to defaults," you can choose to use the <a href="%global">global settings</a> for this theme.</p>', array('%template' => $theme, '%global' => url('admin/themes/settings')));
+      return t('<p>These options control the display settings for the <code>%template</code> theme. When your site is displayed using this theme, these settings will be used. By clicking "Reset to defaults," you can choose to use the <a href="%global">global settings</a> for this theme.</p>', array('%template' => check_plain($theme), '%global' => url('admin/themes/settings')));
     case 'admin/modules':
       return t('<p>Modules are plugins for Drupal that extend its core functionality. Here you can select which modules are enabled. Click on the name of the module in the navigation menu for their individual configuration pages. Once a module is enabled, new <a href="%permissions">permissions</a> might be made available. Modules can automatically be temporarily disabled to reduce server load when your site becomes extremely busy by enabling the throttle.module and checking throttle. The auto-throttle functionality must be enabled on the <a href="%throttle">throttle configuration page</a> after having enabled the throttle module.</p>
 <p>It is important that <a href="%update-php">update.php</a> is run every time a module is updated to a newer version.</p>', array('%permissions' => url('admin/access/permissions'), '%throttle' => url('admin/settings/throttle'), '%update-php' => $base_url .'/update.php'));
@@ -379,8 +379,10 @@ function system_view_general() {
     $form['image'] = array('#type' => 'fieldset', '#title' => t('Image handling'), '#collapsible' => TRUE, '#collapsed' => true);
     $form['image']['image_toolkit'] = array(
       '#type' => 'radios', '#title' => t('Select an image processing toolkit'),
-      '#default_value' => variable_get('image_toolkit', image_get_toolkit()), '#options' => $toolkits_available
+      '#default_value' => variable_get('image_toolkit', image_get_toolkit()), '#options' => $toolkits_available,
+      '#validate' => array('image_toolkit_validate' => array('image_toolkit', 'image_toolkit')),
     );
+    $form['image']['settings'] = image_toolkit_invoke('settings');
   }
 
   // Feed settings
@@ -758,7 +760,7 @@ function system_theme_settings_submit($form_id, $values) {
   $key = $values['var'];
 
   // Exclude unnecessary elements.
-  unset($values['var'], $values['submit'], $values['reset'], $values['form_id']);
+  unset($values['var'], $values['submit'], $values['reset'], $values['form_id'], $values['op'], $values['form_token']);
 
   if ($op == t('Reset to defaults')) {
     variable_del($key);
@@ -781,7 +783,7 @@ function system_settings_form_submit($form_id, $values) {
   $op = isset($_POST['op']) ? $_POST['op'] : '';
 
   // Exclude unnecessary elements.
-  unset($values['submit'], $values['reset'], $values['form_id']);
+  unset($values['submit'], $values['reset'], $values['form_id'], $values['form_token']);
 
   foreach ($values as $key => $value) {
     if ($op == t('Reset to defaults')) {
@@ -1007,7 +1009,7 @@ function system_modules_submit($form_id, $edit) {
 
   module_list(TRUE, FALSE);
 
-  include './includes/install.inc';
+  include_once './includes/install.inc';
   foreach ($new_modules as $module) {
     // Set the installed schema version for newly-enabled modules
     $versions = drupal_get_schema_versions($module);

@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.74.2.7 2006/10/17 19:30:39 dries Exp $
+// $Id: file.inc,v 1.74.2.9 2007/01/04 11:47:53 killes Exp $
 
 /**
  * @file
@@ -116,6 +116,7 @@ function file_check_directory(&$directory, $mode = 0, $form_item = NULL) {
     $htaccess_lines = "SetHandler Drupal_Security_Do_Not_Remove_See_SA_2006_006\nOptions None\nOptions +FollowSymLinks";
     if (($fp = fopen("$directory/.htaccess", 'w')) && fputs($fp, $htaccess_lines)) {
       fclose($fp);
+      chmod($directory .'/.htaccess', 0664);
     }
     else {
       $message = t("Security warning: Couldn't write .htaccess file. Please create a .htaccess file in your %directory directory which contains the following lines: <code>%htaccess</code>", array('%directory' => theme('placeholder', $directory), '%htaccess' => '<br />'. str_replace("\n", '<br />', check_plain($htaccess_lines))));
@@ -603,7 +604,7 @@ function file_download() {
 
 /**
  * Finds all files that match a given mask in a given
- * directory.
+ * directory. Directories and files beginning with a period are excluded.
  *
  * @param $dir
  *   The base directory for the scan.
@@ -637,7 +638,7 @@ function file_scan_directory($dir, $mask, $nomask = array('.', '..', 'CVS'), $ca
 
   if (is_dir($dir) && $handle = opendir($dir)) {
     while ($file = readdir($handle)) {
-      if (!in_array($file, $nomask)) {
+      if (!in_array($file, $nomask) && $file[0] != '.') {
         if (is_dir("$dir/$file") && $recurse) {
           $files = array_merge($files, file_scan_directory("$dir/$file", $mask, $nomask, $callback, $recurse, $key, $min_depth, $depth + 1));
         }
