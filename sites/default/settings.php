@@ -84,7 +84,7 @@
  *   $db_url = 'mysqli://username:password@localhost/databasename';
  *   $db_url = 'pgsql://username:password@localhost/databasename';
  */
-$db_url = 'mysql://username:password@localhost/databasename';
+$db_url = 'mysql://miura:cu6o@localhost/miura_2';
 $db_prefix = '';
 
 /**
@@ -106,7 +106,8 @@ $db_prefix = '';
  * It is not allowed to have a trailing slash; Drupal will add it
  * for you.
  */
-# $base_url = 'http://www.example.com';  // NO trailing slash!
+$base_url = 'http://www.da-cha.jp';
+
 
 /**
  * PHP settings:
@@ -141,9 +142,10 @@ ini_set('url_rewriter.tags',        '');
  *
  * Remove the leading hash signs to enable.
  */
-# $conf = array(
+$conf = array(
 #   'site_name' => 'My Drupal site',
 #   'theme_default' => 'pushbutton',
 #   'anonymous' => 'Visitor'
-# );
+'upload_extenstions' => 'jpg jpeg gif png txt html doc xls pdf ppt pps pdf'
+);
 
