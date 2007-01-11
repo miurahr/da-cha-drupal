@@ -1,0 +1,250 @@
+<?php
+/**
+ * @file
+ * Automatically categorize leech items with the help of yahoo term extraction.
+ * Required: leech modules and cURL
+ * Sponsored by Development Seed.
+ *
+ * @author 
+ * Aron Novak <aron at novaak dot net>
+ * 
+ */
+
+/**
+ * Where the service URL is
+ */
+define('EXTRACT_TERMS_URL', 'http://api.search.yahoo.com/ContentAnalysisService/V1/termExtraction');
+/**
+ * Each application has a unique ID from Yahoo
+ */
+define('YAHOO_APP_ID', variable_get('yahoo_terms_appid', ''));
+
+/**
+ * Get the top <var>$limit</var> keyword from the text
+ *
+ * @param string $text
+ * @param string $query
+ * @param integer $limit
+ * @return array The keywords
+ */
+function yahoo_terms_get_keywords($text, $query, $limit = -1) {
+  if (!function_exists('curl_init')) {
+    return FALSE;
+  }
+  $yahoo_options = array('appid' => YAHOO_APP_ID,
+                         'context' => $text,
+                         'query' => $query,
+                         'output' => 'php');
+  $query_yahooapi = curl_init(EXTRACT_TERMS_URL);
+  curl_setopt($query_yahooapi, CURLOPT_POST, 1);
+  curl_setopt($query_yahooapi, CURLOPT_POSTFIELDS, $yahoo_options);
+  curl_setopt($query_yahooapi, CURLOPT_RETURNTRANSFER, 1);
+  $result = curl_exec($query_yahooapi);
+  if (curl_errno($query_yahooapi) != 0) {
+    return FALSE;
+  }
+  else {
+    curl_close($query_yahooapi);
+  }
+  $result = unserialize($result);
+  if (!is_array($result['ResultSet']['Result'])) {
+    return array();
+  }
+  $result = array_slice($result['ResultSet']['Result'], 0, $limit);
+  return array_unique($result);
+}
+
+/**
+ * Get vocabulary id for the proper leech
+ *
+ * @param integer $nid
+ * @return integer Vocabulary id
+ */
+function leech_yahoo_terms_which_vocab($nid) {
+  $settings = variable_get('leech_settings', FALSE);
+  if (!isset($settings[$nid]['vocab'])) {
+    return variable_get('default_vocab_for_leech', FALSE);
+  }
+  return $settings[$nid]['vocab'];
+}
+
+/**
+ * Get query string for yahoo terms question for the proper leech
+ *
+ * @param integer $nid
+ * @return string Query string
+ */
+function leech_yahoo_terms_get_query($nid) {
+  $settings = variable_get('leech_settings', FALSE);
+  return $settings[$nid]['query'];
+}
+
+/**
+ * Create the proper terms in vocabulary related to the node (<var>$nid</var>)
+ *
+ * @param integer $nid
+ * @param array $keywords
+ * @return array The object of created terms
+ */
+function leech_yahoo_terms_create_vocabulary_items($nid, $keywords) {
+  $vid = leech_yahoo_terms_which_vocab($nid);
+  $vocabs = variable_get('leech_select_vocab', FALSE);
+  if ($vid == FALSE ) {
+    return FALSE;
+  }
+  foreach ($keywords as $term) {
+    $curr_term = taxonomy_get_term_by_name($term);
+    if (count($curr_term) != 0) {
+      for ($i = 0; $i < count($curr_term); $i++) {
+        if ($curr_term[$i]->vid == $vid) {
+          $tids[] = $curr_term[$i];
+        } else if ($vocabs[$nid]['static'] == FALSE) {
+          $new_term['name'] = $term;
+          $new_term['vid'] = $vid;
+          taxonomy_save_term($new_term);
+          $tids[] = taxonomy_get_term($new_term['tid']);
+          unset($new_term);
+        }
+      }
+    }
+    else {
+      if ($vocabs[$nid]['static'] == FALSE) {
+        $new_term['name'] = $term;
+        $new_term['vid'] = $vid;
+        taxonomy_save_term($new_term);
+        $tids[] = taxonomy_get_term($new_term['tid']);
+        unset($new_term);
+      }
+    }
+  }
+  return $tids;
+}
+
+/**
+ * Implementation of hook_nodeapi
+ */
+function leech_yahoo_terms_nodeapi(&$node, $op) {
+  switch ($op) {
+    case 'leech_news_presave':
+      $text = $node->title.$node->body;
+      $parent_nid = $node->leech_news_item->fid;
+      $query = leech_yahoo_terms_get_query($parent_nid);
+      if (strlen($query) < 2) {
+        $query = $node->title;
+      }
+      
+      $limit = variable_get('leech_news_yahoo_terms_taxonomy_limit', 5);
+      $keywords = yahoo_terms_get_keywords($text, $query, $limit);
+      if ($keywords == FALSE) {
+        drupal_set_message('Error while using the Yahoo Terms service. Please check the server internet connection and
+                            check if cURL php extension is installed.');
+        return;
+      }
+      $voc_items = leech_yahoo_terms_create_vocabulary_items($parent_nid, $keywords);
+      if ($voc_items == FALSE) {
+        return;
+      }
+      $node->taxonomy = array_merge($node->taxonomy, $voc_items);
+      //taxonomy_node_save($nid, $voc_items);
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_help().
+ */
+function leech_yahoo_terms_help($section) {
+  switch ($section) {
+    case 'admin/modules#description':
+      return t('Automatically categorize leech items with the yahoo term extraction service. <em>Requires leech module</em>.');
+  }
+}
+
+function leech_yahoo_terms_settings() {
+  $form['yahoo_terms_appid'] = array(
+    '#title' => t('Yahoo Application ID'),
+    '#description' => t('An Application ID is a string that uniquely identifies your application.
+                         Think of it as a User-Agent string. If you have multiple applications,
+                         you must use a different ID for each one.'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#default_value' => variable_get('yahoo_terms_appid', ''),
+  );
+  
+  $form['leech_news_yahoo_terms_taxonomy_limit'] = array(
+    '#title' => t('Maximal number of terms'),
+    '#description' => t('Maximal number of terms which are associated to one article. -1 means no limit.'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#default_value' => variable_get('leech_news_yahoo_terms_taxonomy_limit', -1),
+  );
+  
+  //Get all vocabulary - generate a select box
+  $vocabularies = db_query('SELECT v.vid, v.name FROM {vocabulary} v WHERE module="taxonomy"');
+  $select_voc = array();
+  while ($voc = db_fetch_array($vocabularies)) {
+    $select_voc[$voc['vid']] = $voc['name'];
+  }
+  if (count($select_voc) < 1) {
+    $select_voc[0] = 'No vocabularies found'; 
+  }
+  $form['default_vocab_for_leech'] = array(
+    '#title' => t('Default vocabulary for Yahoo Terms'),
+    '#description' => t('If not a different vocabulary is specified for a leech, this one will be used.'),
+    '#type' => 'select',
+    '#options' => $select_voc,
+    '#required' => TRUE,
+    '#default_value' => variable_get('default_vocab_for_leech', ''),
+  );
+  
+  /*
+  todo: broken - fix it. 
+  btw: do we need vocab settings per feed?
+  if we end up not implementing vocab per feed, 
+  we should also change the $form['default_vocab_for_leech']['#description'] text
+  
+  //Get current values
+  $current = variable_get('leech_settings', 0);
+  
+  // Generate choice for each leech to set vocabulary
+  $result = db_query("SELECT n.nid, n.title, l.url FROM {node} n INNER JOIN {leech} l ON n.nid = l.nid ORDER BY n.title ASC");
+  $form['leech_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Select a vocabulary and query string for each leech'),
+    '#description' => t('The relevant terms in leech items will be added to the selected vocabulary'),
+    '#tree' => TRUE,
+  );
+  while ($leech = db_fetch_object($result)) {
+    if (!isset($current[$leech->nid]['vocab'])) {
+      $current[$leech->nid]['vocab'] = variable_get('default_vocab_for_leech', FALSE);
+    }
+    $form['leech_settings'][$leech->nid] = array(
+      '#type' => 'fieldset',
+      '#title' => $leech->title,
+      '#tree' => TRUE,
+    );
+    $form['leech_settings'][$leech->nid]['vocab'] = array(
+      '#type' => 'select',
+      '#options' => $select_voc,
+      '#default_value' => $current[$leech->nid]['vocab'],
+      '#description' => $leech->url,
+    );
+    $form['leech_settings'][$leech->nid]['static'] = array(
+      '#type' => 'checkbox', 
+      '#title' => 'Is the ' . $leech->title . ' static?',
+      '#description' => ('If it is a static vocabulary (yahoo_terms should not add terms to this
+                    turn on this check'),
+      '#default_value' => $current[$leech->nid]['static']
+    );
+    $form['leech_settings'][$leech->nid]['query'] = array(
+      '#type' => 'textfield',
+      '#default_value' => $current[$leech->nid]['query'],
+      '#description' => 'Query string for ' . $leech->url,
+    );
+    
+  }
+  */
+  return $form;
+}
+  
+?>
