@@ -1,0 +1,1166 @@
+<?php
+
+//$Id: adsense.module,v 1.34.2.21 2007/01/04 19:16:01 kbahey Exp $
+
+// Copyright 2005 Khalid Baheyeldin http://2bits.com
+
+/**
+ * This is the array that holds all ad formats.
+ * All it has is a multi-dimensional array containing the dimensions as a key, then
+ * the description and suffix of Google's javascript ad code.
+ * Currently, we do not support duplicate dimensions in ad formats (for example,
+ * the same ad dimension cannot repeat for text and graphics, or for ads and ad links
+ *
+ * To ad a new code:
+ * - Make sure the dimensions are not in use by a different format
+ * - Go to Google AdSense 
+ *   . Get the dimensions
+ *   . Get the code (suffix after the dimensions) 
+ * - Add it below in ascending order (width first, then height)
+ * @return returns an array of supported ad formats (desc: description, code: Google Ad code suffix)
+ * 
+ */
+
+function adsense_ad_formats() {
+  return array (
+    '120x90'  =>  array('desc' => 'Ad Links 4-links 120x90',      'code' => '_0ads_al'),
+    '120x240' =>  array('desc' => 'Vertical Banner',              'code' => '_as'),
+    '120x600' =>  array('desc' => 'Skyscraper',                   'code' => '_as'),
+    '125x125' =>  array('desc' => 'Button',                       'code' => '_as'),
+    '160x90'  =>  array('desc' => 'Ad Links 4-links 160x90',      'code' => '_0ads_al'),
+    '160x600' =>  array('desc' => 'Wide Skyscraper',              'code' => '_as'),
+    '180x90'  =>  array('desc' => 'Ad Links 4-links 180x90',      'code' => '_0ads_al'),
+    '180x150' =>  array('desc' => 'Small rectangle',              'code' => '_as'),
+    '200x200' =>  array('desc' => 'Small Square',                 'code' => '_as'),
+    '234x60'  =>  array('desc' => 'Half Banner',                  'code' => '_as'),
+    '250x250' =>  array('desc' => 'Square',                       'code' => '_as'),
+    '300x250' =>  array('desc' => 'Medium Rectangle',             'code' => '_as'),
+    '336x280' =>  array('desc' => 'Large Rectangle',              'code' => '_as'),
+    '468x15'  =>  array('desc' => 'Banner Ad Links 4-links',      'code' => '_0ads_al'),
+    '468x60'  =>  array('desc' => 'Banner',                       'code' => '_as'),
+    '728x15'  =>  array('desc' => 'Wide Banner Ad Links 4-links', 'code' => '_0ads_al'),
+    '728x90'  =>  array('desc' => 'Leaderboard',                  'code' => '_as')
+    );
+}
+
+define('ADSENSE_MAX_GROUPS',              5);
+define('ADSENSE_MAX_CHANNELS',            7);
+define('ADSENSE_MAX_BLOCKS',              5);
+define('ADSENSE_VISIBILITY',              'adsense_visibility');
+define('ADSENSE_ACCESS_PAGES',            'adsense_access_pages');
+define('ADSENSE_AD_TYPE',                 'adsense_ad_type_');
+define('ADSENSE_COLOR_TEXT',              'adsense_color_text_');
+define('ADSENSE_COLOR_BORDER',            'adsense_color_border_');
+define('ADSENSE_COLOR_BG',                'adsense_color_bg_');
+define('ADSENSE_COLOR_LINK',              'adsense_color_link_');
+define('ADSENSE_COLOR_URL',               'adsense_color_url_');
+define('ADSENSE_ALT',                     'adsense_alt_');
+define('ADSENSE_ALT_INFO',                'adsense_alt_info_');
+define('ADSENSE_AD_CHANNEL',              'adsense_ad_channel_');
+define('ADSENSE_REVENUE_ENABLE',          'adsense_revenue_enable');
+define('ADSENSE_PERCENTAGE_AUTHOR',       'adsense_percentage_author');
+define('ADSENSE_PERCENTAGE_REFER',        'adsense_percentage_refer');
+define('ADSENSE_NODE_TYPE',               'adsense_node_type_');
+define('ADSENSE_DISABLE',                 'adsense_disable');
+define('ADSENSE_TEST_MODE',               'adsense_test_mode');
+define('ADSENSE_PLACEHOLDER',             'adsense_placeholder');
+define('ADSENSE_PLACEHOLDER_TEXT',        'adsense_placeholder_text');
+define('ADSENSE_PAGE_AD_LIMIT',           'adsense_page_ad_limit');
+define('ADSENSE_SECTION_TARGETING',       'adsense_section_targeting');
+define('ADSENSE_CLICK_TRACKING',          'adsense_click_tracking');
+define('ADSENSE_CLIENT_ID_PROFILE_FIELD', 'adsense_client_id_profile_field');
+define('ADSENSE_AD_BLOCK',                'adsense_ad_block_');
+define('ADSENSE_CLICK_TRACKING_NAME_RESOLVE', 'adsense_click_tracking_name_resolve');
+define('ADSENSE_SECTION_START',               '<!-- google_ad_section_start -->');
+define('ADSENSE_SECTION_IGNORE',              '<!-- google_ad_section_start(weight=ignore) -->');
+define('ADSENSE_SECTION_END',                 '<!-- google_ad_section_end -->');
+
+function adsense_get_ad_code($format) {
+  $all_ads = adsense_ad_formats();
+  return $all_ads[$format]['code'];
+}
+
+function adsense_help($section) {
+  switch ($section) {
+    case 'admin/modules#description':
+      return t('Display Google AdSense ads on your site to earn revenue.');
+    case 'admin/settings/adsense':
+      return t('<p>$Revision: 1.34.2.21 $ $Date: 2007/01/04 19:16:01 $</p>');
+  }
+}
+
+function adsense_menu($may_cache) {
+  $items = array();
+  
+  $access = user_access('view clicks');
+  if ($may_cache) {
+    if (variable_get(ADSENSE_CLICK_TRACKING, 0)) {
+      $items[] = array(
+        'path'     => 'admin/logs/adsense',
+        'title'    => t('adsense clicks'), 
+        'callback' => 'adsense_click_log',
+        'type'     => MENU_NORMAL_ITEM,
+        'access'   => $access,
+        );
+
+      $items[] = array(
+        'path'      => 'admin/logs/adsense/top_pages',
+        'title'     => t('Top pages'),
+        'callback'  => 'adsense_click_top_pages',
+        'type'     => MENU_NORMAL_ITEM,
+        'access'    => $access,
+        );
+
+      $items[] = array(
+        'path'      => 'admin/logs/adsense/by_day',
+        'title'     => t('By day'),
+        'callback'  => 'adsense_click_by_day',
+        'type'     => MENU_NORMAL_ITEM,
+        'access'    => $access,
+        );
+     }
+   }
+   else {
+     $items[] = array(
+       'path'     => 'adsense/counter',
+       'callback' => 'adsense_counter', 
+       'access'   => true,
+       'type'     => MENU_CALLBACK,
+      );
+   }
+   return $items;
+}
+
+function adsense_perm() {
+  return array ('hide adsense', 'view clicks');
+}
+
+function adsense_settings() {
+  cache_clear_all('adsense', TRUE);
+  
+
+  // We only load the help text if we are in settings, to save memory
+  include_once(drupal_get_path('module', 'adsense') . '/adsense_help.inc');
+
+  // Get the ad formats
+  $headers = array(t('Ad Type'), t('Dimensions'));
+  $rows = array();
+
+  foreach(adsense_ad_formats() as $format => $data) {
+    $rows[] = array($data['desc'], $format);
+  }
+
+  // Create the ad format text
+  $help_text = theme('table', $headers, $rows);
+
+  $form['help'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Help and Instructions'),
+  );
+  
+  $form['help']['help'] = array(
+    '#type'  => 'markup',
+    '#value' => adsense_help_text($help_text),
+  );
+
+  $error_flag = false;
+  if (!module_exist('profile')) {
+    drupal_set_message('The profile module is not enabled. Please enable it and define a field as per instructions.', 'error');
+    $error_flag = true;
+  }
+
+  if (!_get_site_owner_client_id()) {
+    drupal_set_message('There is no site owner Google Adsense Client ID defined. Please define a profile field, and select it below as per instructions, and enter a value for user id 1 as explained below.', 'error');
+    $error_flag = true;
+  }
+
+  $form['required'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => false,
+    '#title' => t('Required parameters'),
+  );
+  
+  $form['required'][ADSENSE_CLIENT_ID_PROFILE_FIELD] = array(
+    '#type'          => 'select',
+    '#title'         => t('Google Adsense Client ID Profile Field'),
+    '#default_value' => variable_get(ADSENSE_CLIENT_ID_PROFILE_FIELD, 0),
+    '#options'       => _adsense_get_profile_fields(),
+    '#required'      => true,
+    '#description'   => t('This is the profile field that holds the Adsense Client ID for the site owner(s) as well as for site users who (optionally) participate in revenue sharing. You must enabled the profile module and create a new field for this.'),
+  );
+
+  if ($error_flag) {
+    return $form;
+  }
+
+  $form['types_colors'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Ad Groups'),
+  );
+  
+  for($group=1; $group<ADSENSE_MAX_GROUPS+1; $group++) {
+    
+    $form['types_colors']['groups'][$group] = array(
+      '#type' => 'fieldset',
+      '#collapsible' => true,
+      '#collapsed' => true,
+      '#title' => t('Group ' . $group . ' Attributes'),
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_AD_TYPE . $group] = array(
+      '#type' => 'radios',
+      '#title' => t('Ad Type'),
+      '#default_value' => variable_get(ADSENSE_AD_TYPE . $group, '000000'),
+      '#options' => array(t('Text'), t('Image'), t('Both')),
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_COLOR_TEXT . $group] = array(
+      '#type' => 'textfield',
+      '#title' => t('Ad Text Color'),
+      '#default_value' => variable_get(ADSENSE_COLOR_TEXT . $group, '000000'),
+      '#size' => 6,
+      '#maxlength' => 6,
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_COLOR_BORDER . $group] = array(
+      '#type' => 'textfield',
+      '#title' => t('Ad Border Color'),
+      '#default_value' => variable_get(ADSENSE_COLOR_BORDER . $group, '336699'),
+      '#size' => 6,
+      '#maxlength' => 6,
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_COLOR_BG . $group] = array(
+      '#type' => 'textfield',
+      '#title' => t('Ad Background Color'),
+      '#default_value' => variable_get(ADSENSE_COLOR_BG . $group, 'FFFFFF'),
+      '#size' => 6,
+      '#maxlength' => 6,
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_COLOR_LINK . $group] = array(
+      '#type' => 'textfield',
+      '#title' => t('Ad Title Color'),
+      '#default_value' => variable_get(ADSENSE_COLOR_LINK . $group, '336699'),
+      '#size' => 6,
+      '#maxlength' => 6,
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_COLOR_URL . $group] = array(
+      '#type' => 'textfield',
+      '#title' => t('Ad URL Color'),
+      '#default_value' => variable_get(ADSENSE_COLOR_URL . $group, 'FF8C00'),
+      '#size' => 6,
+      '#maxlength' => 6,
+    );
+  
+    $form['types_colors']['groups'][$group][ADSENSE_ALT . $group] = array(
+      '#type' => 'select',
+      '#title' => t('Alternate URL/Color'),
+      '#default_value' => variable_get(ADSENSE_ALT . $group, 0),
+      '#options' => array(t('None'), t('Alternate URL'), t('Alternate Color')),
+    );
+
+    $form['types_colors']['groups'][$group][ADSENSE_ALT_INFO . $group] = array(
+      '#type' => 'textfield',
+      '#title' => t('Alternate info'),
+      '#default_value' => variable_get(ADSENSE_ALT_INFO . $group, ''),
+      '#size' => 100,
+      '#maxlength' => 100,
+      '#description' => t('Enter either 6 letter alternate color code, or alternate URL to use'),
+    );
+  }
+
+  $form['channels'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Custom Channels'),
+    '#description' => t('Enter up to ' .  ADSENSE_MAX_CHANNELS . ' custom channels that you have configured in Google AdSense. If you are not using Custom Channels, or you are only using URL channels, then leave this empty'),
+  );
+
+  for($channel=1; $channel<ADSENSE_MAX_CHANNELS+1; $channel++) {
+    $form['channels'][ADSENSE_AD_CHANNEL . $channel] = array(
+      '#type' => 'textfield',
+      '#title' => t('Custom Channel ID ') . $channel,
+      '#default_value' => variable_get(ADSENSE_AD_CHANNEL . $channel, ''),
+      '#size' => 30,
+      '#maxlength' => 30,
+    );
+  }
+  
+  $form['revenue'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Revenue sharing options'),
+    );
+
+  $form['revenue'][ADSENSE_REVENUE_ENABLE] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Revenue Sharing'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_REVENUE_ENABLE, 0),
+    '#description' => t('Note that enabling this will disable adsense code caching, which can cause more resource usage for busy sites. The referral feature requires the referral module to be installed.')
+    );
+
+  $form['revenue'][ADSENSE_PERCENTAGE_AUTHOR] = array(
+    '#type' => 'select',
+    '#title' => t('Percentage of node views going to author'),
+    '#default_value' => variable_get(ADSENSE_PERCENTAGE_AUTHOR, 0),
+    '#options' => drupal_map_assoc(array(0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100)),
+    );
+  
+  if (module_exist('referral')) {
+    $list = drupal_map_assoc(array(0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100));
+  }
+  else {
+    $list = array(0 => t('Disabled'));
+  }
+
+  $form['revenue'][ADSENSE_PERCENTAGE_REFER] = array(
+    '#type' => 'select',
+    '#title' => t('Percentage of node views going to user who referred the author'),
+    '#default_value' => variable_get(ADSENSE_PERCENTAGE_REFER, 0),
+    '#options' => $list,
+    '#description' => t('This feature requires the referral module to be installed.')
+    );
+  
+  $form['revenue']['content'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Content types'),
+    '#description' => t('Content types that have revenue sharing enabled.'),
+    );
+
+  foreach(node_get_types() as $type => $name) {
+    $form['revenue']['content'][ADSENSE_NODE_TYPE . $type] = array(
+      '#type' => 'checkbox',
+      '#title' => $name,
+      '#return_value' => 1,
+      '#default_value' =>  variable_get(ADSENSE_NODE_TYPE . $type, 0),
+    );
+  }
+
+  $form['visibility'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Visibility'),
+  );
+
+  $form['visibility']['adsense_visibility'] = array(
+    '#type' => 'radios',
+    '#title' => t('Show Adsense on specific pages'),
+    '#default_value' => variable_get(ADSENSE_VISIBILITY, 0),
+    '#options' => array(t('Show on every page except the listed pages.'),
+      t('Show on only the listed pages.')),
+  );
+
+  $form['visibility']['adsense_access_pages'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Pages'),
+    '#default_value' => variable_get(ADSENSE_ACCESS_PAGES, ''),
+    '#cols' => 70,
+    '#rows' => 5,
+    '#description' => t("Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are '<em>blog</em>' for the blog page and '<em>blog/*</em>' for every personal blog. '<em>&lt;front&gt;</em>' is the front page."),
+  );
+
+  $form['click_tracking'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Click tracking'),
+  );
+
+  $form['click_tracking'][ADSENSE_CLICK_TRACKING] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Adsense click tracking?'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_CLICK_TRACKING, 0),
+    '#description' => t('Logs IP and time of ' . l('Adsense clicks','admin/logs/adsense') . '. ' . t('This can be very useful in tracking which of your pages generate the most clicks, as well as help if click fraud is suspected.')),
+  );  
+
+  $form['click_tracking'][ADSENSE_CLICK_TRACKING_NAME_RESOLVE] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable name resolution of IP Addresses?'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_CLICK_TRACKING_NAME_RESOLVE, 0),
+    '#description' => t('Display the name instead of the IP address. This can slow down the display of the logs page and tie up a PHP process for several seconds. It may not be available on some hosting providers as well.'),
+  );  
+
+  $form['advanced'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => true,
+    '#collapsed' => true,
+    '#title' => t('Advanced options'),
+  );
+
+  $form['advanced'][ADSENSE_TEST_MODE] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Test Mode'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_TEST_MODE, 0),
+    '#description' => t('This enables you to test the adsense module settings. This can be useful in some situations, for example, whether revenue sharing is working properly or not, without having to display real ads on your site. It is best to test this after you log out.'),
+  );
+
+  $form['advanced'][ADSENSE_DISABLE] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable Google AdSense ads?'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_DISABLE, 0),
+    '#description' => t('This disables all display of Google AdSense Ads from your web site. This is useful in certain situations, such as site upgrades, or if you make a copy of the site for development and test purposes.'),
+  );
+
+  $form['advanced'][ADSENSE_PLACEHOLDER] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Placeholder when ads are disabled?'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_PLACEHOLDER, 1),
+    '#description' => t('This causes an empty box to be displayed in place of the ads when they are disabled.'),
+  );
+
+  $form['advanced'][ADSENSE_PLACEHOLDER_TEXT] = array(
+    '#type' => 'textarea',
+    '#title' => t('Placeholder Text to display'),
+    '#default_value' => variable_get(ADSENSE_PLACEHOLDER_TEXT, t('Google AdSense')),
+    '#cols' => 70,
+    '#rows' => 3,
+    '#description' => t('Enter any text to display as a placeholder when ads are disabled.'),
+  );
+
+  $form['advanced'][ADSENSE_PAGE_AD_LIMIT] = array(
+    '#type' => 'textfield',
+    '#title' => t('Ad limit per page'),
+    '#default_value' => variable_get(ADSENSE_PAGE_AD_LIMIT, 4),
+    '#size' => 6,
+    '#maxlength' => 6,
+    '#description' => t('Google currently limits a page to 3 ad units, in addition to one ad links unit'),
+  );
+  
+  $form['advanced'][ADSENSE_SECTION_TARGETING] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Adsense Section targeting?'),
+    '#return_value' => 1,
+    '#default_value' => variable_get(ADSENSE_SECTION_TARGETING, 1),
+    '#description' => t('This better targets Google Ads to the teaser and body of nodes.'),
+  );
+  
+
+  return $form;
+}  
+
+function adsense_display($format = '160x600', $group = 1, $channel = 1) {
+  static $num_adsense_on_this_page;
+
+  if (!_adsense_validate_dimensions($format)) {
+      $ad = '<!--adsense: invalid format: ' . $format . '-->';
+  }
+  else {
+    // This ad format is not cached, generate it
+    // Check first if disabled or if we are at adsense limit or if this page doesn't allow adsense
+    if (_adsense_check_if_enabled()) {
+      if (_adsense_can_insert_another()) {
+        if (_adsense_page_match()) {
+          // Ad should be displayed
+          // Check cache first
+          $num_adsense_on_this_page++;
+
+          $ad = _adsense_get_ad($format, $group, $channel);
+        }
+        else {
+          $ad = '<!--adsense: page not in match list-->';
+        }
+      }
+      else {
+        $ad = '<!--adsense: ad limit per page reached-->';
+      }
+    }
+    else {
+      // Ads are disabled
+      if (_adsense_page_match()) {
+        if (_adsense_check_placeholder()) {
+          $ad = '<!--adsense: placeholder-->' . _adsense_format_placeholder($format);
+        }
+        else {
+          $ad = '<!--adsense: ads disabled -->';
+        }
+      }
+    }
+  }
+
+  return $ad;
+}
+function _adsense_get_ad($format, $group, $channel) {
+  $sharing = variable_get(ADSENSE_REVENUE_ENABLE, 0);
+  if ($sharing) {
+    $ad = _adsense_format($format, $group, $channel);
+    return $ad;
+  }
+  
+  $cache_key = "adsense-$group-$format-$channel";
+  $cache = cache_get($cache_key);
+  if ($cache) {
+    // This ad format is cached, use it
+    $ad = '<!--adsense: cached-->' . $cache->data;
+  }
+  else {
+    // Not cached. Format an ad
+    $ad = _adsense_format($format, $group, $channel);
+    // Add it to cache
+    cache_set($cache_key, $ad, CACHE_PERMANENT);
+  }
+
+  return $ad;
+}
+
+function _adsense_check_if_enabled() {
+  $client_id = adsense_get_client_id();
+
+  $disable_ads = variable_get(ADSENSE_DISABLE, '0');
+
+  if (!$client_id) {
+    // Google AdSense Client ID is not configured
+    return false;
+  }
+  
+  if ($disable_ads) {
+    return false;
+  }
+
+  if (user_access('hide adsense')) {
+    return false;
+  }
+
+  return true;
+}
+
+function _adsense_check_placeholder() {
+  if (variable_get(ADSENSE_PLACEHOLDER, '1')) {
+    // Ads are globally disabled and a place holder is set
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function _adsense_format_placeholder($format) {
+
+  $width   = _adsense_get_width($format);
+  $height  = _adsense_get_height($format);
+
+  $placeholder_text = variable_get(ADSENSE_PLACEHOLDER_TEXT, t('Google AdSense'));
+
+  $output  = '<div style="';
+  $output .= ' width:'  . $width  . 'px;';
+  $output .= ' height:' . $height . 'px;';
+  $output .= ' border:solid 1px">' . $placeholder_text . '</div>';
+
+  return $output;
+}
+
+function _adsense_get_dimensions($format) {
+  list($width, $height) = explode('x', $format);
+  return array('width' => $width, 'height' => $height);
+}
+
+function _adsense_get_height($format) {
+  $dims = _adsense_get_dimensions($format);
+  return $dims['height'];
+}
+
+function _adsense_get_width($format) {
+  $dims = _adsense_get_dimensions($format);
+  return $dims['width'];
+}
+
+function _adsense_validate_dimensions($format) {
+  $all_ads = adsense_ad_formats();
+
+  $ret = false;
+
+  if ($all_ads[$format]['desc']) {
+    $ret = true;
+  }
+  else {
+    $ret = false;
+  }
+
+  return $ret;
+}
+
+function _adsense_validate_group($group = 1) {
+  if ($group < 1 || $group > ADSENSE_MAX_GROUPS) {
+    // Default to 1 if an invalid group is supplied
+    return 1;
+  }
+  return $group;
+}
+
+function _adsense_validate_channel($channel = 1) {
+  if ($channel < 1 || $channel > ADSENSE_MAX_CHANNELS) {
+    // Default to 1 if an invalid channel is supplied
+    return 1;
+  }
+  return $channel;
+}
+
+function _adsense_format($format, $group = 1, $channel = 1) {
+
+  $group = _adsense_validate_group($group);
+
+  $client = adsense_get_client_id();
+
+  $text     = variable_get(ADSENSE_COLOR_TEXT .   $group, '000000');
+  $border   = variable_get(ADSENSE_COLOR_BORDER . $group, '336699');
+  $bg       = variable_get(ADSENSE_COLOR_BG .     $group, 'FFFFFF');
+  $link     = variable_get(ADSENSE_COLOR_LINK .   $group, '336699');
+  $url      = variable_get(ADSENSE_COLOR_URL .    $group, 'FF8C00');
+
+  $alt      = variable_get(ADSENSE_ALT .          $group, 0);
+  $alt_info = variable_get(ADSENSE_ALT_INFO .     $group, '');
+
+  $channel = variable_get(ADSENSE_AD_CHANNEL . _adsense_validate_channel($channel), '');
+
+  switch (variable_get(ADSENSE_AD_TYPE . $group, '0')) {
+    case 2:
+      $type = 'text_image';
+      break;
+    case 1:
+      $type = 'image';
+      break;
+    default:
+      $type = 'text';
+      break;
+  }
+
+  $width  = _adsense_get_width($format);
+  $height = _adsense_get_height($format);
+
+  $format = $width . 'x' . $height . adsense_get_ad_code($format);
+
+  $output .= _adsense_add_nl('');
+  $output .= _adsense_add_nl('<div class="adsense">');
+  $output .= _adsense_add_nl('<script type="text/javascript"><!--');
+  switch($alt) {
+    case 0:
+      // disabled
+      break;
+    case 1:
+      $output .= _adsense_add_nl('google_alternate_ad_url = "' . $alt_info . '";');
+      break;
+    case 2:
+      $output .= _adsense_add_nl('google_alternate_color = "' . $alt_info . '";');
+      break;
+  }
+  $output .= _adsense_add_nl('google_ad_client = "'    . $client  . '";');
+  $output .= _adsense_add_nl('google_ad_type = "'      . $type    . '";');
+  $output .= _adsense_add_nl('google_ad_channel = "'   . $channel . '";');
+  $output .= _adsense_add_nl('google_ad_width = '      . $width   . ';');
+  $output .= _adsense_add_nl('google_ad_height = '     . $height  . ';');
+  $output .= _adsense_add_nl('google_ad_format = "'    . $format  . '";');
+  $output .= _adsense_add_nl('google_color_border = "' . $border  . '";');
+  $output .= _adsense_add_nl('google_color_bg = "'     . $bg      . '";');
+  $output .= _adsense_add_nl('google_color_link = "'   . $link    . '";');
+  $output .= _adsense_add_nl('google_color_url = "'    . $url     . '";');
+  $output .= _adsense_add_nl('google_color_text = "'   . $text    . '";');
+  $output .= _adsense_add_nl('//--></script>');
+  $output .= _adsense_add_nl('<script type="text/javascript"');
+  $output .= _adsense_add_nl(' src="http://pagead2.googlesyndication.com/pagead/show_ads.js">');
+  $output .= _adsense_add_nl('</script>');
+  $output .= _adsense_add_nl('</div>');
+
+  if (variable_get(ADSENSE_TEST_MODE, 0)) {
+    $text = "client=$client format=$format group=$group channel=$channel type=$type";
+    $output  = '<div style="';
+    $output .= ' width:'  . $width  . 'px;';
+    $output .= ' height:' . $height . 'px;';
+    $output .= ' border:solid 1px">' . $text . '</div>';
+  }
+
+  return $output;
+}
+
+function _adsense_add_nl($str) {
+  return $str . "\n";
+}
+
+/**
+ * Determine if Adsense has reached limit on this page.
+ *
+ * @return
+ *   TRUE if we can insert another ad, FALSE if not allowed.
+ */
+function _adsense_can_insert_another() {
+  static $num_adsense_on_this_page;
+  return ($num_adsense_on_this_page < variable_get(ADSENSE_PAGE_AD_LIMIT, 3));
+}
+
+/**
+ * Determine if Adsense has permission to be used on the current page.
+ *
+ * @return
+ *   TRUE if can render, FALSE if not allowed.
+ */
+function _adsense_page_match() {
+  $page_match = FALSE;
+  $visibility = (int)variable_get(ADSENSE_VISIBILITY, '0'); 
+  $pages = variable_get(ADSENSE_ACCESS_PAGES, '');
+  
+  if ($pages) {
+    // Specific pages are configured
+    $path = drupal_get_path_alias($_GET['q']);
+    $regexp = '/^('. preg_replace(
+      array('/(\r\n?|\n)/', '/\\\\\*/', '/(^|\|)\\\\<front\\\\>($|\|)/'), 
+      array('|', '.*', '\1'. variable_get('site_frontpage', 'node') .'\2'), 
+      preg_quote($pages, '/')) .')$/';
+    $page_match = !($visibility xor preg_match($regexp, $path));    
+  }
+  else {
+    // No pages are configured
+    if ($visibility === 0) {
+      // We are set to "Show on every pages except..."
+      $page_match = TRUE;
+    }
+  }
+
+  // Do not show ads on secure pages.
+  // This is for two reasons:
+  // Google would most probably not have indexed secure pages
+  // and it also prevents warnings about mixed-content
+  // Thanks to Brad Konia http://drupal.org/node/29585
+  // Should be restricted when running on Apache only
+  if (function_exists('apache_get_version')) {
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+      $page_match = FALSE;
+    }
+  }
+
+  return $page_match;
+}
+
+function adsense_filter($op, $delta = 0, $format = -1, $text = '') {
+  switch ($op) {
+    case 'list':
+      return array(0 => t('Adsense tag'));
+      break;
+
+    case 'description':
+      return t('Substitutes an adsense special tag with an ad.');
+      break;
+
+    case 'prepare':
+      return $text;
+      break;
+
+    case 'process':
+      return _adsense_process_tags($text);
+      break;
+  }
+}
+
+function _adsense_process_tags($text) {
+  $patterns = array(
+    'flexi' => '/\[adsense:flexiblock:(\d+)\]/x',
+    'block' => '/\[adsense:block:(\d+)\]/x',
+    'tags'  => '/\[adsense:(\w+):(\d+):(\d+)\]/x');
+
+  foreach($patterns as $mode => $pattern) {
+    if (preg_match_all($pattern, $text, $matches, PREG_SET_ORDER)) {
+      foreach($matches as $match) {
+        switch($mode) {
+          case 'flexi':
+            $ad = _adsense_tag_flexiblock($match[1]);
+            break;
+          case 'block':
+            $ad = _adsense_tag_block($match[1]);
+            break;
+          case 'tags':
+            // Tag is in [adsense:468x60:1:1] format
+            $ad = adsense_display($match[1], $match[2], $match[3]);
+        }
+      $text = str_replace($match[0], $ad, $text);
+      }
+    }
+  }
+  return $text;
+}
+
+function _adsense_tag_block($bid) {
+  // Tag is in [adsense:block:1] format
+  $block = block_block('view', $bid);
+  return $block['content'];
+}
+
+function _adsense_tag_flexiblock($location) {
+  if (module_exist('flexiblock')) {
+    // Tag is in [adsense:flexiblock:1] format
+    $blocks = theme('flexiblock_blocks', $location);
+    foreach ($blocks as $block) {
+      $ad = $block['content'];
+    }
+  }
+  else {
+     $ad = '<!--adsense: flexiblock not installed -->';
+  }
+  return $ad;
+}
+
+function adsense_block($op = 'list', $delta = 0, $edit = array()) {
+  switch($op) {
+    case 'list':
+      for($count=0; $count<ADSENSE_MAX_BLOCKS; $count++) {
+        if ($ad = _adsense_get_block_config($count)) {
+          $title = t('Adsense: ') . $ad[0];
+        }
+        else {
+          $title = t('Adsense: Unconfigured ') . $count;
+        }
+        $block[$count]['info'] = $title;
+      }
+      break;
+
+    case 'configure':
+      $ad = _adsense_get_block_config($delta);
+
+      $ad_list[] = t('None');
+      foreach(adsense_ad_formats() as $format => $data) {
+        $ad_list[$format] = $format . ' : ' . $data['desc'];
+      }
+
+      for($group=1; $group<ADSENSE_MAX_GROUPS+1; $group++) {
+        $group_list[$group] = 'Group ' . $group;
+      }
+
+      for($channel=1; $channel<ADSENSE_MAX_CHANNELS+1; $channel++) {
+        $channel_list[$channel] = 'Channel ' . $channel;
+      }
+
+      $form['ad_format'] = array(
+        '#type' => 'select',
+        '#title' => t('Ad Format'),
+        '#default_value' => ($ad) ? $ad[0] : 1,
+        '#options' => $ad_list,
+      );
+
+      $form['ad_group'] = array(
+        '#type' => 'select',
+        '#title' => t('Group'),
+        '#default_value' => ($ad) ? $ad[1] : 1,
+        '#options' => $group_list,
+      );
+
+      $form['ad_channel'] = array(
+        '#type' => 'select',
+        '#title' => t('Channel'),
+        '#default_value' => ($ad) ? $ad[2] : 1,
+        '#options' => $channel_list,
+      );
+
+      return $form;
+
+    case 'save':
+      $data = implode(':',
+        array(
+          $edit['ad_format'],
+          $edit['ad_group'],
+          $edit['ad_channel'],
+          ));
+      variable_set(ADSENSE_AD_BLOCK . $delta, $data);
+      return;
+
+    case 'view':
+      $ad = _adsense_get_block_config($delta);
+      $block['subject'] = '';
+      $block['content'] = ($ad) ? adsense_display($ad[0], $ad[1], $ad[2]) : t('Adsense unconfigured block. ') . l(t('click to configure'), 'admin/block/configure/adsense/' . $delta);
+
+      break;
+    }
+  return $block;
+}
+
+function _adsense_get_block_config($delta = 0) {
+  if ($data = variable_get(ADSENSE_AD_BLOCK . $delta, '')) {
+    return explode(':', $data);
+  }
+
+  return false;
+}
+
+function adsense_filter_tips($delta, $format, $long = false) {
+  return t('Use the special tag [adsense:<em>format</em>:<em>group</em>:<em>channel</em>] or [adsense:flexiblock:<em>location</em>] to display Google AdSense Ads.');
+}
+
+function adsense_nodeapi(&$node, $op = 'view', $teaser, $page) {
+  switch($op) {
+    case 'view':
+      if (variable_get(ADSENSE_SECTION_TARGETING, 1)) {
+        if ($teaser) {
+          $node->teaser = ADSENSE_SECTION_START . $node->teaser . ADSENSE_SECTION_END;
+        }
+        else {
+          $node->body = ADSENSE_SECTION_START . $node->body . ADSENSE_SECTION_END;
+        }
+      }
+
+      if ($page) {
+        adsense_get_client_id($node->uid, $node->type);
+      }
+      else {
+        if ($uid = _adsense_check_blog()) {
+          adsense_get_client_id($uid, 'blog');
+        }
+      }
+  }
+}
+
+function _adsense_check_blog() {
+  // Special handling for the path /blog/uid or its aliases
+  $path = explode('/', drupal_get_normal_path($_GET['q']));
+  if (is_array($path)) {
+    if (count($path) == 2) {
+      if ($path[0] == 'blog') {
+        if (is_numeric($path[1])) {
+          return $path[1];
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function adsense_get_client_id($uid = false, $type = false) {
+  static $client = false;
+
+  if ($client) {
+    // Use the cached client id
+    return $client;
+  }
+
+  // Get the site wide client ID
+  $site_client = _get_site_owner_client_id();
+
+  // Check if revenue sharing is enabled
+  $revenue = variable_get(ADSENSE_REVENUE_ENABLE, 0);
+  if (!$revenue) {
+    // If not enabled, cache the site wide client ID
+    $client = $site_client;
+    return $client;
+  }
+
+  // Check the content type we are displaying
+  $content = variable_get(ADSENSE_NODE_TYPE . $type, 0);
+  if (!$content) {
+    // Revenue sharing is disabled for this content, use the site wide client id
+    $client = $site_client;
+  }
+
+  // Check the percentage and choose one
+  $client = _adsense_choose_client($uid);
+
+  return $client;
+}
+
+function _get_referral_uid($uid) {
+  if (!module_exist('referral')) {
+    return $uid;
+  }
+
+  $referral_uid = referral_get_user($uid);
+  if (!$referral_uid) {
+    // User was not referred by an existing user
+    return false;
+  }
+
+  return $referral_uid;
+}
+
+function _adsense_choose_client($uid) {
+
+  $revenue_enable   = variable_get(ADSENSE_REVENUE_ENABLE, 0);
+  $percent_author   = variable_get(ADSENSE_PERCENTAGE_AUTHOR, 0);
+  $percent_referral = variable_get(ADSENSE_PERCENTAGE_REFER, 0);
+  $site_client      = _get_site_owner_client_id();
+ 
+  $author_client    = _get_profile_client_id($uid);
+  $referral_client  = _get_profile_client_id(_get_referral_uid($uid));
+
+  if (!$revenue_enable) {
+    return $site_client;
+  }
+ 
+  if (!$percent_author || !$author_client) {
+    return $site_client;
+  }
+
+  // Toss the dice and see who gets their ad displayed
+  $random = mt_rand(1,100);
+  if ($random <= $percent_author) {
+    $client = $author_client;
+  }
+  elseif ($random <= ($percent_author + $percent_referral)) {
+    $client = $referral_client;
+  }
+  else {
+    $client = $site_client;
+  }
+
+  // Last check to see that we have a valid client
+  if (!$client) {
+    $client = $site_client;
+  }
+
+  return $client;
+}
+
+function _get_site_owner_client_id() {
+  // TODO
+  // This should be expanded in the future to allow multiple site owners
+  // identified by sharing a specific role. The percentage for each user
+  // should be stored somewhere (profile?)
+  // For the meantime, the first Drupal user is the owner of the site.
+  return _get_profile_client_id(1);
+}
+
+function _get_profile_client_id($uid = 0) {
+  // Get the profile field for a certain user
+  $profile_field = variable_get(ADSENSE_CLIENT_ID_PROFILE_FIELD, 0);
+  $client_id = db_result(db_query('SELECT value FROM {profile_values} 
+    WHERE fid = %d AND uid = %d', $profile_field, $uid));
+  return $client_id;
+}
+
+function _adsense_get_profile_fields() {
+  $profile = array(0 => 'None');
+
+  $result = db_query("SELECT fid, title FROM {profile_fields} ORDER BY fid");
+  while ($row = db_fetch_object($result)) {
+    $profile[$row->fid] = $row->title;
+  }
+
+  return $profile;
+}  
+
+/* 
+ *
+ * Adsense click tracking functions
+ *
+ */
+
+function adsense_footer($main = 0) {
+  global $base_url;
+
+  if (variable_get(ADSENSE_CLICK_TRACKING, 0)) {
+    $path = base_path() . drupal_get_path('module', 'adsense') . '/adsense_click.js';
+    $js = '<script type="text/javascript" src="'. $path .'"></script>';
+    return $js;
+  }
+}
+
+function adsense_counter() {
+  if (variable_get(ADSENSE_CLICK_TRACKING, 0)) {
+    $path = $_GET['u'];
+    db_query("INSERT INTO {adsense_clicks} (ip, timestamp, path) values('%s', %d, '%s')",
+      $_SERVER['REMOTE_ADDR'], time(), $path);
+  }
+}
+
+/**
+ * Menu callback; presents the "Adsense" log page.
+ */
+function adsense_click_log() {
+  $header = array(
+    array('data' => t('Timestamp'), 'field' => 'timestamp', 'sort' => 'desc'),
+    array('data' => t('Path'),      'field' => 'path'),
+    array('data' => t('IP/Host'),   'field' => 'ip'),
+  );
+
+  $name_resolve = variable_get(ADSENSE_CLICK_TRACKING_NAME_RESOLVE, 0);
+
+  $sql = 'SELECT * FROM {adsense_clicks} ' . tablesort_sql($header);
+
+  $result = pager_query($sql, 50);
+  while ($log = db_fetch_object($result)) {
+    if ($name_resolve) {
+      $host = gethostbyaddr($log->ip);
+    }
+    else {
+      $host = $log->ip;
+    }
+
+    $rows[] = array(
+      array('data' => format_date($log->timestamp, 'small'), 'nowrap' => 'nowrap'),
+      _adsense_format_path($log->path),
+      l($host, 'http://whois.domaintools.com/' . $log->ip),
+    );
+  }
+
+  return theme('table', $header, $rows) . theme('pager', NULL, 50, 0);
+}
+
+function adsense_click_top_pages() {
+  $header = array(
+    array('data' => t('Path'),   'field' => 'path'),
+    array('data' => t('Clicks'), 'field' => 'count', 'sort' => 'desc'),
+    array('data' => t('Last'),   'field' => 'last'),
+  );
+
+  $sql = 'SELECT path, COUNT(*) AS count, MAX(timestamp) AS last FROM {adsense_clicks} GROUP BY path' .
+    tablesort_sql($header);
+
+  $result = pager_query($sql, 50);
+  while ($log = db_fetch_object($result)) {
+    $rows[] = array(
+      array('data' => _adsense_format_path($log->path)),
+      array('data' => $log->count, 'align' => 'right'),
+      array('data' => format_date($log->last, 'small'), 'nowrap' => 'nowrap'),
+    );
+  }
+
+  return theme('table', $header, $rows) . theme('pager', NULL, 50, 0);
+}
+
+function adsense_click_by_day() {
+  global $db_type;
+  $header = array(
+    array('data' => t('Day'),    'field' => 'day', 'sort' => 'desc'),
+    array('data' => t('Clicks'), 'field' => 'count'),
+  );
+
+  switch ($db_type) {
+    case 'mysql':
+    case 'mysqli':
+      $sql_count = "SELECT COUNT(DISTINCT(FROM_UNIXTIME(timestamp, '%y-%m-%%d'))) FROM {adsense_clicks}";
+      $sql = "SELECT FROM_UNIXTIME(timestamp, '%Y-%m-%%d') AS day, COUNT(*) AS count FROM {adsense_clicks} GROUP BY day" .  tablesort_sql($header);
+      break;
+    case 'pgsql':
+      $sql_count = "SELECT COUNT(DISTINCT(TO_CHAR(timestamp, 'YYYY-MM-DD'))) FROM {adsense_clicks}";
+      $sql = "SELECT TO_CHAR(timestamp, 'YYYY-MM-DD') AS day, COUNT(*) AS count FROM {adsense_clicks} GROUP BY day" .  tablesort_sql($header);
+      break;
+  }
+
+  $result = pager_query($sql, 50, 0, $sql_count);
+  while ($log = db_fetch_object($result)) {
+    $rows[] = array(
+      $log->day,
+      array('data' => $log->count, 'align' => 'right'),
+    );
+  }
+
+  return theme('table', $header, $rows) . theme('pager', NULL, 50, 0);
+}
+
+function _adsense_format_path($path, $width = 35) {
+  global $base_url;
+  $short_path = str_replace($base_url, '', $path);
+  $title = truncate_utf8($short_path, $width, FALSE, TRUE);
+  return l($title, $path);
+}
+
