@@ -919,7 +919,7 @@ function url_profile_save(&$url, $checked = NULL, $valid = NULL, $criteria = "",
     db_query("UPDATE {url_profile_url} SET url = '%s', checked = %d, valid = %d, custom = %d, criteria = '%s', title = '%s' WHERE upid = %d", $url->url, $url->checked, $url->valid, $url->custom, $url->criteria, $url->title, $url->upid);
     // hack --miura
     $temp = db_result(db_query('SELECT COUNT(*) FROM {url_profile_node} un WHERE un.upid = %d', $url->upid));
-    db_query('UPDATE UPDATE {url_profile_url} uu SET uu.child_nodes = %d  WHERE uu.upid = %d',  $temp, $url->upid);
+    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = %d  WHERE uu.upid = %d',  $temp, $url->upid);
 //    db_query('UPDATE {url_profile_url} uu SET uu.child_nodes = (SELECT COUNT(*)
 //                                                                FROM {url_profile_node} un 
 //                                                                WHERE un.upid = %d
