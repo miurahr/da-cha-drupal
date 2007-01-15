@@ -103,8 +103,13 @@ function adsense_injector_nodeapi(&$node, $op, $teaser, $page) {
         && _adsense_page_match() ) {
       $minwords = _adsense_injector_minwords_cfg($node->type);
       $wordcount = _adsense_injector_count_words($node->body);
-      $mbcharcount =  _adsense_injector_count_chars($node->body);
-      if ($wordcount >= $minwords || $mbcharcount >= ($minwords*5)) {
+      if ($wordcount < $minwords) {
+         $mbcharcount =  _adsense_injector_count_chars($node->body);
+         if ($mbcharcount < ($minwords * 5)) {
+	     return;
+	 }
+      } 
+      {
         $node->body = "<!-- adsense_injector: node body wordcount = $wordcount, required=$minwords - insertion triggered. -->" 
           . variable_get('adsense_injector_body_ad_prefix', ADSENSE_INJECTOR_BODY_AD_PREFIX_DEFAULT)
           . adsense_display(
