@@ -109,7 +109,6 @@ function adsense_injector_nodeapi(&$node, $op, $teaser, $page) {
 	     return;
 	 }
       } 
-      {
         $node->body = "<!-- adsense_injector: node body wordcount = $wordcount, required=$minwords - insertion triggered. -->" 
           . variable_get('adsense_injector_body_ad_prefix', ADSENSE_INJECTOR_BODY_AD_PREFIX_DEFAULT)
           . adsense_display(
@@ -121,7 +120,6 @@ function adsense_injector_nodeapi(&$node, $op, $teaser, $page) {
           . variable_get('adsense_injector_body_ad_body_suffix', ADSENSE_INJECTOR_BODY_AD_BODY_SUFFIX_DEFAULT);
       } else {
         $node->body = "<!-- adsense_injector: node body word count ($wordcount) is insufficient ($minwords required), so we won't insert an ad. -->" . $node->body;
-      }
     }
   }
 }
