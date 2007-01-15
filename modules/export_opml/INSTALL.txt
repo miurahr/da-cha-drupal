@@ -1,0 +1,19 @@
+Export_OPML installation
+========================
+
+Unpack the export_opml directory in the modules directory of your
+Drupal installation:
+
+% cd /path/to/drupal/modules
+% tar -zxf /path/to/export_opml.tar.gz
+
+Enable the export_opml module by checking the 'export_opml' item on
+the module administration page at admin/modules.
+
+Users must have 'export_books' permissions enabled in 
+  
+   administer > access control 
+
+in order to export books as OPML. Note that *both* 'access content'
+and 'export books as opml' permissions are required.
+

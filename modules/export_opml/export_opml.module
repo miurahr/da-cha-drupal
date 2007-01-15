@@ -1,0 +1,125 @@
+<?php
+// $Id: export_opml.module,v 1.3 2005/11/29 19:32:42 puregin Exp $
+
+/**
+ * @file
+ * Allows authorized users to export a book's structure as OPML.
+ */
+
+/**
+ * Implementation of hook_perm().
+ */
+function export_opml_perm() {
+  return array('export books as opml');
+}
+
+/**
+ * Implementation of hook_link().
+ */
+function export_opml_link($type, $node = 0, $main = 0) {
+  $links = array();
+  if ($type == 'node' && isset($node->parent)) {
+    if (!$main) {
+      if (user_access('export books as opml')) {
+        $links[] = l(t('export OPML'), 
+                     'book/export/opml/'. $node->nid, 
+                     array('title' => t('Export this book page and its sub-pages as OPML.')));
+      }
+    }
+  }
+  return $links;
+}
+
+
+/**
+ * This function is called by book_export() to generate OPML for export.
+ *
+ * Unlike HTML output, OPML output is not embedded to its absolute
+ * level in the parent book.  The exported node will be the top level
+ * element in the OPML outline.
+ *
+ * The function also calls drupal_set_header() to set a header suitable
+ * for returning XML content.
+ *
+ * Note that the user must have both 'access content' permissions (checked
+ * when the menu item for export is invoked in book.module) and
+ * 'export books as opml' permissions to export a book.
+ *
+ * @param nid
+ *   - an integer representing the node id (nid) of the node to export
+ * @param depth
+ * - an integer giving the depth in the book hierarchy of the node
+       which is to be exported
+ * @return
+ * - the OPML representing the node and its children in the book
+ * hierarchy.  Only titles are exported.
+
+*/
+function book_export_opml($nid, $depth) {
+  if (user_access('export books as opml')) {
+      drupal_set_header('Content-Type: text/xml; charset=utf-8');
+      $output .= book_recurse($nid, $depth, 'book_node_visitor_opml_pre', 'book_node_visitor_opml_post');
+      $ompl  = "<?xml version='1.0'?>\n";
+      $opml .= "<opml version='1.0'>\n";
+      $opml .= "<head>\n<title>". check_plain($node->title) ."</title>\n";
+      $opml .= "</head>\n<body>\n". $output . "\n</body>\n</opml>\n";
+      return $opml;
+  }
+  else {
+      drupal_access_denied();
+  }
+}
+
+/**
+ * Generates OPML for a node.  This function is a 'pre-node' visitor
+ * function for book_recurse().
+ *
+ * @param $node
+ *   - the node to generate output for.
+ * @param $depth
+ *   - the depth of the given node in the hierarchy. This is used only
+ *   for generating output.
+ * @param $nid
+ *   - the node id (nid) of the given node. This is used only for
+ *   generating output.
+ * @return
+ *   - the OPML generated for the given node.
+ */
+function book_node_visitor_opml_pre($node, $depth, $nid) {
+  // Output the content:
+  if (node_hook($node, 'content')) {
+    $node = node_invoke($node, 'content');
+  }
+
+  $output .= "<outline type=\"id:node-". $node->nid ."\"\n";
+  $text = check_plain($node->title);
+  $output .= "text=\"$text\">\n";
+  return $output;
+}
+
+/**
+ * Finishes up generation of OPML after visiting a node. This function
+ * is a 'post-node' visitor function for book_recurse().
+ */
+function book_node_visitor_opml_post($node, $depth) {
+  return "</outline>\n";
+}
+
+
+/**
+ * Implementation of hook_help().
+ */
+function export_opml_help($section) {
+  switch ($section) {
+    case 'admin/help#export_opml':
+      $output .= '<p>'. t('Users can choose to <em>export</em> the page and its subsections as an an OPML format outline (titles only) for editing with OPML aware outline editors, by selecting the <em>export OPML</em> link.') .'</p>';
+      return $output;
+    case 'admin/modules#description':
+      return t('Allows authorized users to export a book outline as OPML.');
+    case 'admin/node/export_opml':
+      return t("<p>The export_opml module offers a way to export a Drupal book's structural outline as OPML.</p>");
+  }
+}
+
+
+
