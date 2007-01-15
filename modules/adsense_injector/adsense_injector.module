@@ -64,6 +64,18 @@ function _adsense_injector_count_words(&$str, $max=100) {
   return count(explode(' ', $str, $max)); // lifted from node.module node_validate() function.
 }
 
+
+/**
+ * Cound multibyte-charactor number in a string.
+ * @param $str ref to a string (ref so no copy)
+ * @param $max ignore this. just for compatibility. 
+ * @return the count of charactors.
+ * @todo Efficiency, find better way to do this
+ */
+function _adsense_injector_count_chars(&$str, $max) {
+  return mb_strlen($str);
+}
+
 /**
  * Get the minimum node body wordcount for insertion.  
  * May be content-type specific, but at present, it's
@@ -91,7 +103,8 @@ function adsense_injector_nodeapi(&$node, $op, $teaser, $page) {
         && _adsense_page_match() ) {
       $minwords = _adsense_injector_minwords_cfg($node->type);
       $wordcount = _adsense_injector_count_words($node->body);
-      if ($wordcount >= $minwords) {
+      $mbcharcount =  _adsense_injector_count_chars($node->body);
+      if ($wordcount >= $minwords || $mbcharcount >= ($minwords*5)) {
         $node->body = "<!-- adsense_injector: node body wordcount = $wordcount, required=$minwords - insertion triggered. -->" 
           . variable_get('adsense_injector_body_ad_prefix', ADSENSE_INJECTOR_BODY_AD_PREFIX_DEFAULT)
           . adsense_display(
