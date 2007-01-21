@@ -1,0 +1,89 @@
+# LANGUAGE translation of Drupal (xstatistics.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-06-12 18:30+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: xstatistics.module:8
+msgid "Extends statistics for your site."
+msgstr ""
+
+#: xstatistics.module:11
+msgid "This page shows usage statistics of your site"
+msgstr ""
+
+#: xstatistics.module:19
+msgid "summary"
+msgstr ""
+
+#: xstatistics.module:23
+msgid "usage"
+msgstr ""
+
+#: xstatistics.module:43
+msgid "enable Count Content Views to see values"
+msgstr ""
+
+#: xstatistics.module:56
+msgid "Total amount of external referrers today"
+msgstr ""
+
+#: xstatistics.module:57
+msgid "Total amount of internal referrers today"
+msgstr ""
+
+#: xstatistics.module:58
+msgid "Total amount of viewed nodes today"
+msgstr ""
+
+#: xstatistics.module:59
+msgid "Total amount of viewed nodes all time"
+msgstr ""
+
+#: xstatistics.module:60
+msgid "Total amount of viewed pages today"
+msgstr ""
+
+#: xstatistics.module:61
+msgid "Total amount of hits today"
+msgstr ""
+
+#: xstatistics.module:62
+msgid "People subscribed to your RSS feed"
+msgstr ""
+
+#: xstatistics.module:82
+msgid "Total amount of nodes"
+msgstr ""
+
+#: xstatistics.module:83
+msgid "Total amount of published nodes"
+msgstr ""
+
+#: xstatistics.module:84
+msgid "Total amount of nodes in the queue"
+msgstr ""
+
+#: xstatistics.module:85
+msgid "Total amount of comments"
+msgstr ""
+
+#: xstatistics.module:86
+msgid "Total amount of users"
+msgstr ""
+
+#: xstatistics.module:0
+msgid "xstatistics"
+msgstr ""
+

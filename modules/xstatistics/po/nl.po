@@ -1,0 +1,91 @@
+# translation of nl.po to Nederlands
+# LANGUAGE translation of Drupal (xstatistics.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+# Bèr Kessels <ber@webschuur.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: nl\n"
+"POT-Creation-Date: 2006-06-12 18:30+0200\n"
+"PO-Revision-Date: 2006-06-12 18:34+0200\n"
+"Last-Translator: Bèr Kessels <ber@webschuur.com>\n"
+"Language-Team: Nederlands <nl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.2\n"
+
+#: xstatistics.module:8
+msgid "Extends statistics for your site."
+msgstr "Breidt de statistieken voor uw pagina uit."
+
+#: xstatistics.module:11
+msgid "This page shows usage statistics of your site"
+msgstr "Deze pagina toont de gebruikerstatistieken voor uw site"
+
+#: xstatistics.module:19
+msgid "summary"
+msgstr "samevatting"
+
+#: xstatistics.module:23
+msgid "usage"
+msgstr "gebruik"
+
+#: xstatistics.module:43
+msgid "enable Count Content Views to see values"
+msgstr "Zet Count Content Views aan om de waarden te zien"
+
+#: xstatistics.module:56
+msgid "Total amount of external referrers today"
+msgstr "Totaal aantal verwijzingen vandaag"
+
+#: xstatistics.module:57
+msgid "Total amount of internal referrers today"
+msgstr "Totaal aantal interne verwijzingen vandaag"
+
+#: xstatistics.module:58
+msgid "Total amount of viewed nodes today"
+msgstr "Totaal aantal bekeken nodes vandaag"
+
+#: xstatistics.module:59
+msgid "Total amount of viewed nodes all time"
+msgstr "Totaal aantal bekeken nodes altijd"
+
+#: xstatistics.module:60
+msgid "Total amount of viewed pages today"
+msgstr "Totaal aantal bekeken paginas vandaag"
+
+#: xstatistics.module:61
+msgid "Total amount of hits today"
+msgstr "Totaal aantal hits vandaag"
+
+#: xstatistics.module:62
+msgid "People subscribed to your RSS feed"
+msgstr "Personen die geabonneerd zijn op uw RSS feed"
+
+#: xstatistics.module:82
+msgid "Total amount of nodes"
+msgstr "Totaal aantal nodes"
+
+#: xstatistics.module:83
+msgid "Total amount of published nodes"
+msgstr "Totaal aantal gepubliceerde nodes"
+
+#: xstatistics.module:84
+msgid "Total amount of nodes in the queue"
+msgstr "Totaal aantal nodes in de wachtrij"
+
+#: xstatistics.module:85
+msgid "Total amount of comments"
+msgstr "Totaal aantal commentaren"
+
+#: xstatistics.module:86
+msgid "Total amount of users"
+msgstr "Totaal aantal gebruikers"
+
+#: xstatistics.module:0
+msgid "xstatistics"
+msgstr "xtatistics"
+
