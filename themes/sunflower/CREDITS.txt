@@ -1,0 +1,6 @@
+Theme: sunflower
+Author: Joe Lombardo (j0e)
+E-mail: joe@familytimes.com
+Description: Found on OSWD.com  (Open Source Web Design).  Listed as sunflower and
+created by 'artwiz'.  I've modified it to my tastes and drupalized it.  Suggestions
+are welcome.
