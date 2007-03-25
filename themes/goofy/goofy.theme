@@ -1,0 +1,334 @@
+<?php
+// $Id: goofy.theme,v 1.22 2006/03/05 09:13:56 tdobes Exp $
+
+function goofy_features() {
+  return array('logo', 'toggle_node_user_picture', 'toggle_comment_user_picture', 'toggle_favicon');
+}
+
+function goofy_regions() {
+  return array(
+       'left' => t('left sidebar'),
+       'right' => t('right sidebar')
+  );
+}
+
+function goofy_settings() {
+  $output = form_checkbox(t('Use the default secondary logo'), "goofy_default_logo2", 1, variable_get('goofy_default_logo2', 1), t('Check here if you want the theme to use the secondary logo supplied with it.'));
+  $output .= form_textfield(t('Path to custom secondary logo'), "goofy_logo2", variable_get('goofy_logo2', ''), 50, 60, t('The path to the file you would like to use as your secondary logo file instead of the default logo.'));
+  return $output;
+}
+
+function goofy_page($content) {
+  if (theme_get_setting('toggle_favicon')) {
+    drupal_set_html_head('<link rel="shortcut icon" href="'. check_url(theme_get_setting('favicon')) .'" type="image/x-icon" />');
+  }
+
+  $colspan = 1;
+  if ($blocksleft = theme("blocks", "left")) {
+    $colspan++;
+  }
+  if ($blocksright = theme("blocks", "right")) {
+    $colspan++;
+  }
+
+  $language = $GLOBALS['locale'];
+  $output = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="'. $language .'" xml:lang="'. $language .'">
+  <head>
+   ' . drupal_get_html_head() . '
+   <title>';
+
+  if ($title = drupal_get_title()) {
+    $output .= strip_tags($title) .' - '. variable_get("site_name", "drupal");
+  }
+  else {
+    $output .= variable_get("site_name", "drupal");
+    $output .= ($slogan = variable_get("site_slogan", "")) ? " - $slogan" : "";
+  }
+
+  $output .= '</title>
+';
+  $output .= theme_get_styles();
+  $output .= '
+  </head>
+  <body>
+    <table border="0" cellspacing="3" cellpadding="0" style="width: 100%;" class="goofy">
+     <tr>
+      <td colspan="' . $colspan . '" style="width: 100%;"><table border="0" cellspacing="0" cellpadding="0" style="width: 100%;" class="goofy"><tr><td>';
+  if ($logo = theme_get_setting('logo')) {
+    $output .= l('<img src="'. theme_get_setting('logo') .'" alt="'. t('Home') .'" />', '', array('title' => t('Home')), NULL, NULL, FALSE, TRUE);
+  }
+  $output .= '</td><td style="text-align: right;">';
+  $logo2 = variable_get('goofy_default_logo2', 1) ? (base_path() . path_to_theme() .'/drupal.png') : variable_get('goofy_logo2', '');
+  if ($logo2) {
+    $output .= '<img src="'. $logo2 .'" alt="" />';
+  }
+  $output .= '</td></tr></table>
+' . goofy_linksbar(($primary_links = theme('links', menu_primary_links())) ? $primary_links : '&nbsp;') . '
+      </td>
+     </tr>
+     <tr>
+';
+
+  if ($blocksleft) {
+    $output .= "      <td style=\"vertical-align: top; width: 20%;\">\n";
+    $output .= $blocksleft;
+    $output .= "      </td>\n";
+  }
+
+  $output .= '      <td style="vertical-align: top; width: ' . (($colspan == 1) ? '100%' : (($colspan == 2) ? '80%' : '60%')) . '">
+';
+
+  if ($title) {
+    $output .= theme("breadcrumb", drupal_get_breadcrumb());
+    $output .= "<h2 class=\"title\">$title</h2>";
+  }
+
+  if ($tabs = theme('menu_local_tasks')) {
+    $output .= $tabs;
+  }
+
+  $output .= theme('help');
+
+  $output .= theme('status_messages');
+
+  $output .= "\n<!-- begin content -->\n";
+  $output .= $content;
+  $output .= "\n<!-- end content -->\n";
+
+  $output .=   '      </td>
+';
+
+  if ($blocksright) {
+    $output .= "      <td style=\"vertical-align: top; width: 20%;\">\n";
+    $output .= $blocksright;
+    $output .= "      </td>\n";
+  }
+
+  $output .= '     </tr>
+     <tr>
+      <td colspan="' . $colspan . '">
+' . goofy_linksbar(($primary_links = theme('links', menu_primary_links())) ? $primary_links : '&nbsp;') . '
+      </td>
+     </tr>
+   </table>
+   <p style="text-align: center;">' . variable_get("site_footer", "") . '</p>
+   ' . theme_closure() . '
+  </body>
+</html>';
+
+  return $output;
+}
+
+function goofy_linksbar($links) { // helper function to prevent double code
+  $img_path = base_path() . path_to_theme() .'/images/';
+  return '       <table border="0" cellspacing="0" cellpadding="0" style="width: 100%;" class="goofy">
+        <tr>
+         <td><img src="'. $img_path .'lg-ul.png" alt="" style="display: block;" /></td>
+         <td class="lgu" style="width: 100%;"><img src="'. $img_path .'null.gif" alt="" /></td>
+         <td><img src="'. $img_path .'lg-ur.png" alt="" style="display: block;" /></td>
+        </tr>
+        <tr>
+         <td class="lgl"><img src="'. $img_path .'null.gif" alt="" /></td>
+         <td class="lgcnt" style="width: 100%; /* vertical-align: top; */"><div style="text-align: center;">'. $links .'</div></td>
+         <td class="lgr"><img src="'. $img_path .'null.gif" alt="" /></td>
+        </tr>
+        <tr>
+         <td><img src="'. $img_path .'lg-dl.png" alt="" style="display: block;" /></td>
+         <td class="lgd" style="width: 100%;"><img src="'. $img_path .'null.gif" alt="" /></td>
+         <td><img src="'. $img_path .'lg-dr.png" alt="" style="display: block;" /></td>
+        </tr>
+       </table>';
+}
+
+function goofy_node($node, $teaser = 0, $page = 0) {
+  $img_path = base_path() . path_to_theme() .'/images/';
+  $output = "\n<!-- node: \"". check_plain($node->title) ."\" -->\n";
+  $title = ($teaser ? l($node->title, "node/$node->nid") : check_plain($node->title));
+  $subleft = theme_get_setting("toggle_node_info_$node->type") ? t("Submitted by %a on %b", array("%a" => theme('username', $node), "%b" => format_date($node->created, "large"))) : '';
+
+  if (module_exist("taxonomy")) {
+    $terms = taxonomy_link("taxonomy terms", $node);
+    $subright = theme("links", $terms);
+  }
+  else {
+    $subright = '';
+  }
+
+  $body = '';
+
+  if (theme_get_setting('toggle_node_user_picture') && $picture = theme('user_picture', $node)) {
+    $body .= $picture;
+  }
+
+  if ($teaser && $node->teaser) {
+    $body .= $node->teaser;
+  }
+  else {
+    $body .= $node->body;
+  }
+
+  if ($node->links) {
+    $body .= "<hr /><div style=\"text-align: right;\">[ " . theme("links", $node->links) . " ]</div>";
+  }
+
+  $output .= '
+<table border="0" cellspacing="0" cellpadding="0" style="width: 100%;" class="goofy node'. ($node->sticky ? ' sticky' : '') .'">
+ <tr>
+  <td><img src="'. $img_path .'or-ul.png" alt="" style="display: block;" /></td>
+  <td class="oru" style="width: 100%;" colspan="2"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td><img src="'. $img_path .'or-ur.png" alt="" style="display: block;" /></td>
+ </tr>
+ <tr>
+  <td class="orl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="orcnt" style="width: 100%; vertical-align: top;" colspan="2">'. $title .'</td>
+  <td class="orr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="orl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="orcnt" style="width: 100%;" colspan="2"><img src="'. $img_path .'null.gif" height="5" alt="" /></td>
+  <td class="orr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="lgl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="lgcnt" style="width: 100%;" colspan="2"><img src="'. $img_path .'null.gif" height="4" alt="" /></td>
+  <td class="lgr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="lgl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="lgcnt"><small>'. $subleft .'</small></td>
+  <td class="lgcntnw" style="text-align: right;">'. $subright .'</td>
+  <td class="lgr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="lgl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="lgcnt" style="width: 100%;" colspan="2"><hr />'. $body .'</td>
+  <td class="lgr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td><img src="'. $img_path .'lg-dl.png" alt="" style="display: block;" /></td>
+  <td class="lgd" style="width: 100%;" colspan="2"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td><img src="'. $img_path .'lg-dr.png" alt="" style="display: block;" /></td>
+ </tr>
+</table>
+<br />
+';
+
+  return $output;
+}
+
+
+function goofy_comment($comment, $links = array()) {
+  $img_path = base_path() . path_to_theme() .'/images/';
+  $output = "\n<!-- comment: \"$comment->subject\" -->\n";
+  $subject = $comment->subject;
+  $author = "<strong>" . theme('username', $comment) . "</strong>";
+  $date = format_date($comment->timestamp);
+  $body = $comment->comment ."<hr /><div style=\"text-align: right;\">[ ". theme('links', $links) ." ]</div>";
+  $picture = theme_get_setting('toggle_comment_user_picture') ? theme('user_picture', $comment) : '';
+
+$output .= '
+<table border="0" cellspacing="0" cellpadding="0" style="width: 100%;" class="goofy comment">
+ <tr>
+  <td><img src="'. $img_path .'or-ul.png" alt="" style="display: block;" /></td>
+  <td class="oru" style="width: 100%;" colspan="2"></td>
+  <td><img src="'. $img_path .'or-ur.png" alt="" style="display: block;" /></td>
+ </tr>
+ <tr>
+  <td class="orl"></td>
+  <td class="orcnt" style="width: 100%; vertical-align: top;" colspan="2">
+   <table border="0" cellpadding="0" cellspacing="1" style="width: 100%;" class="goofy">
+    <tr>
+     <td style="width: 5%; vertical-align: top;"><div style="text-align: right;">' . t("Subject") . ':&nbsp;</div></td>
+     <td class="left" style="width: 80%;"><strong>'. $subject .'</strong></td>
+     <td rowspan="3" style="vertical-align: middle; width: 15%;">'. $picture .'</td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><div style="text-align: right;">' . t("Author") . ':&nbsp;</div></td>
+     <td class="left">'. $author .'</td>
+    </tr>
+    <tr>
+     <td><div style="text-align: right;">' . t("Date") . ':&nbsp;</div></td>
+     <td class="left">'. $date .'</td>
+    </tr>
+   </table>
+  </td>
+  <td class="orr"></td>
+ </tr>
+ <tr>
+  <td class="orl"></td>
+  <td class="orcnt" style="width: 100%;" colspan="2"><img src="'. $img_path .'null.gif" height="5" alt="" /></td>
+  <td class="orr"></td>
+ </tr>
+ <tr>
+  <td class="lgl"></td>
+  <td class="lgcnt" style="width: 100%;" colspan="2"><img src="'. $img_path .'null.gif" height="4" alt="" /></td>
+  <td class="lgr"></td>
+ </tr>
+ <tr>
+  <td class="lgl"></td>
+  <td class="lgcnt" style="width: 100%;" colspan="2">' . $body . '</td>
+  <td class="lgr"></td>
+ </tr>
+ <tr>
+  <td><img src="'. $img_path .'lg-dl.png" alt="" style="display: block;" /></td>
+  <td class="lgd" style="width: 100%;" colspan="2"></td>
+  <td><img src="'. $img_path .'lg-dr.png" alt="" style="display: block;" /></td>
+ </tr>
+</table>
+<br />
+';
+  return $output;
+}
+
+function goofy_box($subject, $content, $region = 'main') {
+  $img_path = base_path() . path_to_theme() .'/images/';
+  return '
+<table border="0" cellspacing="0" cellpadding="0" style="width: 100%;" class="goofy">
+ <tr>
+  <td><img src="'. $img_path .'or-ul.png" alt="" style="display: block;" /></td>
+  <td class="oru" style="width: 100%;"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td><img src="'. $img_path .'or-ur.png" alt="" style="display: block;" /></td>
+ </tr>
+ <tr>
+  <td class="orl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="orcnt" style="width: 100%; vertical-align: top;">'. ($subject ? $subject : '&nbsp;') .'</td>
+  <td class="orr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="orl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="orcnt" style="width: 100%;"><img src="'. $img_path .'null.gif" height="5" alt="" /></td>
+  <td class="orr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="lgl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="lgcnt" style="width: 100%;"><img src="'. $img_path .'null.gif" height="4" alt="" /></td>
+  <td class="lgr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td class="lgl"><img src="'. $img_path .'null.gif" alt="" /></td>
+  <td class="lgcnt" style="width: 100%;">'. $content .'</td>
+  <td class="lgr"><img src="'. $img_path .'null.gif" alt="" /></td>
+ </tr>
+ <tr>
+  <td><img src="'. $img_path .'lg-dl.png" alt="" style="display: block;" /></td>
+  <td class="lgd" style="width: 100%;"><img src="'. $img_path .'null.gif" width="150" height="1" alt="" /></td>
+  <td><img src="'. $img_path .'lg-dr.png" alt="" style="display: block;" /></td>
+ </tr>
+</table>
+<br />
+';
+}
+
+function goofy_block($block) {
+  $output = "<div class=\"block block-$block->module\" id=\"block-$block->module-$block->delta\">\n";
+  $output .= goofy_box($block->subject, $block->content);
+  $output .= "</div>\n";
+  return $output;
+}
+
+function goofy_help() {
+  if ($help = menu_get_active_help()) {
+    return '<div class="help">'. $help .'</div><hr />';
+  }
+}

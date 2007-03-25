@@ -1,0 +1,11 @@
+Goofy Theme
+
+Author: Steven Wittens (UnConeD)
+E-mail: unconed@drop.org
+Description: Colourful, graphical, orange theme for high-resolutions
+
+
+Updated by:
+Tim Maks van den Broek (Mad Maks)
+Hans J. Sieghart (Mordio)
+Tom Dobes (TDobes)            
