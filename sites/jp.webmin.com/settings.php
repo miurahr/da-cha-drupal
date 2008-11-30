@@ -169,10 +169,12 @@ ini_set('url_rewriter.tags',        '');
  *
  * Remove the leading hash signs to enable.
  */
-# $conf = array(
+$conf = array(
 #   'site_name' => 'My Drupal site',
 #   'theme_default' => 'minnelli',
 #   'anonymous' => 'Visitor',
+'upload_extenstions' => 'jpg jpeg gif png txt html doc xls pdf ppt pps pdf'
+
 /**
  * A custom theme can be set for the off-line page. This applies when the site
  * is explicitly set to off-line mode through the administration page or when
@@ -210,7 +212,7 @@ ini_set('url_rewriter.tags',        '');
  * your web server spoofing the X-Forwarded-For headers.
  */
 #   'reverse_proxy_addresses' => array('a.b.c.d', ...),
-# );
+);
 
 /**
  * String overrides:
@@ -221,7 +223,7 @@ ini_set('url_rewriter.tags',        '');
  *
  * Remove the leading hash signs to enable.
  */
-# $conf['locale_custom_strings_en'] = array(
+#$conf['locale_custom_strings_en'] = array(
 #   'forum'      => 'Discussion board',
 #   '@count min' => '@count minutes',
-# );
+#);
