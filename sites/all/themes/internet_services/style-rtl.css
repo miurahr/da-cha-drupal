@@ -1,0 +1,228 @@
+/* $Id: style-rtl.css,v 1.1.2.17 2008/08/17 13:48:18 hswong3i Exp $ */
+
+html {
+  direction: rtl;
+}
+
+/**
+ * Generic elements
+ */
+body {
+  direction: rtl;
+  text-align: right;
+}
+ol li, ul li {
+  margin: .4em .5em .4em 0;
+}
+ul.menu, .item-list ul {
+  margin: .35em -.5em 0 0;
+}
+ul.menu ul, .item-list ul ul {
+  margin-right: 0;
+}
+ol li, ul li, ul.menu li, .item-list ul li, li.leaf {
+  margin: .15em .5em .15em 0;
+}
+ul li, ul.menu li, .item-list ul li, li.leaf {
+  padding: 0 1.5em .2em 0;
+  background: transparent url("images/menu-leaf.gif") no-repeat 100% .35em;
+}
+ol li {
+  margin-left: 0;
+  margin-right: 2em;
+}
+ul li.expanded {
+  background: transparent url("images/menu-expanded.gif") no-repeat 100% .35em;
+}
+ul li.collapsed {
+  background: transparent url("images/menu-collapsed-rtl.gif") no-repeat 100% .35em;
+}
+dl {
+  margin: 0.5em 1.5em 1em 0;
+}
+dl dd {
+  margin: 0 1.5em .5em 0;
+}
+.form-button, .form-submit {
+  margin: 2em 0 1em 0.5em;
+}
+.meta-footer {
+  text-align: left;
+}
+
+/**
+ * Special image mapping
+ */
+blockquote {
+  padding: 0 24px 0 0;
+  background: url(images/blockquote.png) right top no-repeat;
+}
+.comment-new h3.title {
+  float: right;
+  background: url(images/new.png) left center no-repeat;
+  padding: 2px 0 2px 20px;
+}
+.meta .editlink {
+  float: left;
+  background: url(images/pencil.png) left center no-repeat;
+}
+.meta .submitted {
+  background: url(images/date.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+.meta .terms ul.links li {
+  background: url(images/tag_blue.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.blog_usernames_blog {
+  background: url(images/user.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.book_add_child {
+  background: url(images/book.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.book_printer {
+  background: url(images/printer.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.comment_forbidden {
+  background: url(images/comment.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.comment_new_comments,
+ul.links li.comment_reply,
+ul.links li.comment_add {
+  background: url(images/comment_add.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.comment_delete {
+  background: url(images/comment_delete.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.comment_edit {
+  background: url(images/comment_edit.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.comment_comments {
+  background: url(images/comments.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.node_read_more {
+  background: url(images/page_white_text.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.statistics_counter {
+  background: url(images/chart_curve.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+ul.links li.upload_attachments {
+  background: url(images/disk.png) right center no-repeat;
+  padding: 2px 18px 2px 0;
+}
+
+/**
+ * Layout
+ */
+#wrapper #container #header #logo img {
+  float: right;
+  margin: 10px 10px 10px 0;
+}
+#wrapper #container #header #slogan-floater {
+  float: right;
+  margin: 20px 10px 0 0;
+}
+#wrapper #container #header #slogan-floater .site-slogan {
+  float: right;
+}
+#center .block h2,
+.sidebar .block h2 {
+  text-align: right;
+}
+#center .block h2 {
+  background: #A9C0CE url(images/corner-rtl.gif) top left no-repeat;
+}
+.sidebar .block h2 {
+  background: #6C757A url(images/corner-rtl.gif) top left no-repeat;
+}
+
+/**
+ * Header
+ */
+#wrapper #container #header #slogan-floater h1.site-name {
+  float: right;
+}
+
+/**
+ * Primary navigation
+ */
+#primary-links .title {
+  float: right;
+  padding: 0 10px 0 0;
+}
+#primary-links ul {
+  float: left;
+}
+#primary-links ul li {
+  float: right;
+}
+
+/**
+ * Search region
+ */
+#search-region .welcome {
+  float: right;
+}
+#search-region .search-form {
+  float: left;
+}
+#search-region .search-form label {
+  float: right;
+  margin: 0 20px 0 0;
+}
+#search-region .search-form .form-item {
+  float: right;
+}
+#search-region .search-form .form-item .form-text {
+  float: right;
+  margin: 8px 4px 0 0;
+}
+#search-region .search-form .form-submit {
+  float: right;
+  margin: 8px 4px 0 0;
+}
+#search-region .search-form .advanced {
+  float: right;
+  margin: 0 8px 0 20px;
+}
+
+/**
+ * Nodes & comments
+ */
+ul.links li, ul.inline li {
+  margin: 0 0 0 1em;
+}
+.picture {
+  float: left;
+  margin: 0 .5em .5em 0;
+}
+.indented {
+  margin-left: 0;
+  margin-right: 25px;
+}
+
+/**
+ * OpenID.module
+ */
+#user-login-form li.openid-link,
+#user-login li.openid-link {
+  background-position: right center;
+  padding: 2px 18px 2px 0;
+}
+
+/**
+ * Login Block
+ */
+#user-login-form ul {
+  text-align: right;
+}

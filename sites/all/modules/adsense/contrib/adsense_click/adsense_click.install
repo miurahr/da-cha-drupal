@@ -1,0 +1,64 @@
+<?php
+// $Id: adsense_click.install,v 1.1.4.2 2008/09/20 17:20:01 kbahey Exp $
+//
+// Copyright 2005-2008 Khalid Baheyeldin http://2bits.com
+
+// TODO: Change this to the schema API.
+
+function adsense_click_install() {
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      $success = db_query("CREATE TABLE IF NOT EXISTS {adsense_clicks} (
+        aid       INT(10)      NOT NULL AUTO_INCREMENT,
+        ip        VARCHAR(15)  DEFAULT '0',
+        timestamp INT(11)      UNSIGNED NOT NULL DEFAULT '0',
+        path      VARCHAR(255) DEFAULT '',
+        title     VARCHAR(255) DEFAULT '',
+        referrer  VARCHAR(255) DEFAULT '',
+        PRIMARY KEY  (aid),
+        KEY (timestamp),
+        KEY (path)
+        ) /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      break;
+    case 'pgsql':
+      $success = db_query("CREATE TABLE {adsense_clicks} (
+        aid       SERIAL,
+        ip        VARCHAR(15) DEFAULT '0',
+        timestamp INTEGER NOT NULL DEFAULT '0',
+        path      VARCHAR(255) DEFAULT '',
+        title     VARCHAR(255) DEFAULT '',
+        referrer  VARCHAR(255) DEFAULT '',
+        PRIMARY KEY  (aid));");
+      $success = db_query("CREATE INDEX {timestamp} ON {adsense_clicks} (timestamp);");
+      $success = db_query("CREATE INDEX {path}      ON {adsense_clicks} (path);");
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function adsense_click_uninstall() {
+  db_query('DROP TABLE {adsense_clicks}');
+}
+
+function adsense_click_update_1() {
+  adsense_install();
+}
+
+function adsense_click_update_2() {
+  $ret = array();
+  $ret[] = update_sql("ALTER TABLE {adsense_clicks} ADD COLUMN title VARCHAR(255) NOT NULL DEFAULT ''");
+  $ret[] = update_sql("ALTER TABLE {adsense_clicks} ADD COLUMN referrer VARCHAR(255) NOT NULL DEFAULT ''");
+  return $ret;
+}
+
+function adsense_click_update_3() {
+  $ret = array();
+  $ret[] = update_sql("ALTER TABLE {adsense_clicks} MODIFY COLUMN path     VARCHAR(255) DEFAULT ''");
+  $ret[] = update_sql("ALTER TABLE {adsense_clicks} MODIFY COLUMN title    VARCHAR(255) DEFAULT ''");
+  $ret[] = update_sql("ALTER TABLE {adsense_clicks} MODIFY COLUMN referrer VARCHAR(255) DEFAULT ''");
+  $ret[] = update_sql("CREATE INDEX {path} ON {adsense_clicks} (path);");
+  return $ret;
+}

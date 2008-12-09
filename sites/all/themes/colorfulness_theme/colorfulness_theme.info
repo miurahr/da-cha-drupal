@@ -1,0 +1,24 @@
+; $Id: colorfulness_theme.info,v 1.1 2008/07/29 14:19:38 nimazuk Exp $
+name = Colorfulness Theme
+description = Colorfulness is light-weight, 3-column, fixed width and uses CSS.
+regions[left] = Left sidebar
+regions[right] = Right sidebar
+regions[content] = Content
+regions[header] = Header
+features[] = name
+features[] = slogan
+features[] = favicon
+features[] = primary_links
+stylesheets[all][] = style.css
+version = VERSION
+core = 6.x
+engine = phptemplate
+
+;
+
+; Information added by drupal.org packaging script on 2008-07-29
+version = "6.x-5.1"
+core = "6.x"
+project = "colorfulness_theme"
+datestamp = "1217348106"
+

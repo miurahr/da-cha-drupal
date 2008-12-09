@@ -1,0 +1,170 @@
+// $Id: CHANGELOG.txt,v 1.8.2.46 2008/11/22 18:41:33 hswong3i Exp $
+
+Internet Services 6.x-2.x-dev, xxxx-xx-xx (development version)
+----------------------
+
+Internet Services 5.x-2.8, 2008-11-23
+----------------------
+- add @ingroup for custom.example.css, better documentation.
+- update README.txt.
+- better comment message.
+- #314124: fix profile picture alignment.
+- #337338: use '$front_page' instead of $base_path in page.tpl.php
+
+Internet Services 6.x-2.7, 2008-08-17
+----------------------
+- revamp primary links, better style and comment.
+- add more clipart, sync with MediaWiki theme development.
+- better h1/h2/etc styling for page layout arragement.
+- #262772: fix truncated sitename in IE6/7.
+- minor fix to internet_services_2 primary links hover.
+- renew screenshot-drupal.org.png.
+
+Internet Services 6.x-2.6, 2008-06-19
+----------------------
+- simplify pencil link implementation.
+
+Internet Services 6.x-2.5, 2008-06-16
+----------------------
+- minor bugfix.
+- CSS syntax cleanup.
+- #268850: fix pencil link for Clear URL.
+- add .meta-header and .meta-footer, with different styling.
+- update large screenshot.
+- update custom.example.css.
+
+Internet Services 6.x-2.4, 2008-05-30
+----------------------
+- add admin style, clone from garland.
+- update large screenshot.
+- reposition code layout, clone from garland.
+- revamp page region handling, clone from garland.
+- #263342: fix buggy primary menu in IE6.
+- #263363: fix buggy search-theme-form in IE6.
+- #263548: fix buggy main region block title indent in IE6.
+
+Internet Services 6.x-2.3, 2008-05-13
+----------------------
+- add a lot of fancy icons for meta data.
+- update screenshots.
+- better meta date style with height and line-height.
+
+Internet Services 6.x-2.2, 2008-05-07
+----------------------
+- add placeholders for IE6 fix.
+- update document.
+- update screenshots.
+- bugfix fluid width layout, if override as fixed width in custom.css.
+- bugfix fixed width example in custom.example.css.
+- bugfix fluid width layout for IE6.
+- bugfix background images for IE6.
+- bugfix height and line-height for block title, meta data and misc.
+
+Internet Services 6.x-2.1, 2008-05-01
+----------------------
+- coding style sync with interactive_media and garland.
+- bugfix fluid width layout.
+- add feed icon for page.tpl.php.
+- misc style update.
+- documentation update.
+- RTL test with Acid2 support browser.
+
+Internet Services 6.x-2.0, 2008-04-20
+----------------------
+- add experimental RTL support.
+- update stock images.
+- theme new comment with image.
+- clone garland table, tr, td style.
+- css tidy up with help of csstidy.
+- documentation update.
+- update screenshots.
+- bugfix theme_primary().
+
+Internet Services 6.x-2.0-rc4, 2008-04-14
+----------------------
+- comment.tpl.php: add $signature.
+- add custom.example.css for internet_services_2.
+- page.tpl.php: update $lanugage, $body_class, $left, $right, $footer.
+- template.php: register theme_mission() and theme_primary().
+- node.tpl.php: fix pencil button with url().
+- rename internet_services_2/style.css as internet_services_2.css.
+- better search-theme-form implementation.
+
+Internet Services 5.x-2.8, 2008-11-23
+----------------------
+- sync with 6.x-2.x-dev.
+- this should be the last stable release for Drupal 5.x.
+
+Internet Services 5.x-2.7, 2008-08-17
+----------------------
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.6, 2008-06-19
+----------------------
+- clone D6 $body_classes, so share style.css with D6.
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.5, 2008-06-16
+----------------------
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.4, 2008-05-30
+----------------------
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.3, 2008-05-13
+----------------------
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.2, 2008-05-07
+----------------------
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.1, 2008-05-01
+----------------------
+- sync with 6.x-2.x-dev.
+
+Internet Services 5.x-2.0, 2008-04-20
+----------------------
+- sync update with 6.x-2.x-dev.
+
+Internet Services 5.x-2.0-rc4, 2008-04-14
+----------------------
+- better search-theme-form implementation, sync from 6.x-2.x-dev.
+
+Internet Services 5.x-2.0-rc3, 2008-04-13
+----------------------
+- add sub-theme internet_service_2
+- layout sync and update with original design.
+- update screenshots.
+
+Internet Services 5.x-2.0-rc2, 2008-04-13
+----------------------
+- bugfix for fluid width layout.
+- improve primary link and search form for fluid width layout.
+- pre-bugfix for 6.x-2.x RTL implementation.
+- coding style cleanup.
+- code sync with contented7.
+
+Internet Services 5.x-2.0-rc1, 2008-04-11
+----------------------
+- add fluid width implementation.
+- layout bugfix.
+- add custom.example.css.
+- user can override default layout with custom.css.
+
+Internet Services 5.x-1.2, 2008-01-08
+----------------------
+- update mission as D.O. official theme style.
+- add theme_mission() so code enclose with <?php ?> will translate as script.
+- other minor cleanup.
+- update screenshots.
+- add license, changelog and readme.
+
+Internet Services 5.x-1.1, 2007-02-08
+----------------------
+- second stable release.
+
+Internet Services 5.x-1.0, 2007-02-07
+----------------------
+- first stable release.

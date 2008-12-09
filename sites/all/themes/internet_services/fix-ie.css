@@ -1,0 +1,38 @@
+/* $Id: fix-ie.css,v 1.1.2.2 2008/05/28 03:31:06 hswong3i Exp $ */
+
+/**
+ * Layout
+ */
+/* Now we add the backgrounds for the main content shading */
+body.no-sidebars #center #squeeze,
+body.sidebar-left #center #squeeze {
+  padding-right: 0;
+}
+body.no-sidebars #center .block h2,
+body.sidebar-left #center .block h2 {
+  margin-right: 0;
+}
+body.no-sidebars #center #squeeze,
+body.sidebar-right #center #squeeze {
+  padding-left: 0;
+}
+body.no-sidebars #center .block h2,
+body.sidebar-right #center .block h2 {
+  margin-left: 0;
+}
+
+/**
+ * Search region
+ */
+/* Dynamic width handling is buggy in IE6 */
+#search-region .search-form {
+  width: 600px;
+}
+/* Margin handling is buggy in IE6 */
+#search-region .search-form label {
+  margin: 0 0 0 10px;
+}
+/* Margin handling is buggy in IE6 */
+#search-region .search-form .advanced {
+  margin: 0 0 0 8px;
+}

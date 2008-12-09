@@ -1,0 +1,48 @@
+/* $Id: custom.example.css,v 1.1.4.6 2008/08/30 02:39:50 hswong3i Exp $ */
+
+/**
+ * Here are some example for customize your theme layout with
+ * custom.css, divided into section by section.
+ *
+ * To apply them, copy a COMPLETE SECTION of CSS code snippet into your
+ * own custom.css, and take any further more override customization.
+ */
+
+/**
+ * @ingroup variable-max-width-layout
+ *
+ * This is a transformation example from minneli, which fix the MAXIMUM
+ * width of layout based on number of columns:
+ *
+ * @{
+ */
+body.no-sidebars #wrapper #container {
+  max-width: 760px;
+}
+body.sidebar-left #wrapper #container,
+body.sidebar-right #wrapper #container {
+  max-width: 980px;
+}
+body.two-sidebars #wrapper #container {
+  max-width: 1240px;
+}
+
+/**
+ * @} End of "ingroup variable-max-width-layout".
+ */
+
+/**
+ * @ingroup fixed-width-layout
+ *
+ * In case to have fixed width layout as minneli, use the below  code
+ * snippet for 1024x768:
+ *
+ * @{
+ */
+body #wrapper #container {
+  width: 980px;
+}
+
+/**
+ * @} End of "ingroup fixed-width-layout".
+ */

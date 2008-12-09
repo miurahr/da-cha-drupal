@@ -1,0 +1,199 @@
+// $Id: CHANGELOG.txt,v 1.9.2.56 2008/11/22 08:16:15 hswong3i Exp $
+
+Contented7 6.x-2.x-dev, xxxx-xx-xx (development version)
+----------------------
+
+Contented7 6.x-2.14, 2008-11-22
+----------------------
+- add @ingroup for custom.example.css, better documentation.
+- update README.txt.
+- better comment message.
+- #314124: fix profile picture alignment.
+- #337338: use '$front_page' instead of $base_path in page.tpl.php
+
+Contented7 6.x-2.13, 2008-08-17
+----------------------
+- revamp primary links, better style and comment.
+- add more clipart, sync with MediaWiki theme development.
+- better h1/h2/etc styling for page layout arragement.
+- #262772: fix truncated sitename in IE6/7.
+- renew screenshot-drupal.org.png.
+
+Contented7 6.x-2.12, 2008-06-19
+----------------------
+- simplify pencil link implementation.
+
+Contented7 6.x-2.11, 2008-06-16
+----------------------
+- minor bugfix.
+- CSS syntax cleanup.
+- #268850: fix pencil link for Clear URL.
+- add .meta-header and .meta-footer, with different styling.
+- update large screenshot.
+- update custom.example.css.
+
+Contented7 6.x-2.10, 2008-05-27
+----------------------
+- add admin style, clone from garland.
+- update large screenshot.
+- reposition code layout, clone from garland.
+- revamp page region handling, clone from garland.
+
+Contented7 6.x-2.9, 2008-05-13
+----------------------
+- add a lot of fancy icons for meta data.
+- update screenshots.
+- better meta date style with height and line-height.
+
+Contented7 6.x-2.8, 2008-05-07
+----------------------
+- add placeholders for IE6 fix.
+- update document.
+- update screenshots.
+- bugfix fluid width layout, if override as fixed width in custom.css.
+- bugfix fixed width example in custom.example.css.
+- bugfix fluid width layout for IE6.
+- bugfix height and line-height for primary links and block title.
+
+Contented7 6.x-2.7, 2008-05-01
+----------------------
+- bugfix fuild width layout.
+- header region revamp as fixed height layout (better compatibility).
+- tested with FF3, Opera9.2, IE7 and Safari3.
+
+Contented7 6.x-2.6, 2008-04-20
+----------------------
+- update screenshots.
+- minor bugfix.
+- P.S. skip version 6.x-2.1 to 6.x-2.5, so sync with 5.x-2.x-dev
+
+Contented7 6.x-2.0, 2008-04-17
+----------------------
+- update stock images.
+- theme new comment with image.
+- clone garland table, tr, td style.
+- css tidy up with help of csstidy.
+- RTL bugfix.
+- update documentation.
+
+Contented7 6.x-2.0-rc3, 2008-04-15
+----------------------
+- fix page max-width as 1240px (i.e. 1280x1024).
+- RTL update for FF3, IE7 and Opera9 (thanks for Zohar).
+- other minor bugfix.
+
+Contented7 6.x-2.0-rc2, 2008-04-12
+----------------------
+- bug fix for RTL.
+- coding style cleanup.
+
+Contented7 6.x-2.0-rc1, 2008-04-11
+----------------------
+- minor layout bugfix update.
+- comment.tpl.php: add $signature.
+- page.tpl.php: update $lanugage, $body_class, $left, $right, $footer.
+- template.php: register theme_mission().
+- node.tpl.php: fix pencil button with url().
+- style.css: add placeholder /* LTR */
+- style-rtl.css: add RTL support (not tested).
+
+Contented7 5.x-2.14, 2008-11-22
+----------------------
+- sync with 6.x-2.x-dev.
+- this should be the last stable release for Drupal 5.x.
+
+Contented7 5.x-2.13, 2008-08-17
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.12, 2008-06-19
+----------------------
+- clone D6 $body_classes, so share style.css with D6.
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.11, 2008-06-16
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.10, 2008-05-27
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.9, 2008-05-13
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.8, 2008-05-07
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.7, 2008-05-01
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.6, 2008-04-20
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.5, 2008-04-17
+----------------------
+- backport sync with 6.x-2.0.
+- update screenshots.
+
+Contented7 5.x-2.4, 2008-04-14
+----------------------
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.3, 2008-04-12
+----------------------
+- bug fix.
+- coding style cleanup.
+- sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.2, 2008-04-11
+----------------------
+- minor layout bugfix update.
+- coding style sync with 6.x-2.x-dev.
+
+Contented7 5.x-2.1, 2008-04-10
+----------------------
+- remove fixed width sub themes.
+- add custom.example.css.
+- user can override default layout with custom.css.
+
+Contented7 5.x-2.0, 2008-01-13
+----------------------
+- add sidebar-left
+- add fluid width implementation (clone from garland).
+- add some documents.
+- update ids and classes.
+- remove useless theme function from template.php.
+
+Contented7 5.x-1.4, 2008-01-10
+----------------------
+- update large screenshot as 1024x768.
+- remove sub-themes large screenshot (it is not useful).
+- coding style update.
+
+Contented7 5.x-1.3, 2008-01-10
+----------------------
+- update base theme as "width: 100%;" dynamic layout.
+- update main and right sidebar handling (reference to garland).
+- add 2 sub-themes: fix width 1024x768 and 800x600.
+- coding style cleanup.
+
+Contented7 5.x-1.2, 2008-01-08
+----------------------
+- add license, changelog and readme.
+
+Contented7 5.x-1.1, 2008-01-07
+----------------------
+- update mission as D.O. official theme style.
+- add theme_mission() so code enclose with <?php ?> will translate as script.
+- update region handling as percentage.
+- other minor cleanup.
+- update screenshots.
+
+Contented7 5.x-1.0, 2007-02-09
+----------------------
+- first stable release.

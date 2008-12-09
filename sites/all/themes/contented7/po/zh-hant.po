@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-12-16 19:02+0800\n"
+"Last-Translator: Edison Wong <hswong3i@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: node.tpl.php:10
+msgid "Edit"
+msgstr "編輯"
+
+#: node.tpl.php:13
+msgid "Published"
+msgstr "發表"
+
+#: node.tpl.php:15
+msgid "Tags:"
+msgstr "標籤:"
+
+#: template.php:15
+msgid "right sidebar"
+msgstr "右欄"
+
+#: template.php:16
+msgid "content"
+msgstr "內容"
+
+#: template.php:17
+msgid "header"
+msgstr "頁首"
+
+#: template.php:18
+msgid "footer"
+msgstr "頁尾"
+

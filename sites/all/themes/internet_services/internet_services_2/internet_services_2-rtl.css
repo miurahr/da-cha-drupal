@@ -1,0 +1,13 @@
+/* $Id: internet_services_2-rtl.css,v 1.1.2.4 2008/05/06 15:16:47 hswong3i Exp $ */
+
+/**
+ * Page layout blocks / IDs
+ */
+#center .block h2 {
+  background: #E8E8E8 url('images/h2bg-rtl.gif') no-repeat center right;
+  padding: 0 43px 0 0;
+}
+.sidebar .block h2 {
+  background: #BDBDBD url('images/h3bg-rtl.gif') no-repeat center left;
+  padding: 0 5px 0 0;
+}

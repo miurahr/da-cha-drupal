@@ -1,0 +1,45 @@
+# LANGUAGE translation of Drupal (node.tpl.php)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-12-16 18:55+0800\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: node.tpl.php:10
+msgid "Edit"
+msgstr ""
+
+#: node.tpl.php:13
+msgid "Published"
+msgstr ""
+
+#: node.tpl.php:15
+msgid "Tags:"
+msgstr ""
+
+#: template.php:15
+msgid "right sidebar"
+msgstr ""
+
+#: template.php:16
+msgid "content"
+msgstr ""
+
+#: template.php:17
+msgid "header"
+msgstr ""
+
+#: template.php:18
+msgid "footer"
+msgstr ""
+

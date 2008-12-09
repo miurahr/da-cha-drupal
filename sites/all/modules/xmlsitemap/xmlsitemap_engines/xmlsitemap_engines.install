@@ -1,0 +1,45 @@
+<?php
+// $Id: xmlsitemap_engines.install,v 1.3.2.3 2008/11/28 16:12:47 kiam Exp $
+
+/*****************************************************************************
+ * Drupal hooks.
+ ****************************************************************************/
+
+/**
+ * Implementation of hook_install().
+ */
+function xmlsitemap_engines_install() {
+}
+
+/**
+ * Implementation of hook_update_N().
+ * 
+ * Replace Moreover with Windows Live.
+ */
+function xmlsitemap_engines_update_1() {
+  if ($submit = variable_get('xmlsitemap_engines_moreover_submit', FALSE)) { 
+    variable_set('xmlsitemap_engines_live_submit', $submit);
+  }
+  db_query("DELETE FROM {variable} WHERE name LIKE 'xmlsitemap\_engines\_moreover\_'");
+  return array(
+    0 => array(
+      'success' => TRUE,
+      'query' => 'UPDATE MODULE VARIABLES',
+    )
+  );
+}
+
+/**
+ * Implementation of hook_update_N().
+ * It fixes the update number to the correct naming convention.
+ */
+function xmlsitemap_engines_update_6100() {
+  return array();
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function xmlsitemap_engines_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'xmlsitemap\_engines\_'");
+}

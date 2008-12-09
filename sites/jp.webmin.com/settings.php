@@ -89,7 +89,7 @@
  *   $db_url = 'mysqli://username:password@localhost/databasename';
  *   $db_url = 'pgsql://username:password@localhost/databasename';
  */
-$db_url = 'mysql://miurahr:cqcq@localhost/miura_webmin2';
+$db_url = 'mysql://miura:cqcq@localhost/miura_webmin2';
 $db_prefix = '';
 
 /**
@@ -101,7 +101,7 @@ $db_prefix = '';
  * check. After finishing the upgrade, be sure to open this file again
  * and change the TRUE back to a FALSE!
  */
-$update_free_access = FALSE;
+$update_free_access = FALSE; 
 
 /**
  * Base URL (optional).

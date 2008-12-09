@@ -1,0 +1,107 @@
+<?php
+// $Id: xmlsitemap_menu.module,v 1.1.4.3 2008/11/28 20:37:04 kiam Exp $
+
+/**
+ * @file
+ * Adds menu items to the site map.
+ */
+
+/**
+ * @addtogroup xmlsitemap
+ * @{
+ */
+
+/*****************************************************************************
+ * Drupal hooks.
+ ****************************************************************************/
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function xmlsitemap_menu_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    case 'xmlsitemap_settings_sitemap':
+      $opts = array();
+      $default_opts = array();
+      // Get the list of root menus. Navigation menu is not used to avoid
+      // problems.
+      // $result = db_query("SELECT menu_name, title FROM {menu_custom} WHERE menu_name <> '%s'", 'navigation');
+      $result = db_query("SELECT menu_name, title FROM {menu_custom}");
+      while ($menu = db_fetch_array($result)) {
+        $opts[$menu['menu_name']] = empty($menu['title']) ? $menu['menu_name'] : $menu['title'];
+      }
+      $default_opts = variable_get('xmlsitemap_menu_menus', $default_opts);
+      // If a menu is not present, remove it from the default settings.
+      foreach ($default_opts as $opt) {
+        if (!isset($opts[$opt])) {
+          unset($default_opts[$opt]);
+        }
+      }
+      if (!empty($opts)) {
+        $form['xmlsitemap_menu_menus'] = array(
+          '#type' => 'checkboxes',
+          '#title' => t('Menus to include in site map'),
+          '#default_value' => $default_opts,
+          '#options' => $opts,
+        );
+        $form['buttons']['#weight'] = 1;
+      }
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_init().
+ */
+function xmlsitemap_menu_init() {
+  if (!empty($GLOBALS['user']->uid)) {
+    xmlsitemap_update_sitemap();
+  }
+}
+
+/**
+ * Implementation of hook_xmlsitmap_links().
+ */
+function xmlsitemap_menu_xmlsitemap_links($type = NULL, $excludes = array()) {
+  if (!isset($type)) {
+    $menus = variable_get('xmlsitemap_menu_menus', $menus);
+    foreach ($menus as $menu) {
+      _xmlsitemap_menu_process_link($menu);
+    }
+  }
+}
+
+/*****************************************************************************
+ * Private functions.
+ ****************************************************************************/
+
+/**
+ * Add links for a menu item and all its children to the site map.
+ * @param $mid
+ *  The ID of the menu to process.
+ * @param $menu
+ *  The full menu structure for a user.
+ */
+function _xmlsitemap_menu_process_link($menu) {
+  $links = array();
+  $result = db_query("SELECT ml.*, m.* FROM {menu_links} ml LEFT JOIN {menu_router} m ON m.path = ml.router_path WHERE  ml.menu_name = '%s' ORDER BY ml.plid, ml.mlid ASC", $menu);
+  while ($link = db_fetch_array($result)) {
+    // Avoid external links, or links to the front page;
+    // both have $link['external'] set to 1.
+    if (!$link['external'] && !$link['hidden']) {
+      _menu_link_translate($link);
+      if ($link['access'] == 1) {
+        $alias = db_result(db_query_range("SELECT dst FROM {url_alias} WHERE src = '%s'", $link['href'], 0, 1));
+        if ($alias === FALSE) {
+          $alias = NULL;
+        }
+        $priority = min(max(round($link['weight'] / 20 + 0.5, 1), 0), 1);
+        db_query("INSERT INTO {xmlsitemap} (loc, priority) VALUES ('%s', %f)", xmlsitemap_url($link['href'], $alias, NULL, NULL, TRUE), $priority);
+      }
+    }
+  }
+}
+
+/**
+ * @} End of "addtogroup xmlsitemap".
+ */

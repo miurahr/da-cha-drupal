@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-12-16 19:04+0800\n"
+"Last-Translator: Edison Wong <hswong3i@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: node.tpl.php:10
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: node.tpl.php:13
+msgid "Published"
+msgstr "Δημοσιευμένο"
+
+#: node.tpl.php:15
+msgid "Tags:"
+msgstr "Κατηγορίες:"
+
+#: template.php:15
+msgid "right sidebar"
+msgstr "δεξιά ζώνη"
+
+#: template.php:16
+msgid "content"
+msgstr "ύλη"
+
+#: template.php:17
+msgid "header"
+msgstr "κεφαλίδα"
+
+#: template.php:18
+msgid "footer"
+msgstr "υποσέλιδο"
+

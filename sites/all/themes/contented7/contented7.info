@@ -1,0 +1,15 @@
+; $Id: contented7.info,v 1.1 2008/04/11 02:30:59 hswong3i Exp $
+name = Contented7
+description = Tableless, multi-column, fluid width theme.
+version = VERSION
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = style.css
+stylesheets[all][] = custom.css
+
+; Information added by drupal.org packaging script on 2008-11-22
+version = "6.x-2.14"
+core = "6.x"
+project = "contented7"
+datestamp = "1227342005"
+
