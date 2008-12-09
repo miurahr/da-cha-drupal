@@ -1,0 +1,490 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-forum)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  forum-list.tpl.php,v 1.4 2007/08/30 18:58:12 goba
+#  forum-submitted.tpl.php,v 1.3 2007/08/07 08:39:35 goba
+#  forum-topic-navigation.tpl.php,v 1.2 2007/08/07 08:39:35 goba
+#  forum.admin.inc,v 1.8 2008/01/30 10:14:42 goba
+#  forum.module,v 1.448.2.2 2008/02/13 14:06:36 goba
+#  forum.install,v 1.16 2007/12/31 16:58:34 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/forum/forum-list.tpl.php:38
+msgid "Topics"
+msgstr "トピック"
+
+#: modules/forum/forum-list.tpl.php:39
+msgid "Posts"
+msgstr "投稿"
+
+#: modules/forum/forum-list.tpl.php:40
+msgid "Last post"
+msgstr "最終投稿"
+
+#: modules/forum/forum-submitted.tpl.php:21
+msgid "@time ago<br />by !author"
+msgstr "@time前<br />投稿者： !author"
+
+#: modules/forum/forum-topic-navigation.tpl.php:29
+msgid "Go to previous forum topic"
+msgstr "前のトピックへ"
+
+#: modules/forum/forum-topic-navigation.tpl.php:32
+msgid "Go to next forum topic"
+msgstr "次のトピックへ"
+
+#: modules/forum/forum.admin.inc:38
+msgid "Forum name"
+msgstr "フォーラム名"
+
+#: modules/forum/forum.admin.inc:41
+msgid "Short but meaningful name for this collection of threaded discussions."
+msgstr "簡潔で意味のあるフォーラムの名前を入力してください。"
+
+#: modules/forum/forum.admin.inc:47
+msgid "Description and guidelines for discussions within this forum."
+msgstr "フォーラム内の議論に関する説明とガイドラインを入力してください。"
+
+#: modules/forum/forum.admin.inc:54
+msgid ""
+"Forums are displayed in ascending order by weight (forums with equal weights "
+"are displayed alphabetically)."
+msgstr ""
+"このフォーラムの表示順位を決める、ウェイトを指定してください。ウェイトの数値"
+"が小さいほど上部に、大きいほど下部に配置されます。 同じ場合にはアルファベット"
+"順に配置されます。"
+
+#: modules/forum/forum.admin.inc:75
+msgid "forum container"
+msgstr "フォーラムコンテナ"
+
+#: modules/forum/forum.admin.inc:79 modules/forum/forum.module:0
+msgid "forum"
+msgstr "フォーラム"
+
+#: modules/forum/forum.admin.inc:90
+msgid "Created new @type %term."
+msgstr "新しい @type %term が作成されました。"
+
+#: modules/forum/forum.admin.inc:93
+msgid "The @type %term has been updated."
+msgstr "@type %term が更新されました。"
+
+#: modules/forum/forum.admin.inc:116
+msgid "Container name"
+msgstr "コンテナ名"
+
+#: modules/forum/forum.admin.inc:120
+msgid "Short but meaningful name for this collection of related forums."
+msgstr "簡潔で意味のあるコンテナの名前を入力してください。"
+
+#: modules/forum/forum.admin.inc:128
+msgid "Description and guidelines for forums within this container."
+msgstr "コンテナ内のフォーラムに関する説明とガイドラインを入力してください。"
+
+#: modules/forum/forum.admin.inc:136
+msgid ""
+"Containers are displayed in ascending order by weight (containers with equal "
+"weights are displayed alphabetically)."
+msgstr ""
+"このコンテナの表示順位を決める、ウェイトを指定してください。ウェイトの数値が"
+"小さいほど上部に、大きいほど下部に配置されます。 同じ場合にはアルファベット順"
+"に配置されます。"
+
+# コンテナも含まれる
+#: modules/forum/forum.admin.inc:168
+msgid "Are you sure you want to delete the forum %name?"
+msgstr "本当に、フォーラムまたはコンテナ %name を削除してもよろしいですか？"
+
+#: modules/forum/forum.admin.inc:168
+msgid ""
+"Deleting a forum or container will also delete its sub-forums, if any. To "
+"delete posts in this forum, visit <a href=\"@content\">content "
+"administration</a> first. This action cannot be undone."
+msgstr ""
+"フォーラムやコンテナを削除すると、同時に下位フォーラムも削除されます。 フォー"
+"ラム内の投稿を削除するには、はじめに<a href=\"@content\">コンテンツの管理</a>"
+"にアクセスしてください。 この操作は元に戻すことができませんので、十分に注意し"
+"て実行してください。"
+
+# コンテナも含まれる
+#: modules/forum/forum.admin.inc:176
+msgid ""
+"The forum %term and all sub-forums and associated posts have been deleted."
+msgstr ""
+"フォーラムまたはコンテナ %term と、すべての下位フォーラムや関連付けられた投稿"
+"が削除されました。"
+
+#: modules/forum/forum.admin.inc:192
+msgid "Hot topic threshold"
+msgstr "ホットトピックのしきい値"
+
+#: modules/forum/forum.admin.inc:195
+msgid "The number of posts a topic must have to be considered \"hot\"."
+msgstr "ホットトピックと見なされるために必要な投稿数を指定してください。"
+
+#: modules/forum/forum.admin.inc:199
+msgid "Topics per page"
+msgstr "ページ単位のトピック数"
+
+#: modules/forum/forum.admin.inc:202
+msgid "Default number of forum topics displayed per page."
+msgstr "各ページに表示するデフォルトのフォーラムトピック数を指定してください。"
+
+#: modules/forum/forum.admin.inc:204
+msgid "Posts - most active first"
+msgstr "投稿が活発な順"
+
+#: modules/forum/forum.admin.inc:204
+msgid "Posts - least active first"
+msgstr "投稿が不活発な順"
+
+#: modules/forum/forum.admin.inc:206
+msgid "Default order"
+msgstr "デフォルトの並び順"
+
+#: modules/forum/forum.admin.inc:209
+msgid "Default display order for topics."
+msgstr "デフォルトのトピックの表示順を指定してください。"
+
+#: modules/forum/forum.admin.inc:230
+msgid "edit container"
+msgstr "コンテナの編集"
+
+#: modules/forum/forum.admin.inc:233
+msgid "edit forum"
+msgstr "フォーラムの編集"
+
+#: modules/forum/forum.admin.inc:245
+msgid ""
+"There are no existing containers or forums. Containers and forums may be "
+"added using the <a href=\"@container\">add container</a> and <a href=\"@forum"
+"\">add forum</a> pages."
+msgstr ""
+"既存のコンテナやフォーラムがありません。 コンテナやフォーラムは、<a href="
+"\"@container\">コンテナの追加</a>や<a href=\"@forum\">フォーラムの追加</a>"
+"ページで追加することができます。"
+
+#: modules/forum/forum.admin.inc:286
+msgid ""
+"Containers are usually placed at the top (root) level, but may also be "
+"placed inside another container or forum."
+msgstr ""
+"コンテナを配置する階層を指定してください。 一般にコンテナは最上位に配置します"
+"が、他のコンテナやフォーラムの内部に配置することもできます。"
+
+#: modules/forum/forum.admin.inc:289
+msgid ""
+"Forums may be placed at the top (root) level, or inside another container or "
+"forum."
+msgstr ""
+"フォーラムを配置する階層を指定してください。 フォーラムは、最上位または他のコ"
+"ンテナやフォーラムの内部に配置することができます。"
+
+# コンテナも含まれるがwatchdogなのでそのまま
+#: modules/forum/forum.admin.inc:177
+msgid "forum: deleted %term and all its sub-forums and associated posts."
+msgstr ""
+"フォーラム： %term と、すべての下位フォーラムや関連付けられた投稿が削除されま"
+"した。"
+
+#: modules/forum/forum.module:15
+msgid ""
+"The forum module lets you create threaded discussion forums with "
+"functionality similar to other message board systems. Forums are useful "
+"because they allow community members to discuss topics with one another "
+"while ensuring those conversations are archived for later reference. The <a "
+"href=\"@create-topic\">forum topic</a> menu item (under <em>Create content</"
+"em> on the Navigation menu) creates the initial post of a new threaded "
+"discussion, or thread."
+msgstr ""
+"Forum（フォーラム）モジュールは、他の掲示板システムと似た機能性を持つ、スレッ"
+"ド構成のディスカッションフォーラムを作成できるようにします。 会話があとから参"
+"照できるように保存されつつ、コミュニティメンバー同士が話題について話し合える"
+"ので、フォーラムは役立ちます。 ナビゲーションメニューの「コンテンツの作成」に"
+"あるメニュー項目の<a href=\"@create-topic\">フォーラムトピック</a>で、新しい"
+"スレッド構成ディスカッション（スレッド）の最初の投稿が作成できます。"
+
+#: modules/forum/forum.module:16
+msgid ""
+"A threaded discussion occurs as people leave comments on a forum topic (or "
+"on other comments within that topic). A forum topic is contained within a "
+"forum, which may hold many similar or related forum topics. Forums are "
+"(optionally) nested within a container, which may hold many similar or "
+"related forums. Both containers and forums may be nested within other "
+"containers and forums, and provide structure for your message board. By "
+"carefully planning this structure, you make it easier for users to find and "
+"comment on a specific forum topic."
+msgstr ""
+"人々がフォーラムトピック（またはトピック内のコメント）にコメントを付けるにつ"
+"れて、スレッド構成の議論が生じます。 フォーラムトピックは、類似や関連した"
+"フォーラムトピックを保持するフォーラム内に含まれます。 フォーラムは任意で、類"
+"似や関連するフォーラムを保持するコンテナ内にネスト（入れ子）化することができ"
+"ます。 フォーラムとコンテナは共に、他のフォーラムやコンテナ内にネスト化するこ"
+"とができ、掲示板の構造を提供します。 この構造を慎重に設計することで、ユーザが"
+"特定のフォーラムトピックを見つけ出し、コメントを付けることを容易にします。"
+
+#: modules/forum/forum.module:17
+msgid "When administering a forum, note that:"
+msgstr "フォーラム管理上の注意："
+
+#: modules/forum/forum.module:18
+msgid ""
+"a forum topic (and all of its comments) may be moved between forums by "
+"selecting a different forum while editing a forum topic."
+msgstr ""
+"フォーラムトピックの編集中に異なるフォーラムを選択することで、フォーラムト"
+"ピック（すべてのコメントを含む）はフォーラム間で移動することができます。"
+
+#: modules/forum/forum.module:19
+msgid ""
+"when moving a forum topic between forums, the <em>Leave shadow copy</em> "
+"option creates a link in the original forum pointing to the new location."
+msgstr ""
+"フォーラム間でフォーラムトピックを移動する際、「シャドーコピーを残す」オプ"
+"ションを使用することで、元のフォーラムに新しい場所へのリンクを作成することが"
+"できます。"
+
+#: modules/forum/forum.module:20
+msgid ""
+"selecting <em>Read only</em> under <em>Comment settings</em> while editing a "
+"forum topic will lock (prevent new comments) on the thread."
+msgstr ""
+"フォーラムトピックの編集中に「コメントの設定」で「表示のみ」を選択すること"
+"で、スレッドをロック（新しいコメントを付けさせない）することができます。"
+
+#: modules/forum/forum.module:21
+msgid ""
+"selecting <em>Disabled</em> under <em>Comment settings</em> while editing a "
+"forum topic will hide all existing comments on the thread, and prevent new "
+"ones."
+msgstr ""
+"フォーラムトピックの編集中に「コメントの設定」で「無効」を選択することで、ス"
+"レッドの既存コメントがすべて非表示にされ、さらにスレッドをロック（新しいコメ"
+"ントを付けさせない）することができます。"
+
+#: modules/forum/forum.module:22
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@forum"
+"\">Forum module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@forum\">Forum module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/forum/forum.module:25
+msgid ""
+"This page displays a list of existing forums and containers. Containers "
+"(optionally) hold forums, and forums hold forum topics (a forum topic is the "
+"initial post to a threaded discussion). To provide structure, both "
+"containers and forums may be placed inside other containers and forums. To "
+"rearrange forums and containers, grab a drag-and-drop handle under the "
+"<em>Name</em> column and drag the forum or container to a new location in "
+"the list. (Grab a handle by clicking and holding the mouse while hovering "
+"over a handle icon.) Remember that your changes will not be saved until you "
+"click the <em>Save</em> button at the bottom of the page."
+msgstr ""
+"このページは既存のフォーラムとコンテナの一覧を表示します。 コンテナは任意で"
+"フォーラムを保持し、フォーラムはフォーラムトピック（スレッド構成ディスカッ"
+"ションの最初の投稿）を保持します。 フォーラムとコンテナは共に、構造化のために"
+"他のフォーラムやコンテナの内部に置くことができます。 フォーラムやコンテナを再"
+"配置するには、「名前」カラムにあるドラッグアンドドロップハンドル（十字の矢"
+"印）をつかみ（ハンドルをつかむには、ハンドルアイコン上でマウスの左ボタンを押"
+"下したままにします）、リスト中の新しい位置へフォーラムやコンテナをドラッグし"
+"てください。 ページ下部にある「保存」ボタンをクリックするまで、変更が保存され"
+"ないことに注意してください。"
+
+#: modules/forum/forum.module:27
+msgid ""
+"By grouping related or similar forums, containers help organize forums. For "
+"example, a container named \"Food\" may hold two forums named \"Fruit\" and "
+"\"Vegetables\", respectively."
+msgstr ""
+"類似や関連するフォーラムをグループ化することで、コンテナはフォーラムの整理に"
+"役立ちます。 例えば、「食べ物」というコンテナで「果物」と「野菜」という2つの"
+"フォーラムを保持することができます。"
+
+#: modules/forum/forum.module:29
+msgid ""
+"A forum holds related or similar forum topics (a forum topic is the initial "
+"post to a threaded discussion). For example, a forum named \"Fruit\" may "
+"contain forum topics titled \"Apples\" and \"Bananas\", respectively."
+msgstr ""
+"フォーラムは類似や関連するフォーラムトピック（スレッド構成ディスカッションの"
+"最初の投稿）を保持します。 例えば、「果物」というフォーラムに「リンゴ」と「バ"
+"ナナ」というタイトルのフォーラムトピックを含めることができます。"
+
+#: modules/forum/forum.module:31
+msgid ""
+"These settings allow you to adjust the display of your forum topics. The "
+"content types available for use within a forum may be selected by editing "
+"the <em>Content types</em> on the <a href=\"@forum-vocabulary\">forum "
+"vocabulary page</a>."
+msgstr ""
+"これらの設定でフォーラムトピックの表示を調整することができます。 フォーラム内"
+"に使用できるコンテンツタイプは、<a href=\"@forum-vocabulary\">フォーラムのボ"
+"キャブラリページ</a>の「コンテンツタイプ」で選択することができます。"
+
+# アイテムは冗長
+#: modules/forum/forum.module:230
+msgid ""
+"The item %forum is only a container for forums. Please select one of the "
+"forums below it."
+msgstr ""
+"%forum はフォーラムのコンテナにすぎません。 その階層下にあるフォーラムの1つを"
+"選択してください。"
+
+#: modules/forum/forum.module:296
+msgid "Forum topic"
+msgstr "フォーラムトピック"
+
+#: modules/forum/forum.module:298
+msgid ""
+"A <em>forum topic</em> is the initial post to a new discussion thread within "
+"a forum."
+msgstr ""
+"<em>フォーラムトピック</em> は、フォーラム内で新しいスレッド構成ディスカッ"
+"ションを始めるための投稿です。"
+
+#: modules/forum/forum.module:361
+msgid ""
+"This is the designated forum vocabulary. Some of the normal vocabulary "
+"options have been removed."
+msgstr ""
+"このボキャブラリはフォーラムで使用するためのものです。 そのため、通常のボキャ"
+"ブラリに存在するオプションのいくつかは取り除かれています。"
+
+#: modules/forum/forum.module:403;419
+msgid "Active forum topics"
+msgstr "活発なフォーラムトピック"
+
+#: modules/forum/forum.module:404;426
+msgid "New forum topics"
+msgstr "新しいフォーラムトピック"
+
+#: modules/forum/forum.module:408
+msgid "Number of topics"
+msgstr "トピック数"
+
+#: modules/forum/forum.module:435
+msgid "Read the latest forum topics."
+msgstr "最新のフォーラムトピックを読む"
+
+#: modules/forum/forum.module:454
+msgid "Leave shadow copy"
+msgstr "シャドーコピーを残す"
+
+#: modules/forum/forum.module:454
+msgid ""
+"If you move this topic, you can leave a link in the old forum to the new "
+"forum."
+msgstr ""
+"シャドーコピーを残すかどうかを指定してください。 チェックを入れると、このト"
+"ピックを移動する際、移動前のフォーラムに移動先へのリンクを残すことができま"
+"す。"
+
+#: modules/forum/forum.module:561
+msgid "Topic"
+msgstr "トピック"
+
+#: modules/forum/forum.module:563
+msgid "Created"
+msgstr "作成"
+
+#: modules/forum/forum.module:564
+msgid "Last reply"
+msgstr "最終返信"
+
+#: modules/forum/forum.module:677
+msgid "Post new @node_type"
+msgstr "新しい@node_typeの投稿"
+
+#: modules/forum/forum.module:684
+msgid "You are not allowed to post new content in forum."
+msgstr "フォーラムに新しいコンテンツを投稿する権限がありません。"
+
+#: modules/forum/forum.module:688
+msgid "<a href=\"@login\">Login</a> to post new content in forum."
+msgstr "<a href=\"@login\">ログイン</a>してフォーラムに新しいコンテンツを投稿"
+
+#: modules/forum/forum.module:726
+msgid "No forums defined"
+msgstr "フォーラムが定義されていません"
+
+#: modules/forum/forum.module:812
+msgid "This topic has been moved"
+msgstr "このトピックは移動しました"
+
+#: modules/forum/forum.module:322
+msgid "create forum topics"
+msgstr "フォーラムトピックの作成"
+
+#: modules/forum/forum.module:322
+msgid "delete own forum topics"
+msgstr "自分のフォーラムトピックの削除"
+
+#: modules/forum/forum.module:322
+msgid "delete any forum topic"
+msgstr "任意のフォーラムトピックの削除"
+
+#: modules/forum/forum.module:322
+msgid "edit own forum topics"
+msgstr "自分のフォーラムトピックの編集"
+
+#: modules/forum/forum.module:322
+msgid "edit any forum topic"
+msgstr "任意のフォーラムトピックの編集"
+
+#: modules/forum/forum.module:322
+msgid "administer forums"
+msgstr "フォーラムの管理"
+
+#: modules/forum/forum.module:86;93 modules/forum/forum.install:27;116
+msgid "Forums"
+msgstr "フォーラム"
+
+#: modules/forum/forum.module:94
+msgid "Control forums and their hierarchy and change forum settings."
+msgstr "フォーラムとその階層構造の管理、フォーラムの設定をします。"
+
+#: modules/forum/forum.module:106
+msgid "Add container"
+msgstr "コンテナの追加"
+
+#: modules/forum/forum.module:114
+msgid "Add forum"
+msgstr "フォーラムの追加"
+
+#: modules/forum/forum.module:136
+msgid "Edit container"
+msgstr "コンテナの編集"
+
+#: modules/forum/forum.module:143
+msgid "Edit forum"
+msgstr "フォーラムの編集"
+
+#: modules/forum/forum.install:69
+msgid "Stores the relationship of nodes to forum terms."
+msgstr "フォーラムタームへのノードの結びつきを格納します"
+
+#: modules/forum/forum.install:76
+msgid "The {node}.nid of the node."
+msgstr "ノードの{node}.nid"
+
+#: modules/forum/forum.install:90
+msgid "The {term_data}.tid of the forum term assigned to the node."
+msgstr "ノードに割り当てられたフォーラムタームの{term_data}.tid"

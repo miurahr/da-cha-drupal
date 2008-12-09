@@ -1,0 +1,1785 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-user)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  user.admin.inc,v 1.18 2008/01/16 22:54:41 goba
+#  user.module,v 1.892 2008/02/03 19:23:01 goba
+#  user.pages.inc,v 1.11 2008/01/08 10:35:43 goba
+#  user.install,v 1.5 2008/01/08 07:46:41 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/user/user.admin.inc:13 modules/user/user.module:667;2425;908
+msgid "Create new account"
+msgstr "新規アカウントの作成"
+
+#: modules/user/user.admin.inc:43
+msgid "Show only users where"
+msgstr "表示するユーザの絞り込み"
+
+#: modules/user/user.admin.inc:52
+msgid ""
+"<em>and</em> where <strong>%property</strong> is <strong>%value</strong>"
+msgstr ""
+"<em>かつ</em> その <strong>%property</strong> が <strong>%value</strong>"
+
+#: modules/user/user.admin.inc:55
+msgid "<strong>%property</strong> is <strong>%value</strong>"
+msgstr "<strong>%property</strong> が <strong>%value</strong>"
+
+#: modules/user/user.admin.inc:137;911 modules/user/user.module:621
+msgid "Member for"
+msgstr "ユーザ登録から"
+
+#: modules/user/user.admin.inc:138;912
+msgid "Last access"
+msgstr "前回のアクセス"
+
+#: modules/user/user.admin.inc:169 modules/user/user.module:1957
+msgid "blocked"
+msgstr "ブロック"
+
+#: modules/user/user.admin.inc:169 modules/user/user.module:1957
+msgid "active"
+msgstr "アクティブ"
+
+#: modules/user/user.admin.inc:221
+msgid "No users selected."
+msgstr "ユーザが選択されていません。"
+
+#: modules/user/user.admin.inc:233
+msgid "User registration settings"
+msgstr "ユーザ登録の設定"
+
+#: modules/user/user.admin.inc:234
+msgid "Public registrations"
+msgstr "新規アカウントの登録方法"
+
+#: modules/user/user.admin.inc:234
+msgid "Visitors can create accounts and no administrator approval is required."
+msgstr "訪問者が新規アカウントを作成できる（管理者の承認は<b>不要</b>）"
+
+#: modules/user/user.admin.inc:234
+msgid "Visitors can create accounts but administrator approval is required."
+msgstr "訪問者が新規アカウントを作成できる（管理者の承認が<b>必要</b>）"
+
+#: modules/user/user.admin.inc:235
+msgid "Require e-mail verification when a visitor creates an account"
+msgstr "訪問者がアカウントを作成する際にメールの確認が必要"
+
+#: modules/user/user.admin.inc:235
+msgid ""
+"If this box is checked, new users will be required to validate their e-mail "
+"address prior to logging into the site, and will be assigned a system-"
+"generated password. With it unchecked, users will be logged in immediately "
+"upon registering, and may select their own passwords during registration."
+msgstr ""
+"ユーザが入力したメールアドレスの有効性を、確認するかどうかを指定してくださ"
+"い。 チェックを入れると、新しいユーザはシステムが自動生成したパスワードをメー"
+"ルで受け取り、それを使用することでログインできるようになります。 チェックを入"
+"れない場合、新しいユーザ自身が任意のパスワードを登録し、その直後からログイン"
+"できるようになります。"
+
+#: modules/user/user.admin.inc:236
+msgid "User registration guidelines"
+msgstr "ユーザ登録のガイドライン"
+
+#: modules/user/user.admin.inc:236
+msgid ""
+"This text is displayed at the top of the user registration form and is "
+"useful for helping or instructing your users."
+msgstr ""
+"ユーザ登録の際にユーザへ提示したいテキストを記入してください。<br />\n"
+"このテキストはユーザ登録フォームの一番上に表示され、ユーザ登録を円滑に進めて"
+"もらうための説明などを掲示するのに役立ちます。"
+
+#: modules/user/user.admin.inc:241
+msgid "User e-mail settings"
+msgstr "ユーザ宛メールの設定"
+
+#: modules/user/user.admin.inc:242
+msgid ""
+"Drupal sends emails whenever new users register on your site, and "
+"optionally, may also notify users after other account actions. Using a "
+"simple set of content templates, notification e-mails can be customized to "
+"fit the specific needs of your site."
+msgstr ""
+"サイトで新規ユーザ登録があった際には常に、Drupalはメールを送信します。 また任"
+"意で、その他のアカウントアクション後にユーザへ通知することができます。 シンプ"
+"ルなテンプレートを使用し、サイトの特定のニーズに合うように通知メールをカスタ"
+"マイズできます。"
+
+#: modules/user/user.admin.inc:246
+msgid "Available variables are:"
+msgstr ""
+"<br>\n"
+"利用可能な変数:"
+
+#: modules/user/user.admin.inc:250
+msgid "Welcome, new user created by administrator"
+msgstr "管理者の作成した新規ユーザへのウェルカム"
+
+#: modules/user/user.admin.inc:253
+msgid ""
+"Customize welcome e-mail messages sent to new member accounts created by an "
+"administrator."
+msgstr ""
+"管理者が作成した新しいユーザアカウントへ送信する、ウェルカムメールのメッセー"
+"ジをカスタマイズしてください。"
+
+#: modules/user/user.admin.inc:270
+msgid "Welcome, no approval required"
+msgstr "承認不要の新規ユーザへのウェルカム"
+
+#: modules/user/user.admin.inc:273
+msgid ""
+"Customize welcome e-mail messages sent to new members upon registering, when "
+"no administrator approval is required."
+msgstr ""
+"管理者による承認が不要の場合に登録と同時に新しいユーザへ送信する、ウェルカム"
+"メールのメッセージをカスタマイズしてください。"
+
+#: modules/user/user.admin.inc:290
+msgid "Welcome, awaiting administrator approval"
+msgstr "管理者の承認待ち新規ユーザへのウェルカム"
+
+#: modules/user/user.admin.inc:293
+msgid ""
+"Customize welcome e-mail messages sent to new members upon registering, when "
+"administrative approval is required."
+msgstr ""
+"管理者による承認が必要な場合に登録と同時に新しいユーザへ送信する、ウェルカム"
+"メールのメッセージをカスタマイズしてください。"
+
+#: modules/user/user.admin.inc:310
+msgid "Password recovery email"
+msgstr "パスワード再発行メール"
+
+#: modules/user/user.admin.inc:313
+msgid "Customize e-mail messages sent to users who request a new password."
+msgstr ""
+"パスワードの再発行を要求したユーザへ送信する、メールのメッセージをカスタマイ"
+"ズしてください。"
+
+#: modules/user/user.admin.inc:330
+msgid "Account activation email"
+msgstr "アカウントの有効化メール"
+
+#: modules/user/user.admin.inc:333
+msgid ""
+"Enable and customize e-mail messages sent to users upon account activation "
+"(when an administrator activates an account of a user who has already "
+"registered, on a site where administrative approval is required)."
+msgstr ""
+"管理者による承認が必要なサイトで、すでに登録されたユーザのアカウントを管理者"
+"が有効化した際にユーザへ送信する、メールのメッセージのカスタマイズと、送信す"
+"るかどうかを指定してください。"
+
+#: modules/user/user.admin.inc:337
+msgid "Notify user when account is activated."
+msgstr "アカウントが有効化された際にユーザへ通知"
+
+#: modules/user/user.admin.inc:355
+msgid "Account blocked email"
+msgstr "アカウントブロックのメール"
+
+#: modules/user/user.admin.inc:358
+msgid ""
+"Enable and customize e-mail messages sent to users when their accounts are "
+"blocked."
+msgstr ""
+"アカウントがブロックされた際にユーザへ送信する、メールのメッセージのカスタマ"
+"イズと、送信するかどうかを指定してください。"
+
+#: modules/user/user.admin.inc:362
+msgid "Notify user when account is blocked."
+msgstr "アカウントがブロックされた際にユーザへ通知"
+
+#: modules/user/user.admin.inc:380
+msgid "Account deleted email"
+msgstr "アカウント削除のメール"
+
+#: modules/user/user.admin.inc:383
+msgid ""
+"Enable and customize e-mail messages sent to users when their accounts are "
+"deleted."
+msgstr ""
+"アカウントが削除された際にユーザへ送信する、メールのメッセージのカスタマイズ"
+"と、送信するかどうかを指定してください。"
+
+#: modules/user/user.admin.inc:387
+msgid "Notify user when account is deleted."
+msgstr "アカウントが削除された際にユーザへ通知"
+
+#: modules/user/user.admin.inc:406
+msgid "Signatures"
+msgstr "署名"
+
+#: modules/user/user.admin.inc:410
+msgid "Signature support"
+msgstr "署名のサポート"
+
+#: modules/user/user.admin.inc:423
+msgid "Pictures"
+msgstr "ユーザアバター"
+
+#: modules/user/user.admin.inc:428
+msgid "Picture support"
+msgstr "ユーザアバターのサポート"
+
+#: modules/user/user.admin.inc:448
+msgid "Picture image path"
+msgstr "ユーザアバター画像のパス"
+
+#: modules/user/user.admin.inc:452
+msgid "Subdirectory in the directory %dir where pictures will be stored."
+msgstr ""
+"アバター画像を保存する、ディレクトリ <b>%dir</b> でのサブディレクトリを入力し"
+"てください。"
+
+#: modules/user/user.admin.inc:456
+msgid "Default picture"
+msgstr "デフォルトのユーザアバター"
+
+#: modules/user/user.admin.inc:460
+msgid ""
+"URL of picture to display for users with no custom picture selected. Leave "
+"blank for none."
+msgstr ""
+"独自のユーザアバターを選択していないユーザに表示される、デフォルトのユーザア"
+"バター画像のパスを入力してください。（ 例： misc/druplicon-small.png ）<br />"
+"指定しない場合は空欄にしてください。"
+
+#: modules/user/user.admin.inc:464
+msgid "Picture maximum dimensions"
+msgstr "ユーザアバターの最大画像サイズ"
+
+#: modules/user/user.admin.inc:468
+msgid "Maximum dimensions for pictures, in pixels."
+msgstr ""
+"ユーザアバターとして使用できる画像サイズの上限を、ピクセル単位で入力してくだ"
+"さい。<br />（例えば、<b>100*80</b> までに制限したい場合は <b>100x80</b> と入"
+"力してください）"
+
+#: modules/user/user.admin.inc:472
+msgid "Picture maximum file size"
+msgstr "ユーザアバターの最大ファイルサイズ"
+
+#: modules/user/user.admin.inc:476
+msgid "Maximum file size for pictures, in kB."
+msgstr ""
+"ユーザアバターとして使用できるファイルサイズの上限を、KB（キロバイト）単位で"
+"入力してください。<br />（例えば、<b>30KB</b> までに制限したい場合は <b>30</"
+"b> と入力してください）"
+
+#: modules/user/user.admin.inc:480
+msgid "Picture guidelines"
+msgstr "ユーザアバターのガイドライン"
+
+#: modules/user/user.admin.inc:482
+msgid ""
+"This text is displayed at the picture upload form in addition to the default "
+"guidelines. It's useful for helping or instructing your users."
+msgstr ""
+"アバターに関してユーザに提示したいテキストを記入してください。<br />\n"
+"このテキストはユーザアバターのアップロードフォームに表示される、デフォルトの"
+"ガイドラインに追加されます。 ユーザが作業を円滑に進めるられるように、アップ"
+"ロードに関する説明などを掲示するのに役立ちます。"
+
+#: modules/user/user.admin.inc:543
+msgid "Save permissions"
+msgstr "権限の保存"
+
+#: modules/user/user.admin.inc:563 modules/user/user.pages.inc:280;346
+msgid "The changes have been saved."
+msgstr "変更内容が保存されました。"
+
+#: modules/user/user.admin.inc:582 modules/user/user.module:1941
+msgid "@module module"
+msgstr "@module モジュール"
+
+#: modules/user/user.admin.inc:595
+msgid "Permission"
+msgstr "権限"
+
+#: modules/user/user.admin.inc:624
+msgid "Role name"
+msgstr "ロール名"
+
+#: modules/user/user.admin.inc:629
+msgid ""
+"The name for this role. Example: \"moderator\", \"editorial board\", \"site "
+"architect\"."
+msgstr ""
+"このロールの名称を入力してください。<br /> 例： 「モデレータ」「フォーラム管"
+"理者」「サイト設計者」"
+
+#: modules/user/user.admin.inc:637;662;679
+msgid "Save role"
+msgstr "ロールの保存"
+
+#: modules/user/user.admin.inc:641;683
+msgid "Delete role"
+msgstr "ロールの削除"
+
+#: modules/user/user.admin.inc:652;667;691
+msgid "Add role"
+msgstr "ロールの追加"
+
+#: modules/user/user.admin.inc:664;669
+msgid "The role name %name already exists. Please choose another role name."
+msgstr "ロール名 %name はすでに存在します。 別のロール名を選んでください。"
+
+#: modules/user/user.admin.inc:674
+msgid "You must specify a valid role name."
+msgstr "有効なロール名を指定してください。"
+
+#: modules/user/user.admin.inc:681
+msgid "The role has been renamed."
+msgstr "ロール名が変更されました。"
+
+#: modules/user/user.admin.inc:689
+msgid "The role has been deleted."
+msgstr "ロールが削除されました。"
+
+#: modules/user/user.admin.inc:693
+msgid "The role has been added."
+msgstr "ロールが追加されました。"
+
+#: modules/user/user.admin.inc:715;737
+msgid "You must enter a mask."
+msgstr "マスクの入力は必須です。"
+
+#: modules/user/user.admin.inc:720
+msgid "The access rule has been added."
+msgstr "アクセスルールが追加されました。"
+
+#: modules/user/user.admin.inc:728 modules/user/user.module:1007
+msgid "Add rule"
+msgstr "ルールの追加"
+
+#: modules/user/user.admin.inc:741
+msgid "The access rule has been saved."
+msgstr "アクセスルールが保存されました。"
+
+#: modules/user/user.admin.inc:748
+msgid "Save rule"
+msgstr "ルールの保存"
+
+#: modules/user/user.admin.inc:759;886
+msgid "Access type"
+msgstr "アクセスタイプ"
+
+#: modules/user/user.admin.inc:761
+msgid "Allow"
+msgstr "許可"
+
+#: modules/user/user.admin.inc:761
+msgid "Deny"
+msgstr "拒否"
+
+#: modules/user/user.admin.inc:763
+msgid "Host"
+msgstr "ホスト"
+
+#: modules/user/user.admin.inc:766;886
+msgid "Rule type"
+msgstr "ルールタイプ"
+
+#: modules/user/user.admin.inc:772;886
+msgid "Mask"
+msgstr "マスク"
+
+#: modules/user/user.admin.inc:776
+msgid "Matches any number of characters, even zero characters"
+msgstr "0文字以上にマッチ"
+
+#: modules/user/user.admin.inc:776
+msgid "Matches exactly one character."
+msgstr "ちょうど1文字にマッチ"
+
+#: modules/user/user.admin.inc:786
+msgid "No value entered. Please enter a test string and try again."
+msgstr ""
+"値が入力されていません。 テストしたい文字列を入力し、再試行してください。"
+
+#: modules/user/user.admin.inc:792
+msgid "Enter a username to check if it will be denied or allowed."
+msgstr ""
+"ここに「ユーザ名」を入力してチェックのボタンを押すと、そのユーザ名が許可され"
+"るか、あるいは拒否されるかを、設定されているアクセスルールに基づいて調べるこ"
+"とができます。"
+
+#: modules/user/user.admin.inc:794
+msgid "Check username"
+msgstr "ユーザ名のチェック"
+
+#: modules/user/user.admin.inc:803
+msgid "Enter an e-mail address to check if it will be denied or allowed."
+msgstr ""
+"ここに「メールアドレス」を入力してチェックのボタンを押すと、そのメールアドレ"
+"スが許可されるか、あるいは拒否されるかを、設定されているアクセスルールに基づ"
+"いて調べることができます。"
+
+#: modules/user/user.admin.inc:805
+msgid "Check e-mail"
+msgstr "メールアドレスのチェック"
+
+#: modules/user/user.admin.inc:814
+msgid ""
+"Enter a hostname or IP address to check if it will be denied or allowed."
+msgstr ""
+"ここに「ホスト名」か「IPアドレス」を入力してチェックのボタンを押すと、そのホ"
+"スト名やIPアドレスが許可されるか、あるいは拒否されるかを、設定されているアク"
+"セスルールに基づいて調べることができます。"
+
+#: modules/user/user.admin.inc:816
+msgid "Check hostname"
+msgstr "ホスト名（またはIPアドレス）のチェック"
+
+#: modules/user/user.admin.inc:827
+msgid "The username %name is not allowed."
+msgstr "ユーザ名 %name は<b>拒否</b>されます。"
+
+#: modules/user/user.admin.inc:830
+msgid "The username %name is allowed."
+msgstr "ユーザ名 %name は<b>許可</b>されます。"
+
+#: modules/user/user.admin.inc:835
+msgid "The e-mail address %mail is not allowed."
+msgstr "メールアドレス %mail は<b>拒否</b>されます。"
+
+#: modules/user/user.admin.inc:838
+msgid "The e-mail address %mail is allowed."
+msgstr "メールアドレス %mail は<b>許可</b>されます。"
+
+#: modules/user/user.admin.inc:843
+msgid "The hostname %host is not allowed."
+msgstr "ホスト名（またはIPアドレス） %host は<b>拒否</b>されます。"
+
+#: modules/user/user.admin.inc:846
+msgid "The hostname %host is allowed."
+msgstr "ホスト名（またはIPアドレス） %host は<b>許可</b>されます。"
+
+#: modules/user/user.admin.inc:861;888
+msgid "username"
+msgstr "ユーザ名"
+
+#: modules/user/user.admin.inc:861;888
+msgid "e-mail"
+msgstr "メールアドレス"
+
+#: modules/user/user.admin.inc:861;888
+msgid "host"
+msgstr "ホスト"
+
+#: modules/user/user.admin.inc:867
+msgid "Are you sure you want to delete the @type rule for %rule?"
+msgstr "本当に、@type のルール %rule を削除してもよろしいですか？"
+
+#: modules/user/user.admin.inc:877
+msgid "The access rule has been deleted."
+msgstr "アクセスルールが削除されました。"
+
+#: modules/user/user.admin.inc:891
+msgid "allow"
+msgstr "許可"
+
+#: modules/user/user.admin.inc:891
+msgid "deny"
+msgstr "拒否"
+
+#: modules/user/user.admin.inc:894
+msgid "There are currently no access rules."
+msgstr "現在のところアクセスルールはありません。"
+
+#: modules/user/user.admin.inc:931
+msgid "No users available."
+msgstr "該当するユーザはいません。"
+
+#: modules/user/user.admin.inc:952
+msgid "edit permissions"
+msgstr "権限の編集"
+
+#: modules/user/user.admin.inc:954
+msgid "edit role"
+msgstr "ロールの編集"
+
+#: modules/user/user.admin.inc:957
+msgid "locked"
+msgstr "固定"
+
+#: modules/user/user.pages.inc:34
+msgid "Username or e-mail address"
+msgstr "ユーザ名またはメールアドレス"
+
+#: modules/user/user.pages.inc:39
+msgid "E-mail new password"
+msgstr "パスワード再発行メールを送信"
+
+#: modules/user/user.pages.inc:56
+msgid "Sorry, %name is not recognized as a user name or an e-mail address."
+msgstr "%name はユーザ名やメールアドレスとして認識できません。"
+
+#: modules/user/user.pages.inc:67
+msgid "Further instructions have been sent to your e-mail address."
+msgstr ""
+"あなたのメールアドレスへ、パスワード初期化用のご案内を送信いたしました。"
+
+#: modules/user/user.pages.inc:81
+msgid ""
+"You have already used this one-time login link. It is not necessary to use "
+"this link to login anymore. You are already logged in."
+msgstr ""
+"すでにワンタイムログインリンクを使ってログインしていますので、もはやこのリン"
+"クは不要です。"
+
+#: modules/user/user.pages.inc:92
+msgid ""
+"You have tried to use a one-time login link that has expired. Please request "
+"a new one using the form below."
+msgstr ""
+"このワンタイムログインリンクは、すでに期限が切れています。<br />再度の発行を"
+"希望する場合は、以下のフォームからリクエストしてください。"
+
+#: modules/user/user.pages.inc:104
+msgid ""
+"You have just used your one-time login link. It is no longer necessary to "
+"use this link to login. Please change your password."
+msgstr ""
+"すでにワンタイムログインリンクを使ってログインしていますので、もはやこのリン"
+"クは不要です。 お好みのパスワードに変更してください。"
+
+#: modules/user/user.pages.inc:108
+msgid ""
+"<p>This is a one-time login for %user_name and will expire on %"
+"expiration_date.</p><p>Click on this button to login to the site and change "
+"your password.</p>"
+msgstr ""
+"<p>これは %expiration_date まで有効な %user_name さん用のワンタイムログインで"
+"す。</p><p>このボタンをクリックしてサイトにログインし、パスワードを変更してく"
+"ださい。</p>"
+
+#: modules/user/user.pages.inc:109
+msgid "This login can be used only once."
+msgstr "このログインを使用できるのは1回限りです。"
+
+#: modules/user/user.pages.inc:110 modules/user/user.module:663;1255;902
+msgid "Log in"
+msgstr "ログイン"
+
+#: modules/user/user.pages.inc:116
+msgid ""
+"You have tried to use a one-time login link which has either been used or is "
+"no longer valid. Please request a new one using the form below."
+msgstr ""
+"このワンタイムログインリンクはすでに使用済みか、期限が切れています。<br />再"
+"度の発行を希望する場合は、以下のフォームからリクエストしてください。"
+
+#: modules/user/user.pages.inc:263;332;261;330
+#: modules/user/user.module:1768;2277
+msgid "Detected malicious attempt to alter protected user fields."
+msgstr ""
+"保護されたユーザフィールドを改ざんしようとする、悪意のある試みが検知されまし"
+"た。"
+
+#: modules/user/user.pages.inc:308
+msgid "Are you sure you want to delete the account %name?"
+msgstr "本当に、%name さんのアカウントを削除してもよろしいですか？"
+
+#: modules/user/user.pages.inc:310
+msgid ""
+"All submissions made by this user will be attributed to the anonymous "
+"account. This action cannot be undone."
+msgstr ""
+"このユーザが投稿したすべてのコンテンツは、属性が匿名ユーザに変更されます。"
+"<br />この操作は元に戻すことができませんので、十分に注意して実行してくださ"
+"い。"
+
+#: modules/user/user.pages.inc:319
+msgid "%name has been deleted."
+msgstr "%name が削除されました。"
+
+#: modules/user/user.pages.inc:66
+msgid "Password reset instructions mailed to %name at %email."
+msgstr "%name（%email）さんにパスワード初期化用の案内メールが送信されました。"
+
+#: modules/user/user.pages.inc:98
+msgid "User %name used one-time login link at time %timestamp."
+msgstr "%name さんが %timestamp にワンタイムログインリンクを使用しました。"
+
+#: modules/user/user.pages.inc:134
+msgid "Session closed for %name."
+msgstr "%name さんのセッションが終了しました。"
+
+#: modules/user/user.module:379
+msgid "You must enter a username."
+msgstr "ユーザ名の入力は必須です。"
+
+#: modules/user/user.module:380
+msgid "The username cannot begin with a space."
+msgstr "ユーザ名の先頭に空白文字は使えません。"
+
+#: modules/user/user.module:381
+msgid "The username cannot end with a space."
+msgstr "ユーザ名の末尾に空白文字は使えません。"
+
+#: modules/user/user.module:382
+msgid "The username cannot contain multiple spaces in a row."
+msgstr "ユーザ名に連続した複数の空白文字を含めることはできません。"
+
+#: modules/user/user.module:383;394
+msgid "The username contains an illegal character."
+msgstr "ユーザ名に不正な文字が含まれています。"
+
+#: modules/user/user.module:396
+msgid "The username is not a valid authentication ID."
+msgstr "ユーザ名が認証IDとして有効ではありません。"
+
+#: modules/user/user.module:397
+msgid "The username %name is too long: it must be %max characters or less."
+msgstr "ユーザ名 %name は長すぎます： %max文字以下である必要があります。"
+
+#: modules/user/user.module:401
+msgid "You must enter an e-mail address."
+msgstr "メールアドレスの入力は必須です。"
+
+#: modules/user/user.module:403
+msgid "The e-mail address %mail is not valid."
+msgstr "メールアドレス %mail が有効ではありません。"
+
+#: modules/user/user.module:429
+msgid ""
+"Failed to upload the picture image; the %directory directory doesn't exist "
+"or is not writable."
+msgstr ""
+"ユーザアバター画像のアップロードに失敗しました： ディレクトリ %directory が存"
+"在しないか、書き込み可能ではありません。"
+
+#: modules/user/user.module:617
+msgid "History"
+msgstr "履歴"
+
+#: modules/user/user.module:639
+msgid "Account settings"
+msgstr "アカウントの設定"
+
+#: modules/user/user.module:667
+msgid "Create a new user account."
+msgstr "新規ユーザアカウントの作成"
+
+#: modules/user/user.module:669;917
+msgid "Request new password"
+msgstr "パスワードの再発行"
+
+#: modules/user/user.module:669
+msgid "Request new password via e-mail."
+msgstr "パスワードを再発行するためのメールをリクエスト"
+
+#: modules/user/user.module:681;728
+msgid "User login"
+msgstr "ユーザログイン"
+
+#: modules/user/user.module:690;749
+msgid "Who's new"
+msgstr "新しいユーザ"
+
+#: modules/user/user.module:693;788
+msgid "Who's online"
+msgstr "オンライン状況"
+
+#: modules/user/user.module:700
+msgid "Number of users to display"
+msgstr "表示するユーザ数"
+
+#: modules/user/user.module:708
+msgid "User activity"
+msgstr "ユーザの活動時間"
+
+#: modules/user/user.module:708
+msgid ""
+"A user is considered online for this long after they have last viewed a page."
+msgstr ""
+"ユーザがオンラインであると見なす時間を指定してください。 最後にページを表示し"
+"てからこの時間が経過するまで、そのユーザはオンラインであると見なされます。"
+
+#: modules/user/user.module:709
+msgid "User list length"
+msgstr "ユーザリストの表示数"
+
+#: modules/user/user.module:709
+msgid "Maximum number of currently online users to display."
+msgstr "現在オンラインのユーザを、最大で何人まで表示するかを指定してください。"
+
+# msgstr "現在、%members と %visitors がオンラインです。"
+#: modules/user/user.module:776
+msgid "There is currently %members and %visitors online."
+msgstr ""
+"<div class=\"item-list\"><ul><li>%members</li><li>%visitors</li></ul></div>"
+
+# msgstr "現在、%members と %visitors がオンラインです。"
+#: modules/user/user.module:779
+msgid "There are currently %members and %visitors online."
+msgstr ""
+"<div class=\"item-list\"><ul><li>%members</li><li>%visitors</li></ul></div>"
+
+#: modules/user/user.module:785
+msgid "Online users"
+msgstr "オンラインのユーザ"
+
+#: modules/user/user.module:816
+msgid "@user's picture"
+msgstr "@userさんのユーザアバター"
+
+#: modules/user/user.module:1171;1041
+msgid "My account"
+msgstr "アカウント情報"
+
+#: modules/user/user.module:1247
+msgid "Enter your @s username."
+msgstr "@sでのユーザ名を入力してください。"
+
+#: modules/user/user.module:1250
+msgid "Enter the password that accompanies your username."
+msgstr "パスワードを入力してください。"
+
+#: modules/user/user.module:1289
+msgid "The username %name has not been activated or is blocked."
+msgstr ""
+"ユーザ名 %name はまだアクティブ化されていないか、ブロックされています。"
+
+# 実際の挙動に基づき意訳
+#: modules/user/user.module:1293
+msgid "The name %name is a reserved username."
+msgstr "ユーザ名 %name の利用は留保されています。"
+
+#: modules/user/user.module:1313
+msgid ""
+"Sorry, unrecognized username or password. <a href=\"@password\">Have you "
+"forgotten your password?</a>"
+msgstr ""
+"ユーザ名またはパスワードが承認されませんでした。<br /><a href=\"@password\">"
+"パスワードをお忘れですか？ 再発行を希望する場合はここをクリックしてください。"
+"</a>"
+
+#: modules/user/user.module:1419
+msgid "Account information"
+msgstr "アカウント情報"
+
+#: modules/user/user.module:1427
+msgid ""
+"Spaces are allowed; punctuation is not allowed except for periods, hyphens, "
+"and underscores."
+msgstr ""
+"管理者のユーザ名を入力してください。 空白文字は使用できます。 ピリオド・ハイ"
+"フン・アンダースコア以外の句読点は使用できません。"
+
+#: modules/user/user.module:1435
+msgid ""
+"A valid e-mail address. All e-mails from the system will be sent to this "
+"address. The e-mail address is not made public and will only be used if you "
+"wish to receive a new password or wish to receive certain news or "
+"notifications by e-mail."
+msgstr ""
+"受信可能な、あなたのメールアドレスを入力してください。 サイトからのすべての"
+"メールは、このアドレス宛に送信されます。 入力されたメールアドレスは非公開にさ"
+"れ、特定のニュースや通知をメールで受け取りたい場合や、管理者からの連絡、ある"
+"いはパスワード再発行メールの送信にのみ使用されます。"
+
+#: modules/user/user.module:1440
+msgid ""
+"To change the current user password, enter the new password in both fields."
+msgstr ""
+"現在のパスワードを変更したい場合は、両方のフィールドに新しいパスワードを入力"
+"してください。"
+
+#: modules/user/user.module:1447
+msgid "Provide a password for the new account in both fields."
+msgstr "上の両方のフィールドに新しいアカウントのパスワードを入力してください。"
+
+# ボックスの「ブロック」と勘違いする人はいないと信じて……
+#: modules/user/user.module:1457
+msgid "Blocked"
+msgstr "ブロック"
+
+#: modules/user/user.module:1492
+msgid "Signature settings"
+msgstr "署名の設定"
+
+#: modules/user/user.module:1497
+msgid "Signature"
+msgstr "署名"
+
+# 仕様に基づき変更
+#: modules/user/user.module:1499
+msgid "Your signature will be publicly displayed at the end of your comments."
+msgstr ""
+"コメントに表示したい署名を記入してください。 この署名はコメント投稿の際に"
+"フォームに自動挿入されます。"
+
+#: modules/user/user.module:1505
+msgid "Picture"
+msgstr "ユーザアバター"
+
+#: modules/user/user.module:1509
+msgid "Delete picture"
+msgstr "ユーザアバターの削除"
+
+#: modules/user/user.module:1509
+msgid "Check this box to delete your current picture."
+msgstr ""
+"現在のユーザアバターを削除したい場合は、ここにチェックを入れてください。"
+
+#: modules/user/user.module:1514
+msgid "Upload picture"
+msgstr "ユーザアバターのアップロード"
+
+#: modules/user/user.module:1514
+msgid ""
+"Your virtual face or picture. Maximum dimensions are %dimensions and the "
+"maximum size is %size kB."
+msgstr ""
+"あなたの顔写真やアイコンなど、ユーザアバターとして使用したい画像ファイルへの"
+"パスを入力してください。<br />画像サイズは %dimensions、ファイルサイズは %"
+"size KB までに制限されます。"
+
+#: modules/user/user.module:1530
+msgid "The name %name is already taken."
+msgstr "ユーザ名 %name はすでに登録されています。"
+
+#: modules/user/user.module:1533
+msgid "The name %name has been denied access."
+msgstr "ユーザ名 %name の使用は許可されていません。"
+
+#: modules/user/user.module:1542
+msgid ""
+"The e-mail address %email is already registered. <a href=\"@password\">Have "
+"you forgotten your password?</a>"
+msgstr ""
+"メールアドレス %email はすでに登録されています。<br /><a href=\"@password\">"
+"パスワードをお忘れですか？ 再発行を希望する場合はここをクリックしてください。"
+"</a>"
+
+#: modules/user/user.module:1545
+msgid "The e-mail address %email has been denied access."
+msgstr "メールアドレス %email の使用は許可されていません。"
+
+# ウェルカムメールの件名なのでそれらしく
+#: modules/user/user.module:1625
+msgid "Account details for !username at !site"
+msgstr "!usernameさん !siteへようこそ"
+
+#: modules/user/user.module:1627
+msgid ""
+"!username,\n"
+"\n"
+"Thank you for registering at !site. You may now log in to !login_uri using "
+"the following username and password:\n"
+"\n"
+"username: !username\n"
+"password: !password\n"
+"\n"
+"You may also log in by clicking on this link or copying and pasting it in "
+"your browser:\n"
+"\n"
+"!login_url\n"
+"\n"
+"This is a one-time login, so it can be used only once.\n"
+"\n"
+"After logging in, you will be redirected to !edit_uri so you can change your "
+"password.\n"
+"\n"
+"\n"
+"--  !site team"
+msgstr ""
+"!usernameさん\n"
+"\n"
+"!siteへのご登録ありがとうございます。\n"
+"以下のユーザ名とパスワードを使って、今すぐ当サイトへログイン\n"
+"できます。\n"
+"ログイン用フォーム： !login_uri\n"
+"\n"
+"ユーザ名　： !username\n"
+"パスワード： !password\n"
+"\n"
+"以下のリンクをクリックするか、ブラウザへコピー＆ペーストして\n"
+"ログインすることもできます。\n"
+"\n"
+"ログインURL： !login_url\n"
+"（ただし、このリンクからログインできるのは1回限りです）\n"
+"\n"
+"ログイン後にパスワードの変更を行うこともできます。\n"
+"パスワード変更用フォーム： !edit_uri\n"
+"\n"
+"\n"
+"--  !site"
+
+#: modules/user/user.module:1629
+msgid "An administrator created an account for you at !site"
+msgstr "!siteでのアカウントが管理者により発行されました"
+
+#: modules/user/user.module:1631
+msgid ""
+"!username,\n"
+"\n"
+"A site administrator at !site has created an account for you. You may now "
+"log in to !login_uri using the following username and password:\n"
+"\n"
+"username: !username\n"
+"password: !password\n"
+"\n"
+"You may also log in by clicking on this link or copying and pasting it in "
+"your browser:\n"
+"\n"
+"!login_url\n"
+"\n"
+"This is a one-time login, so it can be used only once.\n"
+"\n"
+"After logging in, you will be redirected to !edit_uri so you can change your "
+"password.\n"
+"\n"
+"\n"
+"--  !site team"
+msgstr ""
+"!usernameさん\n"
+"\n"
+"!siteでのアカウントが管理者により発行されました。\n"
+"以下のユーザ名とパスワードを使って、今すぐ当サイトへログイン\n"
+"できます。\n"
+"ログイン用フォーム： !login_uri\n"
+"\n"
+"ユーザ名　： !username\n"
+"パスワード： !password\n"
+"\n"
+"以下のリンクをクリックするか、ブラウザへコピー＆ペーストして\n"
+"ログインすることもできます。\n"
+"\n"
+"ログインURL： !login_url\n"
+"（ただし、このリンクからログインできるのは1回限りです）\n"
+"\n"
+"ログイン後にパスワードの変更を行うこともできます。\n"
+"パスワード変更用フォーム： !edit_uri\n"
+"\n"
+"\n"
+"--  !site"
+
+# ウェルカムメールの件名なのでそれらしく
+#: modules/user/user.module:1634
+msgid "Account details for !username at !site (pending admin approval)"
+msgstr "!usernameさん !siteへようこそ（管理者の承認待ち）"
+
+#: modules/user/user.module:1636
+msgid ""
+"!username,\n"
+"\n"
+"Thank you for registering at !site. Your application for an account is "
+"currently pending approval. Once it has been approved, you will receive "
+"another e-mail containing information about how to log in, set your "
+"password, and other details.\n"
+"\n"
+"\n"
+"--  !site team"
+msgstr ""
+"!usernameさん\n"
+"\n"
+"!siteへのご登録ありがとうございます。\n"
+"あなたのアカウント申請は、現在のところ承認待ちとなっております。\n"
+"承認された場合、ログイン方法やパスワードの設定方法などの詳細を含む、\n"
+"別のメールがあなた宛に送信されます。\n"
+"\n"
+"\n"
+"--  !site"
+
+#: modules/user/user.module:1638
+msgid ""
+"!username has applied for an account.\n"
+"\n"
+"!edit_uri"
+msgstr ""
+"!usernameさんがアカウントの申請を行いました。\n"
+"\n"
+"!edit_uri"
+
+#: modules/user/user.module:1640
+msgid "Replacement login information for !username at !site"
+msgstr "!siteでの!usernameさんのパスワード再設定方法"
+
+#: modules/user/user.module:1642
+msgid ""
+"!username,\n"
+"\n"
+"A request to reset the password for your account has been made at !site.\n"
+"\n"
+"You may now log in to !uri_brief by clicking on this link or copying and "
+"pasting it in your browser:\n"
+"\n"
+"!login_url\n"
+"\n"
+"This is a one-time login, so it can be used only once. It expires after one "
+"day and nothing will happen if it's not used.\n"
+"\n"
+"After logging in, you will be redirected to !edit_uri so you can change your "
+"password."
+msgstr ""
+"!usernameさん\n"
+"\n"
+"あなたの!siteでのアカウントで、パスワード再発行のリクエストが\n"
+"ありました。\n"
+"以下のリンクをクリックするか、ブラウザへコピー＆ペーストして\n"
+"今すぐ !uri_brief へログインすることができます。\n"
+"\n"
+"ログインURL： !login_url\n"
+"\n"
+"これはワンタイムログインリンクです。\n"
+"有効期限は1日限りとなり、それ以降は期限切れのため使用不可能\n"
+"となります。\n"
+"\n"
+"ログインすると以下のURLにリダイレクトされ、希望するパスワードに変更\n"
+"することができます。\n"
+"\n"
+"パスワード変更用フォーム： !edit_uri"
+
+#: modules/user/user.module:1644
+msgid "Account details for !username at !site (approved)"
+msgstr "!siteでの!usernameさんのアカウント詳細（承認済）"
+
+#: modules/user/user.module:1646
+msgid ""
+"!username,\n"
+"\n"
+"Your account at !site has been activated.\n"
+"\n"
+"You may now log in by clicking on this link or copying and pasting it in "
+"your browser:\n"
+"\n"
+"!login_url\n"
+"\n"
+"This is a one-time login, so it can be used only once.\n"
+"\n"
+"After logging in, you will be redirected to !edit_uri so you can change your "
+"password.\n"
+"\n"
+"Once you have set your own password, you will be able to log in to !"
+"login_uri in the future using:\n"
+"\n"
+"username: !username\n"
+msgstr ""
+"!usernameさん\n"
+"\n"
+"!siteでのあなたのアカウントが有効化されました。\n"
+"\n"
+"以下のリンクをクリックするか、ブラウザへコピー＆ペーストして\n"
+"今すぐログインすることができます。\n"
+"\n"
+"ログインURL： !login_url\n"
+"\n"
+"これはワンタイムログインリンクです。\n"
+"ログインすると以下のURLにリダイレクトされ、希望するパスワードに変更\n"
+"することができます。\n"
+"\n"
+"パスワード変更用フォーム： !edit_uri\n"
+"\n"
+"パスワードの設定後は、以下のユーザ名を使用してログインフォームから\n"
+"ログインできます。\n"
+"\n"
+"ユーザ名： !username\n"
+"ログイン用フォーム： !login_uri\n"
+
+#: modules/user/user.module:1648
+msgid "Account details for !username at !site (blocked)"
+msgstr "!siteでの!usernameさんのアカウント詳細（ブロック）"
+
+#: modules/user/user.module:1650
+msgid ""
+"!username,\n"
+"\n"
+"Your account on !site has been blocked."
+msgstr ""
+"!usernameさん\n"
+"\n"
+"あなたの!siteでのアカウントはブロックされました。"
+
+#: modules/user/user.module:1652
+msgid "Account details for !username at !site (deleted)"
+msgstr "!siteでの!usernameさんのアカウント詳細（削除）"
+
+#: modules/user/user.module:1654
+msgid ""
+"!username,\n"
+"\n"
+"Your account on !site has been deleted."
+msgstr ""
+"!usernameさん\n"
+"\n"
+"あなたの!siteでのアカウントは削除されました。"
+
+#: modules/user/user.module:1714
+msgid "Unblock the selected users"
+msgstr "選択されたユーザのブロックを解除"
+
+#: modules/user/user.module:1718
+msgid "Block the selected users"
+msgstr "選択されたユーザをブロック"
+
+#: modules/user/user.module:1722
+msgid "Delete the selected users"
+msgstr "選択されたユーザを削除"
+
+#: modules/user/user.module:1742
+msgid "Add a role to the selected users"
+msgstr "選択されたユーザをロールへ追加"
+
+#: modules/user/user.module:1745
+msgid "Remove a role from the selected users"
+msgstr "選択されたユーザをロールから削除"
+
+#: modules/user/user.module:1847
+msgid "Are you sure you want to delete these users?"
+msgstr "本当に、これらのユーザを削除してもよろしいですか？"
+
+#: modules/user/user.module:1857
+msgid "The users have been deleted."
+msgstr "ユーザは削除されました。"
+
+# より詳細に
+#: modules/user/user.module:1871
+msgid ""
+"The user module allows users to register, login, and log out. Users benefit "
+"from being able to sign on because it associates content they create with "
+"their account and allows various permissions to be set for their roles. The "
+"user module supports user roles which establish fine grained permissions "
+"allowing each role to do only what the administrator wants them to. Each "
+"user is assigned to one or more roles. By default there are two roles "
+"<em>anonymous</em> - a user who has not logged in, and <em>authenticated</"
+"em> a user who has signed up and who has been authorized."
+msgstr ""
+"User（ユーザ）モジュールはユーザの登録やログイン・ログアウトをはじめとして、"
+"ユーザ管理に関するさまざまな機能を提供します。 ユーザは登録することで自分のア"
+"カウントを持ち、投稿したコンテンツがアカウントに関連付けられるようになりま"
+"す。 また、未登録のユーザとは別のロールに所属することで、サイトでのさまざまな"
+"権限を与えられるなど、多くの特典を得ることができます。<br />ユーザモジュール"
+"は管理者がユーザに与えたい権限を、きめ細かに設定してグループ化できる「ロー"
+"ル」をサポートします。 未登録のユーザも含め、それぞれのユーザは1つ以上のロー"
+"ルに所属することになります。 デフォルトでは、「匿名ユーザ」（ログインしていな"
+"いユーザ）と「認証済みユーザ」（ログインしているユーザ）の2種類のロールが用意"
+"され、ユーザはログインの状態によってどちらかに所属することになります。"
+
+#: modules/user/user.module:1872
+msgid ""
+"Users can use their own name or handle and can specify personal "
+"configuration settings through their individual <em>My account</em> page. "
+"Users must authenticate by supplying a local username and password or "
+"through their OpenID, an optional and secure method for logging into many "
+"websites with a single username and password. In some configurations, users "
+"may authenticate using a username and password from another Drupal site, or "
+"through some other site-specific mechanism."
+msgstr ""
+"ユーザは投稿したコンテンツに自分の名前やニックネームを使うことや、それぞれの"
+"「アカウント情報」ページから個人的な環境設定をすることができます。 ユーザは"
+"ローカル（このサイト）でのユーザ名とパスワードを使用するか、任意でOpenID（1つ"
+"のユーザ名とパスワードで、多くのサイトに安全な方法でログインすることができま"
+"す）を通じて認証する必要があります。 設定によっては、他のDrupalサイトのユーザ"
+"名とパスワードを使用したり、他のサイト固有のメカニズムを通じて認証することも"
+"できます。"
+
+#: modules/user/user.module:1873
+msgid ""
+"A visitor accessing your website is assigned a unique ID, or session ID, "
+"which is stored in a cookie. The cookie does not contain personal "
+"information, but acts as a key to retrieve information from your site. Users "
+"should have cookies enabled in their web browser when using your site."
+msgstr ""
+"サイトにアクセスしている訪問者には、クッキー（cookie）に格納される固有のID"
+"（セッションID）が割り当てられます。 クッキーには個人的な情報は含まれません"
+"が、サーバから情報を取り出すためのキーの機能を果たします。 サイトを使用する"
+"際、ユーザはクッキーを有効にする必要があります。"
+
+#: modules/user/user.module:1874
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@user"
+"\">User module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@user\">User module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/user/user.module:1877
+msgid ""
+"Drupal allows users to register, login, log out, maintain user profiles, "
+"etc. Users of the site may not use their own names to post content until "
+"they have signed up for a user account."
+msgstr ""
+"Drupalはユーザの登録やログイン・ログアウト、ユーザプロフィールの保守などを行"
+"うことができます。 サイトのユーザはユーザアカウントを取得してログインするま"
+"で、投稿するコンテンツに自分の名前やニックネームを使うことはできません。"
+
+#: modules/user/user.module:1880
+msgid ""
+"This web page allows administrators to register new users. Users' e-mail "
+"addresses and usernames must be unique."
+msgstr ""
+"このページで管理者が新しいユーザを登録することができます。 ユーザのメールアド"
+"レスとユーザ名は固有である必要があります。"
+
+#: modules/user/user.module:1882
+msgid ""
+"Set up username and e-mail address access rules for new <em>and</em> "
+"existing accounts (currently logged in accounts will not be logged out). If "
+"a username or e-mail address for an account matches any deny rule, but not "
+"an allow rule, then the account will not be allowed to be created or to log "
+"in. A host rule is effective for every page view, not just registrations."
+msgstr ""
+"新規や既存のアカウントに対して、ユーザ名・メールアドレス・ホスト名・IPアドレ"
+"スによるアクセスルールを設定できます。 「拒否」のルールに一致して「許可」の"
+"ルールに一致しないアカウントは、作成やログインができなくなります（ただし、ロ"
+"グイン中のアカウントがログアウトさせられることはありません）。 ホスト名やIPア"
+"ドレスを使用したルールは、ユーザ登録の際だけでなく、すべてのページ表示に対し"
+"ても効力を発揮します。"
+
+# 例を多少変更
+#: modules/user/user.module:1884
+msgid ""
+"Permissions let you control what users can do on your site. Each user role "
+"(defined on the <a href=\"@role\">user roles page</a>) has its own set of "
+"permissions. For example, you could give users classified as \"Administrators"
+"\" permission to \"administer nodes\" but deny this power to ordinary, "
+"\"authenticated\" users. You can use permissions to reveal new features to "
+"privileged users (those with subscriptions, for example). Permissions also "
+"allow trusted users to share the administrative burden of running a busy "
+"site."
+msgstr ""
+"権限を設定することで、ユーザがサイト上で行えることをコントロールすることがで"
+"きます。 <a href=\"@role\">ロールのページ</a>で定義された各ロールは、以下で設"
+"定された権限のグループを持ちます。 例えば「管理者」として分類したユーザに対し"
+"ては管理を分担するために「ノードの管理」権限を与え、一般の「認証済みユーザ」"
+"にはその権限を与えないということができます。 この機能をうまく利用すると、例え"
+"ばユーザを有料と無料とに分類し、無料のユーザには見ることのできない情報を、有"
+"料のユーザにのみ提供することもできます。 また、信頼できるユーザにさまざまな管"
+"理権限を与え、サイト管理上の負担を分担するために利用することもできます。"
+
+#: modules/user/user.module:1886
+msgid ""
+"<p>Roles allow you to fine tune the security and administration of Drupal. A "
+"role defines a group of users that have certain privileges as defined in <a "
+"href=\"@permissions\">user permissions</a>. Examples of roles include: "
+"anonymous user, authenticated user, moderator, administrator and so on. In "
+"this area you will define the <em>role names</em> of the various roles. To "
+"delete a role choose \"edit\".</p><p>By default, Drupal comes with two user "
+"roles:</p>\n"
+"      <ul>\n"
+"      <li>Anonymous user: this role is used for users that don't have a user "
+"account or that are not authenticated.</li>\n"
+"      <li>Authenticated user: this role is automatically granted to all "
+"logged in users.</li>\n"
+"      </ul>"
+msgstr ""
+"<p>ロールはDrupalのセキュリティや管理を微調整できるようにします。 ロールは<a "
+"href=\"@permissions\">ユーザの権限</a>に定義されたとおりに、特定の特権を持つ"
+"ユーザのグループを定義します。 ロールの例として、「匿名ユーザ」「認証済みユー"
+"ザ」「モデレータ」「管理者」などが挙げられます。 以下で、さまざまなロールの"
+"「ロール名」を定義できます。 定義済みロールの削除は「権限の編集」から行えま"
+"す。</p><p>Drupalはデフォルトで2つのロールが定義されています:</p>\n"
+"      <ul>\n"
+"      <li>匿名ユーザ： ユーザアカウントを持っていないか、未認証のユーザが所属"
+"します。</li>\n"
+"      <li>認証済みユーザ： すべてのログイン中のユーザが、自動的に所属します。"
+"</li>\n"
+"      </ul>"
+
+# 冗長？
+#: modules/user/user.module:1892
+msgid ""
+"Enter a simple pattern (\"*\" may be used as a wildcard match) to search for "
+"a username or e-mail address. For example, one may search for \"br\" and "
+"Drupal might return \"brian\", \"brad\", and \"brenda@example.com\"."
+msgstr ""
+"簡単なパターンを入力して検索ボタンをクリックすると、そのパターンに一致する"
+"ユーザ名やメールアドレスを検索できます。 例えば「<b>ta</b>」の場合、「<b>ta</"
+"b>ro」「<b>ta</b>ro@example.com」「<b>ta</b>naka」「nari<b>ta</b>」"
+"「ki<b>ta</b>mura」など、<b>ta</b> をどこかに含むユーザ名やメールアドレスが"
+"ヒットします。 また「<b>ta*</b>」の場合、「<b>ta</b>ro」「<b>ta</b>naka」な"
+"ど、<b>ta</b> で始まるユーザ名やメールアドレスのみがヒットします。 （<b>*</"
+"b> はすべての文字に一致するワイルドカードです）"
+
+#: modules/user/user.module:1929
+msgid "role"
+msgstr "ロール"
+
+#: modules/user/user.module:1947
+msgid "permission"
+msgstr "権限"
+
+#: modules/user/user.module:2149
+msgid "Password strength:"
+msgstr "パスワードの強度："
+
+#: modules/user/user.module:2150
+msgid "Low"
+msgstr "低い"
+
+#: modules/user/user.module:2152
+msgid "High"
+msgstr "高い"
+
+#: modules/user/user.module:2153
+msgid ""
+"It is recommended to choose a password that contains at least six "
+"characters. It should include numbers, punctuation, and both upper and "
+"lowercase letters."
+msgstr ""
+"最低でも6文字以上を含むパスワードを選ぶことをお勧めします。 またパスワードに"
+"は、数字、句読点、大文字と小文字を混在させるべきです。"
+
+#: modules/user/user.module:2154
+msgid "The password does not include enough variation to be secure. Try:"
+msgstr ""
+"パスワードの安全性を高めるための十分な変化が含まれていません： 次のことを試み"
+"てください"
+
+#: modules/user/user.module:2155
+msgid "Adding both upper and lowercase letters."
+msgstr "大文字と小文字を混在させる。"
+
+#: modules/user/user.module:2156
+msgid "Adding numbers."
+msgstr "数字を加える。"
+
+#: modules/user/user.module:2157
+msgid "Adding punctuation."
+msgstr "句読点を加える。"
+
+#: modules/user/user.module:2158
+msgid "It is recommended to choose a password different from the username."
+msgstr "ユーザ名とは異なるパスワードを選ぶことをお勧めします。"
+
+#: modules/user/user.module:2161
+msgid "Passwords match:"
+msgstr "パスワードの一致："
+
+#: modules/user/user.module:2176
+msgid "After a user account has been created"
+msgstr "ユーザアカウントの作成後"
+
+#: modules/user/user.module:2179
+msgid "After a user's profile has been updated"
+msgstr "ユーザプロフィールの更新後"
+
+#: modules/user/user.module:2182
+msgid "After a user has been deleted"
+msgstr "ユーザの削除後"
+
+#: modules/user/user.module:2185
+msgid "After a user has logged in"
+msgstr "ユーザのログイン後"
+
+#: modules/user/user.module:2188
+msgid "After a user has logged out"
+msgstr "ユーザのログアウト後"
+
+#: modules/user/user.module:2191
+msgid "When a user's profile is being viewed"
+msgstr "ユーザプロフィールが閲覧された際"
+
+#: modules/user/user.module:2204
+msgid "Block current user"
+msgstr "現在のユーザをブロックする"
+
+#: modules/user/user.module:2210
+msgid "Ban IP address of current user"
+msgstr "現在のユーザのIPアドレスをアクセス禁止にする"
+
+#: modules/user/user.module:2303
+msgid ""
+"Welcome to Drupal. You are now logged in as user #1, which gives you full "
+"control over your website."
+msgstr ""
+"Drupalへようこそ。 あなたは現在、サイトを完全に制御できるユーザ #1 としてログ"
+"インしています。"
+
+#: modules/user/user.module:2305
+msgid ""
+"</p><p> Your password is <strong>%pass</strong>. You may change your "
+"password below.</p>"
+msgstr ""
+"</p><p>あなたのパスワードは <strong>%pass</strong> です。 以下でパスワードの"
+"変更ができます。</p>"
+
+#: modules/user/user.module:2317
+msgid ""
+"Created a new user account for <a href=\"@url\">%name</a>. No e-mail has "
+"been sent."
+msgstr ""
+"<a href=\"@url\">%name</a>さんの新しいアカウントが作成されました。 メールは送"
+"信されていません。"
+
+#: modules/user/user.module:2324
+msgid "Registration successful. You are now logged in."
+msgstr "正常に登録されました。 あなたは現在、ログインしています。"
+
+#: modules/user/user.module:2334
+msgid ""
+"Password and further instructions have been e-mailed to the new user <a href="
+"\"@url\">%name</a>."
+msgstr ""
+"パスワードを含む案内が、新規ユーザ<a href=\"@url\">%name</a>さんにメール送信"
+"されました。"
+
+#: modules/user/user.module:2337
+msgid ""
+"Your password and further instructions have been sent to your e-mail address."
+msgstr ""
+"あなたのメールアドレス宛に、パスワードを含むご案内メールを送信いたしました。"
+
+#: modules/user/user.module:2345
+msgid ""
+"Thank you for applying for an account. Your account is currently pending "
+"approval by the site administrator.<br />In the meantime, a welcome message "
+"with further instructions has been sent to your e-mail address."
+msgstr ""
+"アカウントをご申請いただき、ありがとうございます。 あなたのアカウントは現在、"
+"サイト管理者の承認待ちとなっております。<br />さしあたり、あなたのメールアド"
+"レス宛にご案内を含むウェルカムメッセージが送信されました。"
+
+#: modules/user/user.module:2382
+msgid "Notify user of new account"
+msgstr "新規アカウントをユーザへ通知する"
+
+#: modules/user/user.module:1314
+msgid "Login attempt failed for %user."
+msgstr "%user さんがログインに失敗しました。"
+
+#: modules/user/user.module:1351
+msgid "Session opened for %name."
+msgstr "%name さんのセッションが開始されました。"
+
+#: modules/user/user.module:1400
+msgid "New external user: %name using module %module."
+msgstr "新しい外部ユーザ： %name さん（モジュール %module を使用）"
+
+#: modules/user/user.module:1577
+msgid "Deleted user: %name %email."
+msgstr "ユーザが削除されました： %name さん (%email)"
+
+#: modules/user/user.module:2235
+msgid "Blocked user %name."
+msgstr "ユーザ %name さんがブロックされました。"
+
+#: modules/user/user.module:2245
+msgid "Banned IP address %ip"
+msgstr "IPアドレス %ip がアクセス禁止になりました。"
+
+#: modules/user/user.module:2299
+msgid "New user: %name (%email)."
+msgstr "新規ユーザ： %name さん (%email)"
+
+#: modules/user/user.module:776;779
+msgid "1 guest"
+msgid_plural "@count guests"
+msgstr[0] "ゲストユーザ 1 人"
+msgstr[1] "ゲストユーザ @count 人"
+
+#: modules/user/user.module:544
+msgid "administer permissions"
+msgstr "権限の管理"
+
+#: modules/user/user.module:544
+msgid "administer users"
+msgstr "ユーザの管理"
+
+#: modules/user/user.module:544
+msgid "access user profiles"
+msgstr "ユーザプロフィールへのアクセス"
+
+#: modules/user/user.module:544
+msgid "change own username"
+msgstr "自分のユーザ名の変更"
+
+#: modules/user/user.module:884
+msgid "User autocomplete"
+msgstr "ユーザ名の自動補完"
+
+#: modules/user/user.module:894
+msgid "User account"
+msgstr "ユーザアカウント"
+
+#: modules/user/user.module:925
+msgid "Reset password"
+msgstr "パスワードのリセット"
+
+#: modules/user/user.module:935
+msgid "User management"
+msgstr "ユーザの管理"
+
+#: modules/user/user.module:936
+msgid "Manage your site's users, groups and access to site features."
+msgstr "サイトのユーザやグループ、アクセス権などを管理します。"
+
+#: modules/user/user.module:945
+msgid "List, add, and edit users."
+msgstr "ユーザの一覧表示、追加、編集をします。"
+
+#: modules/user/user.module:957
+msgid "Add user"
+msgstr "ユーザの追加"
+
+#: modules/user/user.module:963
+msgid "User settings"
+msgstr "ユーザの設定"
+
+#: modules/user/user.module:964
+msgid ""
+"Configure default behavior of users, including registration requirements, e-"
+"mails, and user pictures."
+msgstr ""
+"ユーザ登録の条件やメールの内容、ユーザアバターなどを含めた、デフォルトでの"
+"ユーザの振る舞いを設定します。"
+
+#: modules/user/user.module:973
+msgid "Permissions"
+msgstr "権限"
+
+#: modules/user/user.module:974
+msgid "Determine access to features by selecting permissions for roles."
+msgstr "ロールの権限を選択して、さまざまな機能へのアクセス権を決定します。"
+
+#: modules/user/user.module:982
+msgid "List, edit, or add user roles."
+msgstr "ロールの一覧表示、追加、編集をします。"
+
+#: modules/user/user.module:989
+msgid "Edit role"
+msgstr "ロールの編集"
+
+#: modules/user/user.module:995
+msgid "Access rules"
+msgstr "アクセスルール"
+
+#: modules/user/user.module:996
+msgid ""
+"List and create rules to disallow usernames, e-mail addresses, and IP "
+"addresses."
+msgstr ""
+"ユーザ名、メールアドレス、IPアドレスによるアクセス許否ルールの一覧表示と作成"
+"をします。"
+
+#: modules/user/user.module:1013
+msgid "Check rules"
+msgstr "ルールのチェック"
+
+#: modules/user/user.module:1019
+msgid "Edit rule"
+msgstr "ルールの編集"
+
+#: modules/user/user.module:1025
+msgid "Delete rule"
+msgstr "ルールの削除"
+
+#: modules/user/user.module:1033
+msgid "Log out"
+msgstr "ログアウト"
+
+#: modules/user/user.module:1080
+msgid "Account"
+msgstr "アカウント"
+
+#: modules/user/user.module:0
+msgid "anonymous user"
+msgstr "匿名ユーザ"
+
+#: modules/user/user.module:0
+msgid "authenticated user"
+msgstr "認証済みユーザ"
+
+#: modules/user/user.install:9
+msgid "Stores site access rules."
+msgstr "サイトへのアクセスルールを格納します"
+
+#: modules/user/user.install:14
+msgid "Primary Key: Unique access ID."
+msgstr "プライマリキー： 固有のアクセスID"
+
+#: modules/user/user.install:21
+msgid "Text mask used for filtering access."
+msgstr "アクセスのフィルタリングに使用されるテキストマスク"
+
+#: modules/user/user.install:28
+msgid "Type of access rule: name, mail or host."
+msgstr "アクセスルールのタイプ： user, mail, host"
+
+#: modules/user/user.install:35
+msgid "Whether rule is to allow(1) or deny(0) access."
+msgstr "アクセスのタイプ（1 = 許可、0 = 許否）"
+
+#: modules/user/user.install:42
+msgid "Stores distributed authentication mapping."
+msgstr "分散型認証のマッピングを格納します"
+
+#: modules/user/user.install:45
+msgid "Primary Key: Unique authmap ID."
+msgstr "プライマリキー： 固有のauthmap ID"
+
+#: modules/user/user.install:54
+msgid "User's {users}.uid."
+msgstr "ユーザの{users}.uid"
+
+#: modules/user/user.install:61
+msgid "Unique authentication name."
+msgstr "固有の認証名"
+
+#: modules/user/user.install:68
+msgid "Module which is controlling the authentication."
+msgstr "認証をコントロールするモジュール"
+
+#: modules/user/user.install:76
+msgid "Stores permissions for users."
+msgstr "ユーザのパーミッションを格納します"
+
+#: modules/user/user.install:81
+msgid "Primary Key: Unique permission ID."
+msgstr "プライマリキー： 固有のパーミッションID"
+
+#: modules/user/user.install:88
+msgid "The {role}.rid to which the permissions are assigned."
+msgstr "パーミッションが割り当てられる{role}.rid"
+
+#: modules/user/user.install:94
+msgid "List of permissions being assigned."
+msgstr "割り当てられているパーミッションのリスト"
+
+#: modules/user/user.install:101
+msgid "Originally intended for taxonomy-based permissions, but never used."
+msgstr ""
+"タクソノミーベースのパーミッションでの使用を意図したものの使用されませんでし"
+"た"
+
+#: modules/user/user.install:109
+msgid "Stores user roles."
+msgstr "ユーザロールを格納します"
+
+#: modules/user/user.install:115
+msgid "Primary Key: Unique role id."
+msgstr "プライマリキー： 固有のロールID"
+
+#: modules/user/user.install:122
+msgid "Unique role name."
+msgstr "固有のロール名"
+
+#: modules/user/user.install:130
+msgid "Stores user data."
+msgstr "ユーザデータを格納します"
+
+#: modules/user/user.install:136
+msgid "Primary Key: Unique user ID."
+msgstr "プライマリキー： 固有のユーザID"
+
+#: modules/user/user.install:143
+msgid "Unique user name."
+msgstr "固有のユーザ名"
+
+#: modules/user/user.install:150
+msgid "User's password (md5 hash)."
+msgstr "ユーザのパスワード（MD5ハッシュ値）"
+
+#: modules/user/user.install:157
+msgid "User's email address."
+msgstr "ユーザのメールアドレス"
+
+#: modules/user/user.install:164
+msgid ""
+"Per-user comment display mode (threaded vs. flat), used by the {comment} "
+"module."
+msgstr ""
+"{comment}モジュールによって使用される、ユーザごとのコメント表示モード（スレッ"
+"ド・フラット）"
+
+#: modules/user/user.install:171
+msgid ""
+"Per-user comment sort order (newest vs. oldest first), used by the {comment} "
+"module."
+msgstr ""
+"{comment}モジュールによって使用される、ユーザごとのコメントの並び順（日付の新"
+"しい順・古い順）"
+
+#: modules/user/user.install:178
+msgid ""
+"Previously used by the {comment} module for per-user preferences; no longer "
+"used."
+msgstr ""
+"かつては{comment}モジュールによってユーザごとの設定に使用されていたが、もはや"
+"使用されない"
+
+#: modules/user/user.install:185
+msgid "User's default theme."
+msgstr "ユーザのデフォルトテーマ"
+
+#: modules/user/user.install:192
+msgid "User's signature."
+msgstr "ユーザの署名"
+
+#: modules/user/user.install:198
+msgid "Timestamp for when user was created."
+msgstr "ユーザ作成時のタイムスタンプ"
+
+#: modules/user/user.install:204
+msgid "Timestamp for previous time user accessed the site."
+msgstr "前回ユーザがサイトにアクセスした際のタイムスタンプ"
+
+#: modules/user/user.install:210
+msgid "Timestamp for user's last login."
+msgstr "ユーザの最終ログインのタイムスタンプ"
+
+#: modules/user/user.install:217
+msgid "Whether the user is active(1) or blocked(0)."
+msgstr "ユーザの状態（1 = アクティブ、0 = ブロック）"
+
+#: modules/user/user.install:223
+msgid "User's timezone."
+msgstr "ユーザのタイムゾーン"
+
+#: modules/user/user.install:230
+msgid "User's default language."
+msgstr "ユーザのデフォルト言語"
+
+#: modules/user/user.install:237
+msgid "Path to the user's uploaded picture."
+msgstr "アップロードされたユーザアバターへのパス"
+
+#: modules/user/user.install:244
+msgid "Email address used for initial account creation."
+msgstr "アカウント作成時に使用されたメールアドレス"
+
+#: modules/user/user.install:250
+msgid ""
+"A serialized array of name value pairs that are related to the user. Any "
+"form values posted during user edit are stored and are loaded into the $user "
+"object during user_load(). Use of this field is discouraged and it will "
+"likely disappear in a future version of Drupal."
+msgstr ""
+"ユーザに関連した名前と値が対になったシリアライズされた配列。 ユーザ編集の間に"
+"投稿された任意のフォーム値が格納され、user_load()で$userオブジェクトにロード"
+"される。 このフィールドの使用は推奨されず、おそらくDrupalの将来のバージョンで"
+"は消滅する。"
+
+#: modules/user/user.install:265
+msgid "Maps users to roles."
+msgstr "ロールへのユーザの対応付け"
+
+#: modules/user/user.install:272
+msgid "Primary Key: {users}.uid for user."
+msgstr "プライマリキー： ユーザの{users}.uid"
+
+#: modules/user/user.install:279
+msgid "Primary Key: {role}.rid for role."
+msgstr "プライマリキー： ユーザの{role}.rid"

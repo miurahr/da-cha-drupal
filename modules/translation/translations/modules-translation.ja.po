@@ -1,0 +1,233 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-translation)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  translation.pages.inc,v 1.2 2008/01/07 13:18:40 goba
+#  translation.module,v 1.23 2008/01/28 11:38:58 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/translation/translation.pages.inc:41
+msgid "outdated"
+msgstr "旧式"
+
+#: modules/translation/translation.pages.inc:50
+msgid "add translation"
+msgstr "翻訳の追加"
+
+#: modules/translation/translation.pages.inc:52
+msgid "Not translated"
+msgstr "未翻訳"
+
+#: modules/translation/translation.pages.inc:57
+msgid "Translations of %title"
+msgstr "%title の翻訳"
+
+#: modules/translation/translation.module:34
+msgid ""
+"The content translation module allows content to be translated into "
+"different languages. Working with the <a href=\"@locale\">locale module</a> "
+"(which manages enabled languages and provides translation for the site "
+"interface), the content translation module is key to creating and "
+"maintaining translated site content."
+msgstr ""
+"Content translation（コンテンツ翻訳）モジュールは、コンテンツを異なる言語に翻"
+"訳できるようにします。 <a href=\"@locale\">locale（ロケール）モジュール</a>"
+"（使用できる言語の管理とサイトインターフェイスに翻訳を提供）と共に動作し、翻"
+"訳されたサイトコンテンツの作成と保守のカギとなります。"
+
+#: modules/translation/translation.module:35
+msgid "Configuring content translation and translation-enabled content types:"
+msgstr "コンテンツの翻訳と翻訳対応コンテンツタイプの設定："
+
+#: modules/translation/translation.module:36
+msgid ""
+"Assign the <em>translate content</em> permission to the appropriate user "
+"roles at the <a href=\"@permissions\">Permissions configuration page</a>."
+msgstr ""
+"<a href=\"@permissions\">権限の設定ページ</a>で適切なユーザロールに「コンテン"
+"ツの翻訳」権限を割り当ててください。"
+
+#: modules/translation/translation.module:37
+msgid ""
+"Add and enable desired languages at the <a href=\"@languages\">Languages "
+"configuration page</a>."
+msgstr ""
+"<a href=\"@languages\">言語の設定ページ</a>で希望する言語を加えて有効にしてく"
+"ださい。"
+
+#: modules/translation/translation.module:38
+msgid ""
+"Determine which <a href=\"@content-types\">content types</a> should support "
+"translation features. To enable translation support for a content type, edit "
+"the type and at the <em>Multilingual support</em> drop down, select "
+"<em>Enabled, with translation</em>. (<em>Multilingual support</em> is "
+"located within <em>Workflow settings</em>.) Be sure to save each content "
+"type after enabling multilingual support."
+msgstr ""
+"翻訳機能をサポートする<a href=\"@content-types\">コンテンツタイプ</a>を決めて"
+"ください。 コンテンツタイプを翻訳対応にするには、各タイプを編集し、「ワークフ"
+"ローの設定」にある「多言語サポート」で「有効（翻訳対応）」を選択してくださ"
+"い。 多言語サポートを有効にした後、必ず各コンテンツタイプを保存してください。"
+
+#: modules/translation/translation.module:39
+msgid "Working with translation-enabled content types:"
+msgstr "翻訳対応のコンテンツタイプの運用："
+
+#: modules/translation/translation.module:40
+msgid ""
+"Use the <em>Language</em> drop down to select the appropriate language when "
+"creating or editing posts."
+msgstr ""
+"投稿の作成や編集時に、「言語」ドロップダウンリストで適切な言語を選択してくだ"
+"さい。"
+
+#: modules/translation/translation.module:41
+msgid ""
+"Provide new or edit current translations for existing posts via the "
+"<em>Translation</em> tab. Only visible while viewing a post as a user with "
+"the <em>translate content</em> permission, this tab allows translations to "
+"be added or edited using a specialized editing form that also displays the "
+"content being translated."
+msgstr ""
+"新たに翻訳を用意するか、既存の投稿の「翻訳」タブから現在の翻訳を編集してくだ"
+"さい。 「翻訳」タブは、「コンテンツの翻訳」権限を持ったユーザが投稿を表示中に"
+"のみ表示されます。 このタブは、翻訳されているコンテンツを表示する専門の編集"
+"フォームを使用し、翻訳の追加や編集ができるようします。"
+
+#: modules/translation/translation.module:42
+msgid ""
+"Update translations as needed, so that they accurately reflect changes in "
+"the content of the original post. The translation status flag provides a "
+"simple method for tracking outdated translations. After editing a post, for "
+"example, select the <em>Flag translations as outdated</em> check box to mark "
+"all of its translations as outdated and in need of revision. Individual "
+"translations may be marked for revision by selecting the <em>This "
+"translation needs to be updated</em> check box on the translation editing "
+"form."
+msgstr ""
+"オリジナル投稿の内容変更を正しく反映するように、必要に応じて翻訳を更新してく"
+"ださい。 翻訳状態フラグは、古くなった翻訳を見つけるための単純な方法を提供しま"
+"す。 例えば、投稿を編集した後に「翻訳が古いことを示すフラグ」にチェックを入れ"
+"ることで、翻訳が古く改訂が必要であることを示すマークがすべての翻訳に付きま"
+"す。 また、個々の翻訳の編集フォームでは、「翻訳の更新が必要」チェックボックス"
+"にチェックを入れることで、改訂の必要性を示すことができます。"
+
+#: modules/translation/translation.module:43
+msgid ""
+"The <a href=\"@content-node\">Content management administration page</a> "
+"displays the language of each post, and also allows filtering by language or "
+"translation status."
+msgstr ""
+"<a href=\"@content-node\">コンテンツの管理ページ</a>では各投稿の言語が表示さ"
+"れ、言語や翻訳状態によって絞り込むことができます。"
+
+#: modules/translation/translation.module:44
+msgid ""
+"Use the <a href=\"@blocks\">language switcher block</a> provided by locale "
+"module to allow users to select a language. If available, both the site "
+"interface and site content are presented in the language selected."
+msgstr ""
+"ユーザが言語を選択できるようにするために、locale（ロケール）モジュールにより"
+"提供される<a href=\"@blocks\">言語スイッチャーブロック</a>を使用してくださ"
+"い。 利用可能な場合、サイトのインターフェイスとコンテンツが共に、選択された言"
+"語で表示されます。"
+
+#: modules/translation/translation.module:45
+msgid ""
+"For more information, see the online handbook entry for <a href="
+"\"@translation\">Translation module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@translation"
+"\">Translation module（英文）</a>エントリを参照するか、日本サイトの<a href="
+"\"http://drupal.jp/\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/translation/translation.module:48
+msgid ""
+"Translations of a piece of content are managed with translation sets. Each "
+"translation set has one source post and any number of translations in any of "
+"the <a href=\"!languages\">enabled languages</a>. All translations are "
+"tracked to be up to date or outdated based on whether the source post was "
+"modified significantly."
+msgstr ""
+"コンテンツの翻訳は翻訳セットで管理されます。 各翻訳セットは元となる1つの投稿"
+"と、<a href=\"!languages\">使用できる言語</a>の数だけの翻訳を持ちます。 すべ"
+"ての翻訳は、元となる投稿が大幅に修正されたかどうかに基づき、最新か旧式かが記"
+"録されます。"
+
+#: modules/translation/translation.module:102
+msgid "Enabled, with translation"
+msgstr "有効（翻訳対応）"
+
+#: modules/translation/translation.module:104
+msgid ""
+"Enable multilingual support for this content type. If enabled, a language "
+"selection field will be added to the editing form, allowing you to select "
+"from one of the <a href=\"!languages\">enabled languages</a>. You can also "
+"turn on translation for this content type, which lets you have content "
+"translated to any of the enabled languages. If disabled, new posts are saved "
+"with the default language. Existing content will not be affected by changing "
+"this option."
+msgstr ""
+"このコンテンツタイプの多言語サポートを、有効にするかどうかを指定してくださ"
+"い。 有効にした場合、<a href=\"!languages\">使用可能な言語</a>から1つを選ぶこ"
+"とのできる、言語選択フィールドが編集フォームに追加されます。 また、使用可能な"
+"言語に対応するコンテンツの翻訳を持たせることのできる、「翻訳対応」にすること"
+"もできます。 無効にした場合、新しい投稿はデフォルト言語で保存されます。 この"
+"オプションの変更によって、既存のコンテンツに影響を与えることはありません。"
+
+#: modules/translation/translation.module:127
+msgid "Translation settings"
+msgstr "翻訳の設定"
+
+#: modules/translation/translation.module:138
+msgid "Flag translations as outdated"
+msgstr "翻訳が古いことを示すフラグ"
+
+#: modules/translation/translation.module:140
+msgid ""
+"If you made a significant change, which means translations should be "
+"updated, you can flag all translations of this post as outdated. This will "
+"not change any other property of those posts, like whether they are "
+"published or not."
+msgstr ""
+"翻訳の更新を必要とする重大な変更をした場合、この投稿のすべての翻訳に、旧式で"
+"あることを示すフラグを立てることができます。 これは、掲載・非掲載を決定するよ"
+"うな、他のプロパティを変更することはありません。"
+
+#: modules/translation/translation.module:147
+msgid "This translation needs to be updated"
+msgstr "翻訳の更新が必要"
+
+#: modules/translation/translation.module:149
+msgid ""
+"When this option is checked, this translation needs to be updated because "
+"the source post has changed. Uncheck when the translation is up to date "
+"again."
+msgstr ""
+"ここにチェックが入っている場合、元の投稿が変更されたため翻訳の更新が必要で"
+"す。 翻訳を再び最新にしたとき、チェックを外してください。"
+
+#: modules/translation/translation.module:89
+msgid "translate content"
+msgstr "コンテンツの翻訳"
+
+#: modules/translation/translation.module:59
+msgid "Translate"
+msgstr "翻訳"
+
+#: modules/translation/translation.module:0
+msgid "translation"
+msgstr "translation"

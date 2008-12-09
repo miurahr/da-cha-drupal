@@ -1,0 +1,190 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-blog)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  blog.pages.inc,v 1.6.2.1 2008/02/08 21:15:12 goba
+#  blog.module,v 1.297 2008/01/09 09:51:34 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/blog/blog.pages.inc:15 modules/blog/blog.module:108
+msgid "@name's blog"
+msgstr "@nameさんのブログ"
+
+#: modules/blog/blog.pages.inc:20
+msgid "Post new blog entry."
+msgstr "新しいブログエントリの投稿"
+
+#: modules/blog/blog.pages.inc:23
+msgid "You are not allowed to post a new blog entry."
+msgstr "新しいブログエントリを投稿する権限がありません。"
+
+#: modules/blog/blog.pages.inc:41
+msgid "You have not created any blog entries."
+msgstr "ブログエントリを作成していません。"
+
+#: modules/blog/blog.pages.inc:44
+msgid "!author has not created any blog entries."
+msgstr "!authorさんはブログエントリを作成していません。"
+
+#: modules/blog/blog.pages.inc:47
+msgid "RSS - !title"
+msgstr "RSS - !title"
+
+#: modules/blog/blog.pages.inc:62
+msgid "Create new blog entry."
+msgstr "新しいブログエントリを作成"
+
+#: modules/blog/blog.pages.inc:79
+msgid "No blog entries have been created."
+msgstr "ブログエントリが作成されていません。"
+
+#: modules/blog/blog.pages.inc:81
+msgid "RSS - blogs"
+msgstr "RSS - ブログ"
+
+#: modules/blog/blog.module:15
+msgid "Blog entry"
+msgstr "ブログエントリ"
+
+#: modules/blog/blog.module:17
+msgid ""
+"A <em>blog entry</em> is a single post to an online journal, or <em>blog</"
+"em>."
+msgstr ""
+"<em>ブログエントリ</em> はオンラインジャーナルや<em>ブログ</em> への投稿で"
+"す。"
+
+#: modules/blog/blog.module:52
+msgid "View recent blog entries"
+msgstr "最近のブログエントリを表示"
+
+#: modules/blog/blog.module:52;124
+msgid "Read @username's latest blog entries."
+msgstr "@usernameさんの最新ブログエントリを表示"
+
+#: modules/blog/blog.module:64
+msgid ""
+"The blog module allows registered users to maintain an online journal, or "
+"<em>blog</em>. Blogs are made up of individual <em>blog entries</em>, and "
+"the blog entries are most often displayed in descending order by creation "
+"time."
+msgstr ""
+"Blog（ブログ）モジュールは、登録ユーザがオンラインジャーナルや「ブログ」をつ"
+"けられるようにします。 ブログは個々の「ブログエントリ」で構成され、ほとんどの"
+"場合は作成日時の降順で表示されます。"
+
+#: modules/blog/blog.module:65
+msgid ""
+"There is an (optional) <em>Blogs</em> menu item added to the Navigation "
+"menu, which displays all blogs available on your site, and a <em>My blog</"
+"em> item displaying the current user's blog entries. The <em>Blog entry</em> "
+"menu item under <em>Create content</em> allows new blog entries to be "
+"created."
+msgstr ""
+"ナビゲーションメニューには、サイト上の全ブログを表示できる項目と、現在のユー"
+"ザのブログエントリが表示される「マイブログ」項目を備えた、任意で有効にできる"
+"「ブログ」メニュー項目が追加されます。 また、「コンテンツの作成」に「ブログエ"
+"ントリ」項目を追加し、新しいブログエントリを作成できるようにします。"
+
+#: modules/blog/blog.module:66
+msgid ""
+"Each blog entry is displayed with an automatic link to other blogs created "
+"by the same user. By default, blog entries have comments enabled and are "
+"automatically promoted to the site front page. The blog module also creates "
+"a <em>Recent blog posts</em> block that may be enabled at the <a href="
+"\"@blocks\">blocks administration page</a>."
+msgstr ""
+"各ブログエントリは、同じユーザが作成した他のブログへのリンクと共に表示されま"
+"す。 デフォルトでブログエントリは、コメントが許可され、自動的にフロントページ"
+"に掲載されるようになっています。 ブログモジュールはさらに、<a href=\"@blocks"
+"\">ブロックの管理ページ</a>で有効化できる「最近のブログ投稿」ブロックを作成し"
+"ます。"
+
+#: modules/blog/blog.module:67
+msgid ""
+"When using the aggregator module an automatic <em>blog it</em> icon is "
+"displayed next to the items in a feed's <em>latest items</em> block. "
+"Clicking this icon populates a <em>blog entry</em> with a title (the title "
+"of the feed item) and body (a link to the source item on its original site "
+"and illustrative content suitable for use in a block quote). Blog authors "
+"can use this feature to easily comment on items of interest that appear in "
+"aggregator feeds from other sites. To use this feature, be sure to <a href="
+"\"@modules\">enable</a> the aggregator module, <a href=\"@feeds\">add and "
+"configure</a> a feed from another site, and <a href=\"@blocks\">position</a> "
+"the feed's <em>latest items</em> block."
+msgstr ""
+"aggregator（アグリゲータ）モジュールを使用している場合、フィードの「最新項"
+"目」ブロックの各項目の隣に<b>[b]</b>アイコンが表示されます。 このアイコンをク"
+"リックすると、タイトル（フィード項目のタイトル）と、本文（ブロック引用に適し"
+"た、オリジナルサイトと説明内容を含む情報源へのリンク）がブログエントリに投入"
+"されます。 この機能を使用することで、ブログ投稿者は容易に、他サイトからのアグ"
+"リゲータフィードに現れる興味のある項目にコメントすることができます。 この機能"
+"を使用するには、アグリゲータモジュールを<a href=\"@modules\">有効化</a>し、他"
+"サイトから取得するフィードの<a href=\"@feeds\">追加と設定</a>を行い、フィード"
+"の「最新項目」ブロックを<a href=\"@blocks\">配置</a>する必要があります。"
+
+#: modules/blog/blog.module:68
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@blog"
+"\">Blog module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@blog\">Blog module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/blog/blog.module:108;137;152;160
+msgid "Blogs"
+msgstr "ブログ"
+
+#: modules/blog/blog.module:122
+msgid "@username's blog"
+msgstr "@usernameさんのブログ"
+
+#: modules/blog/blog.module:178;187
+msgid "Recent blog posts"
+msgstr "最近のブログ投稿"
+
+#: modules/blog/blog.module:186
+msgid "Read the latest blog entries."
+msgstr "最新のブログエントリを表示"
+
+#: modules/blog/blog.module:26
+msgid "create blog entries"
+msgstr "ブログエントリの作成"
+
+#: modules/blog/blog.module:26
+msgid "delete own blog entries"
+msgstr "自分のブログエントリの削除"
+
+#: modules/blog/blog.module:26
+msgid "delete any blog entry"
+msgstr "任意のブログエントリの削除"
+
+#: modules/blog/blog.module:26
+msgid "edit own blog entries"
+msgstr "自分のブログエントリの編集"
+
+#: modules/blog/blog.module:26
+msgid "edit any blog entry"
+msgstr "任意のブログエントリの編集"
+
+#: modules/blog/blog.module:144
+msgid "My blog"
+msgstr "マイブログ"
+
+#: modules/blog/blog.module:0
+msgid "blog"
+msgstr "ブログ"

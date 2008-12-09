@@ -1,0 +1,326 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-poll)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  poll-bar.tpl.php,v 1.2 2007/08/07 08:39:35 goba
+#  poll.pages.inc,v 1.4 2007/12/14 09:50:41 goba
+#  poll-results-block.tpl.php,v 1.2 2007/08/02 20:08:53 dries
+#  poll-results.tpl.php,v 1.2 2007/08/07 08:39:35 goba
+#  poll.module,v 1.263 2008/01/15 07:57:46 dries
+#  poll.install,v 1.13 2007/12/18 12:59:21 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+# これらは表示時に()で括られる
+#: modules/poll/poll-bar.tpl.php:25 modules/poll/poll.pages.inc:20
+msgid "1 vote"
+msgid_plural "@count votes"
+msgstr[0] "得票数：1"
+msgstr[1] "得票数：@count"
+
+#: modules/poll/poll-results-block.tpl.php:26
+#: modules/poll/poll-results.tpl.php:24
+msgid "Total votes: @votes"
+msgstr "投票総数：@votes"
+
+# 「受付中」としたいが他のモジュールで使われる可能性があるため
+#: modules/poll/poll.pages.inc:20
+msgid "open"
+msgstr "オープン"
+
+# Closed に同じ
+#: modules/poll/poll.pages.inc:20
+msgid "closed"
+msgstr "クローズド"
+
+#: modules/poll/poll.pages.inc:32
+msgid ""
+"This table lists all the recorded votes for this poll. If anonymous users "
+"are allowed to vote, they will be identified by the IP address of the "
+"computer they used when they voted."
+msgstr ""
+"このテーブルは、この投票に記録された全票の一覧です。 匿名ユーザに投票を許可し"
+"ている場合、それらの票は投票の際に使用されたコンピュータのIPアドレスで識別さ"
+"れます。"
+
+#: modules/poll/poll.pages.inc:35 modules/poll/poll.module:571
+msgid "Vote"
+msgstr "投票"
+
+#: modules/poll/poll.module:16
+msgid ""
+"The poll module can be used to create simple polls for site users. A poll is "
+"a simple, multiple choice questionnaire which displays the cumulative "
+"results of the answers to the poll. Having polls on the site is a good way "
+"to receive feedback from community members."
+msgstr ""
+"Poll（投票）モジュールは、サイトユーザ用の簡単な投票を作成するために使用でき"
+"ます。 投票は、投票への回答の累積結果を表示する、簡素な多項選択式のアンケート"
+"です。 サイトに投票を設置することは、コミュニティメンバーからフィードバックを"
+"受け取るのによい方法です。"
+
+#: modules/poll/poll.module:17
+msgid ""
+"When creating a poll, enter the question being posed, as well as the "
+"potential choices (and beginning vote counts for each choice). The status "
+"and duration (length of time the poll remains active for new votes) can also "
+"be specified. Use the <a href=\"@poll\">poll</a> menu item to view all "
+"current polls. To vote in or view the results of a specific poll, click on "
+"the poll itself."
+msgstr ""
+"投票を作成する場合、提起したい質問と、回答の選択肢（各選択肢には初期票数を設"
+"定可）を入力してください。 また、状態と継続期間（新しい票を受け付ける期間）を"
+"指定できます。 現在のすべての投票を表示するには、<a href=\"@poll\">投票所</a>"
+"メニュー項目を使用してください。 投票を行ったり、特定の投票の結果を表示するに"
+"は、それぞれの投票をクリックしてください。"
+
+#: modules/poll/poll.module:18
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@poll"
+"\">Poll module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@poll\">Poll module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/poll/poll.module:133
+msgid "Most recent poll"
+msgstr "最新の投票"
+
+#: modules/poll/poll.module:174
+msgid ""
+"A <em>poll</em> is a question with a set of possible responses. A <em>poll</"
+"em>, once created, automatically provides a simple running count of the "
+"number of votes received for each response."
+msgstr ""
+"<em>投票</em> は回答の選択肢を持った質問です。 作成された<em>投票</em> は、自"
+"動的に各回答で得られた総票数を提供します。"
+
+#: modules/poll/poll.module:175
+msgid "Question"
+msgstr "質問"
+
+#: modules/poll/poll.module:237
+msgid "More choices"
+msgstr "選択肢の追加"
+
+#: modules/poll/poll.module:238
+msgid ""
+"If the amount of boxes above isn't enough, click here to add more choices."
+msgstr ""
+"上の入力欄が足りない場合、さらに選択肢を追加するためにここをクリックしてくだ"
+"さい。"
+
+# 「締め切り」としたいが他のモジュールで使われる可能性と他方の選択肢が「アクティブ」
+# なので素直に「クローズド」
+#: modules/poll/poll.module:251
+msgid "Closed"
+msgstr "クローズド"
+
+#: modules/poll/poll.module:257
+msgid "Poll settings"
+msgstr "投票の設定"
+
+#: modules/poll/poll.module:263
+msgid "Poll status"
+msgstr "投票の状態"
+
+#: modules/poll/poll.module:266
+msgid "When a poll is closed, visitors can no longer vote for it."
+msgstr ""
+"投票を受け付けるかどうかを指定してください。 「クローズド」にすると投票は締め"
+"切られ、訪問者は投票ができなくなります。"
+
+#: modules/poll/poll.module:271
+msgid "Poll duration"
+msgstr "投票の継続期間"
+
+#: modules/poll/poll.module:274
+msgid "After this period, the poll will be closed automatically."
+msgstr ""
+"投票を受け付ける期間を指定してください。 この期間を過ぎると投票は自動的に締め"
+"切られます。"
+
+#: modules/poll/poll.module:306
+msgid "Choice @n"
+msgstr "選択肢 @n"
+
+#: modules/poll/poll.module:314
+msgid "Votes for choice @n"
+msgstr "選択肢 @n の得票数"
+
+#: modules/poll/poll.module:385
+msgid "Negative values are not allowed."
+msgstr "負（マイナス）の値は認められません。"
+
+#: modules/poll/poll.module:390
+msgid "You must fill in at least two choices."
+msgstr "少なくとも2つの選択肢を入力する必要があります。"
+
+# older とは限らないので
+#: modules/poll/poll.module:511
+msgid "Older polls"
+msgstr "投票所一覧"
+
+#: modules/poll/poll.module:511
+msgid "View the list of polls on this site."
+msgstr "サイト上の投票所リストを表示"
+
+# 他のモジュールで使用されるようなら要変更
+#: modules/poll/poll.module:513;98
+msgid "Results"
+msgstr "投票結果"
+
+#: modules/poll/poll.module:513
+msgid "View the current poll results."
+msgstr "現在の投票結果を表示"
+
+#: modules/poll/poll.module:593
+msgid ""
+"Your vote could not be recorded because you did not select any of the "
+"choices."
+msgstr "どの選択肢も選択しなかったため、あなたの投票を記録できませんでした。"
+
+#: modules/poll/poll.module:616
+msgid "Your vote was recorded."
+msgstr "あなたの投票が記録されました。"
+
+#: modules/poll/poll.module:672
+msgid "Add another choice"
+msgstr "別の選択肢を追加"
+
+#: modules/poll/poll.module:676
+msgid "Choice"
+msgstr "選択肢"
+
+#: modules/poll/poll.module:677
+msgid "Vote count"
+msgstr "得票数"
+
+# ボタンに使用されるため「自分」の方が適当
+#: modules/poll/poll.module:759
+msgid "Cancel your vote"
+msgstr "自分の投票を取り消す"
+
+#: modules/poll/poll.module:57
+msgid "create poll content"
+msgstr "投票コンテンツの作成"
+
+#: modules/poll/poll.module:57
+msgid "delete own poll content"
+msgstr "自分の投票コンテンツの削除"
+
+#: modules/poll/poll.module:57
+msgid "delete any poll content"
+msgstr "任意の投票コンテンツの削除"
+
+#: modules/poll/poll.module:57
+msgid "edit any poll content"
+msgstr "任意の投票コンテンツの編集"
+
+#: modules/poll/poll.module:57
+msgid "edit own poll content"
+msgstr "自分の投票コンテンツの編集"
+
+#: modules/poll/poll.module:57
+msgid "vote on polls"
+msgstr "投票所での投票"
+
+#: modules/poll/poll.module:57
+msgid "cancel own vote"
+msgstr "自分の投票の取り消し"
+
+#: modules/poll/poll.module:57
+msgid "inspect all votes"
+msgstr "全票の閲覧"
+
+#: modules/poll/poll.module:79
+msgid "Polls"
+msgstr "投票所"
+
+# あるいは「票一覧」
+#: modules/poll/poll.module:87
+msgid "Votes"
+msgstr "全票"
+
+#: modules/poll/poll.module:109
+msgid "Javascript Choice Form"
+msgstr "Javascript選択肢フォーム"
+
+#: modules/poll/poll.module:0
+msgid "poll"
+msgstr "投票所"
+
+#: modules/poll/poll.install:25
+msgid "Stores poll-specific information for poll nodes."
+msgstr "投票ノード用の投票固有の情報を格納します"
+
+#: modules/poll/poll.install:32
+msgid "The poll's {node}.nid."
+msgstr "投票の{node}.nid"
+
+# {node}.createdは無関係のようなので
+#: modules/poll/poll.install:38
+msgid ""
+"The number of seconds past {node}.created during which the poll is open."
+msgstr "投票を受け付ける秒数"
+
+#: modules/poll/poll.install:45
+msgid "Boolean indicating whether or not the poll is open."
+msgstr "投票が受付中かどうかを示すフラグ"
+
+#: modules/poll/poll.install:52
+msgid "Stores information about all choices for all {poll}s."
+msgstr "全{poll}用の全選択肢に関する情報を格納します"
+
+#: modules/poll/poll.install:58
+msgid "Unique identifier for a poll choice."
+msgstr "投票選択肢用の固有の識別子"
+
+#: modules/poll/poll.install:65
+msgid "The {node}.nid this choice belongs to."
+msgstr "選択肢が所属する{node}.nid"
+
+#: modules/poll/poll.install:72
+msgid "The text for this choice."
+msgstr "選択肢のテキスト"
+
+#: modules/poll/poll.install:78
+msgid "The total number of votes this choice has received by all users."
+msgstr "全ユーザによる選択肢への投票総数"
+
+#: modules/poll/poll.install:84
+msgid "The sort order of this choice among all choices for the same node."
+msgstr "同じノードの全選択肢内での並び順"
+
+#: modules/poll/poll.install:94
+msgid "Stores per-{users} votes for each {poll}."
+msgstr "各{poll}用の{users}単位の票を格納します"
+
+#: modules/poll/poll.install:100
+msgid "The {poll} node this vote is for."
+msgstr "投票された{poll}ノード"
+
+#: modules/poll/poll.install:107
+msgid "The {users}.uid this vote is from unless the voter was anonymous."
+msgstr "投票者が匿名ユーザでない場合は投票者の{users}.uid"
+
+#: modules/poll/poll.install:113
+msgid "The {users}'s vote for this poll."
+msgstr "投票へのユーザの票"
+
+#: modules/poll/poll.install:120
+msgid "The IP address this vote is from unless the voter was logged in."
+msgstr "投票者がログインしていない場合は投票者のIPアドレス"

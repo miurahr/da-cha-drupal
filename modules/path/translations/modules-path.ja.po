@@ -1,0 +1,231 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-path)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  path.admin.inc,v 1.7 2008/01/08 10:35:42 goba
+#  path.module,v 1.138 2008/02/03 19:20:35 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/path/path.admin.inc:30
+msgid "Alias"
+msgstr "エイリアス"
+
+#: modules/path/path.admin.inc:54
+msgid "No URL aliases found."
+msgstr "URLエイリアスが見つかりませんでした。"
+
+#: modules/path/path.admin.inc:54
+msgid "No URL aliases available."
+msgstr "定義されたURLエイリアスはありません。"
+
+#: modules/path/path.admin.inc:93
+msgid "Existing system path"
+msgstr "既存のシステムパス"
+
+#: modules/path/path.admin.inc:97
+msgid ""
+"Specify the existing path you wish to alias. For example: node/28, forum/1, "
+"taxonomy/term/1+2."
+msgstr ""
+"エイリアスの元となる既存のパスを入力してください。 例： node/28、forum/1、"
+"taxonomy/term/1+2"
+
+#: modules/path/path.admin.inc:103
+msgid "Path alias"
+msgstr "パスエイリアス"
+
+#: modules/path/path.admin.inc:107
+msgid ""
+"Specify an alternative path by which this data can be accessed. For example, "
+"type \"about\" when writing an about page. Use a relative path and don't add "
+"a trailing slash or the URL alias won't work."
+msgstr ""
+"既存パスの代わりに使用したいパスの別名を入力してください。 例えば「サイトにつ"
+"いて」というページが node/3 にあり、それを about でアクセスできるようにしたい"
+"ならば about と入力します。 パスの指定には相対パスを使用し、さらにパスの最後"
+"に \"/\"（スラッシュ）は付けないようにしてください。 正しく指定されないとURL"
+"エイリアスは動作しません。"
+
+#: modules/path/path.admin.inc:118
+msgid "Update alias"
+msgstr "エイリアスの更新"
+
+# ボタンラベル
+#: modules/path/path.admin.inc:121
+msgid "Create new alias"
+msgstr "新しいエイリアスを作成"
+
+#: modules/path/path.admin.inc:139
+msgid "The alias %alias is already in use in this language."
+msgstr "エイリアス %alias はすでにこの言語で使用中です。"
+
+#: modules/path/path.admin.inc:154
+msgid "The alias has been saved."
+msgstr "エイリアスが保存されました。"
+
+#: modules/path/path.admin.inc:167
+msgid "Are you sure you want to delete path alias %title?"
+msgstr "本当に、URLエイリアス %title を削除してもよろしいですか？"
+
+#: modules/path/path.admin.inc:194
+msgid "Filter aliases"
+msgstr "エイリアスの絞り込み"
+
+#: modules/path/path.module:15
+msgid ""
+"The path module allows you to specify aliases for Drupal URLs. Such aliases "
+"improve readability of URLs for your users and may help internet search "
+"engines to index your content more effectively. More than one alias may be "
+"created for a given page."
+msgstr ""
+"Path（パス）モジュールはDrupalでのURLにエイリアス（別名）を指定できる機能を提"
+"供します。 エイリアスはユーザによるURLの可読性を高めるとともに、Googleなどの"
+"検索エンジンがより効果的にコンテンツに索引付けるのを助けます。 エイリアスは1"
+"つのURLに対して複数作成することができます。"
+
+#: modules/path/path.module:16
+msgid ""
+"<p>Some examples of URL aliases are:</p>\n"
+"<ul>\n"
+"<li>user/login =&gt; login</li>\n"
+"<li>image/tid/16 =&gt; store</li>\n"
+"<li>taxonomy/term/7+19+20+21 =&gt; store/products/whirlygigs</li>\n"
+"<li>node/3 =&gt; contact</li>\n"
+"</ul>\n"
+msgstr ""
+"<p>URLエイリアスの一例</p>\n"
+"<ul>\n"
+"<li>user/login =&gt; login</li>\n"
+"<li>image/tid/16 =&gt; store</li>\n"
+"<li>taxonomy/term/7+19+20+21 =&gt; store/products/whirlygigs</li>\n"
+"<li>node/3 =&gt; contact</li>\n"
+"</ul>\n"
+
+#: modules/path/path.module:24
+msgid ""
+"The path module enables appropriately permissioned users to specify an "
+"optional alias in all node input and editing forms, and provides an "
+"interface to view and edit all URL aliases. The two permissions related to "
+"URL aliasing are <em>administer url aliases</em> and <em>create url aliases</"
+"em>. "
+msgstr ""
+"パスモジュールは適切な権限を持ったユーザに、全ノードの編集フォームで任意のエ"
+"イリアスを指定できるようにするとともに、全URLエイリアスの表示と編集をするため"
+"のインターフェイスを提供します。 URLエイリアスには「URLエイリアスの管理」と"
+"「URLエイリアスの作成」の2つの権限が関係します。"
+
+# より詳細に
+#: modules/path/path.module:25
+msgid ""
+"This module also provides user-defined mass URL aliasing capabilities, which "
+"is useful if you wish to uniformly use URLs different from the default. For "
+"example, you may want to have your URLs presented in a different language. "
+"Access to the Drupal source code on the web server is required to set up "
+"mass URL aliasing. "
+msgstr ""
+"パスモジュールはURLエイリアスの個別定義だけでなく、サイト全般にわたる一括定義"
+"もできるようにします。 この機能はサイト内のURLをデフォルトとは異なるURLで統一"
+"したい場合、例えば、URLの一部を母国語にしたい場合などに役立ちます。 ただし、"
+"この機能を利用するためには <code>settings.php</code>へPHPコードを加える必要が"
+"あり、さらにPHPや正規表現に関する知識も必要となります。 詳しくは<a href="
+"\"http://drupal.org/node/23708\">Mass URL aliasing（英文）</a>を参照してくだ"
+"さい。"
+
+#: modules/path/path.module:26
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@path"
+"\">Path module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@path\">Path module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/path/path.module:29
+msgid ""
+"Drupal provides complete control over URLs through aliasing, which is often "
+"used to make URLs more readable or easy to remember. For example, the alias "
+"'about' may be mapped onto the post at the system path 'node/1', creating a "
+"more meaningful URL. Each system path can have multiple aliases."
+msgstr ""
+"Drupalはエイリアス（URLの可読性を高めたり、覚えやすくするためによく使われま"
+"す）によるURLの完全なコントロールを提供します。 例えば、エイリアス <b>about</"
+"b> に <b>node/1</b> の投稿を割り当てることで、より意味のあるURLを作成すること"
+"ができます。 それぞれのシステムパスは複数のエイリアスを持つことができます。"
+
+#: modules/path/path.module:31
+msgid ""
+"Enter the path you wish to create the alias for, followed by the name of the "
+"new alias."
+msgstr ""
+"エイリアスを作成したい既存パスと、エイリアスに付ける名前を、以下のフィールド"
+"にそれぞれ入力してください。"
+
+#: modules/path/path.module:80
+msgid "The alias has been deleted."
+msgstr "エイリアスが削除されました。"
+
+#: modules/path/path.module:140
+msgid "The path is already in use."
+msgstr "パスはすでに使われています。"
+
+# エイリアス設定なので
+#: modules/path/path.module:182
+msgid "URL path settings"
+msgstr "URLエイリアスの設定"
+
+#: modules/path/path.module:194
+msgid ""
+"Optionally specify an alternative URL by which this node can be accessed. "
+"For example, type \"about\" when writing an about page. Use a relative path "
+"and don't add a trailing slash or the URL alias won't work."
+msgstr ""
+"既存パスの代わりに使用したいパスの別名を入力してください。 例えば「サイトにつ"
+"いて」というページが node/3 にあり、それを about でアクセスできるようにしたい"
+"ならば about と入力します。 パスの指定には相対パスを使用し、さらにパスの最後"
+"に \"/\"（スラッシュ）は付けないようにしてください。 正しく指定されないとURL"
+"エイリアスは動作しません。"
+
+#: modules/path/path.module:209
+msgid "create url aliases"
+msgstr "URLエイリアスの作成"
+
+#: modules/path/path.module:209
+msgid "administer url aliases"
+msgstr "URLエイリアスの管理"
+
+#: modules/path/path.module:40
+msgid "URL aliases"
+msgstr "URLエイリアス"
+
+#: modules/path/path.module:41
+msgid "Change your site's URL paths by aliasing them."
+msgstr "別名を付けることでサイトのURLパスを変更します。"
+
+#: modules/path/path.module:47
+msgid "Edit alias"
+msgstr "エイリアスの編集"
+
+#: modules/path/path.module:53
+msgid "Delete alias"
+msgstr "エイリアスの削除"
+
+#: modules/path/path.module:65
+msgid "Add alias"
+msgstr "エイリアスの追加"
+
+#: modules/path/path.module:0
+msgid "path"
+msgstr "パス"

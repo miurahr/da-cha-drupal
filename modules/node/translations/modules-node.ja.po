@@ -1,0 +1,1425 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-node)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  content_types.inc,v 1.50.2.1 2008/02/13 11:23:28 goba
+#  node.pages.inc,v 1.28 2008/02/03 19:26:10 goba
+#  node.module,v 1.947.2.2 2008/02/13 14:10:22 goba
+#  node.admin.inc,v 1.19 2008/02/03 19:39:52 goba
+#  node.install,v 1.4 2007/12/18 12:59:21 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/node/content_types.inc:42
+msgid "No content types available."
+msgstr "利用できるコンテンツタイプはありません。"
+
+#: modules/node/content_types.inc:75
+msgid ""
+"The human-readable name of this content type. This text will be displayed as "
+"part of the list on the <em>create content</em> page. It is recommended that "
+"this name begin with a capital letter and contain only letters, numbers, and "
+"<strong>spaces</strong>. This name must be unique."
+msgstr ""
+"このコンテンツタイプの「人が読める名前」を入力してください。 このテキストは"
+"「コンテンツの作成」ページのリストの一部として表示されます。 名前は大文字から"
+"始まり、文字・数字・空白文字のみが含まれることを推奨します。 この名前は固有で"
+"ある必要があります。"
+
+#: modules/node/content_types.inc:86
+msgid ""
+"The machine-readable name of this content type. This text will be used for "
+"constructing the URL of the <em>create content</em> page for this content "
+"type. This name must contain only lowercase letters, numbers, and "
+"underscores. Underscores will be converted into hyphens when constructing "
+"the URL of the <em>create content</em> page. This name must be unique."
+msgstr ""
+"このコンテンツタイプの「コンピュータが扱える名前」を入力してください。 このテ"
+"キストは、このコンテンツタイプ用の「コンテンツの作成」ページのURLを構築するた"
+"めに使用されます。 名前には小文字・数字・アンダースコア（下線）のみが含まれる"
+"必要があります。 アンダースコアは「コンテンツの作成」ページのURLを構築する"
+"際、ハイフンに変換されます。 この名前は固有である必要があります。"
+
+#: modules/node/content_types.inc:98
+msgid ""
+"The machine-readable name of this content type. This field cannot be "
+"modified for system-defined content types."
+msgstr ""
+"このコンテンツタイプの「コンピュータが扱える名前」です。 システム定義のコンテ"
+"ンツタイプのため、このフィールドは編集できません。"
+
+#: modules/node/content_types.inc:106
+msgid ""
+"A brief description of this content type. This text will be displayed as "
+"part of the list on the <em>create content</em> page."
+msgstr ""
+"このコンテンツタイプの簡単な説明を記入してください。 このテキストは「コンテン"
+"ツの作成」ページのリストの一部として表示されます。"
+
+#: modules/node/content_types.inc:111
+msgid "Submission form settings"
+msgstr "投稿フォームの設定"
+
+#: modules/node/content_types.inc:116
+msgid "Title field label"
+msgstr "タイトルフィールドのラベル"
+
+#: modules/node/content_types.inc:125
+msgid "This content type does not have a title field."
+msgstr "このコンテンツタイプにはタイトルフィールドがありません。"
+
+#: modules/node/content_types.inc:129
+msgid "Body field label"
+msgstr "本文フィールドのラベル"
+
+#: modules/node/content_types.inc:132
+msgid ""
+"To omit the body field for this content type, remove any text and leave this "
+"field blank."
+msgstr ""
+"本文フィールドに付けるラベルを入力してください。 このコンテンツタイプに本文"
+"フィールドが不要の場合は、このフィールドを空欄にしてください。"
+
+#: modules/node/content_types.inc:136
+msgid "Minimum number of words"
+msgstr "最少の単語数"
+
+#: modules/node/content_types.inc:139
+msgid ""
+"The minimum number of words for the body field to be considered valid for "
+"this content type. This can be useful to rule out submissions that do not "
+"meet the site's standards, such as short test posts."
+msgstr ""
+"有効な投稿と見なされる、本文フィールドでの最少の単語数を指定してください。 こ"
+"れは、短いテスト投稿など、サイトの基準に満たない投稿を除外するのに役立ちま"
+"す。 <b>なお、単語数は英語のように空白文字で区切られたものを1つと数えます。 "
+"従って、日本語のように空白文字での分かち書きをしない言語では、期待される効果"
+"は得られず投稿自体ができなくなりますので、常に <em>0</em> を指定してくださ"
+"い。</b>"
+
+#: modules/node/content_types.inc:143
+msgid "Explanation or submission guidelines"
+msgstr "説明や投稿のガイドライン"
+
+#: modules/node/content_types.inc:145
+msgid ""
+"This text will be displayed at the top of the submission form for this "
+"content type. It is useful for helping or instructing your users."
+msgstr ""
+"投稿フォームに記載したい追加のテキストを記入してください。 このテキストは投稿"
+"フォームの最上部に表示され、ユーザが投稿を円滑に進める手助けをしたり、なんら"
+"かの指示をするのに役立ちます。"
+
+#: modules/node/content_types.inc:149
+msgid "Workflow settings"
+msgstr "ワークフローの設定"
+
+#: modules/node/content_types.inc:154
+msgid "Default options"
+msgstr "デフォルトオプション"
+
+#: modules/node/content_types.inc:158 modules/node/node.pages.inc:212
+msgid "Promoted to front page"
+msgstr "フロントページへ掲載"
+
+#: modules/node/content_types.inc:159 modules/node/node.pages.inc:217
+msgid "Sticky at top of lists"
+msgstr "リスト上部に固定"
+
+#: modules/node/content_types.inc:160 modules/node/node.pages.inc:156
+msgid "Create new revision"
+msgstr "新しいリビジョンの作成"
+
+#: modules/node/content_types.inc:162
+msgid ""
+"Users with the <em>administer nodes</em> permission will be able to override "
+"these options."
+msgstr ""
+"投稿されるコンテンツのデフォルト状態を指定してください。 ただし、「ノードの管"
+"理」権限を持ったユーザは常に設定を変更することができます。"
+
+#: modules/node/content_types.inc:192
+msgid "Save content type"
+msgstr "コンテンツタイプの保存"
+
+#: modules/node/content_types.inc:200;282
+msgid "Delete content type"
+msgstr "コンテンツタイプの削除"
+
+# machine-readable name == type
+#: modules/node/content_types.inc:231
+msgid "The machine-readable name %type is already taken."
+msgstr "タイプ %type は、すでに使用されています。"
+
+#: modules/node/content_types.inc:234
+msgid ""
+"The machine-readable name must contain only lowercase letters, numbers, and "
+"underscores."
+msgstr ""
+"「コンピュータが扱える名前」には、英小文字・数字・アンダースコア（下線）のみ"
+"を含むことができます。"
+
+#: modules/node/content_types.inc:239
+msgid "Invalid machine-readable name. Please enter a name other than %invalid."
+msgstr ""
+"無効な「コンピュータが扱える名前」です。 %invalid 以外の名前を入力してくださ"
+"い。"
+
+# human-readable name == name
+#: modules/node/content_types.inc:246
+msgid "The human-readable name %name is already taken."
+msgstr "名前 %name は、すでに使用されています。"
+
+#: modules/node/content_types.inc:326
+msgid "The content type %name has been reset to its default values."
+msgstr "コンテンツタイプ %name がデフォルト値にリセットされました。"
+
+#: modules/node/content_types.inc:331
+msgid "The content type %name has been updated."
+msgstr "コンテンツタイプ %name が更新されました。"
+
+#: modules/node/content_types.inc:334
+msgid "The content type %name has been added."
+msgstr "コンテンツタイプ %name が追加されました。"
+
+#: modules/node/content_types.inc:383
+msgid "Are you sure you want to delete the content type %type?"
+msgstr "本当に、コンテンツタイプ %type を削除してもよろしいですか？"
+
+#: modules/node/content_types.inc:403
+msgid "The content type %name has been deleted."
+msgstr "コンテンツタイプ %name が削除されました。"
+
+#: modules/node/content_types.inc:335 modules/node/node.module:0
+msgid "node"
+msgstr "ノード"
+
+#: modules/node/content_types.inc:335
+msgid "Added content type %name."
+msgstr "コンテンツタイプ %name が追加されました。"
+
+#: modules/node/content_types.inc:404
+msgid "Deleted content type %name."
+msgstr "コンテンツタイプ %name が削除されました。"
+
+#: modules/node/content_types.inc:350
+msgid "Changed the content type of 1 post from %old-type to %type."
+msgid_plural ""
+"Changed the content type of @count posts from %old-type to %type."
+msgstr[0] "1 投稿のコンテンツタイプが、%old-type から %type に変更されました。"
+msgstr[1] ""
+"@count 投稿のコンテンツタイプが、%old-type から %type に変更されました。"
+
+#: modules/node/content_types.inc:388
+msgid ""
+"<strong>Warning:</strong> there is currently 1 %type post on your site. It "
+"may not be able to be displayed or edited correctly, once you have removed "
+"this content type."
+msgid_plural ""
+"<strong>Warning:</strong> there are currently @count %type posts on your "
+"site. They may not be able to be displayed or edited correctly, once you "
+"have removed this content type."
+msgstr[0] ""
+"<strong>警告：</strong> 現在サイト上に 1 の %type 投稿があります。 このコンテ"
+"ンツタイプを削除した場合、この投稿の正しい表示や編集ができなくなる可能性があ"
+"ります。"
+msgstr[1] ""
+"<strong>警告：</strong> 現在サイト上に @count の %type 投稿があります。 この"
+"コンテンツタイプを削除した場合、これらの投稿の正しい表示や編集ができなくなる"
+"可能性があります。"
+
+#: modules/node/node.admin.inc:16
+msgid ""
+"If the site is experiencing problems with permissions to content, you may "
+"have to rebuild the permissions cache. Possible causes for permission "
+"problems are disabling modules or configuration changes to permissions. "
+"Rebuilding will remove all privileges to posts, and replace them with "
+"permissions based on the current modules and settings."
+msgstr ""
+"サイトがコンテンツへのアクセス権で問題を抱えている場合、アクセス権のキャッ"
+"シュを再構築する必要があるかもしれません。 アクセス権の問題で考えられる原因"
+"は、無効化されているモジュールや、アクセス権の設定変更です。 再構築すると投稿"
+"に対するすべての特権が取り除かれ、それらを現在のモジュールと設定に基づくアク"
+"セス権に置き換えます。"
+
+#: modules/node/node.admin.inc:17
+msgid ""
+"Rebuilding may take some time if there is a lot of content or complex "
+"permission settings. After rebuilding has completed posts will automatically "
+"use the new permissions."
+msgstr ""
+"多くのコンテンツや複雑な権限設定がある場合、再構築には多少時間がかかります。 "
+"再構築の完了後、投稿は自動的に新しいアクセス権を使用します。"
+
+#: modules/node/node.admin.inc:21
+msgid "Node access status"
+msgstr "ノードアクセスの状態"
+
+#: modules/node/node.admin.inc:26;70;80 modules/node/node.module:1425
+msgid "Rebuild permissions"
+msgstr "アクセス権の再構築"
+
+#: modules/node/node.admin.inc:31
+msgid "Number of posts on main page"
+msgstr "メインページの投稿数"
+
+#: modules/node/node.admin.inc:33
+msgid ""
+"The default maximum number of posts to display per page on overview pages "
+"such as the main page."
+msgstr ""
+"各メインページに表示するデフォルトの最大投稿数を指定してください。 メインペー"
+"ジはフロントページ（例：node）やカテゴリごとのページ（例：taxonomy/term/5）の"
+"ような、タイトルやティーザーを一覧表示するページを指します。"
+
+#: modules/node/node.admin.inc:36
+msgid "Length of trimmed posts"
+msgstr "ティーザーの文字数"
+
+#: modules/node/node.admin.inc:39
+msgid "200 characters"
+msgstr "200文字"
+
+#: modules/node/node.admin.inc:40
+msgid "400 characters"
+msgstr "400文字"
+
+#: modules/node/node.admin.inc:41
+msgid "600 characters"
+msgstr "600文字"
+
+#: modules/node/node.admin.inc:42
+msgid "800 characters"
+msgstr "800文字"
+
+#: modules/node/node.admin.inc:43
+msgid "1000 characters"
+msgstr "1000文字"
+
+#: modules/node/node.admin.inc:44
+msgid "1200 characters"
+msgstr "1200文字"
+
+#: modules/node/node.admin.inc:45
+msgid "1400 characters"
+msgstr "1400文字"
+
+#: modules/node/node.admin.inc:46
+msgid "1600 characters"
+msgstr "1600文字"
+
+#: modules/node/node.admin.inc:47
+msgid "1800 characters"
+msgstr "1800文字"
+
+#: modules/node/node.admin.inc:48
+msgid "2000 characters"
+msgstr "2000文字"
+
+#: modules/node/node.admin.inc:50
+msgid ""
+"The maximum number of characters used in the trimmed version of a post. "
+"Drupal will use this setting to determine at which offset long posts should "
+"be trimmed. The trimmed version of a post is typically used as a teaser when "
+"displaying the post on the main page, in XML feeds, etc. To disable teasers, "
+"set to 'Unlimited'. Note that this setting will only affect new or updated "
+"content and will not affect existing teasers."
+msgstr ""
+"ティーザーに使用する最大文字数を指定してください。 Drupalは指定された文字数を"
+"基準に、長い投稿を切り取ります。 この切り取られた投稿は一般に、「ティーザー」"
+"としてメインページでの表示や、XMLフィードなどに利用されます。 ティーザーの表"
+"示を無効にしたい場合は、この文字数を「無制限」に指定してください。 この設定は"
+"新規や更新されたコンテンツにのみ影響し、既存のティーザーには影響を与えないこ"
+"とに留意してください。 また、文字数は英語を基準にしているため、日本語では設定"
+"値の半分以下になることにも留意してください。"
+
+#: modules/node/node.admin.inc:55
+msgid "Preview post"
+msgstr "投稿のプレビュー"
+
+#: modules/node/node.admin.inc:58
+msgid "Must users preview posts before submitting?"
+msgstr ""
+"投稿前のプレビューを必須とするかどうかを指定してください。 「必須」にした場"
+"合、投稿前に「プレビュー」ボタンをクリックし、記入した投稿に目を通すことを"
+"ユーザに義務づけます。"
+
+#: modules/node/node.admin.inc:79
+msgid "Are you sure you want to rebuild the permissions on site content?"
+msgstr "本当に、サイトコンテンツの権限を再構築してもよろしいですか？"
+
+#: modules/node/node.admin.inc:80
+msgid ""
+"This action rebuilds all permissions on site content, and may be a lengthy "
+"process. This action cannot be undone."
+msgstr ""
+"この操作はサイトコンテンツのすべての権限を再構築し、処理に時間がかかる場合も"
+"あります。 この操作は元に戻すことができませんので、十分に注意して実行してくだ"
+"さい。"
+
+#: modules/node/node.admin.inc:98
+msgid "Publish"
+msgstr "掲載する"
+
+#: modules/node/node.admin.inc:103
+msgid "Unpublish"
+msgstr "非掲載にする"
+
+#: modules/node/node.admin.inc:108
+msgid "Promote to front page"
+msgstr "フロントページへ掲載する"
+
+#: modules/node/node.admin.inc:113
+msgid "Demote from front page"
+msgstr "フロントページから撤去する"
+
+#: modules/node/node.admin.inc:118
+msgid "Make sticky"
+msgstr "リスト上部へ固定する"
+
+#: modules/node/node.admin.inc:123
+msgid "Remove stickiness"
+msgstr "リスト上部への固定を解除する"
+
+#: modules/node/node.admin.inc:143;500
+msgid "published"
+msgstr "掲載"
+
+#: modules/node/node.admin.inc:144;500
+msgid "not published"
+msgstr "非掲載"
+
+#: modules/node/node.admin.inc:145
+msgid "promoted"
+msgstr "フロントページに掲載されている"
+
+#: modules/node/node.admin.inc:146
+msgid "not promoted"
+msgstr "フロントページに掲載されていない"
+
+#: modules/node/node.admin.inc:147
+msgid "sticky"
+msgstr "リスト上部に固定されている"
+
+#: modules/node/node.admin.inc:148
+msgid "not sticky"
+msgstr "リスト上部に固定されていない"
+
+#: modules/node/node.admin.inc:154
+msgid "Up to date translation"
+msgstr "翻訳が最新"
+
+#: modules/node/node.admin.inc:155
+msgid "Outdated translation"
+msgstr "翻訳が旧式"
+
+#: modules/node/node.admin.inc:159
+msgid "type"
+msgstr "タイプ"
+
+#: modules/node/node.admin.inc:163
+msgid "category"
+msgstr "カテゴリ"
+
+#: modules/node/node.admin.inc:168
+msgid "language"
+msgstr "言語"
+
+#: modules/node/node.admin.inc:220
+msgid "Show only items where"
+msgstr "表示項目の絞り込み"
+
+#: modules/node/node.admin.inc:238
+msgid "<em>and</em> where <strong>%a</strong> is <strong>%b</strong>"
+msgstr "<em>かつ</em> <strong>%a</strong> が <strong>%b</strong>"
+
+#: modules/node/node.admin.inc:241
+msgid "<strong>%a</strong> is <strong>%b</strong>"
+msgstr "<strong>%a</strong> が <strong>%b</strong>"
+
+#: modules/node/node.admin.inc:369
+msgid "The update has encountered an error."
+msgstr "アップデートはエラーに遭遇しました。"
+
+#: modules/node/node.admin.inc:435
+msgid "An error occurred and processing did not complete."
+msgstr "エラーが発生し、処理は完了しませんでした。"
+
+#: modules/node/node.admin.inc:521
+msgid "No items selected."
+msgstr "項目が選択されていません。"
+
+#: modules/node/node.admin.inc:619
+msgid "Are you sure you want to delete these items?"
+msgstr "本当に、これらのアイテムを削除してもよろしいですか？"
+
+#: modules/node/node.admin.inc:629
+msgid "The items have been deleted."
+msgstr "アイテムは削除されました。"
+
+#: modules/node/node.admin.inc:436
+msgid "1 item successfully processed:"
+msgid_plural "@count items successfully processed:"
+msgstr[0] "1 アイテムが正常に処理されました："
+msgstr[1] "@count アイテムが正常に処理されました："
+
+#: modules/node/node.pages.inc:57
+msgid "Create @name"
+msgstr "@nameの作成"
+
+#: modules/node/node.pages.inc:147
+msgid "Revision information"
+msgstr "リビジョン情報"
+
+#: modules/node/node.pages.inc:161
+msgid "Log message"
+msgstr "ログメッセージ"
+
+#: modules/node/node.pages.inc:163
+msgid ""
+"An explanation of the additions or updates being made to help other authors "
+"understand your motivations."
+msgstr ""
+"追加や更新について残しておきたい説明やメッセージを記入してください。 他のユー"
+"ザがこのページを編集する際、それを行った動機を理解するのに役立ちます。 また、"
+"自分が編集する際の備忘録としても活用できます。"
+
+#: modules/node/node.pages.inc:171
+msgid "Authoring information"
+msgstr "投稿の情報"
+
+#: modules/node/node.pages.inc:183
+msgid "Leave blank for %anonymous."
+msgstr ""
+"投稿者の名前を入力してください。 空欄にすると %anonymous の投稿として扱われま"
+"す。"
+
+#: modules/node/node.pages.inc:189
+msgid "Format: %time. Leave blank to use the time of form submission."
+msgstr ""
+"投稿日時を %time の形式で入力してください。 空欄にすると投稿した日時が使用さ"
+"れます。"
+
+#: modules/node/node.pages.inc:200
+msgid "Publishing options"
+msgstr "掲載オプション"
+
+# teaser,summary,trimmed version...
+#: modules/node/node.pages.inc:280
+msgid "Show summary in full view"
+msgstr "全文表示でティーザー（概要）を表示する"
+
+#: modules/node/node.pages.inc:433
+msgid ""
+"The trimmed version of your post shows what your post looks like when "
+"promoted to the main page or when exported for syndication.<span class=\"no-"
+"js\"> You can insert the delimiter \"&lt;!--break--&gt;\" (without the "
+"quotes) to fine-tune where your post gets split.</span>"
+msgstr ""
+"ティーザーのプレビューは、この投稿がメインページに掲載される際や、記事配信用"
+"のフィードに書き出される際に、どのように表示されるかを示しています。 <span "
+"class=\"no-js\">分割する部分を自分で調整したい場合は、分割したい箇所に区切り"
+"記号 <b>&lt;!--break--&gt;</b> を挿入してください。</span>"
+
+#: modules/node/node.pages.inc:434
+msgid "Preview trimmed version"
+msgstr "ティーザーのプレビュー"
+
+#: modules/node/node.pages.inc:436
+msgid "Preview full version"
+msgstr "全文のプレビュー"
+
+#: modules/node/node.pages.inc:459
+msgid "@type %title has been created."
+msgstr "@type %title が作成されました。"
+
+#: modules/node/node.pages.inc:463
+msgid "@type %title has been updated."
+msgstr "@type %title が更新されました。"
+
+#: modules/node/node.pages.inc:473
+msgid "The post could not be saved."
+msgstr "投稿が保存できませんでした。"
+
+#: modules/node/node.pages.inc:501
+msgid "Are you sure you want to delete %title?"
+msgstr "本当に、%title を削除してもよろしいですか？"
+
+#: modules/node/node.pages.inc:524
+msgid "Revisions for %title"
+msgstr "%title のリビジョン"
+
+#: modules/node/node.pages.inc:526
+msgid "Revision"
+msgstr "リビジョン"
+
+#: modules/node/node.pages.inc:544;550
+msgid "!date by !username"
+msgstr "!date - !username"
+
+#: modules/node/node.pages.inc:547
+msgid "current revision"
+msgstr "現在のリビジョン"
+
+#: modules/node/node.pages.inc:553
+msgid "revert"
+msgstr "このリビジョンに戻す"
+
+#: modules/node/node.pages.inc:570
+msgid "Are you sure you want to revert to the revision from %revision-date?"
+msgstr "本当に、%revision-date 時点のリビジョンに戻してもよろしいですか？"
+
+#: modules/node/node.pages.inc:570
+msgid "Revert"
+msgstr "復帰"
+
+#: modules/node/node.pages.inc:576
+msgid "Copy of the revision from %date."
+msgstr "%date 時点でのリビジョンのコピーです。"
+
+#: modules/node/node.pages.inc:584
+msgid ""
+"@type %title has been reverted back to the revision from %revision-date."
+msgstr "@type %title は %revision-date 時点のリビジョンに戻されました。"
+
+#: modules/node/node.pages.inc:590
+msgid "Are you sure you want to delete the revision from %revision-date?"
+msgstr "本当に、%revision-date 時点のリビジョンを削除してもよろしいですか？"
+
+#: modules/node/node.pages.inc:598
+msgid "Revision from %revision-date of @type %title has been deleted."
+msgstr "@type %title の %revision-date 時点のリビジョンが削除されました。"
+
+#: modules/node/node.pages.inc:458
+msgid "@type: added %title."
+msgstr "@type： %title が追加されました。"
+
+#: modules/node/node.pages.inc:462
+msgid "@type: updated %title."
+msgstr "@type： %title が更新されました。"
+
+#: modules/node/node.pages.inc:583
+msgid "@type: reverted %title revision %revision."
+msgstr "@type： %title がリビジョン %revision に戻されました。"
+
+#: modules/node/node.pages.inc:597
+msgid "@type: deleted %title revision %revision."
+msgstr "@type： %title のリビジョン %revision が削除されました。"
+
+#: modules/node/node.module:29
+msgid "The content access permissions need to be rebuilt."
+msgstr "コンテンツのアクセス権を再構築する必要があります。"
+
+#: modules/node/node.module:32
+msgid ""
+"The content access permissions need to be rebuilt. Please visit <a href="
+"\"@node_access_rebuild\">this page</a>."
+msgstr ""
+"コンテンツのアクセス権を再構築する必要があります。 <a href="
+"\"@node_access_rebuild\">このページ</a>にアクセスしてください。"
+
+#: modules/node/node.module:39
+msgid ""
+"The node module manages content on your site, and stores all posts "
+"(regardless of type) as a \"node\". In addition to basic publishing "
+"settings, including whether the post has been published, promoted to the "
+"site front page, or should remain present (or sticky) at the top of lists, "
+"the node module also records basic information about the author of a post. "
+"Optional revision control over edits is available. For additional "
+"functionality, the node module is often extended by other modules."
+msgstr ""
+"Node（ノード）モジュールはサイトのコンテンツを管理し、すべての投稿をタイプに"
+"かかわらず「ノード」として格納します。 ノードモジュールは基本的な公開状態（掲"
+"載・フロントページに掲載・リスト上部に固定）の設定とともに、投稿の著者に関す"
+"る基本的な情報を記録します。 任意で編集のリビジョンコントロールができます。 "
+"機能性を追加するために、ノードモジュールはたびたび他のモジュールによって拡張"
+"されます。"
+
+#: modules/node/node.module:40
+msgid ""
+"Though each post on your site is a node, each post is also of a particular "
+"<a href=\"@content-type\">content type</a>. <a href=\"@content-type"
+"\">Content types</a> are used to define the characteristics of a post, "
+"including the title and description of the fields displayed on its add and "
+"edit pages. Each content type may have different default settings for "
+"<em>Publishing options</em> and other workflow controls. By default, the two "
+"content types in a standard Drupal installation are <em>Page</em> and "
+"<em>Story</em>. Use the <a href=\"@content-type\">content types page</a> to "
+"add new or edit existing content types. Additional content types also become "
+"available as you enable additional core, contributed and custom modules."
+msgstr ""
+"サイトの各投稿はノードであるとともに特定の<a href=\"@content-type\">コンテン"
+"ツタイプ</a>でもあります。 <a href=\"@content-type\">コンテンツタイプ</a>は、"
+"それらの追加・編集ページで表示されるフィールドのタイトルや説明を含む、投稿の"
+"特性を定義するために使用されます。 各コンテンツタイプは「掲載オプション」や他"
+"のワークフローコントロール用に、異なるデフォルト設定を持つことができます。 "
+"Drupalの標準インストールでは、デフォルトで「ページ」と「ストーリー」の2つのコ"
+"ンテンツタイプが定義されます。 新規追加や既存コンテンツタイプの編集には、<a "
+"href=\"@content-type\">コンテンツタイプのページ</a>を使用します。 追加のコア"
+"モジュールや拡張モジュールを有効にすると、追加コンテンツタイプが利用できるよ"
+"うになります。"
+
+#: modules/node/node.module:41
+msgid ""
+"The administrative <a href=\"@content\">content page</a> allows you to "
+"review and manage your site content. The <a href=\"@post-settings\">post "
+"settings page</a> sets certain options for the display of posts. The node "
+"module makes a number of permissions available for each content type, which "
+"may be set by role on the <a href=\"@permissions\">permissions page</a>."
+msgstr ""
+"<a href=\"@content\">コンテンツの管理ページ</a>では、サイトコンテンツのレ"
+"ビューや管理をすることができます。 <a href=\"@post-settings\">投稿の設定ペー"
+"ジ</a>では、投稿表示用の特定オプションを設定することができます。 ノードモ"
+"ジュールは各コンテンツタイプ用に、<a href=\"@permissions\">権限のページ</a>で"
+"ロール単位に設定できる多くの権限を利用できるようにします。"
+
+#: modules/node/node.module:42
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@node"
+"\">Node module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@node\">Node module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/node/node.module:47
+msgid ""
+"Below is a list of all the content types on your site. All posts that exist "
+"on your site are instances of one of these content types."
+msgstr ""
+"以下はサイトの全コンテンツタイプ一覧です。 サイトに存在するすべての投稿は、こ"
+"れらのコンテンツタイプの実体となります。"
+
+#: modules/node/node.module:49
+msgid ""
+"To create a new content type, enter the human-readable name, the machine-"
+"readable name, and all other relevant fields that are on this page. Once "
+"created, users of your site will be able to create posts that are instances "
+"of this content type."
+msgstr ""
+"新しいコンテンツタイプを作成するには、「人が読める名前」や「コンピュータが扱"
+"える名前（タイプ）」など、必要なすべてのフィールドに入力してください。 作成"
+"後、サイトのユーザは、このコンテンツタイプの実体である投稿を作成できるように"
+"なります。"
+
+#: modules/node/node.module:51
+msgid ""
+"The revisions let you track differences between multiple versions of a post."
+msgstr "リビジョンは投稿の複数バージョン間の差違を追跡できるようにします。"
+
+#: modules/node/node.module:260
+msgid ""
+"You specified that the summary should not be shown when this post is "
+"displayed in full view. This setting is ignored when the summary is empty."
+msgstr ""
+"この投稿が全文表示される際に概要を表示しないよう指定されましたが、概要が空欄"
+"の場合はこの設定は無視されます。"
+
+#: modules/node/node.module:264
+msgid ""
+"You specified that the summary should not be shown when this post is "
+"displayed in full view. This setting has been ignored since you have not "
+"defined a summary for the post. (To define a summary, insert the delimiter "
+"\"&lt;!--break--&gt;\" (without the quotes) in the Body of the post to "
+"indicate the end of the summary and the start of the main content.)"
+msgstr ""
+"この投稿が全文表示される際に概要を表示しないよう指定されましたが、概要が定義"
+"されていないため、この設定は無視されました。 （概要を定義するには、概要の終わ"
+"りとメインコンテンツの始まりを示す区切り文字 <em>&lt;!--break--&gt;</em> を、"
+"投稿の本文に挿入してください）"
+
+#: modules/node/node.module:785
+msgid "The body of your @type is too short. You need at least %words words."
+msgstr "@type の本文が短すぎます。 最低でも %words の単語が必要です。"
+
+#: modules/node/node.module:789
+msgid ""
+"This content has been modified by another user, changes cannot be saved."
+msgstr ""
+"このコンテンツは別のユーザによって修正されました。 変更は保存できません。"
+
+#: modules/node/node.module:798
+msgid "The username %name does not exist."
+msgstr "ユーザ名 %name が存在しません。"
+
+#: modules/node/node.module:981
+msgid "@type %title has been deleted."
+msgstr "@type %title が削除されました。"
+
+#: modules/node/node.module:1096
+msgid "Revision of %title from %date"
+msgstr "%date 時点での %title のリビジョン"
+
+#: modules/node/node.module:1116
+msgid "Log"
+msgstr "ログ"
+
+#: modules/node/node.module:1161
+msgid "Content ranking"
+msgstr "コンテンツの順位"
+
+# ここだけ weight の使い方が他とは逆
+#: modules/node/node.module:1165
+msgid ""
+"The following numbers control which properties the content search should "
+"favor when ordering the results. Higher numbers mean more influence, zero "
+"means the property is ignored. Changing these numbers does not require the "
+"search index to be rebuilt. Changes take effect immediately."
+msgstr ""
+"以下で、検索結果をリストアップする際の並び順を決定する、それぞれの要素ごとの"
+"重要度を指定してください。 数値が大きい（※1）要素の条件に合うコンテンツほど、"
+"上位にリストアップされやすくなります。 また、<b>0</b> を指定した要素は無視さ"
+"れます。 なお、これらの値は変更しても索引の再構築の必要はなく、ただちに検索結"
+"果に反映されるようになります。<br />※1 この項目は他の設定での「ウェイト」とは"
+"逆に、数値が大きいほど優先順位が高くなることに留意してください。"
+
+#: modules/node/node.module:1168
+msgid "Keyword relevance"
+msgstr "キーワードの適合率"
+
+#: modules/node/node.module:1169
+msgid "Recently posted"
+msgstr "投稿日時の新しさ"
+
+#: modules/node/node.module:1171
+msgid "Number of comments"
+msgstr "コメント数"
+
+#: modules/node/node.module:1174
+msgid "Number of views"
+msgstr "参照回数"
+
+#: modules/node/node.module:1314
+msgid "Factor"
+msgstr "要素"
+
+#: modules/node/node.module:1348
+msgid "Read more"
+msgstr "続きを読む"
+
+#: modules/node/node.module:1352
+msgid "Read the rest of !title."
+msgstr "!title の続きを読む"
+
+#: modules/node/node.module:1610;1616;1617
+msgid "Syndicate"
+msgstr "記事配信"
+
+#: modules/node/node.module:1731
+msgid "RSS"
+msgstr "RSS"
+
+#: modules/node/node.module:1735
+msgid ""
+"<h1 class=\"title\">Welcome to your new Drupal website!</h1><p>Please follow "
+"these steps to set up and start using your website:</p>"
+msgstr ""
+"<h1 class=\"title\">Drupal ウェブサイトへようこそ！</h1><p>以下の手順に従っ"
+"て、セットアップとウェブサイトの運営を始めてください。</p>"
+
+#: modules/node/node.module:1738
+msgid ""
+"<strong>Configure your website</strong> Once logged in, visit the <a href="
+"\"@admin\">administration section</a>, where you can <a href=\"@config"
+"\">customize and configure</a> all aspects of your website."
+msgstr ""
+"<strong>ウェブサイトの各種設定</strong> 管理者アカウントでログインし、<a "
+"href=\"@admin\">管理セクション</a>へアクセスしてください。 管理セクションでは"
+"ウェブサイトの全体的な<a href=\"@config\">設定やカスタマイズ</a>を行うことが"
+"できます。"
+
+#: modules/node/node.module:1739
+msgid ""
+"<strong>Enable additional functionality</strong> Next, visit the <a href="
+"\"@modules\">module list</a> and enable features which suit your specific "
+"needs. You can find additional modules in the <a href=\"@download_modules"
+"\">Drupal modules download section</a>."
+msgstr ""
+"<strong>必要な機能の有効化</strong> 次に、<a href=\"@modules\">モジュールリス"
+"ト</a>にアクセスし、目的にあった機能（モジュール）を有効化してください。 <a "
+"href=\"@download_modules\">Drupalモジュールのダウンロードページ</a>では、コア"
+"に含まれないさまざまな機能を追加する拡張モジュールを見つけることができます。"
+
+#: modules/node/node.module:1740
+msgid ""
+"<strong>Customize your website design</strong> To change the \"look and feel"
+"\" of your website, visit the <a href=\"@themes\">themes section</a>. You "
+"may choose from one of the included themes or download additional themes "
+"from the <a href=\"@download_themes\">Drupal themes download section</a>."
+msgstr ""
+"<strong>ウェブサイトデザインのカスタマイズ</strong> ウェブサイトのルック＆"
+"フィールをカスタマイズするには、<a href=\"@themes\">テーマの設定ページ</a>に"
+"アクセスしてください。 はじめから用意されているテーマから選ぶか、<a href="
+"\"@download_themes\">Drupalテーマのダウンロードページ</a>で好みのテーマを入手"
+"することができます。"
+
+#: modules/node/node.module:1741
+msgid ""
+"<strong>Start posting content</strong> Finally, you can <a href=\"@content"
+"\">create content</a> for your website. This message will disappear once you "
+"have promoted a post to the front page."
+msgstr ""
+"<strong>コンテンツの投稿を開始</strong> さあ、<a href=\"@content\">コンテンツ"
+"を作成</a>し、ウェブサイトの運営を始めてください。 あなたが最初の投稿をフロン"
+"トページに掲載するとともに、このメッセージは表示されなくなります。"
+
+#: modules/node/node.module:1743
+msgid ""
+"For more information, please refer to the <a href=\"@help\">help section</"
+"a>, or the <a href=\"@handbook\">online Drupal handbooks</a>. You may also "
+"post at the <a href=\"@forum\">Drupal forum</a>, or view the wide range of "
+"<a href=\"@support\">other support options</a> available."
+msgstr ""
+"さらに詳しい情報は、<a href=\"@help\">ヘルプページ</a>や<a href=\"@handbook"
+"\">オンラインDrupalハンドブック（英語）</a>を参照してください。 また、<a "
+"href=\"@forum\">Drupal forum（英語）</a>への投稿や、<a href=\"@support"
+"\">Support ページ（英語）</a>で広範囲にわたるサポート情報の入手ができます。</"
+"p><p>あまり英語が得意でない方は、日本サイトの<a href=\"http://drupal.jp/\"> "
+"≡ Drupal Japan ≡ </a>を訪れてみてください。 何か役に立つ情報があるかもしれま"
+"せん。"
+
+#: modules/node/node.module:1815;1867
+msgid "Advanced search"
+msgstr "高度な検索"
+
+#: modules/node/node.module:1826
+msgid "Containing any of the words"
+msgstr "以下のいずれかのワードを含む"
+
+#: modules/node/node.module:1832
+msgid "Containing the phrase"
+msgstr "以下のフレーズを含む"
+
+#: modules/node/node.module:1838
+msgid "Containing none of the words"
+msgstr "以下のいずれのワードも含まない"
+
+#: modules/node/node.module:1847
+msgid "Only in the category(s)"
+msgstr "カテゴリを限定"
+
+#: modules/node/node.module:1860
+msgid "Only of the type(s)"
+msgstr "コンテンツタイプを限定"
+
+#: modules/node/node.module:2282
+msgid "Rebuilding content access permissions"
+msgstr "コンテンツのアクセス権の再構築"
+
+#: modules/node/node.module:2312
+msgid "Content permissions have been rebuilt."
+msgstr "コンテンツの権限が再構築されました。"
+
+#: modules/node/node.module:2358
+msgid "The content access permissions have been rebuilt."
+msgstr "コンテンツのアクセス権が再構築されました。"
+
+#: modules/node/node.module:2362
+msgid "The content access permissions have not been properly rebuilt."
+msgstr "コンテンツのアクセス権が適切に再構築されませんでした。"
+
+#: modules/node/node.module:2450
+msgid "Submitted by !username on @datetime"
+msgstr "投稿者：!username 投稿日時：@datetime"
+
+#: modules/node/node.module:2465
+msgid "When either saving a new post or updating an existing post"
+msgstr "新しい投稿の保存時、または既存の投稿の更新時"
+
+#: modules/node/node.module:2468
+msgid "After saving a new post"
+msgstr "新しい投稿の保存後"
+
+#: modules/node/node.module:2471
+msgid "After saving an updated post"
+msgstr "更新された投稿の保存後"
+
+#: modules/node/node.module:2474
+msgid "After deleting a post"
+msgstr "投稿の削除後"
+
+#: modules/node/node.module:2477
+msgid "When content is viewed by an authenticated user"
+msgstr "ログイン中のユーザによるコンテンツの表示時"
+
+#: modules/node/node.module:2491
+msgid "Publish post"
+msgstr "投稿を掲載する"
+
+#: modules/node/node.module:2501
+msgid "Unpublish post"
+msgstr "投稿を非掲載にする"
+
+#: modules/node/node.module:2511
+msgid "Make post sticky"
+msgstr "リスト上部へ固定する"
+
+#: modules/node/node.module:2521
+msgid "Make post unsticky"
+msgstr "リスト上部への固定を解除する"
+
+#: modules/node/node.module:2531
+msgid "Promote post to front page"
+msgstr "投稿をフロントページへ掲載する"
+
+#: modules/node/node.module:2541
+msgid "Remove post from front page"
+msgstr "投稿をフロントページから撤去する"
+
+#: modules/node/node.module:2551
+msgid "Change the author of a post"
+msgstr "投稿者を変更する"
+
+#: modules/node/node.module:2562
+msgid "Save post"
+msgstr "投稿を保存する"
+
+#: modules/node/node.module:2570
+msgid "Unpublish post containing keyword(s)"
+msgstr "キーワードを含む投稿を非掲載にする"
+
+#: modules/node/node.module:2653
+msgid "The username of the user to which you would like to assign ownership."
+msgstr "所有権を割り当てたいユーザ名を指定してください。"
+
+#: modules/node/node.module:2692
+msgid "Please enter a valid username."
+msgstr "有効なユーザ名を入力してください。"
+
+#: modules/node/node.module:2706
+msgid ""
+"The post will be unpublished if it contains any of the character sequences "
+"above. Use a comma-separated list of character sequences. Example: funny, "
+"bungee jumping, \"Company, Inc.\". Character sequences are case-sensitive."
+msgstr ""
+"キーワードとする文字の並びをコンマで区切って列挙してください。 列挙されたいず"
+"れかの文字の並びがコメントに含まれる場合、投稿は非公開にされます。 文字の並び"
+"の大文字・小文字は区別されます。<br />例： funny, bungee jumping, \"Company, "
+"Inc.\"（キーワードにコンマを含む場合はダブルクォートで括ります）"
+
+#: modules/node/node.module:980
+msgid "@type: deleted %title."
+msgstr "@type： %title が削除されました。"
+
+#: modules/node/node.module:2585
+msgid "Set @type %title to published."
+msgstr "@type %title が掲載されました。"
+
+#: modules/node/node.module:2594;2729
+msgid "Set @type %title to unpublished."
+msgstr "@type %title が非掲載にされました。"
+
+#: modules/node/node.module:2603
+msgid "Set @type %title to sticky."
+msgstr "@type %title がリスト上部に固定されました。"
+
+#: modules/node/node.module:2612
+msgid "Set @type %title to unsticky."
+msgstr "@type %title がリスト上部への固定を解除されました。"
+
+#: modules/node/node.module:2621
+msgid "Promoted @type %title to front page."
+msgstr "@type %title がフロントページに掲載されました。"
+
+#: modules/node/node.module:2630
+msgid "Removed @type %title from front page."
+msgstr "@type %title がフロントページから撤去されました。"
+
+#: modules/node/node.module:2639
+msgid "Saved @type %title"
+msgstr "@type %title が保存されました。"
+
+#: modules/node/node.module:2649
+msgid "Changed owner of @type %title to uid %name."
+msgstr "@type %title の所有者がuid %name に変更されました。"
+
+#: modules/node/node.module:1122
+msgid "administer content types"
+msgstr "コンテンツタイプの管理"
+
+#: modules/node/node.module:1122
+msgid "administer nodes"
+msgstr "ノードの管理"
+
+#: modules/node/node.module:1122
+msgid "access content"
+msgstr "コンテンツへのアクセス"
+
+#: modules/node/node.module:1122
+msgid "view revisions"
+msgstr "リビジョンの表示"
+
+#: modules/node/node.module:1122
+msgid "revert revisions"
+msgstr "リビジョンの復帰"
+
+#: modules/node/node.module:1403
+msgid "View, edit, and delete your site's content."
+msgstr "サイトのコンテンツを表示・編集・削除します。"
+
+#: modules/node/node.module:1417
+msgid "Post settings"
+msgstr "投稿の設定"
+
+#: modules/node/node.module:1418
+msgid ""
+"Control posting behavior, such as teaser length, requiring previews before "
+"posting, and the number of posts on the front page."
+msgstr ""
+"ティーザーの長さや投稿前プレビューの義務づけ、フロントページに表示する投稿数"
+"など、投稿に関する振る舞いをコントロールします。"
+
+# リンクの説明に合うように変更
+#: modules/node/node.module:1436
+msgid ""
+"Manage posts by content type, including default status, front page "
+"promotion, etc."
+msgstr ""
+"投稿を管理するためのコンテンツタイプを管理（フロントページへの掲載やコメント"
+"の設定など、デフォルトの状態を含む）します。"
+
+#: modules/node/node.module:1447
+msgid "Add content type"
+msgstr "コンテンツタイプの追加"
+
+#: modules/node/node.module:1460
+msgid "Create content"
+msgstr "コンテンツの作成"
+
+#: modules/node/node.module:1534;1544
+msgid "Revisions"
+msgstr "リビジョン"
+
+#: modules/node/node.module:1551
+msgid "Revert to earlier revision"
+msgstr "以前のリビジョンに戻す"
+
+#: modules/node/node.module:1561
+msgid "Delete earlier revision"
+msgstr "以前のリビジョンを削除"
+
+#: modules/node/node.install:9
+msgid "The base table for nodes."
+msgstr "ノード用基底テーブル"
+
+#: modules/node/node.install:12
+msgid "The primary identifier for a node."
+msgstr "ノード用基本識別子"
+
+#: modules/node/node.install:17
+msgid "The current {node_revisions}.vid version identifier."
+msgstr "カレント{node_revisions}.vidバージョン識別子"
+
+#: modules/node/node.install:23
+msgid "The {node_type}.type of this node."
+msgstr "ノードの{node_type}.type"
+
+#: modules/node/node.install:29
+msgid "The {languages}.language of this node."
+msgstr "ノードの{languages}.language"
+
+#: modules/node/node.install:35
+msgid "The title of this node, always treated a non-markup plain text."
+msgstr "ノードのタイトル。 常に非マークアッププレーンテキストを扱う"
+
+#: modules/node/node.install:41
+msgid ""
+"The {users}.uid that owns this node; initially, this is the user that "
+"created it."
+msgstr "ノードを所有する{users}.uid（初期値は作成したユーザ）"
+
+#: modules/node/node.install:46
+msgid ""
+"Boolean indicating whether the node is published (visible to non-"
+"administrators)."
+msgstr "ノードが掲載（非管理者に表示）されているかどうかを示すフラグ"
+
+#: modules/node/node.install:51
+msgid "The Unix timestamp when the node was created."
+msgstr "ノードが作成された際のUNIXタイムスタンプ"
+
+#: modules/node/node.install:56
+msgid "The Unix timestamp when the node was most recently saved."
+msgstr "ノードが前回保存された際のUNIXタイムスタンプ"
+
+#: modules/node/node.install:61
+msgid ""
+"Whether comments are allowed on this node: 0 = no, 1 = read only, 2 = read/"
+"write."
+msgstr ""
+"ノードにコメントが許可されるかどうか（0 = 無効、1 = 表示のみ、2 = 表示／投"
+"稿）"
+
+#: modules/node/node.install:66
+msgid "Boolean indicating whether the node should displayed on the front page."
+msgstr "ノードをフロントページに表示するかどうかを示すフラグ"
+
+#: modules/node/node.install:71
+msgid ""
+"Previously, a boolean indicating whether the node was \"in moderation\"; "
+"mostly no longer used."
+msgstr ""
+"かつてはノードがモデレーション待ちかどうかを示すフラグだったが、もはや使用さ"
+"れない"
+
+#: modules/node/node.install:76
+msgid ""
+"Boolean indicating whether the node should be displayed at the top of lists "
+"in which it appears."
+msgstr "ノードをリスト上部に固定するかどうかを示すフラグ"
+
+#: modules/node/node.install:81
+msgid ""
+"The translation set id for this node, which equals the node id of the source "
+"post in each set."
+msgstr "ノードの翻訳セットID（各セットの元投稿のノードIDと等しい）"
+
+#: modules/node/node.install:87
+msgid "A boolean indicating whether this translation page needs to be updated."
+msgstr "翻訳ページを更新する必要があるかどうかを示すフラグ"
+
+#: modules/node/node.install:111
+msgid ""
+"Identifies which realm/grant pairs a user must possess in order to view, "
+"update, or delete specific nodes."
+msgstr ""
+"特定のノードを表示・更新・削除するためにユーザが所有する必要のあるレルム（領"
+"域）/グラント（許諾）のペアを識別します"
+
+#: modules/node/node.install:114
+msgid "The {node}.nid this record affects."
+msgstr "このレコードが作用する{node}.nid"
+
+#: modules/node/node.install:120
+msgid ""
+"The grant ID a user must possess in the specified realm to gain this row's "
+"privileges on the node."
+msgstr ""
+"ノードでのローの特権を得るために特定のレルムでユーザが所有する必要のあるグラ"
+"ントID"
+
+#: modules/node/node.install:126
+msgid ""
+"The realm in which the user must possess the grant ID. Each node access node "
+"can define one or more realms."
+msgstr ""
+"ユーザがグラントIDを所有する必要のあるレルム。 各ノードアクセスノードは1つ以"
+"上のレルムを定義できる"
+
+#: modules/node/node.install:132
+msgid ""
+"Boolean indicating whether a user with the realm/grant pair can view this "
+"node."
+msgstr ""
+"レルム/グラントのペアを持つユーザがこのノードを表示できるかどうかを示すフラグ"
+
+#: modules/node/node.install:139
+msgid ""
+"Boolean indicating whether a user with the realm/grant pair can edit this "
+"node."
+msgstr ""
+"レルム/グラントのペアを持つユーザがこのノードを編集できるかどうかを示すフラグ"
+
+#: modules/node/node.install:146
+msgid ""
+"Boolean indicating whether a user with the realm/grant pair can delete this "
+"node."
+msgstr ""
+"レルム/グラントのペアを持つユーザがこのノードを削除できるかどうかを示すフラグ"
+
+#: modules/node/node.install:157
+msgid "Access statistics for {node}s."
+msgstr "{node}用アクセス統計値"
+
+#: modules/node/node.install:160
+msgid "The {node}.nid for these statistics."
+msgstr "統計値用{node}.nid"
+
+#: modules/node/node.install:165
+msgid "The total number of times the {node} has been viewed."
+msgstr "{node}の表示総回数"
+
+#: modules/node/node.install:172
+msgid "The total number of times the {node} has been viewed today."
+msgstr "{node}の本日の表示総回数"
+
+#: modules/node/node.install:179
+msgid "The most recent time the {node} has been viewed."
+msgstr "{node}が最も最近表示された時間"
+
+#: modules/node/node.install:189
+msgid "Stores information about each saved version of a {node}."
+msgstr "{node}の各保存バージョンに関する情報を格納します"
+
+#: modules/node/node.install:192
+msgid "The {node} this version belongs to."
+msgstr "バージョンが属する{node}"
+
+#: modules/node/node.install:198
+msgid "The primary identifier for this version."
+msgstr "バージョンの基本識別子"
+
+#: modules/node/node.install:203
+msgid "The {users}.uid that created this version."
+msgstr "バージョンを作成した{users}.uid"
+
+#: modules/node/node.install:208
+msgid "The title of this version."
+msgstr "バージョンのタイトル"
+
+#: modules/node/node.install:214
+msgid "The body of this version."
+msgstr "バージョンの本文"
+
+#: modules/node/node.install:219
+msgid "The teaser of this version."
+msgstr "バージョンのティーザー"
+
+#: modules/node/node.install:224
+msgid "The log entry explaining the changes in this version."
+msgstr "バージョンでの変更を説明するログエントリ"
+
+#: modules/node/node.install:229
+msgid "A Unix timestamp indicating when this version was created."
+msgstr "バージョンが作成された際のUNIXタイムスタンプ"
+
+#: modules/node/node.install:234
+msgid "The input format used by this version's body."
+msgstr "バージョンの本文で使用される入力書式"
+
+#: modules/node/node.install:247
+msgid "Stores information about all defined {node} types."
+msgstr "すべての定義された{node}タイプに関する情報を格納します"
+
+#: modules/node/node.install:250
+msgid "The machine-readable name of this type."
+msgstr "タイプの「コンピュータが扱える名前」"
+
+#: modules/node/node.install:255
+msgid "The human-readable name of this type."
+msgstr "タイプの「人が読める名前」"
+
+#: modules/node/node.install:261
+msgid "The module that implements this type."
+msgstr "タイプを実装するモジュール"
+
+#: modules/node/node.install:266
+msgid "A brief description of this type."
+msgstr "タイプの簡潔な説明"
+
+#: modules/node/node.install:271
+msgid "Help information shown to the user when creating a {node} of this type."
+msgstr "タイプの{node}を作成する際にユーザに表示するヘルプ情報"
+
+#: modules/node/node.install:276
+msgid "Boolean indicating whether this type uses the {node}.title field."
+msgstr "タイプが{node}.titleフィールドを使用するかどうかを示すフラグ"
+
+#: modules/node/node.install:282
+msgid "The label displayed for the title field on the edit form."
+msgstr "編集フォームのタイトルフィールドに表示するラベル"
+
+#: modules/node/node.install:288
+msgid ""
+"Boolean indicating whether this type uses the {node_revisions}.body field."
+msgstr "タイプが{node_revisions}.bodyフィールドを使用するかどうかを示すフラグ"
+
+#: modules/node/node.install:294
+msgid "The label displayed for the body field on the edit form."
+msgstr "編集フォームの本文フィールドに表示するラベル"
+
+#: modules/node/node.install:300
+msgid "The minimum number of words the body must contain."
+msgstr "本文に含む必要のあるワードの最少数"
+
+#: modules/node/node.install:306
+msgid ""
+"A boolean indicating whether this type is defined by a module (FALSE) or by "
+"a user via a module like the Content Construction Kit (TRUE)."
+msgstr ""
+"タイプの定義がモジュールによる（FALSE）ものか、CCKのようなモジュールを介した"
+"ユーザによるもの（TRUE）かを示すフラグ"
+
+#: modules/node/node.install:312
+msgid ""
+"A boolean indicating whether this type has been modified by an "
+"administrator; currently not used in any way."
+msgstr ""
+"タイプが管理者によって修正されたかどうかを示すフラグ（現在はどこにも使用され"
+"ていない）"
+
+#: modules/node/node.install:318
+msgid ""
+"A boolean indicating whether the administrator can change the machine name "
+"of this type."
+msgstr ""
+"タイプの「コンピュータが扱える名前」を管理者が変更できるかどうかを示すフラグ"
+
+#: modules/node/node.install:324
+msgid ""
+"The original machine-readable name of this node type. This may be different "
+"from the current type name if the locked field is 0."
+msgstr ""
+"ノードタイプのオリジナルのコンピュータが扱える名前。 lockedフィールドが0の場"
+"合、現在のタイプ名とは異なる可能性あり"
+
+# 以下、各権限文字列の不足分
+msgid "create book content"
+msgstr "ブックコンテンツの作成"
+
+msgid "create page content"
+msgstr "ページコンテンツの作成"
+
+msgid "create story content"
+msgstr "ストーリーコンテンツの作成"
+
+msgid "delete any book content"
+msgstr "任意のブックコンテンツの削除"
+
+msgid "delete any page content"
+msgstr "任意のページコンテンツの削除"
+
+msgid "delete any story content"
+msgstr "任意のストーリーコンテンツの削除"
+
+msgid "delete own book content"
+msgstr "自分のブックコンテンツの削除"
+
+msgid "delete own page content"
+msgstr "自分のページコンテンツの削除"
+
+msgid "delete own story content"
+msgstr "自分のストーリーコンテンツの削除"
+
+msgid "delete revisions"
+msgstr "リビジョンの削除"
+
+msgid "edit any book content"
+msgstr "任意のブックコンテンツの編集"
+
+msgid "edit any page content"
+msgstr "任意のページコンテンツの編集"
+
+msgid "edit any story content"
+msgstr "任意のストーリーコンテンツの編集"
+
+msgid "edit own book content"
+msgstr "自分のブックコンテンツの編集"
+
+msgid "edit own page content"
+msgstr "自分のページコンテンツの編集"
+
+msgid "edit own story content"
+msgstr "自分のストーリーコンテンツの編集"

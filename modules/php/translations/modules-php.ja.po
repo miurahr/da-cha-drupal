@@ -1,0 +1,253 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-php)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  php.module,v 1.8.2.1 2008/02/05 09:29:50 goba
+#  php.install,v 1.1 2007/04/24 10:54:34 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/php/php.module:16
+msgid ""
+"The PHP filter adds the ability to include PHP code in posts. PHP is a "
+"general-purpose scripting language widely-used for web development; the "
+"content management system used by this website has been developed using PHP."
+msgstr ""
+"PHPフィルタは投稿にPHPコードを含められるようにします。 PHPはウェブ開発用に広"
+"く使われる汎用のスクリプト言語で、このサイトで使用されているコンテンツ管理シ"
+"ステムもPHPで開発されています。"
+
+#: modules/php/php.module:17
+msgid ""
+"Through the PHP filter, users with the proper permission may include custom "
+"PHP code within a page of the site. While this is a powerful and flexible "
+"feature if used by a trusted user with PHP experience, it is a significant "
+"and dangerous security risk in the hands of a malicious user. Even a trusted "
+"user may accidentally compromise the site by entering malformed or incorrect "
+"PHP code. Only the most trusted users should be granted permission to use "
+"the PHP filter, and all PHP code added through the PHP filter should be "
+"carefully examined before use."
+msgstr ""
+"適切な権限を持ったユーザは、PHPフィルタによってサイトページ内にカスタムPHP"
+"コードを含めることができます。 PHPの経験を持った信頼できるユーザが使用する場"
+"合、これは強力かつ柔軟な機能ですが、悪意のあるユーザに使用された場合、深刻な"
+"安全を脅かす事態をもたらします。 また、たとえ信頼できるユーザであっても、不正"
+"な形式や間違ったPHPコードを入力することで、誤ってサイトを危うくする可能性もあ"
+"ります。 これらのことから、PHPフィルタの使用許可を与えるのは最も信頼できる"
+"ユーザに限定し、PHPフィルタによって加えられるすべてのPHPコードは、使用する前"
+"に念入りにチェックするべきです。"
+
+#: modules/php/php.module:18;61
+msgid ""
+"<a href=\"@drupal\">Drupal.org</a> offers <a href=\"@php-snippets\">some "
+"example PHP snippets</a>, or you can create your own with some PHP "
+"experience and knowledge of the Drupal system."
+msgstr ""
+"<a href=\"@drupal\">Drupal.org</a>で<a href=\"@php-snippets\">いくつかのPHPス"
+"ニペットの実例</a>を提供しています。 また、多少のPHP経験とDrupalシステムの知"
+"識があれば、独自のPHPスニペットを作成することができます。"
+
+#: modules/php/php.module:19
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@php\">PHP "
+"module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@php\">PHP module（英文）"
+"</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/\">&nbsp;≡ "
+"Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/php/php.module:32
+msgid "You may post PHP code. You should include &lt;?php ?&gt; tags."
+msgstr ""
+"PHPコードを投稿することができます。 コードには &lt;?php ?&gt; タグを含める必"
+"要があります。"
+
+#: modules/php/php.module:34
+msgid "Using custom PHP code"
+msgstr "カスタムPHPコードの使い方"
+
+#: modules/php/php.module:35
+msgid ""
+"Custom PHP code may be embedded in some types of site content, including "
+"posts and blocks. While embedding PHP code inside a post or block is a "
+"powerful and flexible feature when used by a trusted user with PHP "
+"experience, it is a significant and dangerous security risk when used "
+"improperly. Even a small mistake when posting PHP code may accidentally "
+"compromise your site."
+msgstr ""
+"カスタムPHPコードは、投稿やブロックを含む任意のタイプのサイトコンテンツに埋め"
+"込むことができます。 PHPの経験を持った信頼できるユーザが適切に使用する場合"
+"は、 投稿やブロックにPHPコードを埋め込めるのは強力かつ柔軟な機能ですが、不適"
+"切に使用された場合は深刻な安全を脅かす事態をもたらします。 また、投稿される"
+"PHPコードに少しでもミスがあれば、誤ってサイトを危うくする可能性があります。"
+
+# tipsなので注意喚起
+#: modules/php/php.module:36
+msgid ""
+"If you are unfamiliar with PHP, SQL, or Drupal, avoid using custom PHP code "
+"within posts. Experimenting with PHP may corrupt your database, render your "
+"site inoperable, or significantly compromise security."
+msgstr ""
+"PHP、SQL、Drupalに精通していない場合は、投稿にカスタムPHPコードを使うことを避"
+"けてください。 PHPの安易な使用はデータベースを破損させ、サイトを操作不能に"
+"し、著しく安全性を損なう可能性がありますので絶対に避けてください。"
+
+#: modules/php/php.module:37
+msgid "Notes:"
+msgstr "注意："
+
+#: modules/php/php.module:38
+msgid ""
+"Remember to double-check each line for syntax and logic errors "
+"<strong>before</strong> saving."
+msgstr ""
+"<strong>保存する前</strong>に各行の文法・論理エラーを忘れずに再確認してくださ"
+"い。"
+
+#: modules/php/php.module:39
+msgid "Statements must be correctly terminated with semicolons."
+msgstr "命令文はセミコロンで正しく終える必要があります。"
+
+#: modules/php/php.module:40
+msgid ""
+"Global variables used within your PHP code retain their values after your "
+"script executes."
+msgstr ""
+"PHPコード内で使用されたグローバル変数は、スクリプトの実行後もその値を保持しま"
+"す。"
+
+#: modules/php/php.module:41
+msgid ""
+"<code>register_globals</code> is <strong>turned off</strong>. If you need to "
+"use forms, understand and use the functions in <a href=\"@formapi\">the "
+"Drupal Form API</a>."
+msgstr ""
+"<code>register_globals</code>は<strong>offです</strong>。 フォームを使用した"
+"い場合は、<a href=\"@formapi\">Drupal Form API</a>の関数を理解し、それを使用"
+"してください。"
+
+#: modules/php/php.module:42
+msgid ""
+"Use a <code>print</code> or <code>return</code> statement in your code to "
+"output content."
+msgstr ""
+"コンテンツを出力するには、コード中で<strong><code>print</code></strong>か"
+"<strong><code>return</code></strong>命令を使用してください。"
+
+#: modules/php/php.module:43
+msgid ""
+"Develop and test your PHP code using a separate test script and sample "
+"database before deploying on a production site."
+msgstr ""
+"稼働中サイトで使用する前に、個別のテストスクリプトとサンプルデータベースを使"
+"用し、PHPコードの開発とテストを十分に行ってください。"
+
+#: modules/php/php.module:44
+msgid ""
+"Consider including your custom PHP code within a site-specific module or "
+"<code>template.php</code> file rather than embedding it directly into a post "
+"or block."
+msgstr ""
+"投稿やブロックに直接埋め込むのではなく、サイト特有のモジュールや"
+"<code>template.php</code>にカスタムPHPコードを含めることを検討してください。"
+
+#: modules/php/php.module:45
+msgid ""
+"Be aware that the ability to embed PHP code within content is provided by "
+"the PHP Filter module. If this module is disabled or deleted, then blocks "
+"and posts with embedded PHP may display, rather than execute, the PHP code."
+msgstr ""
+"PHPコードをコンテンツ内に埋め込める能力は、PHPフィルタモジュールによって提供"
+"されていることを認識してください。 このモジュールが無効化・削除された場合、投"
+"稿やブロックに埋め込まれたPHPコードは実行されず、そのまま表示されてしまいま"
+"す。"
+
+#: modules/php/php.module:46
+msgid ""
+"A basic example: <em>Creating a \"Welcome\" block that greets visitors with "
+"a simple message.</em>"
+msgstr ""
+"基本例： <em>単純なメッセージで訪問者を迎える「ようこそ」ブロックの作成</em>"
+
+#: modules/php/php.module:47
+msgid ""
+"<p>Add a custom block to your site, named \"Welcome\". With its input format "
+"set to \"PHP code\" (or another format supporting PHP input), add the "
+"following in the Block body:</p>\n"
+"<pre>\n"
+"print t('Welcome visitor! Thank you for visiting.');\n"
+"</pre>"
+msgstr ""
+"<p>「ようこそ」というカスタムブロックをサイトに加え、入力書式を「PHP code」"
+"（またはPHPをサポートする別の入力書式）にし、ブロックの本文に以下を加えてくだ"
+"さい（サンプル中の <b>t()</b> は文字列を翻訳可能にするDrupalの関数です）：</"
+"p>\n"
+"<pre>\n"
+"print t('Welcome visitor! Thank you for visiting.');\n"
+"</pre>"
+
+#: modules/php/php.module:51
+msgid ""
+"<p>To display the name of a registered user, use this instead:</p>\n"
+"<pre>\n"
+"global $user;\n"
+"if ($user->uid) {\n"
+"  print t('Welcome @name! Thank you for visiting.', array('@name' => $user-"
+">name));\n"
+"}\n"
+"else {\n"
+"  print t('Welcome visitor! Thank you for visiting.');\n"
+"}\n"
+"</pre>"
+msgstr ""
+"<p>登録ユーザの名前を表示するには、代わりに以下を使用します：</p>\n"
+"<pre>\n"
+"global $user;\n"
+"if ($user->uid) {\n"
+"  print t('Welcome @name! Thank you for visiting.', array('@name' => $user-"
+">name));\n"
+"}\n"
+"else {\n"
+"  print t('Welcome visitor! Thank you for visiting.');\n"
+"}\n"
+"</pre>"
+
+# ノンプログラマには「評価」が理解しにくいと思われるため
+#: modules/php/php.module:75
+msgid "PHP evaluator"
+msgstr "PHPコードの実行"
+
+#: modules/php/php.module:80
+msgid ""
+"Executes a piece of PHP code. The usage of this filter should be restricted "
+"to administrators only!"
+msgstr ""
+"PHPスニペットを実行します。 このフィルタの使用は管理者に限定するべきです！"
+
+#: modules/php/php.install:20
+msgid "A !php-code input format has been created."
+msgstr "入力書式 !php-code が作成されました。"
+
+#: modules/php/php.install:28
+msgid ""
+"The PHP module has been disabled. Please note that any existing content that "
+"was using the PHP filter will now be visible in plain text. This might pose "
+"a security risk by exposing sensitive information, if any, used in the PHP "
+"code."
+msgstr ""
+"PHPモジュールが無効化されました。 これにより、PHPフィルタを使用していた既存コ"
+"ンテンツは、プレーンテキストで表示されてしまうことに注意してください。 PHP"
+"コード内に機密性の高い情報（パスワード等）があった場合、それが人目にさらされ"
+"ることでセキュリティ上の危険をもたらす可能性があります。"

@@ -1,0 +1,704 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-comment)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  comment-folded.tpl.php,v 1.2 2007/08/07 08:39:35 goba
+#  comment.admin.inc,v 1.4 2008/01/08 10:35:41 goba
+#  comment.module,v 1.617 2008/01/25 16:19:12 goba
+#  comment.pages.inc,v 1.2.2.1 2008/02/07 18:53:38 goba
+#  comment.install,v 1.19 2008/01/16 21:45:30 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/comment/comment-folded.tpl.php:20
+msgid "by"
+msgstr "投稿者"
+
+#: modules/comment/comment.admin.inc:56
+msgid "Posted in"
+msgstr "投稿先"
+
+#: modules/comment/comment.admin.inc:86
+msgid "Please select one or more comments to perform the update on."
+msgstr "更新を行うコメントを1つ以上選択してください。"
+
+#: modules/comment/comment.admin.inc:142
+msgid "No comments available."
+msgstr "コメントはありません。"
+
+#: modules/comment/comment.admin.inc:183
+msgid ""
+"There do not appear to be any comments to delete or your selected comment "
+"was deleted by another administrator."
+msgstr ""
+"削除すべきコメントが無いか、選択されたコメントは別の管理者によって削除されま"
+"した。"
+
+#: modules/comment/comment.admin.inc:188
+msgid "Are you sure you want to delete these comments and all their children?"
+msgstr "本当に、これらのコメントとそのすべての返信を削除してもよろしいですか？"
+
+#: modules/comment/comment.admin.inc:190
+msgid "Delete comments"
+msgstr "コメントの削除"
+
+#: modules/comment/comment.admin.inc:207
+msgid "The comments have been deleted."
+msgstr "コメントが削除されました。"
+
+#: modules/comment/comment.admin.inc:228
+msgid "The comment no longer exists."
+msgstr "コメントはもはや存在しません。"
+
+#: modules/comment/comment.admin.inc:245
+msgid "Are you sure you want to delete the comment %title?"
+msgstr "本当に、コメント %title を削除してもよろしいですか？"
+
+#: modules/comment/comment.admin.inc:247
+msgid "Any replies to this comment will be lost. This action cannot be undone."
+msgstr ""
+"このコメントに対するすべての返信は失われます。 この操作は元に戻すことができま"
+"せんので、十分に注意して実行してください。"
+
+#: modules/comment/comment.admin.inc:257
+msgid "The comment and all its replies have been deleted."
+msgstr "コメントとすべての返信が削除されました"
+
+#: modules/comment/comment.admin.inc:111 modules/comment/comment.module:707
+msgid "Comment: updated %subject."
+msgstr "コメント： %subject が更新されました。"
+
+#: modules/comment/comment.admin.inc:280
+msgid "Cannot delete non-existent comment."
+msgstr "存在しないコメントを削除することはできません。"
+
+#: modules/comment/comment.admin.inc:286
+msgid "Comment: deleted %subject."
+msgstr "コメント： %subject が削除されました。"
+
+#: modules/comment/comment.pages.inc:65;105
+msgid "You are not authorized to post comments."
+msgstr "コメントを投稿する権限がありません。"
+
+#: modules/comment/comment.pages.inc:78;87
+msgid "The comment you are replying to does not exist."
+msgstr "返信しようとしたコメントは存在しません。"
+
+#: modules/comment/comment.pages.inc:98
+msgid "This discussion is closed: you can't post new comments."
+msgstr "このディスカッションは終了しました。 新しいコメントは投稿できません。"
+
+#: modules/comment/comment.pages.inc:102
+msgid "Reply"
+msgstr "返信"
+
+#: modules/comment/comment.pages.inc:111
+msgid "You are not authorized to view comments."
+msgstr "コメントを表示する権限がありません。"
+
+#: modules/comment/comment.module:129
+msgid ""
+"The comment module allows visitors to comment on your posts, creating ad hoc "
+"discussion boards. Any <a href=\"@content-type\">content type</a> may have "
+"its <em>Default comment setting</em> set to <em>Read/Write</em> to allow "
+"comments, or <em>Disabled</em>, to prevent comments. Comment display "
+"settings and other controls may also be customized for each content type "
+"(some display settings are customizable by individual users)."
+msgstr ""
+"Comment（コメント）モジュールは、その投稿に限定した掲示板を作成し、訪問者が投"
+"稿にコメントを付けられるようにします。 どの<a href=\"@content-type\">コンテン"
+"ツタイプ</a>にも、コメントの許可（表示／投稿）・不許可（無効）を設定できる"
+"「デフォルトのコメント設定」があります。 また、コメントの表示設定やその他のコ"
+"ントロールも、コンテンツタイプごとにカスタマイズすることができます。 （いくつ"
+"かの表示設定は、ユーザごとにカスタマイズ可能です）"
+
+#: modules/comment/comment.module:130
+msgid ""
+"Comment permissions are assigned to user roles, and are used to determine "
+"whether anonymous users (or other roles) are allowed to comment on posts. If "
+"anonymous users are allowed to comment, their individual contact information "
+"may be retained in cookies stored on their local computer for use in later "
+"comment submissions. When a comment has no replies, it may be (optionally) "
+"edited by its author. The comment module uses the same input formats and "
+"HTML tags available when creating other forms of content."
+msgstr ""
+"コメントの権限はユーザロールに割り当てられ、匿名ユーザ（または他のロール）が"
+"投稿にコメントを付けられるかどうかを決定するために使用されます。 匿名ユーザに"
+"コメントが許可された場合、入力された連絡先情報がローカルコンピュータに保存さ"
+"れるクッキーに保持され、以後のコメント投稿に使用されます。 コメントに返信が付"
+"いていない場合に限り、そのコメントの投稿者は任意で編集することができます。 コ"
+"メントモジュールは、他のコンテンツを作成する際と同じ入力書式と利用可能なHTML"
+"タグを使用します。"
+
+#: modules/comment/comment.module:131
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@comment"
+"\">Comment module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@comment\">Comment module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+# 原文の説明は旧バージョン用のため現状に即して変更
+#: modules/comment/comment.module:134
+msgid ""
+"Below is a list of the latest comments posted to your site. Click on a "
+"subject to see the comment, the author's name to edit the author's user "
+"information, 'edit' to modify the text, and 'delete' to remove their "
+"submission."
+msgstr ""
+"以下はサイトに投稿された最新コメントの一覧です。 コメントの表示は「件名」、投"
+"稿者情報の表示や編集は「投稿者」、テキストの編集は「編集」の各カラムをクリッ"
+"クしてください。 削除したい場合は任意のチェックボックスにチェックを入れ、更新"
+"オプションで「選択されたコメントを削除する」を選択したのちに「更新」ボタンを"
+"クリックしてください。"
+
+# 原文の説明は旧バージョン用のため現状に即して変更
+#: modules/comment/comment.module:136
+msgid ""
+"Below is a list of the comments posted to your site that need approval. To "
+"approve a comment, click on 'edit' and then change its 'moderation status' "
+"to Approved. Click on a subject to see the comment, the author's name to "
+"edit the author's user information, 'edit' to modify the text, and 'delete' "
+"to remove their submission."
+msgstr ""
+"以下は、サイトに投稿された掲載承認待ちコメントの一覧です。 コメントの承認（掲"
+"載）や削除をするには、任意のコメントの先頭にチェックを入れ、「更新オプショ"
+"ン」で操作を選んだのちに「更新」ボタンをクリックしてください。 また、「件名」"
+"や「投稿者」の各カラムをクリックすると内容や投稿者情報が表示され、「編集」を"
+"クリックすると内容を編集することができます。"
+
+#: modules/comment/comment.module:284;288
+msgid "Recent comments"
+msgstr "最近のコメント"
+
+#: modules/comment/comment.module:420
+msgid "Jump to the first comment of this posting."
+msgstr "この投稿の最初のコメントにジャンプ"
+
+#: modules/comment/comment.module:431
+msgid "Jump to the first new comment of this posting."
+msgstr "この投稿の最初の新着コメントにジャンプ"
+
+#: modules/comment/comment.module:440;461
+msgid "Add new comment"
+msgstr "新しいコメントの追加"
+
+#: modules/comment/comment.module:442
+msgid "Add a new comment to this page."
+msgstr "このページに新規コメントを追加"
+
+#: modules/comment/comment.module:463
+msgid "Share your thoughts and opinions related to this posting."
+msgstr "この投稿に関する新しいコメントをつける"
+
+#: modules/comment/comment.module:492;575
+msgid "Comment settings"
+msgstr "コメントの設定"
+
+#: modules/comment/comment.module:498
+msgid "Default comment setting"
+msgstr "デフォルトのコメント設定"
+
+#: modules/comment/comment.module:500;584
+msgid "Read only"
+msgstr "表示のみ"
+
+#: modules/comment/comment.module:500;584
+msgid "Read/Write"
+msgstr "表示／投稿"
+
+#: modules/comment/comment.module:501
+msgid ""
+"Users with the <em>administer comments</em> permission will be able to "
+"override this setting."
+msgstr ""
+"このコンテンツタイプのデフォルトのコメント設定を指定してください。 ただし、"
+"「コメントの管理」権限を持ったユーザは常に設定を変更することができます。"
+
+#: modules/comment/comment.module:505
+msgid "Default display mode"
+msgstr "デフォルトの表示モード"
+
+#: modules/comment/comment.module:508
+msgid ""
+"The default view for comments. Expanded views display the body of the "
+"comment. Threaded views keep replies together."
+msgstr ""
+"デフォルトのコメント表示形式を指定してください。 「フラットリスト」は単に日付"
+"順に並び、「スレッドリスト」はコメントとその返信の関係が維持された状態で並び"
+"ます。 「折りたたむ」はタイトルのみが表示され、「展開する」はコメント本文も表"
+"示されます。 以下で「コメント表示コントローラ」を表示するように設定した場合、"
+"これらはユーザが好みに応じて変更できるようになります。"
+
+#: modules/comment/comment.module:512
+msgid "Default display order"
+msgstr "デフォルトの表示順"
+
+#: modules/comment/comment.module:515
+msgid ""
+"The default sorting for new users and anonymous users while viewing "
+"comments. These users may change their view using the comment control panel. "
+"For registered users, this change is remembered as a persistent user "
+"preference."
+msgstr ""
+"デフォルトでのコメントの表示順を指定してください。 以下で「コメント表示コント"
+"ローラ」を表示するように設定した場合、これはユーザが好みに応じて変更できるよ"
+"うになります。"
+
+#: modules/comment/comment.module:519
+msgid "Default comments per page"
+msgstr "デフォルトのページ単位のコメント数"
+
+#: modules/comment/comment.module:522
+msgid ""
+"Default number of comments for each page: more comments are distributed in "
+"several pages."
+msgstr ""
+"各ページに表示するデフォルトのコメント数を指定してください。 指定数より多くコ"
+"メントがある場合、さらに数ページに分けて表示されます。"
+
+#: modules/comment/comment.module:526
+msgid "Comment controls"
+msgstr "コメント表示コントローラ"
+
+#: modules/comment/comment.module:529
+msgid "Display above the comments"
+msgstr "コメントの上に表示"
+
+#: modules/comment/comment.module:530
+msgid "Display below the comments"
+msgstr "コメントの下に表示"
+
+#: modules/comment/comment.module:531
+msgid "Display above and below the comments"
+msgstr "コメントの上下に表示"
+
+#: modules/comment/comment.module:532
+msgid "Do not display"
+msgstr "表示しない"
+
+#: modules/comment/comment.module:533
+msgid ""
+"Position of the comment controls box. The comment controls let the user "
+"change the default display mode and display order of comments."
+msgstr ""
+"「コメント表示コントローラ」の表示・非表示や、表示位置を指定してください。 "
+"ユーザはコントローラを使用して、好みに応じた表示モード・表示順・表示数に変更"
+"できるようになります。 ログイン中のユーザは、コメント表示コントローラでの変更"
+"がユーザ設定として保存されます。"
+
+#: modules/comment/comment.module:537
+msgid "Anonymous commenting"
+msgstr "匿名ユーザのコメント"
+
+#: modules/comment/comment.module:540
+msgid "Anonymous posters may not enter their contact information"
+msgstr "連絡先の記入は不要"
+
+#: modules/comment/comment.module:541
+msgid "Anonymous posters may leave their contact information"
+msgstr "連絡先の記入は任意"
+
+#: modules/comment/comment.module:542
+msgid "Anonymous posters must leave their contact information"
+msgstr "連絡先の記入は必須"
+
+#: modules/comment/comment.module:543
+msgid ""
+"This option is enabled when anonymous users have permission to post comments "
+"on the <a href=\"@url\">permissions page</a>."
+msgstr ""
+"匿名ユーザがコメントする際、名前やメールアドレスの入力を求めるかどうかを指定"
+"してください。 この設定は、<a href=\"@url\">権限の設定ページ</a>で「匿名ユー"
+"ザ」に「コメントの投稿」権限が与えられている場合にのみ有効となります。"
+
+#: modules/comment/comment.module:550
+msgid "Comment subject field"
+msgstr "コメントの件名欄"
+
+#: modules/comment/comment.module:553
+msgid "Can users provide a unique subject for their comments?"
+msgstr "コメントに件名を付けられるようにするかどうかを指定してください。"
+
+#: modules/comment/comment.module:557;1425
+msgid "Preview comment"
+msgstr "コメントのプレビュー"
+
+#: modules/comment/comment.module:560
+msgid ""
+"Forces a user to look at their comment by clicking on a 'Preview' button "
+"before they can actually add the comment"
+msgstr ""
+"投稿前のプレビューを必須とするかどうかを指定してください。 「必須」にした場"
+"合、投稿前に「プレビュー」ボタンをクリックし、記入したコメントに目を通すこと"
+"をユーザに義務づけます。"
+
+#: modules/comment/comment.module:564
+msgid "Location of comment submission form"
+msgstr "コメント投稿フォームの位置"
+
+#: modules/comment/comment.module:566
+msgid "Display on separate page"
+msgstr "別のページに表示"
+
+#: modules/comment/comment.module:566
+msgid "Display below post or comments"
+msgstr "コンテンツやコメントの下に表示"
+
+#: modules/comment/comment.module:778
+msgid ""
+"Your comment has been queued for moderation by site administrators and will "
+"be published after approval."
+msgstr ""
+"投稿されたコメントはサイト管理者の承認待ちとなりました。 承認後に掲載されま"
+"す。"
+
+#: modules/comment/comment.module:791;790
+msgid ""
+"Comment: unauthorized comment submitted or comment submitted to a closed "
+"post %subject."
+msgstr ""
+"コメント： 権限のないコメント投稿か、クローズされた投稿 %subject へコメントが"
+"投稿されました。"
+
+#: modules/comment/comment.module:814
+msgid "parent"
+msgstr "上位"
+
+#: modules/comment/comment.module:831;843
+msgid "reply"
+msgstr "返信"
+
+#: modules/comment/comment.module:1048
+msgid "Post new comment"
+msgstr "新しいコメントの投稿"
+
+#: modules/comment/comment.module:1069;1081
+msgid "Publish the selected comments"
+msgstr "選択されたコメントを掲載する"
+
+#: modules/comment/comment.module:1070;1076;1083
+msgid "Delete the selected comments"
+msgstr "選択されたコメントを削除する"
+
+#: modules/comment/comment.module:1075;1082
+msgid "Unpublish the selected comments"
+msgstr "選択されたコメントを非掲載にする"
+
+#: modules/comment/comment.module:1192
+msgid "You have to specify a valid author."
+msgstr "有効な投稿者名を指定する必要があります。"
+
+#: modules/comment/comment.module:1203
+msgid "The name you used belongs to a registered user."
+msgstr "登録ユーザと同じ名前は使えません。"
+
+#: modules/comment/comment.module:1208
+msgid "You have to leave your name."
+msgstr "名前を入力する必要があります。"
+
+#: modules/comment/comment.module:1213
+msgid "The e-mail address you specified is not valid."
+msgstr "入力されたメールアドレスは無効です。"
+
+#: modules/comment/comment.module:1217
+msgid "You have to leave an e-mail address."
+msgstr "メールアドレスを入力する必要があります。"
+
+#: modules/comment/comment.module:1222
+msgid ""
+"The URL of your homepage is not valid. Remember that it must be fully "
+"qualified, i.e. of the form <code>http://example.com/directory</code>."
+msgstr ""
+"入力されたホームページのURLは無効です。 URLは完全な記述（<code>http://"
+"example.com/directory</code>の形式）が必要です。"
+
+#: modules/comment/comment.module:1278
+msgid "Administration"
+msgstr "管理"
+
+#: modules/comment/comment.module:1321;1346;1353
+msgid "Homepage"
+msgstr "ホームページ"
+
+#: modules/comment/comment.module:1527
+msgid "(No subject)"
+msgstr "（件名なし）"
+
+#: modules/comment/comment.module:1613
+msgid "!a comments per page"
+msgstr "!a コメント／ページ"
+
+#: modules/comment/comment.module:1640
+msgid ""
+"Select your preferred way to display the comments and click \"Save settings"
+"\" to activate your changes."
+msgstr ""
+"お好みのコメント表示方法を選び「設定の保存」をクリックすると変更が反映されま"
+"す。"
+
+#: modules/comment/comment.module:1641
+msgid "Comment viewing options"
+msgstr "コメント表示オプション"
+
+#: modules/comment/comment.module:1794
+msgid ""
+"<a href=\"@login\">Login</a> or <a href=\"@register\">register</a> to post "
+"comments"
+msgstr ""
+"<a href=\"@login\">ログイン</a>（<a href=\"@register\">登録</a>）してコメント"
+"を投稿"
+
+#: modules/comment/comment.module:1798
+msgid "<a href=\"@login\">Login</a> to post comments"
+msgstr "<a href=\"@login\">ログイン</a>してコメントを投稿"
+
+#: modules/comment/comment.module:1826
+msgid "Submitted by !username on @datetime."
+msgstr "投稿者：!username 投稿日時：@datetime"
+
+#: modules/comment/comment.module:1841
+msgid "Flat list - collapsed"
+msgstr "フラットリスト - 折りたたむ"
+
+#: modules/comment/comment.module:1842
+msgid "Flat list - expanded"
+msgstr "フラットリスト - 展開する"
+
+#: modules/comment/comment.module:1843
+msgid "Threaded list - collapsed"
+msgstr "スレッドリスト - 折りたたむ"
+
+#: modules/comment/comment.module:1844
+msgid "Threaded list - expanded"
+msgstr "スレッドリスト - 展開する"
+
+#: modules/comment/comment.module:2000
+msgid "After saving a new comment"
+msgstr "新しいコメントを保存後"
+
+#: modules/comment/comment.module:2003
+msgid "After saving an updated comment"
+msgstr "更新したコメントを保存後"
+
+#: modules/comment/comment.module:2006
+msgid "After deleting a comment"
+msgstr "コメントの削除後"
+
+#: modules/comment/comment.module:2009
+msgid "When a comment is being viewed by an authenticated user"
+msgstr "ログイン中のユーザによるコメントの表示時"
+
+#: modules/comment/comment.module:2022
+msgid "Unpublish comment"
+msgstr "コメントを非掲載にする"
+
+#: modules/comment/comment.module:2030
+msgid "Unpublish comment containing keyword(s)"
+msgstr "キーワードを含むコメントを非掲載にする"
+
+#: modules/comment/comment.module:2070
+msgid ""
+"The comment will be unpublished if it contains any of the character "
+"sequences above. Use a comma-separated list of character sequences. Example: "
+"funny, bungee jumping, \"Company, Inc.\". Character sequences are case-"
+"sensitive."
+msgstr ""
+"キーワードとする文字の並びをコンマで区切って列挙してください。 ここに列挙され"
+"た、いずれかの文字の並びがコメントに含まれる場合、コメントは非公開にされま"
+"す。 文字の並びの大文字・小文字は区別されます。<br />例： funny, bungee "
+"jumping, \"Company, Inc.\"（キーワードにコンマを含む場合はダブルクォートで括"
+"ります）"
+
+#: modules/comment/comment.module:768
+msgid "Comment: added %subject."
+msgstr "コメント： %subject が追加されました。"
+
+#: modules/comment/comment.module:2058;2098
+msgid "Unpublished comment %subject."
+msgstr "コメント %subject を非掲載にしました。"
+
+#: modules/comment/comment.module:428
+msgid "1 new comment"
+msgid_plural "@count new comments"
+msgstr[0] "新規コメント(1)"
+msgstr[1] "新規コメント(@count)"
+
+#: modules/comment/comment.module:274
+msgid "access comments"
+msgstr "コメントへのアクセス"
+
+#: modules/comment/comment.module:274
+msgid "post comments"
+msgstr "コメントの投稿"
+
+#: modules/comment/comment.module:274
+msgid "administer comments"
+msgstr "コメントの管理"
+
+#: modules/comment/comment.module:274
+msgid "post comments without approval"
+msgstr "承認不要のコメント投稿"
+
+#: modules/comment/comment.module:199
+msgid "List and edit site comments and the comment moderation queue."
+msgstr ""
+"投稿されたコメントの編集や削除、承認待ちコメントの許否の決定などをします。"
+
+#: modules/comment/comment.module:207
+msgid "Published comments"
+msgstr "掲載中のコメント"
+
+#: modules/comment/comment.module:212
+msgid "Approval queue"
+msgstr "承認キュー"
+
+#: modules/comment/comment.module:219
+msgid "Delete comment"
+msgstr "コメントの削除"
+
+#: modules/comment/comment.module:227
+msgid "Edit comment"
+msgstr "コメントの編集"
+
+#: modules/comment/comment.module:234
+msgid "Reply to comment"
+msgstr "コメントに返信"
+
+#: modules/comment/comment.module:0
+msgid "comment"
+msgstr "コメント"
+
+#: modules/comment/comment.install:76
+msgid "Stores comments and associated data."
+msgstr "コメントと関連データを格納します"
+
+#: modules/comment/comment.install:81
+msgid "Primary Key: Unique comment ID."
+msgstr "プライマリキー： 固有のコメントID"
+
+#: modules/comment/comment.install:87
+msgid ""
+"The {comments}.cid to which this comment is a reply. If set to 0, this "
+"comment is not a reply to an existing comment."
+msgstr ""
+"返信先コメントの{comments}.cid。 0 の場合は既存コメントへの返信ではない"
+
+#: modules/comment/comment.install:93
+msgid "The {node}.nid to which this comment is a reply."
+msgstr "返信先の{node}.nid"
+
+#: modules/comment/comment.install:99
+msgid ""
+"The {users}.uid who authored the comment. If set to 0, this comment was "
+"created by an anonymous user."
+msgstr "コメント投稿者の{users}.uid。 0 の場合は匿名ユーザによるコメント"
+
+#: modules/comment/comment.install:106
+msgid "The comment title."
+msgstr "コメントのタイトル"
+
+#: modules/comment/comment.install:112
+msgid "The comment body."
+msgstr "コメントの本文"
+
+#: modules/comment/comment.install:119
+msgid "The author's host name."
+msgstr "投稿者のホスト名"
+
+#: modules/comment/comment.install:125
+msgid ""
+"The time that the comment was created, or last edited by its author, as a "
+"Unix timestamp."
+msgstr "コメントの作成時刻か投稿者による最終更新時刻（UNIXタイムスタンプ）"
+
+#: modules/comment/comment.install:133
+msgid "The published status of a comment. (0 = Published, 1 = Not Published)"
+msgstr "コメントの公開状態（0 = 公開、1 = 非公開）"
+
+#: modules/comment/comment.install:140
+msgid "The {filter_formats}.format of the comment body."
+msgstr "コメント本文の{filter_formats}.format"
+
+#: modules/comment/comment.install:146
+msgid "The vancode representation of the comment's place in a thread."
+msgstr ""
+"スレッド内でのコメントの位置のvancode表現（vancodeについてはcomment.moduleの"
+"ソースを参照）"
+
+#: modules/comment/comment.install:152
+msgid ""
+"The comment author's name. Uses {users}.name if the user is logged in, "
+"otherwise uses the value typed into the comment form."
+msgstr ""
+"コメント投稿者の名前。 ログイン中ユーザの場合は{users}.nameを、そうでない場合"
+"はコメントフォームに入力された値を使用"
+
+#: modules/comment/comment.install:158
+msgid ""
+"The comment author's e-mail address from the comment form, if user is "
+"anonymous, and the 'Anonymous users may/must leave their contact "
+"information' setting is turned on."
+msgstr ""
+"匿名ユーザがコメントフォームに入力したメールアドレス（「匿名ユーザのコメン"
+"ト」設定で「連絡先の入力は任意・必須」を指定した場合）"
+
+#: modules/comment/comment.install:164
+msgid ""
+"The comment author's home page address from the comment form, if user is "
+"anonymous, and the 'Anonymous users may/must leave their contact "
+"information' setting is turned on."
+msgstr ""
+"匿名ユーザがコメントフォームに入力したホームページアドレス（「匿名ユーザのコ"
+"メント」設定にて「連絡先の入力は任意・必須」を指定した場合）"
+
+#: modules/comment/comment.install:176
+msgid ""
+"Maintains statistics of node and comments posts to show \"new\" and \"updated"
+"\" flags."
+msgstr ""
+"「新着」や「更新」のフラグを表示するために、ノードとコメントの統計値を保持し"
+"ます"
+
+#: modules/comment/comment.install:183
+msgid "The {node}.nid for which the statistics are compiled."
+msgstr "統計値を蓄積するための{node}.nid"
+
+#: modules/comment/comment.install:189
+msgid ""
+"The Unix timestamp of the last comment that was posted within this node, "
+"from {comments}.timestamp."
+msgstr ""
+"このノードへ最後に投稿されたコメントのUNIXタイムスタンプ（{comments}."
+"timestampより提供）"
+
+#: modules/comment/comment.install:195
+msgid ""
+"The name of the latest author to post a comment on this node, from "
+"{comments}.name."
+msgstr ""
+"このノードへ最後に投稿されたコメントの投稿者名（{comments}.nameより提供）"
+
+#: modules/comment/comment.install:201
+msgid ""
+"The user ID of the latest author to post a comment on this node, from "
+"{comments}.uid."
+msgstr ""
+"このノードへ最後に投稿されたコメントのユーザID（{comments}.uidより提供）"
+
+#: modules/comment/comment.install:208
+msgid "The total number of comments on this node."
+msgstr "このノードのコメント総数"

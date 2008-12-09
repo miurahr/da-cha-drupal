@@ -1,0 +1,420 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-book)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  book-navigation.tpl.php,v 1.1 2007/11/04 14:29:09 goba
+#  book.admin.inc,v 1.8 2008/01/08 10:35:41 goba
+#  book.module,v 1.454.2.2 2008/02/13 11:20:47 goba
+#  book.pages.inc,v 1.5 2007/12/22 23:24:24 goba
+#  book.install,v 1.20 2008/01/10 18:13:42 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/book/book-navigation.tpl.php:40
+msgid "‹ "
+msgstr "‹ "
+
+#: modules/book/book-navigation.tpl.php:43
+msgid "Go to parent page"
+msgstr "１階層上位のページへ"
+
+#: modules/book/book-navigation.tpl.php:43
+msgid "up"
+msgstr "↑ 上位"
+
+#: modules/book/book-navigation.tpl.php:46
+msgid " ›"
+msgstr " ›"
+
+#: modules/book/book.admin.inc:15
+msgid "edit order and titles"
+msgstr "並び順とタイトルの編集"
+
+#: modules/book/book.admin.inc:33
+msgid "Allowed book outline types"
+msgstr "ブックアウトラインを許可するタイプ"
+
+#: modules/book/book.admin.inc:36
+msgid ""
+"Select content types which users with the %add-perm permission will be "
+"allowed to add to the book hierarchy. Users with the %outline-perm "
+"permission can add all content types."
+msgstr ""
+"%add-perm 権限を持ったユーザが、ブックの階層構造に加えることのできるコンテン"
+"ツタイプを指定してください。 %outline-perm 権限を持ったユーザは、全コンテンツ"
+"タイプを加えることができます。"
+
+#: modules/book/book.admin.inc:36 modules/book/book.module:43
+msgid "add content to books"
+msgstr "ブックにコンテンツを追加"
+
+#: modules/book/book.admin.inc:36 modules/book/book.module:43
+msgid "administer book outlines"
+msgstr "ブックアウトラインの管理"
+
+#: modules/book/book.admin.inc:41
+msgid "Default child page type"
+msgstr "デフォルトの下位ページのタイプ"
+
+#: modules/book/book.admin.inc:44;60
+msgid ""
+"The content type for the %add-child link must be one of those selected as an "
+"allowed book outline type."
+msgstr ""
+"%add-child リンクから追加されるコンテンツタイプを指定してください。 %add-"
+"child リンク用のコンテンツタイプは、「ブックアウトラインを許可するタイプ」で"
+"選択されたうちの1つである必要があります。"
+
+#: modules/book/book.admin.inc:44;60 modules/book/book.module:57
+msgid "Add child page"
+msgstr "下位ページの追加"
+
+#: modules/book/book.admin.inc:78
+msgid "Save book pages"
+msgstr "ブックページの保存"
+
+#: modules/book/book.admin.inc:116
+msgid "Title changed from %original to %current."
+msgstr "タイトルが %original から %current に変更されました。"
+
+#: modules/book/book.admin.inc:123
+msgid "Updated book %title."
+msgstr "ブック %title が更新されました。"
+
+#: modules/book/book.admin.inc:118
+msgid "book: updated %title."
+msgstr "ブック： %title が更新されました。"
+
+#: modules/book/book.pages.inc:52
+msgid "Unknown export format."
+msgstr "未知のエクスポート形式です。"
+
+#: modules/book/book.pages.inc:126
+msgid "Update book outline"
+msgstr "ブックアウトラインの更新"
+
+#: modules/book/book.pages.inc:126
+msgid "Add to book outline"
+msgstr "ブックアウトラインへ追加"
+
+#: modules/book/book.pages.inc:132
+msgid "Remove from book outline"
+msgstr "ブックアウトラインから取り外す"
+
+#: modules/book/book.pages.inc:160
+msgid "No changes were made"
+msgstr "変更されませんでした"
+
+#: modules/book/book.pages.inc:169
+msgid ""
+"The post has been added to the selected book. You may now position it "
+"relative to other pages."
+msgstr ""
+"投稿は選択されたブックに加えられました。 すぐに他のページと相対的に配置するこ"
+"とができます。"
+
+#: modules/book/book.pages.inc:173
+msgid "The book outline has been updated."
+msgstr "ブックアウトラインが更新されました。"
+
+#: modules/book/book.pages.inc:177
+msgid "There was an error adding the post to the book."
+msgstr "ブックに投稿を加える際にエラーが発生しました。"
+
+#: modules/book/book.pages.inc:193
+msgid ""
+"%title has associated child pages, which will be relocated automatically to "
+"maintain their connection to the book. To recreate the hierarchy (as it was "
+"before removing this page), %title may be added again using the Outline tab, "
+"and each of its former child pages will need to be relocated manually."
+msgstr ""
+"%title には下位ページが関連付けられていますが、それらはブックへの結びつきを維"
+"持するために自動的に再配置されます。 アウトラインタブを使用して %title を再度"
+"加えることで、このページを取り外す以前のように階層構造を再現できますが、その"
+"場合は各下位ページを手作業で再配置する必要があります。"
+
+#: modules/book/book.pages.inc:196
+msgid "%title may be added to hierarchy again using the Outline tab."
+msgstr ""
+"アウトラインタブを使用して %title を再び階層構造に加えることもできます。"
+
+#: modules/book/book.pages.inc:199
+msgid "Are you sure you want to remove %title from the book hierarchy?"
+msgstr "本当に、%title をブックの階層構造から取り外してもよろしいですか？"
+
+#: modules/book/book.pages.inc:199
+msgid "Remove"
+msgstr "取り外す"
+
+#: modules/book/book.pages.inc:213
+msgid "The post has been removed from the book."
+msgstr "投稿がブックから取り外されました。"
+
+#: modules/book/book.module:64
+msgid "Printer-friendly version"
+msgstr "印刷用ページ"
+
+#: modules/book/book.module:66
+msgid "Show a printer-friendly version of this book page and its sub-pages."
+msgstr "下位ページも含めた印刷用ページを表示"
+
+#: modules/book/book.module:180;189
+msgid "Book navigation"
+msgstr "ブックナビゲーション"
+
+#: modules/book/book.module:223
+msgid "Show block on all pages"
+msgstr "すべてのページにブロックを表示"
+
+#: modules/book/book.module:224
+msgid "Show block only on book pages"
+msgstr "ブックページにのみブロックを表示"
+
+#: modules/book/book.module:228
+msgid "Book navigation block display"
+msgstr "ブックナビゲーションブロックの表示"
+
+#: modules/book/book.module:231
+msgid ""
+"If <em>Show block on all pages</em> is selected, the block will contain the "
+"automatically generated menus for all of the site's books. If <em>Show block "
+"only on book pages</em> is selected, the block will contain only the one "
+"menu corresponding to the current page's book. In this case, if the current "
+"page is not in a book, no block will be displayed. The <em>Page specific "
+"visibility settings</em> or other visibility settings can be used in "
+"addition to selectively display this block."
+msgstr ""
+"ブックナビゲーションブロックを表示するページを指定してください。 「すべての"
+"ページにブロックを表示」を選んだ場合、サイトの全ブック用の自動生成されたメ"
+"ニューがブロックに含まれます。 「ブックページにのみブロックを表示」を選んだ場"
+"合、現在のページのブックに対応した1つのメニューのみがブロックに含まれます。 "
+"この場合、現在のページがブックにはない場合、ブロックは表示されません。 「ペー"
+"ジ固有の表示設定」や他の表示設定は、このブロックのさらに選択的な表示のために"
+"使用することができます。"
+
+#: modules/book/book.module:302
+msgid "Change book (update list of parents)"
+msgstr "ブックの変更（上位一覧の更新）"
+
+#: modules/book/book.module:337
+msgid "This is the top-level page in this book."
+msgstr "このページはこのブック内の最上位ページです。"
+
+#: modules/book/book.module:340
+msgid "This will be the top-level page in this book."
+msgstr "このページがこのブック内の最上位ページとなります。"
+
+#: modules/book/book.module:344
+msgid "No book selected."
+msgstr "ブックが選択されていません。"
+
+#: modules/book/book.module:351
+msgid ""
+"The parent page in the book. The maximum depth for a book and all child "
+"pages is !maxdepth. Some pages in the selected book may not be available as "
+"parents if selecting them would exceed this limit."
+msgstr ""
+"ブック内での上位となるページを指定してください。 ブックと全下位ページの階層の"
+"最大深度は !maxdepth です。 選択されたブック内で最大深度にあるページは、上位"
+"ページとして利用できません。"
+
+#: modules/book/book.module:369
+msgid "Book outline"
+msgstr "ブックアウトライン"
+
+#: modules/book/book.module:391
+msgid "Pages at a given level are ordered first by weight and then by title."
+msgstr ""
+"同じ階層にあるページ間での表示順位を決める、ウェイトを指定してください。ウェ"
+"イトの数値が小さいほど上部に、大きいほど下部に配置されます。 同じ場合には、タ"
+"イトルのアルファベット順に配置されます。"
+
+#: modules/book/book.module:408
+msgid "create a new book"
+msgstr "新しいブックを作成"
+
+#: modules/book/book.module:422
+msgid "Your page will be a part of the selected book."
+msgstr ""
+"アウトラインに加えたいブックを選択してください。 「新しいブックを作成」を選択"
+"すると、このページをブックの最上位ページにできます。"
+
+#: modules/book/book.module:763
+msgid ""
+"%title is part of a book outline, and has associated child pages. If you "
+"proceed with deletion, the child pages will be relocated automatically."
+msgstr ""
+"%title はブックアウトラインの一部で、下位ページが関連付けられています。 削除"
+"を続行した場合、下位ページは自動的に再配置されます。"
+
+#: modules/book/book.module:1006
+msgid ""
+"The book module is suited for creating structured, multi-page hypertexts "
+"such as site resource guides, manuals, and Frequently Asked Questions "
+"(FAQs). It permits a document to have chapters, sections, subsections, etc. "
+"Authors with suitable permissions can add pages to a collaborative book, "
+"placing them into the existing document by adding them to a table of "
+"contents menu."
+msgstr ""
+"Book（ブック）モジュールは、サイトリソースガイド、マニュアル、FAQ（よくある質"
+"問と回答）のような、構造化された複数ページのハイパーテキストを作成するのに適"
+"しています。 ドキュメントにはチャプター（章）、セクション（節）、サブセクショ"
+"ン（小節）などを持つことができます。 目次メニューにそれらを加えることで既存の"
+"ドキュメントにそれらを配置し、適切な権限を持った著者は共同ブックにページを加"
+"えることができます。"
+
+#: modules/book/book.module:1007
+msgid ""
+"Pages in the book hierarchy have navigation elements at the bottom of the "
+"page for moving through the text. These links lead to the previous and next "
+"pages in the book, and to the level above the current page in the book's "
+"structure. More comprehensive navigation may be provided by enabling the "
+"<em>book navigation block</em> on the <a href=\"@admin-block\">blocks "
+"administration page</a>."
+msgstr ""
+"ブック階層構造内のページは、テキスト間の移動用ナビゲーション要素をページ下部"
+"に持ちます。 これらのリンクは、ブック構造内で現在のページに相対的な前後のペー"
+"ジや上位レベルに導きます。 <a href=\"@admin-block\">ブロックの管理ページ</a>"
+"で「ブックナビゲーションブロック」を有効にすることで、さらに包括的なナビゲー"
+"ションを提供することができます。"
+
+#: modules/book/book.module:1008
+msgid ""
+"Users can select the <em>printer-friendly version</em> link visible at the "
+"bottom of a book page to generate a printer-friendly display of the page and "
+"all of its subsections. "
+msgstr ""
+"ユーザはブックページの下部に表示される「印刷用ページ」のリンクをクリックする"
+"ことで、すべての下位ページを含めた印刷向けページを表示させることができます。"
+
+#: modules/book/book.module:1009
+msgid ""
+"Users with the <em>administer book outlines</em> permission can add a post "
+"of any content type to a book, by selecting the appropriate book while "
+"editing the post or by using the interface available on the post's "
+"<em>outline</em> tab."
+msgstr ""
+"「ブックアウトラインの管理」権限を持ったユーザは、投稿の編集中に適切なブック"
+"を選択するか、投稿の「アウトライン」タブから利用できるインターフェイスを使用"
+"することで、任意のコンテンツタイプをブックに加えることができます。"
+
+#: modules/book/book.module:1010
+msgid ""
+"Administrators can view a list of all books on the <a href=\"@admin-node-book"
+"\">book administration page</a>. The <em>Outline</em> page for each book "
+"allows section titles to be edited or rearranged."
+msgstr ""
+"管理者は<a href=\"@admin-node-book\">ブックの管理ページ</a>で全ブックの一覧を"
+"表示できます。 各ブックの「アウトライン」ページでは、セクションタイトルの編集"
+"や再配置ができます。"
+
+#: modules/book/book.module:1011
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@book"
+"\">Book module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@book\">Book module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/book/book.module:1014
+msgid ""
+"The book module offers a means to organize a collection of related posts, "
+"collectively known as a book. When viewed, these posts automatically display "
+"links to adjacent book pages, providing a simple navigation system for "
+"creating and reviewing structured content."
+msgstr ""
+"Book（ブック）モジュールは、関連する投稿のコレクション（ブックとして知られて"
+"います）を整理する手段を提供します。 これらの投稿が表示される際、隣接するブッ"
+"クページへのリンクが自動的に表示され、構造化されたコンテンツの作成やレビュー"
+"用の単純なナビゲーションシステムが提供されます。"
+
+#: modules/book/book.module:1016
+msgid ""
+"The outline feature allows you to include posts in the <a href=\"@book"
+"\">book hierarchy</a>, as well as move them within the hierarchy or to <a "
+"href=\"@book-admin\">reorder an entire book</a>."
+msgstr ""
+"アウトライン機能は、投稿を<a href=\"@book\">ブックの階層構造</a>に差し込める"
+"ようにし、さらにそれらを階層構造内で移動したり、<a href=\"@book-admin\">ブッ"
+"ク全体を再整理</a>できるようにします。"
+
+#: modules/book/book.module:43
+msgid "create new books"
+msgstr "新しいブックの作成"
+
+#: modules/book/book.module:43
+msgid "access printer-friendly version"
+msgstr "印刷用ページへのアクセス"
+
+#: modules/book/book.module:79;108
+msgid "Books"
+msgstr "ブック"
+
+#: modules/book/book.module:80
+msgid "Manage your site's book outlines."
+msgstr "サイトのブックアウトラインを管理します。"
+
+#: modules/book/book.module:99
+msgid "Re-order book pages and change titles"
+msgstr "ブックページの並べ替えとタイトルの変更"
+
+#: modules/book/book.module:122
+msgid "Outline"
+msgstr "アウトライン"
+
+#: modules/book/book.module:132
+msgid "Remove from outline"
+msgstr "アウトラインからの除去"
+
+#: modules/book/book.module:0
+msgid "book"
+msgstr "ブック"
+
+#: modules/book/book.install:29
+msgid "Book page"
+msgstr "ブックページ"
+
+#: modules/book/book.install:31
+msgid ""
+"A <em>book page</em> is a page of content, organized into a collection of "
+"related entries collectively known as a <em>book</em>. A <em>book page</em> "
+"automatically displays links to adjacent pages, providing a simple "
+"navigation system for organizing and reviewing structured content."
+msgstr ""
+"<em>ブックページ</em> は、関連するエントリのコレクション（ブックとして知られ"
+"ています）の中に整理されるコンテンツページです。 <em>ブックページ</em> は、、"
+"隣接するブックページへのリンクが自動的に表示され、構造化されたコンテンツの整"
+"理とレビュー用に単純なナビゲーションシステムが提供されます。"
+
+#: modules/book/book.install:254
+msgid ""
+"Stores book outline information. Uniquely connects each node in the outline "
+"to a link in {menu_links}"
+msgstr ""
+"ブックアウトラインの情報を格納します。 アウトライン中の各ノードは、"
+"{menu_links}のリンクに一意的に結合します"
+
+#: modules/book/book.install:261
+msgid "The book page's {menu_links}.mlid."
+msgstr "ブックページの{menu_links}.mlid"
+
+#: modules/book/book.install:268
+msgid "The book page's {node}.nid."
+msgstr "ブックページの{node}.nid"
+
+#: modules/book/book.install:275
+msgid "The book ID is the {book}.nid of the top-level page."
+msgstr "ブックID = 最上位ページの{book}.nid"

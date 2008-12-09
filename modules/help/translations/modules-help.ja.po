@@ -1,0 +1,79 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-help)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  help.admin.inc,v 1.5 2007/11/25 11:11:17 goba
+#  help.module,v 1.78 2007/12/14 18:08:46 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/help/help.admin.inc:15
+msgid "Help topics"
+msgstr "ヘルプトピック"
+
+#: modules/help/help.admin.inc:15
+msgid "Help is available on the following items:"
+msgstr "以下の項目にヘルプがあります："
+
+#: modules/help/help.admin.inc:30
+msgid "No help is available for module %module."
+msgstr "%module モジュール用のヘルプはありません。"
+
+#: modules/help/help.admin.inc:41
+msgid "@module administration pages"
+msgstr "@module 管理ページ"
+
+#: modules/help/help.module:40
+msgid ""
+"This guide provides context sensitive help on the use and configuration of "
+"<a href=\"@drupal\">Drupal</a> and its modules, and is a supplement to the "
+"more extensive online <a href=\"@handbook\">Drupal handbook</a>. The online "
+"handbook may contain more up-to-date information, is annotated with helpful "
+"user-contributed comments, and serves as the definitive reference point for "
+"all Drupal documentation."
+msgstr ""
+"このガイドは<a href=\"@drupal\">Drupal</a>とそのモジュールの用途や設定の状況"
+"に応じたヘルプを提供し、より大規模なオンライン<a href=\"@handbook\">Drupalハ"
+"ンドブック（英文）</a>を補足します。 オンラインハンドブックはより最新の情報が"
+"含まれ、ユーザが寄稿したコメントで注釈が付けられ、すべてのDrupalドキュメント"
+"の最も信頼できる基準点としての役目を果たします。"
+
+#: modules/help/help.module:43
+msgid ""
+"The help module provides context sensitive help on the use and configuration "
+"of <a href=\"@drupal\">Drupal</a> and its modules, and is a supplement to "
+"the more extensive online <a href=\"@handbook\">Drupal handbook</a>. The "
+"online handbook may contain more up-to-date information, is annotated with "
+"helpful user-contributed comments, and serves as the definitive reference "
+"point for all Drupal documentation."
+msgstr ""
+"Help（ヘルプ）モジュールは、<a href=\"@drupal\">Drupal</a>とそのモジュールの"
+"用途や設定の状況に応じたヘルプを提供し、より大規模なオンライン<a href="
+"\"@handbook\">Drupalハンドブック（英文）</a>を補足します。 オンラインハンド"
+"ブックはより最新の情報が含まれ、ユーザが寄稿したコメントで注釈が付けられ、す"
+"べてのDrupalドキュメントの最も信頼できる基準点としての役目を果たします。"
+
+#: modules/help/help.module:44
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@help"
+"\">Help module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@help\">Help module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/help/help.module:0
+msgid "help"
+msgstr "ヘルプ"

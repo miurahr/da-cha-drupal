@@ -1,0 +1,229 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-trigger)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  trigger.admin.inc,v 1.5 2008/01/08 10:35:43 goba
+#  trigger.module,v 1.13 2008/01/21 20:08:15 goba
+#  trigger.install,v 1.5 2007/12/28 12:02:52 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/trigger/trigger.admin.inc:74
+msgid "Are you sure you want to unassign the action %title?"
+msgstr "本当に、アクション %title の割り当てを解除してよろしいですか？"
+
+#: modules/trigger/trigger.admin.inc:76
+msgid "You can assign it again later if you wish."
+msgstr "必要であれば後で再び割り当てることができます。"
+
+#: modules/trigger/trigger.admin.inc:77 modules/trigger/trigger.module:111
+msgid "Unassign"
+msgstr "割り当て解除"
+
+#: modules/trigger/trigger.admin.inc:88;87
+msgid "Action %action has been unassigned."
+msgstr "アクション %action の割り当てが解除されました。"
+
+#: modules/trigger/trigger.admin.inc:144
+msgid "Trigger: "
+msgstr "トリガ： "
+
+#: modules/trigger/trigger.admin.inc:154
+msgid "unassign"
+msgstr "割り当て解除"
+
+#: modules/trigger/trigger.admin.inc:164 modules/trigger/trigger.module:411
+msgid "Choose an action"
+msgstr "アクションを選択してください"
+
+#: modules/trigger/trigger.admin.inc:171
+msgid "Assign"
+msgstr "割り当て"
+
+#: modules/trigger/trigger.admin.inc:176
+msgid "No available actions for this trigger."
+msgstr "このトリガで利用できるアクションはありません。"
+
+#: modules/trigger/trigger.admin.inc:192
+msgid "The action you chose is already assigned to that trigger."
+msgstr "選択したアクションは、すでにそのトリガに割り当てられています。"
+
+#: modules/trigger/trigger.admin.inc:218
+msgid ""
+"You have added an action that changes a the property of a post. A Save post "
+"action has been added so that the property change will be saved."
+msgstr ""
+"投稿のプロパティを変更するアクションを加えました。 プロパティの変更が保存され"
+"るように投稿の保存アクションが加えられました。"
+
+#: modules/trigger/trigger.admin.inc:238
+msgid "Operation"
+msgstr "操作"
+
+#: modules/trigger/trigger.module:14
+msgid ""
+"Triggers are system events, such as when new content is added or when a user "
+"logs in. Trigger module combines these triggers with actions (functional "
+"tasks), such as unpublishing content or e-mailing an administrator. The <a "
+"href=\"@url\">Actions settings page</a> contains a list of existing actions "
+"and provides the ability to create and configure additional actions."
+msgstr ""
+"トリガは、「新しいコンテンツが追加されたとき」や「ユーザがログインしたとき」"
+"のような、システムイベントです。 Trigger（トリガ）モジュールは、「コンテンツ"
+"を非掲載にする」や「管理者にメールを送信する」のような、アクション（機能タス"
+"ク）とこれらのトリガを結びつけます。 <a href=\"@url\">アクションの設定ページ"
+"</a>は既存アクションの一覧が用意され、さらに追加アクションの作成と設定をする"
+"ことができます。"
+
+# 独自に注意事項を追加
+#: modules/trigger/trigger.module:17
+msgid ""
+"Below you can assign actions to run when certain comment-related triggers "
+"happen. For example, you could promote a post to the front page when a "
+"comment is added."
+msgstr ""
+"以下で、特定のコメント関連のトリガが発生したときに実行するアクションを割り当"
+"てることができます。 例えば、コメントが追加された際に投稿をフロントページへ掲"
+"載することができます。<p><b>注意： コア内蔵のトリガはロール等でイベントの発生"
+"条件を変更できないため、特定のアクションとの組み合わせには注意が必要です。 例"
+"えば、トリガ「更新したコメントを保存後」にアクション「コメントを非掲載にす"
+"る」を割り当てた場合、このコメントは決して掲載できないことになります。</b></"
+"p>"
+
+# 独自に注意事項を追加
+#: modules/trigger/trigger.module:19
+msgid ""
+"Below you can assign actions to run when certain content-related triggers "
+"happen. For example, you could send an e-mail to an administrator when a "
+"post is created or updated."
+msgstr ""
+"以下で、特定のコンテンツ関連のトリガが発生したときに実行するアクションを割り"
+"当てることができます。 例えば、投稿が作成・更新された際に管理者へメールを送信"
+"することができます。<p><b>注意： コア内蔵のトリガはロール等でイベントの発生条"
+"件を変更できないため、特定のアクションとの組み合わせには注意が必要です。 例え"
+"ば、トリガ「新しい投稿の保存時、または既存の投稿の更新時」にアクション「投稿"
+"を非掲載にする」を割り当てた場合、このコンテンツは決して掲載できないことにな"
+"ります。</b></p>"
+
+#: modules/trigger/trigger.module:21
+msgid ""
+"Below you can assign actions to run during each pass of a <a href=\"@cron"
+"\">cron maintenance task</a>."
+msgstr ""
+"以下で、<a href=\"@cron\">cronメンテナンスタスク</a>の実行時に実行するアク"
+"ションを割り当てることができます。"
+
+#: modules/trigger/trigger.module:23
+msgid ""
+"Below you can assign actions to run when certain taxonomy-related triggers "
+"happen. For example, you could send an e-mail to an administrator when a "
+"term is deleted."
+msgstr ""
+"以下で、特定のタクソノミー関連のトリガが発生したときに実行するアクションを割"
+"り当てることができます。 例えば、タームが削除された際に管理者へメールを送信す"
+"ることができます。"
+
+#: modules/trigger/trigger.module:25
+msgid ""
+"Below you can assign actions to run when certain user-related triggers "
+"happen. For example, you could send an e-mail to an administrator when a "
+"user account is deleted."
+msgstr ""
+"以下で、特定のユーザ関連のトリガが発生したときに実行するアクションを割り当て"
+"ることができます。 例えば、ユーザアカウントが削除された際に管理者へメールを送"
+"信することができます。"
+
+#: modules/trigger/trigger.module:27
+msgid ""
+"The Trigger module provides the ability to trigger <a href=\"@actions"
+"\">actions</a> upon system events, such as when new content is added or when "
+"a user logs in."
+msgstr ""
+"Trigger（トリガ）モジュールは、「新しいコンテンツが追加されたとき」や「ユーザ"
+"がログインしたとき」のような、システムイベントで<a href=\"@actions\">アクショ"
+"ン</a>を引き起こせるようにします。"
+
+#: modules/trigger/trigger.module:28
+msgid ""
+"The combination of actions and triggers can perform many useful tasks, such "
+"as e-mailing an administrator if a user account is deleted, or automatically "
+"unpublishing comments that contain certain words. By default, there are five "
+"\"contexts\" of events (Comments, Content, Cron, Taxonomy, and Users), but "
+"more may be added by additional modules."
+msgstr ""
+"アクションとトリガの組み合わせは、ユーザアカウントが削除された際に管理者に"
+"メールを送信したり、特定のワードが含まれるコメントを自動的に非掲載にするな"
+"ど、多くの便利なタスクを実行することができます。 デフォルトで5つのイベントの"
+"「コンテキスト（状況）」（コメント・コンテンツ・cron・タクソノミー・ユーザ）"
+"がありますが、追加モジュールによってさらに多くのものが追加されるでしょう。"
+
+#: modules/trigger/trigger.module:29
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@trigger"
+"\">Trigger module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@trigger\">Trigger module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/trigger/trigger.module:39
+msgid "Triggers"
+msgstr "トリガ"
+
+#: modules/trigger/trigger.module:40
+msgid "Tell Drupal when to execute actions."
+msgstr "アクションを実行するタイミングをDrupalに指示します。"
+
+#: modules/trigger/trigger.module:83
+msgid "Cron"
+msgstr "cron"
+
+#: modules/trigger/trigger.module:112
+msgid "Unassign an action from a trigger."
+msgstr "トリガからアクションの割り当てを解除します。"
+
+#: modules/trigger/trigger.module:0
+msgid "trigger"
+msgstr "trigger"
+
+#: modules/trigger/trigger.install:28
+msgid "Maps trigger to hook and operation assignments from trigger.module."
+msgstr ""
+"trigger.moduleにより割り当てられるフックとオペレーションにトリガをマップしま"
+"す"
+
+#: modules/trigger/trigger.install:35
+msgid ""
+"Primary Key: The name of the internal Drupal hook upon which an action is "
+"firing; for example, nodeapi."
+msgstr ""
+"プライマリキー： アクションが実行される内部のDrupalフックの名前（例："
+"nodeapi）"
+
+#: modules/trigger/trigger.install:42
+msgid ""
+"Primary Key: The specific operation of the hook upon which an action is "
+"firing: for example, presave."
+msgstr ""
+"プライマリキー： アクションが実行されるフックの特定オペレーション（例："
+"presave）"
+
+#: modules/trigger/trigger.install:49
+msgid "Primary Key: Action's {actions}.aid."
+msgstr "プライマリキー： アクションの{actions}.aid"
+
+#: modules/trigger/trigger.install:55
+msgid "The weight of the trigger assignment in relation to other triggers."
+msgstr "他のトリガとの関係におけるトリガ割り当てのウェイト"

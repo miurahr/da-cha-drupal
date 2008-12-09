@@ -1,0 +1,451 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-statistics)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  statistics.admin.inc,v 1.6 2008/01/08 10:35:42 goba
+#  statistics.pages.inc,v 1.2 2007/10/20 21:57:50 goba
+#  statistics.module,v 1.272 2008/01/04 09:31:48 goba
+#  statistics.install,v 1.13 2007/12/18 12:59:22 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/statistics/statistics.admin.inc:14
+#: modules/statistics/statistics.pages.inc:46
+msgid "Timestamp"
+msgstr "日時"
+
+#: modules/statistics/statistics.admin.inc:15;51
+#: modules/statistics/statistics.pages.inc:47
+msgid "Page"
+msgstr "ページ"
+
+#: modules/statistics/statistics.admin.inc:29
+#: modules/statistics/statistics.pages.inc:25;56
+msgid "details"
+msgstr "詳細"
+
+#: modules/statistics/statistics.admin.inc:33;64;97;129
+#: modules/statistics/statistics.pages.inc:29;60
+msgid "No statistics available."
+msgstr "統計はありません。"
+
+#: modules/statistics/statistics.admin.inc:50;79;115
+msgid "Hits"
+msgstr "アクセス数"
+
+#: modules/statistics/statistics.admin.inc:52
+msgid "Average page generation time"
+msgstr "ページ生成時間の平均"
+
+#: modules/statistics/statistics.admin.inc:53;81
+msgid "Total page generation time"
+msgstr "ページ生成時間の合計"
+
+#: modules/statistics/statistics.admin.inc:60
+msgid "%time ms"
+msgstr "%time ミリ秒"
+
+#: modules/statistics/statistics.admin.inc:67
+msgid "Top pages in the past %interval"
+msgstr "過去%intervalでの上位のページ"
+
+#: modules/statistics/statistics.admin.inc:92
+msgid "unban"
+msgstr "アクセス禁止の解除"
+
+#: modules/statistics/statistics.admin.inc:92
+msgid "ban"
+msgstr "アクセス禁止"
+
+#: modules/statistics/statistics.admin.inc:100
+msgid "Top visitors in the past %interval"
+msgstr "過去%intervalでの上位の訪問者"
+
+#: modules/statistics/statistics.admin.inc:112
+msgid "Top referrers in the past %interval"
+msgstr "過去%intervalでの上位の参照元"
+
+#: modules/statistics/statistics.admin.inc:116
+msgid "Url"
+msgstr "URL"
+
+#: modules/statistics/statistics.admin.inc:117
+msgid "Last visit"
+msgstr "前回の訪問"
+
+#: modules/statistics/statistics.admin.inc:188
+#: modules/statistics/statistics.module:136
+msgid "Access log settings"
+msgstr "アクセスログの設定"
+
+#: modules/statistics/statistics.admin.inc:191
+msgid "Enable access log"
+msgstr "アクセスログの取得"
+
+#: modules/statistics/statistics.admin.inc:194
+msgid "Log each page access. Required for referrer statistics."
+msgstr ""
+"各ページへのアクセスを記録するかどうかを指定してください。 参照元の統計を取る"
+"場合には、有効にする必要があります。"
+
+#: modules/statistics/statistics.admin.inc:198
+msgid "Discard access logs older than"
+msgstr "古いアクセスログを破棄するまでの期間"
+
+#: modules/statistics/statistics.admin.inc:201
+msgid ""
+"Older access log entries (including referrer statistics) will be "
+"automatically discarded. (Requires a correctly configured <a href=\"@cron"
+"\">cron maintenance task</a>.)"
+msgstr ""
+"アクセスログ項目（参照元の統計値を含む）の保存期間を指定してください。 指定さ"
+"れた期間を過ぎた項目は自動的に破棄されます。 （正しく設定された<a href="
+"\"@cron\">cronメンテナンスタスク</a>を必要とします）"
+
+#: modules/statistics/statistics.admin.inc:206
+msgid "Content viewing counter settings"
+msgstr "コンテンツ表示カウンタの設定"
+
+#: modules/statistics/statistics.admin.inc:209
+msgid "Count content views"
+msgstr "コンテンツ表示のカウント"
+
+#: modules/statistics/statistics.admin.inc:212
+msgid "Increment a counter each time content is viewed."
+msgstr ""
+"コンテンツの表示回数をカウントするかどうかを指定してください。 有効にすると、"
+"コンテンツが表示されるごとにカウントが加算されます。 また、表示回数をコンテン"
+"ツに表示することもできるようになります。"
+
+#: modules/statistics/statistics.module:15
+msgid ""
+"The statistics module keeps track of numerous site usage statistics, "
+"including the number of times, and from where, each of your posts is viewed. "
+"These statistics are useful in determining how users are interacting with "
+"each other and with your site, and are required for the display of some "
+"Drupal blocks."
+msgstr ""
+"Statistics（統計）モジュールは、各投稿の表示回数や参照元を含む、サイト利用に"
+"関する多数の統計値を記録します。 これらの統計値は、ユーザ相互やユーザとサイト"
+"がどのように影響し合っているのかを判断するのに役立ち、また、いくつかのDrupal"
+"ブロックの表示に必要とされます。"
+
+#: modules/statistics/statistics.module:16
+msgid "The statistics module provides:"
+msgstr "統計モジュールは以下を提供します："
+
+#: modules/statistics/statistics.module:17
+msgid ""
+"a counter for each post on your site that increments each time the post is "
+"viewed. (Enable <em>Count content views</em> on the <a href=\"@accesslog"
+"\">access log settings page</a>, and determine if the post access counters "
+"should be visible to any user roles on the <a href=\"@permissions"
+"\">permissions page</a>.)"
+msgstr ""
+"サイトの各投稿用カウンタ： 投稿が表示されるたびに増加されます。 （<a href="
+"\"@accesslog\">アクセスログの設定ページ</a>で「コンテンツ表示のカウント」を有"
+"効化し、表示したいユーザロールに<a href=\"@permissions\">権限ページ</a>で「投"
+"稿アクセスカウンタの表示」権限を与えてください）"
+
+#: modules/statistics/statistics.module:18
+msgid ""
+"a <a href=\"@recent-hits\">recent hits</a> log that displays information "
+"about the latest activity on your site, including the URL and title of the "
+"page accessed, the user name (if available) and IP address of the accessing "
+"party."
+msgstr ""
+"<a href=\"@recent-hits\">最近のアクセス</a>ログ： アクセスされたページのURLや"
+"タイトル、訪問者のユーザ名（あれば）とIPアドレスを含む、最新のサイト活動に関"
+"する情報を表示します。"
+
+#: modules/statistics/statistics.module:19
+msgid ""
+"a <a href=\"@top-referrers\">top referrers</a> log that displays the "
+"referring parties for your site visits (where your visitors came from)."
+msgstr ""
+"<a href=\"@top-referrers\">上位の参照元</a>ログ： 訪問者がサイトにアクセスす"
+"るために参照した、上位の参照元を表示します。"
+
+#: modules/statistics/statistics.module:20
+msgid ""
+"a <a href=\"@top-pages\">top pages</a> log that displays site content in "
+"descending order by number of views."
+msgstr ""
+"<a href=\"@top-pages\">上位のページ</a>ログ： 参照数の多い順にサイトコンテン"
+"ツを表示します。"
+
+#: modules/statistics/statistics.module:21
+msgid ""
+"a <a href=\"@top-visitors\">top visitors</a> log that displays the most "
+"active users on your site."
+msgstr ""
+"<a href=\"@top-visitors\">上位の訪問者</a>ログ： サイトで最も活発なユーザを表"
+"示します。"
+
+#: modules/statistics/statistics.module:22
+msgid ""
+"a <em>Popular content</em> block that displays the day's most viewed "
+"content, the all-time most viewed content, and the last content viewed. "
+"(Enable the <em>Popular content</em> block on the <a href=\"@blocks\">blocks "
+"administration page</a>.)"
+msgstr ""
+"「人気のあるコンテンツ」ブロック： その日に最も参照されたコンテンツ、これまで"
+"で最も参照されたコンテンツ、直近に参照されたコンテンツを表示します。 （<a "
+"href=\"@blocks\">ブロックの管理ページ</a>で「人気のあるコンテンツ」ブロックを"
+"有効化してください）"
+
+#: modules/statistics/statistics.module:23
+msgid "Configuring the statistics module"
+msgstr "統計モジュールの設定"
+
+#: modules/statistics/statistics.module:24
+msgid ""
+"When the <em>Enable access log</em> setting on the <a href=\"@accesslog"
+"\">access log settings page</a> is enabled, data about every page accessed "
+"(including the remote host's IP address, referrer, node accessed, and user "
+"name) is stored in the access log. The access log must be enabled for the <a "
+"href=\"@recent-hits\">recent hits</a>, <a href=\"@top-referrers\">top "
+"referrers</a>, <a href=\"@top-pages\">top pages</a>, and <a href=\"@top-"
+"visitors\">top visitors</a> log pages to function. Enabling the access log "
+"adds one additional database call per page displayed by Drupal."
+msgstr ""
+"<a href=\"@accesslog\">アクセスログの設定ページ</a>で「アクセスログの取得」設"
+"定が有効になっている場合、各ページのアクセスに関するデータ（リモートホストの"
+"IPアドレス、参照元、アクセスされたノード、ユーザ名を含む）がアクセスログに格"
+"納されます。 <a href=\"@recent-hits\">最近のアクセス</a>、<a href=\"@top-"
+"referrers\">上位の参照元</a>、<a href=\"@top-pages\">上位のページ</a>、<a "
+"href=\"@top-visitors\">上位の訪問者</a>のログページを機能させるには、アクセス"
+"ログを有効にする必要があります。 アクセスログを有効にした場合、ページが表示さ"
+"れるごとに1回、追加のデータベース呼び出しが加えられます。"
+
+#: modules/statistics/statistics.module:25
+msgid ""
+"The <em>Discard access logs older than</em> setting on the <a href="
+"\"@accesslog\">access log settings page</a> specifies the length of time "
+"entries are retained in the access log before they are deleted. Automatic "
+"access log entry deletion requires a correctly configured <a href=\"@cron"
+"\">cron maintenance task</a>."
+msgstr ""
+"<a href=\"@accesslog\">アクセスログの設定ページ</a>での「古いアクセスログを破"
+"棄するまでの期間」設定は、項目がアクセスログに保持される期間を指定します。 自"
+"動的なアクセスログ項目の削除は、正しく設定された<a href=\"@cron\">cronメンテ"
+"ナンスタスク</a>を必要とします"
+
+#: modules/statistics/statistics.module:26
+msgid ""
+"The <em>Count content views</em> setting on the <a href=\"@accesslog"
+"\">access log settings page</a> enables a counter for each post on your site "
+"that increments each time the post is viewed. This option must be enabled to "
+"provide post-specific access counts. Enabling this option adds one "
+"additional database call per each post displayed by Drupal."
+msgstr ""
+"<a href=\"@accesslog\">アクセスログの設定ページ</a>での「コンテンツ表示のカウ"
+"ント」設定は、投稿が表示されるたびに増加する、サイトの各投稿用カウンタを有効"
+"にします。 投稿固有のアクセスカウントを利用するには、このオプションを有効化す"
+"る必要があります。 このオプションを有効にした場合、ページが表示されるごとに1"
+"回、追加のデータベース呼び出しが加えられます。"
+
+#: modules/statistics/statistics.module:27
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@statistics"
+"\">Statistics module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@statistics\">Statistics "
+"module（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal."
+"jp/\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/statistics/statistics.module:30
+msgid ""
+"Settings for the statistical information that Drupal will keep about the "
+"site. See <a href=\"@statistics\">site statistics</a> for the actual "
+"information."
+msgstr ""
+"以下で、サイトの統計情報に関する設定をすることができます。 取得した情報は"
+"「<a href=\"@statistics\">最近のアクセス</a>」などで見ることができます。"
+
+#: modules/statistics/statistics.module:32
+msgid "This page displays the site's most recent hits."
+msgstr "このページはサイトの最新アクセスを表示します。"
+
+#: modules/statistics/statistics.module:34
+msgid ""
+"This page displays all external referrers, or external references to your "
+"website."
+msgstr "このページは、すべての外部参照元を表示します。"
+
+#: modules/statistics/statistics.module:36
+msgid ""
+"When you ban a visitor, you prevent the visitor's IP address from accessing "
+"your site. Unlike blocking a user, banning a visitor works even for "
+"anonymous users. This is most commonly used to block resource-intensive bots "
+"or web crawlers."
+msgstr ""
+"訪問者をアクセス禁止にすると、訪問者のIPアドレスがサイトにアクセスするのを防"
+"ぎます。 訪問者のアクセス禁止はユーザのブロックとは異なり、匿名ユーザにも作用"
+"します。 これは通常、多くのリソースを消費するようなボットやウェブクローラのブ"
+"ロックに使用します。"
+
+#: modules/statistics/statistics.module:246;288
+msgid "Popular content"
+msgstr "人気のあるコンテンツ"
+
+#: modules/statistics/statistics.module:256
+msgid "Number of day's top views to display"
+msgstr "本日の参照上位コンテンツの表示数"
+
+#: modules/statistics/statistics.module:256
+msgid "How many content items to display in \"day\" list."
+msgstr ""
+"「本日の上位」リストに表示するコンテンツ項目の数を指定してください。 無効にす"
+"ると、この項目が表示されなくなります。"
+
+#: modules/statistics/statistics.module:257
+msgid "Number of all time views to display"
+msgstr "総合での参照上位コンテンツの表示数"
+
+#: modules/statistics/statistics.module:257
+msgid "How many content items to display in \"all time\" list."
+msgstr ""
+"「総合の上位」リストに表示するコンテンツ項目の数を指定してください。 無効にす"
+"ると、この項目が表示されなくなります。"
+
+# 仕様としては「直近」や「直前」だが字面が……
+#: modules/statistics/statistics.module:258
+msgid "Number of most recent views to display"
+msgstr "最近参照されたコンテンツの表示数"
+
+#: modules/statistics/statistics.module:258
+msgid "How many content items to display in \"recently viewed\" list."
+msgstr ""
+"「最近の参照」リストに表示するコンテンツ項目の数を指定してください。 無効にす"
+"ると、この項目が表示されなくなります。"
+
+#: modules/statistics/statistics.module:272
+msgid "Today's:"
+msgstr "本日の上位："
+
+#: modules/statistics/statistics.module:277
+msgid "All time:"
+msgstr "総合の上位："
+
+# 仕様としては「直近」や「直前」だが字面が……
+#: modules/statistics/statistics.module:282
+msgid "Last viewed:"
+msgstr "最近の参照："
+
+#: modules/statistics/statistics.module:85
+msgid "1 read"
+msgid_plural "@count reads"
+msgstr[0] "参照(1)"
+msgstr[1] "参照(@count)"
+
+#: modules/statistics/statistics.module:72
+msgid "access statistics"
+msgstr "アクセスの統計"
+
+#: modules/statistics/statistics.module:72
+msgid "view post access counter"
+msgstr "投稿アクセスカウンタの表示"
+
+#: modules/statistics/statistics.module:97
+msgid "Recent hits"
+msgstr "最近のアクセス"
+
+#: modules/statistics/statistics.module:98
+msgid "View pages that have recently been visited."
+msgstr "最近アクセスされたページを表示します。"
+
+# メニュー項目が見やすいようにあえて「上位」を後方へ
+#: modules/statistics/statistics.module:104
+msgid "Top pages"
+msgstr "ページアクセスの上位"
+
+#: modules/statistics/statistics.module:105
+msgid "View pages that have been hit frequently."
+msgstr "頻繁にアクセスされたページを表示します。"
+
+# メニュー項目が見やすいようにあえて「上位」を後方へ
+#: modules/statistics/statistics.module:112
+msgid "Top visitors"
+msgstr "訪問者の上位"
+
+#: modules/statistics/statistics.module:113
+msgid "View visitors that hit many pages."
+msgstr "多くのページにアクセスした訪問者を表示します。"
+
+# メニュー項目が見やすいようにあえて「上位」を後方へ
+#: modules/statistics/statistics.module:120
+msgid "Top referrers"
+msgstr "参照元の上位"
+
+#: modules/statistics/statistics.module:121
+msgid "View top referrers."
+msgstr "上位の参照元を表示します。"
+
+#: modules/statistics/statistics.module:128
+msgid "View access log."
+msgstr "アクセスログを表示します。"
+
+#: modules/statistics/statistics.module:137
+msgid "Control details about what and how your site logs."
+msgstr "サイトログの詳細をコントロールします。"
+
+#: modules/statistics/statistics.module:146
+msgid "Track page visits"
+msgstr "ページアクセスの軌跡"
+
+#: modules/statistics/statistics.module:0
+msgid "statistics"
+msgstr "統計"
+
+#: modules/statistics/statistics.install:52
+msgid "Stores site access information for statistics."
+msgstr "統計用サイトアクセス情報を格納します"
+
+#: modules/statistics/statistics.install:57
+msgid "Primary Key: Unique accesslog ID."
+msgstr "プライマリキー： 固有のアクセスログID"
+
+#: modules/statistics/statistics.install:64
+msgid "Browser session ID of user that visited page."
+msgstr "ページにアクセスしたユーザのブラウザセッションID"
+
+#: modules/statistics/statistics.install:70
+msgid "Title of page visited."
+msgstr "アクセスされたページのタイトル"
+
+#: modules/statistics/statistics.install:76
+msgid "Internal path to page visited (relative to Drupal root.)"
+msgstr "アクセスされたページへの内部パス（Drupalルートに相対的）"
+
+#: modules/statistics/statistics.install:82
+msgid "Referrer URI."
+msgstr "リファラURI"
+
+#: modules/statistics/statistics.install:88
+msgid "Hostname of user that visited the page."
+msgstr "ページにアクセスしたユーザのホスト名"
+
+#: modules/statistics/statistics.install:95
+msgid "User {users}.uid that visited the page."
+msgstr "ページにアクセスしたユーザの{users}.uid"
+
+#: modules/statistics/statistics.install:102
+msgid "Time in milliseconds that the page took to load."
+msgstr "ページ読み込みに要したミリ秒単位での時間"
+
+#: modules/statistics/statistics.install:109
+msgid "Timestamp of when the page was visited."
+msgstr "ページにアクセスされた際のタイムスタンプ"

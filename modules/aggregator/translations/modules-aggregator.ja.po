@@ -1,0 +1,632 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-aggregator)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  aggregator-feed-source.tpl.php,v 1.1 2007/09/13 08:02:38 goba
+#  aggregator-item.tpl.php,v 1.1 2007/09/13 08:02:38 goba
+#  aggregator.pages.inc,v 1.12 2008/01/08 10:35:40 goba
+#  aggregator.module,v 1.374 2008/01/15 08:06:32 dries
+#  aggregator-summary-items.tpl.php,v 1.1 2007/09/13 08:02:38 goba
+#  aggregator.admin.inc,v 1.7 2008/01/10 22:47:17 goba
+#  aggregator.install,v 1.14 2007/12/18 12:59:20 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/aggregator/aggregator-feed-source.tpl.php:30
+msgid "URL:"
+msgstr "URL:"
+
+#: modules/aggregator/aggregator-feed-source.tpl.php:33
+msgid "Updated:"
+msgstr "最終更新："
+
+#: modules/aggregator/aggregator-item.tpl.php:42
+#: modules/aggregator/aggregator.pages.inc:63
+#: modules/aggregator/aggregator.module:151
+msgid "Categories"
+msgstr "カテゴリ"
+
+#: modules/aggregator/aggregator-summary-items.tpl.php:23
+msgid "More"
+msgstr "続き..."
+
+#: modules/aggregator/aggregator.admin.inc:25
+msgid "Feed overview"
+msgstr "フィードの概観"
+
+#: modules/aggregator/aggregator.admin.inc:27;38
+msgid "Items"
+msgstr "項目"
+
+#: modules/aggregator/aggregator.admin.inc:27
+msgid "Last update"
+msgstr "前回の更新"
+
+#: modules/aggregator/aggregator.admin.inc:27
+msgid "Next update"
+msgstr "次回の更新"
+
+#: modules/aggregator/aggregator.admin.inc:30
+msgid "%time left"
+msgstr "%time 後"
+
+#: modules/aggregator/aggregator.admin.inc:30
+msgid "remove items"
+msgstr "項目の削除"
+
+#: modules/aggregator/aggregator.admin.inc:30
+msgid "update items"
+msgstr "項目の更新"
+
+#: modules/aggregator/aggregator.admin.inc:36
+msgid "Category overview"
+msgstr "カテゴリの概観"
+
+#: modules/aggregator/aggregator.admin.inc:66
+msgid "The name of the feed (or the name of the website providing the feed)."
+msgstr "フィードの名前やフィードを配信しているサイト名を入力してください。"
+
+#: modules/aggregator/aggregator.admin.inc:73
+msgid "The fully-qualified URL of the feed."
+msgstr "このフィードのURLを http:// から省略せずに入力してください。"
+
+#: modules/aggregator/aggregator.admin.inc:77
+msgid "Update interval"
+msgstr "更新間隔"
+
+#: modules/aggregator/aggregator.admin.inc:80
+msgid ""
+"The length of time between feed updates. (Requires a correctly configured <a "
+"href=\"@cron\">cron maintenance task</a>.)"
+msgstr ""
+"フィードを更新する間隔を指定してください。 （正しく設定された<a href=\"@cron"
+"\">cronメンテナンスタスク</a>を必要とします）"
+
+#: modules/aggregator/aggregator.admin.inc:93
+msgid "Categorize news items"
+msgstr "ニュース記事の分類"
+
+#: modules/aggregator/aggregator.admin.inc:96
+msgid "New feed items are automatically filed in the checked categories."
+msgstr ""
+"フィード項目のカテゴリを指定してください。 新しいフィードの項目は、チェックを"
+"入れたカテゴリに自動的に分類されます。"
+
+#: modules/aggregator/aggregator.admin.inc:116
+msgid ""
+"The URL %url is invalid. Please enter a fully-qualified URL, such as http://"
+"www.example.com/feed.xml."
+msgstr ""
+"URL %url は無効です。 http://www.example.com/feed.xml のような、省略されてい"
+"ないURLを入力してください。"
+
+#: modules/aggregator/aggregator.admin.inc:127
+msgid "A feed named %feed already exists. Please enter a unique title."
+msgstr ""
+"%feed というフィードはすでに存在します。<br />他のフィードと重複しない固有の"
+"タイトルを入力してください。"
+
+#: modules/aggregator/aggregator.admin.inc:130
+msgid "A feed with this URL %url already exists. Please enter a unique URL."
+msgstr ""
+"URL %url のフィードはすでに存在します。 <br />他のフィードと重複しない固有の"
+"URLを入力してください。"
+
+#: modules/aggregator/aggregator.admin.inc:150
+msgid "The feed %feed has been updated."
+msgstr "フィード %feed が更新されました。"
+
+#: modules/aggregator/aggregator.admin.inc:162
+msgid "The feed %feed has been deleted."
+msgstr "フィード %feed が削除されました。"
+
+#: modules/aggregator/aggregator.admin.inc:175
+msgid "The feed %feed has been added."
+msgstr "フィード %feed が追加されました。"
+
+#: modules/aggregator/aggregator.admin.inc:187
+msgid "Are you sure you want to remove all items from the feed %feed?"
+msgstr "本当に、フィード %feed からすべての項目を削除してもよろしいですか？"
+
+#: modules/aggregator/aggregator.admin.inc:190
+#: modules/aggregator/aggregator.module:108
+msgid "Remove items"
+msgstr "項目の削除"
+
+#: modules/aggregator/aggregator.admin.inc:230
+msgid ""
+"A space-separated list of HTML tags allowed in the content of feed items. "
+"(Tags in this list are not removed by Drupal.)"
+msgstr ""
+"フィード項目内で許可されるHTMLタグを、空白文字で区切って入力してください。 こ"
+"のリスト内のタグは、Drupalによって削除されません。"
+
+#: modules/aggregator/aggregator.admin.inc:234
+msgid "Items shown in sources and categories pages"
+msgstr "配信元やカテゴリの各ページに表示する項目数"
+
+#: modules/aggregator/aggregator.admin.inc:236
+msgid "Number of feed items displayed in feed and category summary pages."
+msgstr ""
+"フィードとカテゴリの概要ページ表示される、フィード項目数を指定してください。"
+
+#: modules/aggregator/aggregator.admin.inc:240
+msgid "Discard items older than"
+msgstr "古い項目を破棄するまでの期間"
+
+#: modules/aggregator/aggregator.admin.inc:242
+msgid ""
+"The length of time to retain feed items before discarding. (Requires a "
+"correctly configured <a href=\"@cron\">cron maintenance task</a>.)"
+msgstr ""
+"フィード項目の保存期間を指定してください。 指定された期間を過ぎた項目は自動的"
+"に破棄されます。（正しく設定された<a href=\"@cron\">cronメンテナンスタスク</"
+"a>を必要とします）"
+
+#: modules/aggregator/aggregator.admin.inc:246
+msgid "Category selection type"
+msgstr "カテゴリ選択のタイプ"
+
+#: modules/aggregator/aggregator.admin.inc:247
+msgid "checkboxes"
+msgstr "チェックボックス"
+
+#: modules/aggregator/aggregator.admin.inc:247
+msgid "multiple selector"
+msgstr "複数セレクタ"
+
+#: modules/aggregator/aggregator.admin.inc:248
+msgid ""
+"The type of category selection widget displayed on categorization pages. "
+"(For a small number of categories, checkboxes are easier to use, while a "
+"multiple selector work well with large numbers of categories.)"
+msgstr ""
+"分類ページで使用されるカテゴリ選択方法のタイプを指定してください。 チェック"
+"ボックスは少数のカテゴリを選択するのに向き、複数セレクタは多数のカテゴリを選"
+"択するのに向いています。"
+
+#: modules/aggregator/aggregator.admin.inc:295
+msgid "A category named %category already exists. Please enter a unique title."
+msgstr ""
+"%category というカテゴリはすでに存在します。<br />他のカテゴリと重複しない固"
+"有のタイトルを入力してください。"
+
+#: modules/aggregator/aggregator.admin.inc:314
+msgid "The category %category has been updated."
+msgstr "カテゴリ %category が更新されました。"
+
+#: modules/aggregator/aggregator.admin.inc:326
+msgid "The category %category has been deleted."
+msgstr "カテゴリ %category が削除されました。"
+
+#: modules/aggregator/aggregator.admin.inc:339
+msgid "The category %category has been added."
+msgstr "カテゴリ %category が追加されました。"
+
+#: modules/aggregator/aggregator.admin.inc:161;174;325;338
+#: modules/aggregator/aggregator.pages.inc:16
+#: modules/aggregator/aggregator.module:602;636;643;713;0
+msgid "aggregator"
+msgstr "アグリゲータ"
+
+#: modules/aggregator/aggregator.admin.inc:161
+msgid "Feed %feed deleted."
+msgstr "フィード %feed が削除されました。"
+
+#: modules/aggregator/aggregator.admin.inc:174
+msgid "Feed %feed added."
+msgstr "フィード %feed が追加されました。"
+
+#: modules/aggregator/aggregator.admin.inc:325
+msgid "Category %category deleted."
+msgstr "カテゴリ %category が削除されました。"
+
+#: modules/aggregator/aggregator.admin.inc:338
+msgid "Category %category added."
+msgstr "カテゴリ %category が追加されました。"
+
+#: modules/aggregator/aggregator.admin.inc:30;41
+#: modules/aggregator/aggregator.module:923
+msgid "1 item"
+msgid_plural "@count items"
+msgstr[0] "1 項目"
+msgstr[1] "@count 項目"
+
+#: modules/aggregator/aggregator.pages.inc:68
+msgid "aggregator - @title"
+msgstr "のアグリゲータ - @title"
+
+#: modules/aggregator/aggregator.pages.inc:175
+msgid "Save categories"
+msgstr "カテゴリの保存"
+
+#: modules/aggregator/aggregator.pages.inc:185
+msgid "You are not allowed to categorize this feed item."
+msgstr "このフィードの項目を分類する権限がありません。"
+
+#: modules/aggregator/aggregator.pages.inc:203
+msgid "The categories have been saved."
+msgstr "カテゴリが保存されました。"
+
+# 「カテゴライズ」としたいが専用ページでの表示がすっきりしないので「分類」
+#: modules/aggregator/aggregator.pages.inc:228
+#: modules/aggregator/aggregator.module:185;213
+msgid "Categorize"
+msgstr "分類"
+
+#: modules/aggregator/aggregator.pages.inc:262
+msgid "%ago ago"
+msgstr "%ago 前"
+
+#: modules/aggregator/aggregator.pages.inc:293
+#: modules/aggregator/aggregator.module:164
+msgid "OPML feed"
+msgstr "OPMLフィード"
+
+#: modules/aggregator/aggregator.pages.inc:377
+msgid "@site_name - aggregated feeds in category @title"
+msgstr "@site_name - カテゴリ @title に集約されたフィード"
+
+#: modules/aggregator/aggregator.pages.inc:377
+msgid "@site_name - aggregated feeds"
+msgstr "@site_name - 集約されたフィード"
+
+#: modules/aggregator/aggregator.pages.inc:381
+msgid "@site_name aggregator"
+msgstr "@site_name のアグリゲータ"
+
+#: modules/aggregator/aggregator.pages.inc:459
+msgid "%age old"
+msgstr "%age 前"
+
+#: modules/aggregator/aggregator.pages.inc:477
+msgid "!title feed"
+msgstr "!title のフィード"
+
+#: modules/aggregator/aggregator.module:15
+msgid ""
+"The aggregator is a powerful on-site syndicator and news reader that gathers "
+"fresh content from RSS-, RDF-, and Atom-based feeds made available across "
+"the web. Thousands of sites (particularly news sites and blogs) publish "
+"their latest headlines and posts in feeds, using a number of standardized "
+"XML-based formats. Formats supported by the aggregator include <a href=\"@rss"
+"\">RSS</a>, <a href=\"@rdf\">RDF</a>, and <a href=\"@atom\">Atom</a>."
+msgstr ""
+"aggregator（アグリゲータ）は、ウェブのいたる所に用意されたRSS・RDF・Atomベー"
+"スのフィードから新鮮なコンテンツをかき集める、強力なオンサイトのシンジケータ"
+"でありニュースリーダです。 とても多くのサイト（特にニュースサイトやブログ）で"
+"は、規格化されたXMLベース形式のフィードを使用し、サイトの最新のヘッドラインや"
+"投稿を公表します。 アグリゲータは、<a href=\"@rss\">RSS</a>、<a href=\"@rdf"
+"\">RDF</a>、<a href=\"@atom\">Atom</a>の各形式をサポートします。"
+
+#: modules/aggregator/aggregator.module:16
+msgid ""
+"Feeds contain feed items, or individual posts published by the site "
+"providing the feed. Feeds may be grouped in categories, generally by topic. "
+"Users view feed items in the <a href=\"@aggregator\">main aggregator "
+"display</a> or by <a href=\"@aggregator-sources\">their source</a>. "
+"Administrators can <a href=\"@feededit\">add, edit and delete feeds</a> and "
+"choose how often to check each feed for newly updated items. The most recent "
+"items in either a feed or category can be displayed as a block through the "
+"<a href=\"@admin-block\">blocks administration page</a>. A <a href="
+"\"@aggregator-opml\">machine-readable OPML file</a> of all feeds is "
+"available. A correctly configured <a href=\"@cron\">cron maintenance task</"
+"a> is required to update feeds automatically."
+msgstr ""
+"フィードにはフィード項目や、フィードを配信するサイトで公開された個別の投稿を"
+"含んでいます。 フィードはカテゴリでグループ化（一般にトピックによって）するこ"
+"ともできます。 ユーザは<a href=\"@aggregator\">メインのアグリゲータ表示</a>"
+"ページや、<a href=\"@aggregator-sources\">配信元</a>ごとのページでフィード項"
+"目を表示できます。 管理者は<a href=\"@feededit\">フィードの追加・編集・削除</"
+"a>や、各フィードの最新項目確認の頻度を選ぶことができます。 フィードごとやカテ"
+"ゴリごとの最新項目は、<a href=\"@admin-block\">ブロックの管理ページ</a>からブ"
+"ロックとして表示することができます。 すべてのフィードで<a href=\"@aggregator-"
+"opml\">コンピュータの解読できるOPMLファイル</a>が利用できます。 自動的に"
+"フィードを更新するには、正しく設定された<a href=\"@cron\">cronメンテナンスタ"
+"スク</a>を必要とします。"
+
+#: modules/aggregator/aggregator.module:17
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@aggregator"
+"\">Aggregator module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@aggregator\">Aggregator "
+"module（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal."
+"jp/\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/aggregator/aggregator.module:20
+msgid ""
+"Thousands of sites (particularly news sites and blogs) publish their latest "
+"headlines and posts in feeds, using a number of standardized XML-based "
+"formats. Formats supported by the aggregator include <a href=\"@rss\">RSS</"
+"a>, <a href=\"@rdf\">RDF</a>, and <a href=\"@atom\">Atom</a>."
+msgstr ""
+"とても多くのサイト（特にニュースサイトやブログ）では、規格化されたXMLベース形"
+"式のフィードを使用し、サイトの最新のヘッドラインや投稿を公表します。 アグリ"
+"ゲータは、<a href=\"@rss\">RSS</a>、<a href=\"@rdf\">RDF</a>、<a href=\"@atom"
+"\">Atom</a>の各形式をサポートします。"
+
+#: modules/aggregator/aggregator.module:21
+msgid ""
+"Current feeds are listed below, and <a href=\"@addfeed\">new feeds may be "
+"added</a>. For each feed or feed category, the <em>latest items</em> block "
+"may be enabled at the <a href=\"@block\">blocks administration page</a>."
+msgstr ""
+"以下は現在のフィード一覧です。 <a href=\"@addfeed\">新しいフィードを追加</a>"
+"することもできます。 フィードごとやカテゴリごとの「最新項目」は、<a href="
+"\"@block\">ブロックの管理ページ</a>で有効化できます。"
+
+#: modules/aggregator/aggregator.module:24
+msgid "Add a feed in RSS, RDF or Atom format. A feed may only have one entry."
+msgstr "RSS・RDF・Atom形式でのフィードを追加してください。 "
+
+#: modules/aggregator/aggregator.module:26
+msgid ""
+"Categories allow feed items from different feeds to be grouped together. For "
+"example, several sport-related feeds may belong to a category named "
+"<em>Sports</em>. Feed items may be grouped automatically (by selecting a "
+"category when creating or editing a feed) or manually (via the "
+"<em>Categorize</em> page available from feed item listings). Each category "
+"provides its own feed page and block."
+msgstr ""
+"カテゴリは、異なるフィードのフィード項目をグループ化することができます。 例え"
+"ば、いくつかのスポーツ関連のフィードは、「スポーツ」と名付けられたカテゴリに"
+"所属させることができます。 フィード項目は、フィードの作成や編集の際にカテゴリ"
+"を選択することによって自動的に、あるいはフィード一覧で利用できる「分類」ペー"
+"ジから手作業で、グループ化することができます。 各カテゴリは各自のフィードペー"
+"ジとブロックを提供します。"
+
+#: modules/aggregator/aggregator.module:305
+msgid "!title category latest items"
+msgstr "!title カテゴリの最新項目"
+
+#: modules/aggregator/aggregator.module:309
+msgid "!title feed latest items"
+msgstr "!title フィードの最新項目"
+
+#: modules/aggregator/aggregator.module:320
+msgid "Number of news items in block"
+msgstr "ブロックに表示するニュース記事数"
+
+#: modules/aggregator/aggregator.module:339
+msgid "View this feed's recent news."
+msgstr "このフィードの最新ニュースを見る"
+
+#: modules/aggregator/aggregator.module:347
+msgid "View this category's recent news."
+msgstr "このカテゴリの最新ニュースを見る"
+
+#: modules/aggregator/aggregator.module:457
+msgid "The news items from %site have been removed."
+msgstr "%site からのニュース記事が削除されました。"
+
+#: modules/aggregator/aggregator.module:598
+msgid "There is no new syndicated content from %site."
+msgstr "%site から新しく配信されたコンテンツはありません。"
+
+#: modules/aggregator/aggregator.module:637;636
+msgid "There is new syndicated content from %site."
+msgstr "%site から新しく配信されたコンテンツがあります。"
+
+#: modules/aggregator/aggregator.module:640
+msgid "feed not parseable"
+msgstr "解析不可能なフィード"
+
+#: modules/aggregator/aggregator.module:644
+msgid "The feed from %site seems to be broken, because of error \"%error\"."
+msgstr ""
+"%site からのフィードは、エラー \"%error\" のために破損しているようです。"
+
+#: modules/aggregator/aggregator.module:714
+msgid ""
+"The feed from %site seems to be broken, because of error \"%error\" on line %"
+"line."
+msgstr ""
+"%site からのフィードは、%line行目のエラー \"%error\" のために破損しているよう"
+"です。"
+
+#: modules/aggregator/aggregator.module:891;891
+msgid "blog it"
+msgstr "この記事についてブログを書く"
+
+#: modules/aggregator/aggregator.module:892
+msgid "Comment on this news item in your personal blog."
+msgstr "このニュース記事について個人ブログでコメントする"
+
+#: modules/aggregator/aggregator.module:602
+msgid "Updated URL for feed %title to %url."
+msgstr "フィード %title のURLを %url に更新しました。"
+
+#: modules/aggregator/aggregator.module:643
+msgid "The feed from %site seems to be broken, due to \"%error\"."
+msgstr "%site からのフィードは、\"%error\" が原因で破損しているようです。"
+
+#: modules/aggregator/aggregator.module:713
+msgid ""
+"The feed from %site seems to be broken, due to an error \"%error\" on line %"
+"line."
+msgstr ""
+"%site からのフィードは、%line行目のエラー \"%error\" が原因で破損しているよう"
+"です。"
+
+#: modules/aggregator/aggregator.module:280
+msgid "administer news feeds"
+msgstr "ニュースフィードの管理"
+
+#: modules/aggregator/aggregator.module:280
+msgid "access news feeds"
+msgstr "ニュースフィードへのアクセス"
+
+#: modules/aggregator/aggregator.module:83;138
+msgid "Feed aggregator"
+msgstr "フィードアグリゲータ"
+
+#: modules/aggregator/aggregator.module:84
+msgid ""
+"Configure which content your site aggregates from other sites, how often it "
+"polls them, and how they're categorized."
+msgstr "他のサイトから集めたいコンテンツや集める頻度、分類などを設定します。"
+
+#: modules/aggregator/aggregator.module:90
+msgid "Add feed"
+msgstr "フィードの追加"
+
+#: modules/aggregator/aggregator.module:116
+msgid "Update items"
+msgstr "項目の更新"
+
+#: modules/aggregator/aggregator.module:145
+msgid "Sources"
+msgstr "配信元"
+
+#: modules/aggregator/aggregator.module:230
+msgid "Edit feed"
+msgstr "フィードの編集"
+
+#: modules/aggregator/aggregator.module:238
+msgid "Edit category"
+msgstr "カテゴリの編集"
+
+#: modules/aggregator/aggregator.install:30
+msgid "Stores categories for aggregator feeds and feed items."
+msgstr "アグリゲータフィードとフィード項目のカテゴリを格納します"
+
+#: modules/aggregator/aggregator.install:35
+msgid "Primary Key: Unique aggregator category ID."
+msgstr "プライマリキー： 固有のアグリゲータカテゴリID"
+
+#: modules/aggregator/aggregator.install:42
+msgid "Title of the category."
+msgstr "カテゴリのタイトル"
+
+#: modules/aggregator/aggregator.install:48
+msgid "Description of the category"
+msgstr "カテゴリの説明"
+
+#: modules/aggregator/aggregator.install:55
+msgid "The number of recent items to show within the category block."
+msgstr "カテゴリブロック内に表示する最近の項目数"
+
+#: modules/aggregator/aggregator.install:63
+msgid "Bridge table; maps feeds to categories."
+msgstr "ブリッジテーブル；フィードをカテゴリに対応付ける"
+
+#: modules/aggregator/aggregator.install:69
+msgid "The feed's {aggregator_feed}.fid."
+msgstr "フィードの{aggregator_feed}.fid"
+
+#: modules/aggregator/aggregator.install:75
+msgid "The {aggregator_category}.cid to which the feed is being assigned."
+msgstr "フィードが割り当てられている{aggregator_category}.cid"
+
+#: modules/aggregator/aggregator.install:83
+msgid "Bridge table; maps feed items to categories."
+msgstr "ブリッジテーブル；フィード項目をカテゴリに対応付ける"
+
+#: modules/aggregator/aggregator.install:89
+msgid "The feed item's {aggregator_item}.iid."
+msgstr "フィード項目の{aggregator_item}.iid"
+
+#: modules/aggregator/aggregator.install:95
+msgid "The {aggregator_category}.cid to which the feed item is being assigned."
+msgstr "フィード項目が割り当てられている{aggregator_category}.cid"
+
+#: modules/aggregator/aggregator.install:103
+msgid "Stores feeds to be parsed by the aggregator."
+msgstr "アグリゲータによって解析されるフィードを格納します"
+
+#: modules/aggregator/aggregator.install:108
+msgid "Primary Key: Unique feed ID."
+msgstr "プライマリキー： 固有のフィードID"
+
+#: modules/aggregator/aggregator.install:115
+msgid "Title of the feed."
+msgstr "フィードのタイトル"
+
+#: modules/aggregator/aggregator.install:122
+msgid "URL to the feed."
+msgstr "フィードへのURL"
+
+#: modules/aggregator/aggregator.install:128
+msgid "How often to check for new feed items, in seconds."
+msgstr "新しいフィード項目をチェックする頻度（秒単位）"
+
+#: modules/aggregator/aggregator.install:134
+msgid "Last time feed was checked for new items, as Unix timestamp."
+msgstr "フィードの新しい項目の最終確認時刻（UNIXタイムスタンプ）"
+
+#: modules/aggregator/aggregator.install:141
+msgid ""
+"The parent website of the feed; comes from the <link> element in the feed."
+msgstr "フィードの親ウェブサイト；フィードの<link>要素から取得される"
+
+#: modules/aggregator/aggregator.install:147
+msgid ""
+"The parent website's description; comes from the <description> element in "
+"the feed."
+msgstr ""
+"フィードの親ウェブサイトの説明；フィードの<description>要素から取得される"
+
+#: modules/aggregator/aggregator.install:153
+msgid "An image representing the feed."
+msgstr "フィードを表現する画像"
+
+#: modules/aggregator/aggregator.install:160
+msgid "Entity tag HTTP response header, used for validating cache."
+msgstr "キャッシュの確認に使用されたHTTPレスポンスヘッダの実体タグ"
+
+#: modules/aggregator/aggregator.install:166
+msgid "When the feed was last modified, as a Unix timestamp."
+msgstr "フィードの最終更新時刻（UNIXタイムスタンプ）"
+
+#: modules/aggregator/aggregator.install:173
+msgid "Number of items to display in the feed's block."
+msgstr "フィードのブロック内に表示する項目数"
+
+#: modules/aggregator/aggregator.install:184
+msgid "Stores the individual items imported from feeds."
+msgstr "フィードからインポートされた個別の項目を格納します"
+
+#: modules/aggregator/aggregator.install:189
+msgid "Primary Key: Unique ID for feed item."
+msgstr "プライマリキー： 固有のフィード項目ID"
+
+#: modules/aggregator/aggregator.install:195
+msgid "The {aggregator_feed}.fid to which this item belongs."
+msgstr "この項目が所属する{aggregator_feed}.fid"
+
+#: modules/aggregator/aggregator.install:202
+msgid "Title of the feed item."
+msgstr "フィード項目のタイトル"
+
+#: modules/aggregator/aggregator.install:209
+msgid "Link to the feed item."
+msgstr "フィード項目へのリンク"
+
+#: modules/aggregator/aggregator.install:216
+msgid "Author of the feed item."
+msgstr "フィード項目の著者"
+
+#: modules/aggregator/aggregator.install:222
+msgid "Body of the feed item."
+msgstr "フィード項目の本文"
+
+#: modules/aggregator/aggregator.install:227
+msgid "Post date of feed item, as a Unix timestamp."
+msgstr "フィード項目の投稿日（UNIXタイムスタンプ）"
+
+#: modules/aggregator/aggregator.install:233
+msgid "Unique identifier for the feed item."
+msgstr "フィード項目の固有の識別子"

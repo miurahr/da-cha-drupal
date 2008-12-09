@@ -1,0 +1,2813 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-system)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  system.admin.inc,v 1.63.2.1 2008/03/25 11:58:16 goba
+#  system.module,v 1.585.2.11 2008/04/09 21:11:49 goba
+#  system.js,v 1.14.2.1 2008/02/07 18:23:30 goba
+#  system.install,v 1.238.2.1 2008/02/08 17:07:55 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-04-10 17:40+0900\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/system/system.admin.inc:22
+msgid ""
+"One or more problems were detected with your Drupal installation. Check the "
+"<a href=\"@status\">status report</a> for more information."
+msgstr ""
+"稼働中のDrupalで多少の問題点が検出されました。 <a href=\"@status\">現状報告</"
+"a>ページで詳細を確認してください。"
+
+#: modules/system/system.admin.inc:58;79
+msgid "You do not have any administrative items."
+msgstr "管理上の項目がありません。"
+
+#: modules/system/system.admin.inc:118
+msgid "Get help"
+msgstr "ヘルプを読む"
+
+#: modules/system/system.admin.inc:158
+msgid "System default"
+msgstr "システムデフォルト"
+
+#: modules/system/system.admin.inc:166 modules/system/system.module:264
+msgid "Administration theme"
+msgstr "管理用テーマ"
+
+#: modules/system/system.admin.inc:167
+msgid ""
+"Choose which theme the administration pages should display in. If you choose "
+"\"System default\" the administration pages will use the same theme as the "
+"rest of the site."
+msgstr ""
+"管理ページの表示に使用したいテーマを選んでください。 「システムデフォルト」を"
+"選んだ場合はサイトと同じテーマを使用します。"
+
+#: modules/system/system.admin.inc:173
+msgid "Use administration theme for content editing"
+msgstr "コンテンツの編集に管理用テーマを使用"
+
+#: modules/system/system.admin.inc:174
+msgid ""
+"Use the administration theme when editing existing posts or creating new "
+"ones."
+msgstr ""
+"投稿の編集や新規作成の際に、管理用テーマを使用する場合はここにチェックを入れ"
+"てください。"
+
+#: modules/system/system.admin.inc:209 modules/system/system.module:721
+msgid "Screenshot for %theme theme"
+msgstr "%theme テーマのスクリーンショット"
+
+#: modules/system/system.admin.inc:209 modules/system/system.module:721
+msgid "no screenshot"
+msgstr "スクリーンショットなし"
+
+#: modules/system/system.admin.inc:288
+msgid ""
+"Please note that the <a href=\"!admin_theme_page\">administration theme</a> "
+"is still set to the %admin_theme theme; consequently, the theme on this page "
+"remains unchanged. All non-administrative sections of the site, however, "
+"will show the selected %selected_theme theme by default."
+msgstr ""
+"<a href=\"!admin_theme_page\">管理用テーマ</a>が %admin_theme テーマに設定さ"
+"れていることに注意してください。 このため、このページのテーマは変更されていま"
+"せんが、サイトのすべての非管理セクションは、デフォルトに指定された %"
+"selected_theme テーマで表示されます。"
+
+#: modules/system/system.admin.inc:306;555;933
+#: modules/system/system.module:1071
+msgid "The configuration options have been saved."
+msgstr "設定オプションが保存されました。"
+
+#: modules/system/system.admin.inc:377
+msgid "Logo"
+msgstr "ロゴ"
+
+#: modules/system/system.admin.inc:378
+msgid "Site name"
+msgstr "サイト名"
+
+#: modules/system/system.admin.inc:379
+msgid "Site slogan"
+msgstr "スローガン"
+
+#: modules/system/system.admin.inc:380
+msgid "Mission statement"
+msgstr "ミッション"
+
+#: modules/system/system.admin.inc:381
+msgid "User pictures in posts"
+msgstr "投稿でのユーザアバター"
+
+#: modules/system/system.admin.inc:382
+msgid "User pictures in comments"
+msgstr "コメントでのユーザアバター"
+
+#: modules/system/system.admin.inc:383
+msgid "Search box"
+msgstr "検索ボックス"
+
+#: modules/system/system.admin.inc:384
+msgid "Shortcut icon"
+msgstr "ショートカットアイコン"
+
+#: modules/system/system.admin.inc:401
+msgid "Toggle display"
+msgstr "表示の切り替え"
+
+#: modules/system/system.admin.inc:402
+msgid "Enable or disable the display of certain page elements."
+msgstr ""
+"テーマで表示する特定のページ要素を指定してください。 チェックを入れたものが表"
+"示されます。"
+
+#: modules/system/system.admin.inc:427
+msgid "Display post information on"
+msgstr "投稿情報の表示"
+
+#: modules/system/system.admin.inc:428
+msgid ""
+"Enable or disable the <em>submitted by Username on date</em> text when "
+"displaying posts of the following type."
+msgstr ""
+"投稿者と投稿日時を表示するコンテンツタイプを指定してください。 チェックを入れ"
+"たものに表示されます。"
+
+#: modules/system/system.admin.inc:447
+msgid "Logo image settings"
+msgstr "ロゴ画像の設定"
+
+#: modules/system/system.admin.inc:448
+msgid "If toggled on, the following logo will be displayed."
+msgstr "テーマで表示するロゴを設定してください。 "
+
+#: modules/system/system.admin.inc:453
+msgid "Use the default logo"
+msgstr "デフォルトのロゴを使用"
+
+#: modules/system/system.admin.inc:456
+msgid "Check here if you want the theme to use the logo supplied with it."
+msgstr ""
+"それぞれのテーマが提供するロゴを使用する場合は、ここにチェックを入れてくださ"
+"い。"
+
+#: modules/system/system.admin.inc:460
+msgid "Path to custom logo"
+msgstr "カスタムロゴへのパス"
+
+#: modules/system/system.admin.inc:462
+msgid ""
+"The path to the file you would like to use as your logo file instead of the "
+"default logo."
+msgstr ""
+"デフォルトロゴの代わりに独自のロゴを使用したい場合は、画像ファイルへのパスを"
+"入力してください。"
+
+#: modules/system/system.admin.inc:466
+msgid "Upload logo image"
+msgstr "ロゴ画像のアップロード"
+
+#: modules/system/system.admin.inc:468
+msgid ""
+"If you don't have direct file access to the server, use this field to upload "
+"your logo."
+msgstr ""
+"独自のロゴをアップロードしたい場合は、ローカルの画像ファイルへのパスを入力し"
+"てください。"
+
+#: modules/system/system.admin.inc:475
+msgid "Shortcut icon settings"
+msgstr "ショートカットアイコンの設定"
+
+#: modules/system/system.admin.inc:476
+msgid ""
+"Your shortcut icon, or 'favicon', is displayed in the address bar and "
+"bookmarks of most browsers."
+msgstr ""
+"一般に「favicon」と呼ばれる、ショートカットアイコンを設定してください。 ほと"
+"んどのブラウザでは、アドレスバーやブックマークに表示されます。"
+
+#: modules/system/system.admin.inc:480
+msgid "Use the default shortcut icon."
+msgstr "デフォルトのショートカットアイコンを使用"
+
+#: modules/system/system.admin.inc:482
+msgid "Check here if you want the theme to use the default shortcut icon."
+msgstr ""
+"テーマにデフォルトのショートカットアイコンを使用させたい場合は、ここにチェッ"
+"クを入れてください。"
+
+#: modules/system/system.admin.inc:486
+msgid "Path to custom icon"
+msgstr "カスタムアイコンへのパス"
+
+#: modules/system/system.admin.inc:488
+msgid ""
+"The path to the image file you would like to use as your custom shortcut "
+"icon."
+msgstr ""
+"独自のショートカットアイコンを使用したい場合は、画像ファイルへのパスを入力し"
+"てください。"
+
+#: modules/system/system.admin.inc:493
+msgid "Upload icon image"
+msgstr "アイコン画像のアップロード"
+
+#: modules/system/system.admin.inc:494
+msgid ""
+"If you don't have direct file access to the server, use this field to upload "
+"your shortcut icon."
+msgstr ""
+"独自のショートカットアイコンをアップロードしたい場合は、ローカルの画像ファイ"
+"ルへのパスを入力してください。"
+
+#: modules/system/system.admin.inc:515
+msgid "Theme-engine-specific settings"
+msgstr "テーマエンジン固有の設定"
+
+#: modules/system/system.admin.inc:515
+msgid ""
+"These settings only exist for all the templates and styles based on the %"
+"engine theme engine."
+msgstr ""
+"これらの設定は %engine テーマエンジンに基づいた、すべてのテンプレートとスタイ"
+"ルにのみ存在します。"
+
+#: modules/system/system.admin.inc:527
+msgid "Theme-specific settings"
+msgstr "テーマ固有の設定"
+
+#: modules/system/system.admin.inc:527
+msgid ""
+"These settings only exist for the %theme theme and all the styles based on "
+"it."
+msgstr ""
+"これらの設定は %theme テーマと、それに基づいたすべてのスタイルにのみ存在しま"
+"す。"
+
+#: modules/system/system.admin.inc:549 modules/system/system.module:1068
+msgid "The configuration options have been reset to their default values."
+msgstr "設定オプションがデフォルトの値に戻されました。"
+
+#: modules/system/system.admin.inc:683;715
+msgid " (<span class=\"admin-disabled\">disabled</span>)"
+msgstr " (<span class=\"admin-disabled\">無効</span>)"
+
+#: modules/system/system.admin.inc:686
+msgid " (<span class=\"admin-missing\">missing</span>)"
+msgstr " (<span class=\"admin-missing\">不足</span>)"
+
+#: modules/system/system.admin.inc:692;710
+msgid " (<span class=\"admin-enabled\">enabled</span>)"
+msgstr " (<span class=\"admin-enabled\">有効</span>)"
+
+#: modules/system/system.admin.inc:699
+msgid "Depends on: !dependencies"
+msgstr "次に依存： !dependencies"
+
+#: modules/system/system.admin.inc:722
+msgid "Required by: !required"
+msgstr "次に必須： !required"
+
+#: modules/system/system.admin.inc:841
+msgid "Some required modules must be enabled"
+msgstr "いくつかの必須モジュールを有効にする必要があります"
+
+#: modules/system/system.admin.inc:843
+msgid "Would you like to continue with enabling the above?"
+msgstr "上記モジュールの有効化を継続しますか？"
+
+#: modules/system/system.admin.inc:844
+msgid "Continue"
+msgstr "継続"
+
+#: modules/system/system.admin.inc:1036;1081;2106
+#: modules/system/system.module:330;336
+msgid "Uninstall"
+msgstr "アンインストール"
+
+#: modules/system/system.admin.inc:1075
+msgid ""
+"The following modules will be completely uninstalled from your site, and "
+"<em>all data from these modules will be lost</em>!"
+msgstr ""
+"以下のモジュールはサイトから完全にアンインストールされ、<b>これらのモジュール"
+"による全データは失われます</b>！"
+
+#: modules/system/system.admin.inc:1078
+msgid "Confirm uninstall"
+msgstr "アンインストールの確認"
+
+#: modules/system/system.admin.inc:1080
+msgid "Would you like to continue with uninstalling the above?"
+msgstr "上記モジュールのアンインストールを継続しますか？"
+
+#: modules/system/system.admin.inc:1093
+msgid "No modules selected."
+msgstr "モジュールが選択されていません。"
+
+#: modules/system/system.admin.inc:1110
+msgid "The selected modules have been uninstalled."
+msgstr "選択されたモジュールがアンインストールされました。"
+
+#: modules/system/system.admin.inc:1131
+msgid "The name of this website."
+msgstr "サイトの名前を入力してください。"
+
+#: modules/system/system.admin.inc:1138
+msgid ""
+"The <em>From</em> address in automated e-mails sent during registration and "
+"new password requests, and other notifications. (Use an address ending in "
+"your site's domain to help prevent this e-mail being flagged as spam.)"
+msgstr ""
+"このサイトの代表メールアドレスを入力してください。 これはユーザ登録やパスワー"
+"ドの再発行メール、各種の通知など、自動送信メールの「From:（差出人）」として使"
+"われます。 受信者にスパムメールと見なされる可能性を減らすために、できる限り"
+"ウェブサイトと同じドメインで終わるアドレスを使用してください。"
+
+#: modules/system/system.admin.inc:1143
+msgid "Slogan"
+msgstr "スローガン"
+
+#: modules/system/system.admin.inc:1145
+msgid ""
+"Your site's motto, tag line, or catchphrase (often displayed alongside the "
+"title of the site)."
+msgstr ""
+"サイトの標語やキャッチフレーズなどを入力してください。 これはよくサイトのタイ"
+"トルと並んで表示されます。"
+
+#: modules/system/system.admin.inc:1149
+msgid "Mission"
+msgstr "ミッション"
+
+#: modules/system/system.admin.inc:1151
+msgid ""
+"Your site's mission or focus statement (often prominently displayed on the "
+"front page)."
+msgstr ""
+"このサイトの運営方針や関心事などを記入してください。 これはよくフロントページ"
+"に表示されます。 また、サイトのRSSフィードなどにも使用されます。"
+
+#: modules/system/system.admin.inc:1155
+msgid "Footer message"
+msgstr "フッタメッセージ"
+
+#: modules/system/system.admin.inc:1157
+msgid ""
+"This text will be displayed at the bottom of each page. Useful for adding a "
+"copyright notice to your pages."
+msgstr ""
+"各ページの最下部に表示するテキストを記入してください。 ページに著作権表示など"
+"を追加するのに役立ちます。"
+
+#: modules/system/system.admin.inc:1161
+msgid "Anonymous user"
+msgstr "匿名ユーザ"
+
+#: modules/system/system.admin.inc:1163
+msgid "The name used to indicate anonymous users."
+msgstr "匿名ユーザを示す名称を入力してください。"
+
+#: modules/system/system.admin.inc:1168
+msgid "Default front page"
+msgstr "デフォルトのフロントページ"
+
+#: modules/system/system.admin.inc:1171
+msgid ""
+"The home page displays content from this relative URL. If unsure, specify "
+"\"node\"."
+msgstr ""
+"サイトのトップページとして表示したいコンテンツの相対URLを入力してください。 "
+"よくわからない場合は <b>node</b> と入力してください。"
+
+#: modules/system/system.admin.inc:1196
+msgid "The path '@path' is either invalid or you do not have access to it."
+msgstr "パス '@path' は無効、あるいはアクセスすることができません。"
+
+#: modules/system/system.admin.inc:1210
+msgid "Default 403 (access denied) page"
+msgstr "デフォルトの403（access denied）ページ"
+
+#: modules/system/system.admin.inc:1213
+msgid ""
+"This page is displayed when the requested document is denied to the current "
+"user. If unsure, specify nothing."
+msgstr ""
+"アクセス権限のないページにユーザがアクセスした際に表示する、ページを入力して"
+"ください。 よくわからない場合は空欄にしてください。"
+
+#: modules/system/system.admin.inc:1219
+msgid "Default 404 (not found) page"
+msgstr "デフォルトの404（not found）ページ"
+
+#: modules/system/system.admin.inc:1222
+msgid ""
+"This page is displayed when no other content matches the requested document. "
+"If unsure, specify nothing."
+msgstr ""
+"存在しないページにユーザがアクセスした際に表示する、ページを入力してくださ"
+"い。 よくわからない場合は空欄にしてください。"
+
+#: modules/system/system.admin.inc:1227 modules/system/system.module:387
+msgid "Error reporting"
+msgstr "エラー報告"
+
+#: modules/system/system.admin.inc:1228
+msgid "Write errors to the log"
+msgstr "エラーをログに出力"
+
+#: modules/system/system.admin.inc:1228
+msgid "Write errors to the log and to the screen"
+msgstr "エラーをログと画面に出力"
+
+#: modules/system/system.admin.inc:1229
+msgid ""
+"Specify where Drupal, PHP and SQL errors are logged. While it is recommended "
+"that a site running in a production environment write errors to the log "
+"only, in a development or testing environment it may be helpful to write "
+"errors both to the log and to the screen."
+msgstr ""
+"Drupalと、PHPやSQLのエラーを出力する場所を指定してください。 正式に運用中の環"
+"境では、エラーログにのみ出力することをお勧めします。 開発・テスト中の環境で"
+"は、ログと画面の両方にエラーを出力すると問題点の把握に役立ちます。"
+
+#: modules/system/system.admin.inc:1255
+msgid ""
+"The normal cache mode is suitable for most sites and does not cause any side "
+"effects. The aggressive cache mode causes Drupal to skip the loading (boot) "
+"and unloading (exit) of enabled modules when serving a cached page. This "
+"results in an additional performance boost but can cause unwanted side "
+"effects."
+msgstr ""
+"キャッシュモードを指定してください。 ノーマルキャッシュモードは、ほとんどのサ"
+"イトに適していて、副作用も起こしません。 アグレッシブキャッシュモードは、"
+"キャッシュされたページを供給する際、有効化されているモジュールのロード"
+"（boot）とアンロード（exit）を省略します。 これはさらなるパフォーマンスの向上"
+"をもたらしますが、望まない副作用を引き起こすこともあります。"
+
+#: modules/system/system.admin.inc:1261
+msgid ""
+"<strong class=\"error\">The following enabled modules are incompatible with "
+"aggressive mode caching and will not function properly: %modules</strong>"
+msgstr ""
+"<strong class=\"error\">次の有効化されたモジュールは、アグレッシブキャッシュ"
+"モードと不適合であるため、適切に機能しません： %modules</strong>"
+
+#: modules/system/system.admin.inc:1264
+msgid ""
+"<strong class=\"ok\">Currently, all enabled modules are compatible with the "
+"aggressive caching policy.</strong> Please note, if you use aggressive "
+"caching and enable new modules, you will need to check this page again to "
+"ensure compatibility."
+msgstr ""
+"<strong class=\"ok\">現在のところ、有効化されたすべてのモジュールはアグレッシ"
+"ブキャッシュモードに適合します。</strong> アグレッシブキャッシュモードを使用"
+"し、新たにモジュールを有効化した場合、適合性を確保するために再度このページを"
+"確認する必要があります。"
+
+#: modules/system/system.admin.inc:1268
+msgid "Page cache"
+msgstr "ページキャッシュ"
+
+#: modules/system/system.admin.inc:1269
+msgid ""
+"Enabling the page cache will offer a significant performance boost. Drupal "
+"can store and send compressed cached pages requested by <em>anonymous</em> "
+"users. By caching a web page, Drupal does not have to construct the page "
+"each time it is viewed."
+msgstr ""
+"ページキャッシュを有効にすることで、大幅なパフォーマンスの向上が得られます。 "
+"Drupalは<b>匿名ユーザ</b>に要求されたページを圧縮されたキャッシュページとして"
+"保存しておき、それを送信することができます。 ページをキャッシュしておくことに"
+"より、Drupalは表示のたびにページを構築する必要がなくなります。</p>"
+
+#: modules/system/system.admin.inc:1274
+msgid "Caching mode"
+msgstr "キャッシュモード"
+
+#: modules/system/system.admin.inc:1276
+msgid "Normal (recommended for production sites, no side effects)"
+msgstr "ノーマル（稼働中サイトに推奨、副作用なし）"
+
+#: modules/system/system.admin.inc:1276
+msgid "Aggressive (experts only, possible side effects)"
+msgstr "アグレッシブ（上級者向け、副作用の可能性あり）"
+
+#: modules/system/system.admin.inc:1284
+msgid "Minimum cache lifetime"
+msgstr "キャッシュの存続期間"
+
+#: modules/system/system.admin.inc:1287
+msgid ""
+"On high-traffic sites, it may be necessary to enforce a minimum cache "
+"lifetime. The minimum cache lifetime is the minimum amount of time that will "
+"elapse before the cache is emptied and recreated, and is applied to both "
+"page and block caches. A larger minimum cache lifetime offers better "
+"performance, but users will not see new content for a longer period of time."
+msgstr ""
+"キャッシュを更新しない期間を指定してください。<br />アクセス数の多いサイトで"
+"は、強制的にキャッシュの更新頻度を下げ、よりパフォーマンスを向上させることが"
+"できます。 キャッシュの存続期間は、保存されたキャッシュを空にして再生成するま"
+"での最低限の時間で、ページとブロックの両方に適用されます。 この期間が長いほど"
+"パフォーマンスの向上が望めるというメリットがありますが、その間は新しいコンテ"
+"ンツが表示されないというデメリットがあります。"
+
+#: modules/system/system.admin.inc:1291
+msgid "Page compression"
+msgstr "ページの圧縮"
+
+# 「バンドワイズ」は誤読のため「帯域幅」に統一
+#: modules/system/system.admin.inc:1294
+msgid ""
+"By default, Drupal compresses the pages it caches in order to save bandwidth "
+"and improve download times. This option should be disabled when using a "
+"webserver that performs compression."
+msgstr ""
+"ページを圧縮するかどうかを指定してください。 デフォルトでDrupalは、帯域幅の節"
+"約とダウンロード時間の向上のために、キャッシュするページを圧縮します。 圧縮を"
+"行うウェブサーバを使用する場合、このオプションを無効にする必要があります。"
+
+#: modules/system/system.admin.inc:1299;1305
+msgid "Block cache"
+msgstr "ブロックキャッシュ"
+
+#: modules/system/system.admin.inc:1300
+msgid ""
+"Enabling the block cache can offer a performance increase for all users by "
+"preventing blocks from being reconstructed on each page load. If the page "
+"cache is also enabled, performance increases from enabling the block cache "
+"will mainly benefit authenticated users."
+msgstr ""
+"ブロックキャッシュを有効にすると、ページが読み込まれるたびにブロックを再構築"
+"するのを防ぎ、すべてのユーザにパフォーマンスの増大を提供します。 ページキャッ"
+"シュも有効の場合、ブロックキャッシュによるパフォーマンスの増大は、主に認証済"
+"みユーザのメリットになります。"
+
+#: modules/system/system.admin.inc:1307
+msgid "Enabled (recommended)"
+msgstr "有効（推奨）"
+
+#: modules/system/system.admin.inc:1309
+msgid ""
+"Note that block caching is inactive when modules defining content access "
+"restrictions are enabled."
+msgstr ""
+"ブロックキャッシュを有効にするかどうかを指定してください。 コンテンツのアクセ"
+"ス制限が定義されたモジュールが有効な場合、ブロックキャッシュは機能しないこと"
+"に注意してください。"
+
+# 「バンドワイズ」は誤読のため「帯域幅」に統一
+#: modules/system/system.admin.inc:1314
+msgid "Bandwidth optimizations"
+msgstr "帯域幅の最適化"
+
+# 「バンドワイズ」は誤読のため「帯域幅」に統一
+#: modules/system/system.admin.inc:1315
+msgid ""
+"<p>Drupal can automatically optimize external resources like CSS and "
+"JavaScript, which can reduce both the size and number of requests made to "
+"your website. CSS files can be aggregated and compressed into a single file, "
+"while JavaScript files are aggregated (but not compressed). These optional "
+"optimizations may reduce server load, bandwidth requirements, and page "
+"loading times.</p><p>These options are disabled if you have not set up your "
+"files directory, or if your download method is set to private.</p>"
+msgstr ""
+"<p>DrupalはCSSやJavaScriptのような外部リソースを、自動的に最適化することがで"
+"きます。 これはサイトへのリクエストの、数とサイズを減少させるのに役立ちま"
+"す。 CSSファイルは1つのファイルに圧縮されてまとめられ、JavaScriptファイルは圧"
+"縮されずにまとめられます。 これら任意の最適化は、サーバの負荷、帯域幅要件、"
+"ページの読み込み時間の減少に繋がります。 </p><p>これらのオプションは、files"
+"ディレクトリを設定していない場合や、ダウンロードの方法がプライベートの場合に"
+"は無効となります。</p>"
+
+#: modules/system/system.admin.inc:1322
+msgid "Optimize CSS files"
+msgstr "CSSファイルの最適化"
+
+#: modules/system/system.admin.inc:1326
+msgid ""
+"This option can interfere with theme development and should only be enabled "
+"in a production environment."
+msgstr ""
+"CSSファイルの最適化を行うかどうかを指定してください。 このオプションはテーマ"
+"の開発に干渉するため、実稼働中のサイトでのみ有効化するべきです。"
+
+#: modules/system/system.admin.inc:1330
+msgid "Optimize JavaScript files"
+msgstr "JavaScriptファイルの最適化"
+
+#: modules/system/system.admin.inc:1334
+msgid ""
+"This option can interfere with module development and should only be enabled "
+"in a production environment."
+msgstr ""
+"JavaScriptファイルの最適化を行うかどうかを指定してください。 このオプションは"
+"モジュールの開発に干渉するため、実稼働中のサイトでのみ有効化するべきです。"
+
+#: modules/system/system.admin.inc:1339;1345
+msgid "Clear cached data"
+msgstr "キャッシュデータのクリア"
+
+#: modules/system/system.admin.inc:1340
+msgid ""
+"Caching data improves performance, but may cause problems while "
+"troubleshooting new modules, themes, or translations, if outdated "
+"information has been cached. To refresh all cached data on your site, click "
+"the button below. <em>Warning: high-traffic sites will experience "
+"performance slowdowns while cached data is rebuilt.</em>"
+msgstr ""
+"データをキャッシュすることでパフォーマンスは向上しますが、古い情報がキャッ"
+"シュされている場合、新しいモジュール・テーマ・翻訳のトラブルシューティングの"
+"間に、問題をもたらす可能性があります。 サイトの全キャッシュデータをリフレッ"
+"シュするには、以下のボタンをクリックしてください。<em>警告： キャッシュデータ"
+"が再構築される間、アクセス数の多いサイトではパフォーマンスの低下を感じるで"
+"しょう。</em>"
+
+#: modules/system/system.admin.inc:1362
+msgid "Caches cleared."
+msgstr "キャッシュがクリアされました。"
+
+#: modules/system/system.admin.inc:1375
+msgid "File system path"
+msgstr "ファイルシステムのパス"
+
+#: modules/system/system.admin.inc:1378
+msgid ""
+"A file system path where the files will be stored. This directory must exist "
+"and be writable by Drupal. If the download method is set to public, this "
+"directory must be relative to the Drupal installation directory and be "
+"accessible over the web. If the download method is set to private, this "
+"directory should not be accessible over the web. Changing this location will "
+"modify all download paths and may cause unexpected problems on an existing "
+"site."
+msgstr ""
+"ファイルを保存するためのファイルシステムのパスを入力してください。 このディレ"
+"クトリは、Drupalから書き込みが可能なように適切なパーミッションが与えられ、す"
+"でに存在するパスである必要があります。 以下の「ダウンロードの方法」で「パブ"
+"リック」を指定した場合は、Drupalがインストールされているパスに相対的な、ウェ"
+"ブ上からアクセス可能なパスを入力する必要があります。 「プライベート」を指定し"
+"た場合は、ウェブ上からアクセス不可能なパスを入力する必要があります。 この設定"
+"を変更した場合、すべてのダウンロードパスが変更され、既存のサイトで予期せぬ問"
+"題を引き起こす可能性があります。"
+
+#: modules/system/system.admin.inc:1384
+msgid "Temporary directory"
+msgstr "テンポラリディレクトリ"
+
+#: modules/system/system.admin.inc:1387
+msgid "A file system path where uploaded files will be stored during previews."
+msgstr ""
+"一時的な作業に使用するためのディレクトリを入力してください。 アップロードした"
+"ファイルをプレビューする間の保管場所として使用されます。"
+
+#: modules/system/system.admin.inc:1393
+msgid "Download method"
+msgstr "ダウンロードの方法"
+
+#: modules/system/system.admin.inc:1395
+msgid "Public - files are available using HTTP directly."
+msgstr "パブリック： HTTPからファイルの実体に直接アクセスさせる"
+
+#: modules/system/system.admin.inc:1395
+msgid "Private - files are transferred by Drupal."
+msgstr ""
+"プライベート： HTTPからファイルの実体に直接アクセスできないようにし、Drupalに"
+"転送させる"
+
+#: modules/system/system.admin.inc:1396
+msgid ""
+"Choose the <em>Public download</em> method unless you wish to enforce fine-"
+"grained access controls over file downloads. Changing the download method "
+"will modify all download paths and may cause unexpected problems on an "
+"existing site."
+msgstr ""
+"ファイルのダウンロードに使用する方法を指定してください。 ファイルのダウンロー"
+"ドに対して、きめ細かなアクセス制御をしたくない場合は、「パブリック」を選んで"
+"ください。 この設定を変更した場合、すべてのダウンロードパスが変更され、既存の"
+"サイトで予期せぬ問題を引き起こす可能性があります。"
+
+#: modules/system/system.admin.inc:1413
+msgid "Select an image processing toolkit"
+msgstr "画像処理ツールキットの選択"
+
+#: modules/system/system.admin.inc:1437
+msgid "Number of items in each feed"
+msgstr "各フィードのアイテム数"
+
+#: modules/system/system.admin.inc:1440
+msgid "Default number of items to include in each feed."
+msgstr "各フィードに含める、デフォルトのアイテム数を指定してください。"
+
+#: modules/system/system.admin.inc:1444
+msgid "Feed content"
+msgstr "フィードの内容"
+
+#: modules/system/system.admin.inc:1446
+msgid "Titles only"
+msgstr "タイトルのみ"
+
+#: modules/system/system.admin.inc:1446
+msgid "Titles plus teaser"
+msgstr "タイトルとティーザー"
+
+#: modules/system/system.admin.inc:1446
+msgid "Full text"
+msgstr "すべてのテキスト"
+
+#: modules/system/system.admin.inc:1447
+msgid "Global setting for the default display of content items in each feed."
+msgstr ""
+"各フィードのアイテムにデフォルトで表示する内容を指定してください。 この設定は"
+"サイト全般で使用されます。"
+
+#: modules/system/system.admin.inc:1490
+msgid "Custom format"
+msgstr "カスタムフォーマット"
+
+#: modules/system/system.admin.inc:1494 modules/system/system.module:567
+msgid "Locale settings"
+msgstr "ロケールの設定"
+
+#: modules/system/system.admin.inc:1499
+msgid "Default time zone"
+msgstr "デフォルトのタイムゾーン"
+
+#: modules/system/system.admin.inc:1502
+msgid "Select the default site time zone."
+msgstr "サイトのデフォルトとするタイムゾーンを指定してください。"
+
+#: modules/system/system.admin.inc:1507
+msgid "User-configurable time zones"
+msgstr "ユーザ単位のタイムゾーン"
+
+#: modules/system/system.admin.inc:1510
+msgid ""
+"When enabled, users can set their own time zone and dates will be displayed "
+"accordingly."
+msgstr ""
+"ユーザ単位でタイムゾーンの変更を許可するかどうかを指定してください。 有効にし"
+"た場合、ユーザは自分に適したタイムゾーンに変更することができるようになり、タ"
+"イムゾーンに応じた日付表示が行われるようになります。"
+
+#: modules/system/system.admin.inc:1515
+msgid "First day of week"
+msgstr "週の最初の曜日"
+
+#: modules/system/system.admin.inc:1518
+msgid "The first day of the week for calendar views."
+msgstr "カレンダ表示での最初の曜日（左端に表示する曜日）を指定してください。"
+
+#: modules/system/system.admin.inc:1523
+msgid "Formatting"
+msgstr "書式の設定"
+
+#: modules/system/system.admin.inc:1531
+msgid "Short date format"
+msgstr "日付の表示形式（短）"
+
+#: modules/system/system.admin.inc:1535
+msgid "The short format of date display."
+msgstr "短い日付表示に使われる書式を指定してください。"
+
+#: modules/system/system.admin.inc:1543
+msgid "Custom short date format"
+msgstr "日付の表示形式［カスタム］（短）"
+
+#: modules/system/system.admin.inc:1546
+msgid ""
+"A user-defined short date format. See the <a href=\"@url\">PHP manual</a> "
+"for available options. This format is currently set to display as <span>%"
+"date</span>."
+msgstr ""
+"ユーザ定義の日付形式（短）を入力してください。 <a href=\"@url\">PHPマニュアル"
+"</a>に記載されているオプションが利用できます。<br />現設定での表示例： <span>"
+"%date</span>"
+
+#: modules/system/system.admin.inc:1554
+msgid "Medium date format"
+msgstr "日付の表示形式（中）"
+
+#: modules/system/system.admin.inc:1558
+msgid "The medium sized date display."
+msgstr "中程度の長さの日付表示に使われる書式を指定してください。"
+
+#: modules/system/system.admin.inc:1566
+msgid "Custom medium date format"
+msgstr "日付の表示形式［カスタム］（中）"
+
+#: modules/system/system.admin.inc:1569
+msgid ""
+"A user-defined medium date format. See the <a href=\"@url\">PHP manual</a> "
+"for available options. This format is currently set to display as <span>%"
+"date</span>."
+msgstr ""
+"ユーザ定義の日付形式（中）を入力してください。 <a href=\"@url\">PHPマニュアル"
+"</a>に記載されているオプションが利用できます。<br />現設定での表示例： <span>"
+"%date</span>"
+
+#: modules/system/system.admin.inc:1577
+msgid "Long date format"
+msgstr "日付の表示形式（長）"
+
+#: modules/system/system.admin.inc:1581
+msgid "Longer date format used for detailed display."
+msgstr "長い日付表示に使われる書式を指定してください。"
+
+#: modules/system/system.admin.inc:1589
+msgid "Custom long date format"
+msgstr "日付の表示形式［カスタム］（長）"
+
+#: modules/system/system.admin.inc:1592
+msgid ""
+"A user-defined long date format. See the <a href=\"@url\">PHP manual</a> for "
+"available options. This format is currently set to display as <span>%date</"
+"span>."
+msgstr ""
+"ユーザ定義の日付形式（長）を入力してください。 <a href=\"@url\">PHPマニュアル"
+"</a>に記載されているオプションが利用できます。<br />現設定での表示例： <span>"
+"%date</span>"
+
+#: modules/system/system.admin.inc:1636
+msgid "Site status"
+msgstr "サイトの状態"
+
+#: modules/system/system.admin.inc:1638
+msgid "Online"
+msgstr "オンライン"
+
+#: modules/system/system.admin.inc:1638
+msgid "Off-line"
+msgstr "オフライン"
+
+#: modules/system/system.admin.inc:1639
+msgid ""
+"When set to \"Online\", all visitors will be able to browse your site "
+"normally. When set to \"Off-line\", only users with the \"administer site "
+"configuration\" permission will be able to access your site to perform "
+"maintenance; all other visitors will see the site off-line message "
+"configured below. Authorized users can log in during \"Off-line\" mode "
+"directly via the <a href=\"@user-login\">user login</a> page."
+msgstr ""
+"サイトの状態を指定してください。 「<b>オンライン</b>」を指定すると、サイトへ"
+"の訪問者が通常どおりコンテンツを閲覧できる状態となります。 「<b>オフライン</"
+"b>」を指定すると、「サイトの管理権限」を持ったユーザのみがアクセスできる状態"
+"になり、サイトのメンテナンスを行うことができます。 その際、その他の訪問者に"
+"は、以下に記入されたメッセージが表示されます。 「オフライン」モード中でのアク"
+"セスを許可されているユーザは、<a href=\"@user-login\">ユーザログイン</a>ペー"
+"ジからログインすることができます。"
+
+#: modules/system/system.admin.inc:1644
+msgid "Site off-line message"
+msgstr "サイトオフラインのメッセージ"
+
+#: modules/system/system.admin.inc:1646
+msgid "Message to show visitors when the site is in off-line mode."
+msgstr ""
+"サイトがオフラインの際に、訪問者へ表示するメッセージを記入してください。"
+
+#: modules/system/system.admin.inc:1661 modules/system/system.module:457
+msgid "Clean URLs"
+msgstr "クリーンURL"
+
+# 詳細に（冗長？）
+#: modules/system/system.admin.inc:1664
+msgid ""
+"This option makes Drupal emit \"clean\" URLs (i.e. without <code>?q=</code> "
+"in the URL)."
+msgstr ""
+"クリーンURL機能を使用するかどうかを指定してください。 クリーンURLとは、各コン"
+"テンツのURLに <b>?q=</b> を含まないスッキリとしたURLを指します。 例えば "
+"<b>about</b> というページがあった場合、この機能が無効の場合は <b>http://"
+"example.com/?q=about</b> というURLになりますが、有効の場合には <b>http://"
+"example.com/about</b> というURLになります。<br />"
+
+#: modules/system/system.admin.inc:1671
+msgid ""
+"Before enabling clean URLs, you must perform a test to determine if your "
+"server is properly configured. If you are able to see this page again after "
+"clicking the \"Run the clean URL test\" link, the test has succeeded and the "
+"radio buttons above will be available. If instead you are directed to a "
+"\"Page not found\" error, you will need to change the configuration of your "
+"server. The <a href=\"@handbook\">handbook page on Clean URLs</a> has "
+"additional troubleshooting information."
+msgstr ""
+"クリーンURL機能を有効にする前に、このサーバが適切に設定されているかどうかを判"
+"断するために、 以下のリンクをクリックして、テストを実行する必要があります。 "
+"テストに成功した場合、再度このページが表示され、上のラジオボタンが変更できる"
+"ようになります。 テストに失敗し、「ページが見つかりません」ページが表示された"
+"場合は、サーバの環境設定を変更する必要があります。 <a href=\"@handbook\">ハン"
+"ドブックのClean URLsページ（英文）</a>には、多くのトラブルシューティングに関"
+"する情報がありますので、失敗した際には参考にしてください。"
+
+#: modules/system/system.admin.inc:1675
+msgid "<a href=\"@clean_url\">Run the clean url test</a>."
+msgstr "<a href=\"@clean_url\">クリーンURLのテストを実行</a>"
+
+#: modules/system/system.admin.inc:1678 modules/system/system.js:0
+msgid "Your server has been successfully tested to support this feature."
+msgstr "サーバがこの機能をサポートすることが正常に検証されました。"
+
+#: modules/system/system.admin.inc:1716
+msgid "Cron ran successfully."
+msgstr "cronが正常に実行されました。"
+
+#: modules/system/system.admin.inc:1719
+msgid "Cron run failed."
+msgstr "cronの実行に失敗しました。"
+
+#: modules/system/system.admin.inc:1751
+msgid "Variable"
+msgstr "変数"
+
+#: modules/system/system.admin.inc:1751
+msgid "Value"
+msgstr "値"
+
+#: modules/system/system.admin.inc:1766
+msgid "Command counters"
+msgstr "コマンドカウンタ"
+
+#: modules/system/system.admin.inc:1768
+msgid "The number of <code>SELECT</code>-statements."
+msgstr "<code>SELECT</code> ステートメントの回数"
+
+#: modules/system/system.admin.inc:1769
+msgid "The number of <code>INSERT</code>-statements."
+msgstr "<code>INSERT</code> ステートメントの回数"
+
+#: modules/system/system.admin.inc:1770
+msgid "The number of <code>UPDATE</code>-statements."
+msgstr "<code>UPDATE</code> ステートメントの回数"
+
+#: modules/system/system.admin.inc:1771
+msgid "The number of <code>DELETE</code>-statements."
+msgstr "<code>DELETE</code> ステートメントの回数"
+
+#: modules/system/system.admin.inc:1772
+msgid "The number of table locks."
+msgstr "テーブルロックの回数"
+
+#: modules/system/system.admin.inc:1773
+msgid "The number of table unlocks."
+msgstr "テーブルアンロックの回数"
+
+#: modules/system/system.admin.inc:1776
+msgid "Query performance"
+msgstr "クエリパフォーマンス"
+
+# Select_full_join（MySQLリファレンスマニュアル日本語版より/他も同様）
+#: modules/system/system.admin.inc:1778
+msgid "The number of joins without an index; should be zero."
+msgstr ""
+"キーを使用しない結合の数（この値が 0 でない場合、テーブルのインデックスを"
+"チェックする必要があります）"
+
+# Select_range_check
+#: modules/system/system.admin.inc:1779
+msgid ""
+"The number of joins without keys that check for key usage after each row; "
+"should be zero."
+msgstr ""
+"各レコードの後でキー使用をチェックする、キーを使用しない結合の数（この値が 0 "
+"でない場合、テーブルのインデックスをチェックする必要があります）"
+
+# Sort_scan
+#: modules/system/system.admin.inc:1780
+msgid "The number of sorts done without using an index; should be zero."
+msgstr "テーブルのスキャンによって実行されたソートの回数"
+
+# Table_locks_immediate
+#: modules/system/system.admin.inc:1781
+msgid "The number of times a lock could be acquired immediately."
+msgstr "テーブルロックがすぐに実行された回数"
+
+# Table_locks_waited
+#: modules/system/system.admin.inc:1782
+msgid "The number of times the server had to wait for a lock."
+msgstr ""
+"テーブルロックがすぐには実行されず、待機が必要だった回数（この値が大きい場"
+"合、パフォーマンス上の問題があります）"
+
+#: modules/system/system.admin.inc:1785
+msgid "Query cache information"
+msgstr "クエリキャッシュ情報"
+
+#: modules/system/system.admin.inc:1786
+msgid ""
+"The MySQL query cache can improve performance of your site by storing the "
+"result of queries. Then, if an identical query is received later, the MySQL "
+"server retrieves the result from the query cache rather than parsing and "
+"executing the statement again."
+msgstr ""
+"MySQLクエリキャッシュは、クエリの結果を格納しておくことでサイトのパフォーマン"
+"スを向上させます。 後でまったく同じクエリを受け取ると、MySQLサーバはそのクエ"
+"リの解析と実行をもう一度繰り返す代わりに、クエリキャッシュから結果を取り出し"
+"ます。"
+
+# Qcache_queries_in_cache
+#: modules/system/system.admin.inc:1788
+msgid "The number of queries in the query cache."
+msgstr "クエリキャッシュに登録されているクエリ数"
+
+#: modules/system/system.admin.inc:1789
+msgid "The number of times MySQL found previous results in the cache."
+msgstr "MySQLがキャッシュから以前の結果を見つけ出した回数"
+
+#: modules/system/system.admin.inc:1790
+msgid "The number of times MySQL added a query to the cache (misses)."
+msgstr "MySQLがキャッシュにクエリを追加した回数"
+
+#: modules/system/system.admin.inc:1791
+msgid ""
+"The number of times MySQL had to remove queries from the cache because it "
+"ran out of memory. Ideally should be zero."
+msgstr ""
+"メモリ不足のためにMySQLがキャッシュから削除したクエリ数（理想的には 0 である"
+"べきです）"
+
+#: modules/system/system.admin.inc:1904
+msgid "Show descriptions"
+msgstr "説明を表示"
+
+#: modules/system/system.admin.inc:1904
+msgid "Expand layout to include descriptions."
+msgstr "説明を含めるためにレイアウトを展開する"
+
+#: modules/system/system.admin.inc:1907
+msgid "Hide descriptions"
+msgstr "説明を非表示"
+
+#: modules/system/system.admin.inc:1907
+msgid "Compress layout by hiding descriptions."
+msgstr "説明を隠してレイアウトを縮める"
+
+#: modules/system/system.admin.inc:2023;2207
+msgid "Version"
+msgstr "バージョン"
+
+#: modules/system/system.admin.inc:2030
+msgid "Other"
+msgstr "その他"
+
+#: modules/system/system.admin.inc:2045;2050;2175;2180
+msgid "incompatible"
+msgstr "互換性なし"
+
+#: modules/system/system.admin.inc:2045;2175
+msgid "Incompatible with this version of Drupal core"
+msgstr "このDrupalコアのバージョンと互換性がありません"
+
+#: modules/system/system.admin.inc:2046;2176
+msgid ""
+"This version is incompatible with the !core_version version of Drupal core."
+msgstr ""
+"このバージョンはDrupalコアのバージョン !core_version と互換性がありません"
+
+#: modules/system/system.admin.inc:2050;2180
+msgid "Incompatible with this version of PHP"
+msgstr "このPHPのバージョンと互換性がありません"
+
+#: modules/system/system.admin.inc:2055
+msgid ""
+"This module requires PHP version @php_required and is incompatible with PHP "
+"version !php_version."
+msgstr ""
+"このモジュールはPHPバージョン @php_required を必要とし、PHPバージョン !"
+"php_version との互換性がありません。"
+
+#: modules/system/system.admin.inc:2123
+msgid "No modules are available to uninstall."
+msgstr "アンインストールできるモジュールはありません。"
+
+#: modules/system/system.admin.inc:2149;2207
+msgid "Screenshot"
+msgstr "スクリーンショット"
+
+#: modules/system/system.admin.inc:2185
+msgid ""
+"This theme requires PHP version @php_required and is incompatible with PHP "
+"version !php_version."
+msgstr ""
+"このテーマはPHPバージョン @php_required を必要とし、PHPバージョン !"
+"php_version との互換性がありません。"
+
+#: modules/system/system.admin.inc:833
+msgid "You must enable the @dependencies module to install @module."
+msgid_plural "You must enable the @dependencies modules to install @module."
+msgstr[0] ""
+"@module をインストールするには、@dependencies モジュールを有効にする必要があ"
+"ります。"
+msgstr[1] ""
+"@module をインストールするには、@dependencies モジュールを有効にする必要があ"
+"ります。"
+
+#: modules/system/system.module:52
+msgid ""
+"The system module is at the foundation of your Drupal website, and provides "
+"basic but extensible functionality for use by other modules and themes. Some "
+"integral elements of Drupal are contained in and managed by the system "
+"module, including caching, enabling or disabling of modules and themes, "
+"preparing and displaying the administrative page, and configuring "
+"fundamental site settings. A number of key system maintenance operations are "
+"also part of the system module."
+msgstr ""
+"System（システム）モジュールはDrupalサイトの基礎となるもので、他のモジュール"
+"やテーマによって使用される、基礎的ながら拡張可能な機能性を提供します。 キャッ"
+"シュ、モジュールやテーマの有効・無効化、管理上のページの準備と表示、サイトの"
+"基本的な環境設定など、いくつかのDrupalに不可欠な要素はsystemモジュールに含ま"
+"れ、管理されます。 また、多くの主要なシステムメンテナンス操作は、systemモ"
+"ジュールの一部です。"
+
+#: modules/system/system.module:53
+msgid "The system module provides:"
+msgstr "systemモジュールは以下を提供します："
+
+#: modules/system/system.module:54
+msgid ""
+"support for enabling and disabling <a href=\"@modules\">modules</a>. Drupal "
+"comes packaged with a number of core modules; each module provides a "
+"discrete set of features and may be enabled depending on the needs of your "
+"site. A wide array of additional modules contributed by members of the "
+"Drupal community are available for download at the <a href=\"@drupal-modules"
+"\">Drupal.org module page</a>."
+msgstr ""
+"<a href=\"@modules\">モジュール</a>の有効化・無効化をサポート － Drupalは多く"
+"のコアモジュールがはじめからパッケージ化されています。 各モジュールはそれぞれ"
+"別々の機能セットを提供し、サイトの必要性に応じて有効化することができます。 "
+"Drupalコミュニティのメンバーによって寄与された豊富な追加モジュールが、<a "
+"href=\"@drupal-modules\">Drupal.org モジュールページ</a>からダウンロードして"
+"利用できます。"
+
+#: modules/system/system.module:55
+msgid ""
+"support for enabling and disabling <a href=\"@themes\">themes</a>, which "
+"determine the design and presentation of your site. Drupal comes packaged "
+"with several core themes and additional contributed themes are available at "
+"the <a href=\"@drupal-themes\">Drupal.org theme page</a>."
+msgstr ""
+"サイトのデザインやプレゼンテーションを決定する<a href=\"@themes\">テーマ</a>"
+"の有効化・無効化をサポート － Drupalにはいくつかのテーマがはじめからパッケー"
+"ジ化されています。 また、寄与されたテーマが、<a href=\"@drupal-themes"
+"\">Drupal.org のテーマページ</a>からダウンロードして利用できます。"
+
+#: modules/system/system.module:56
+msgid ""
+"a robust <a href=\"@cache-settings\">caching system</a> that allows the "
+"efficient re-use of previously-constructed web pages and web page "
+"components. Drupal stores the pages requested by anonymous users in a "
+"compressed format; depending on your site configuration and the amount of "
+"your web traffic tied to anonymous visitors, Drupal's caching system may "
+"significantly increase the speed of your site."
+msgstr ""
+"以前に構築されたウェブページやウェブページコンポーネントを効率的に再利用す"
+"る、強固な<a href=\"@cache-settings\">キャッシュシステム</a> － Drupalは匿名"
+"ユーザによってリクエストされたページを、圧縮形式で保存します。 サイトの設定"
+"と、匿名ユーザによるトラフィック量によっては、Drupalのキャッシュシステムを利"
+"用することで、サイトのスピードを著しく増大させることができます。"
+
+#: modules/system/system.module:57
+msgid ""
+"a set of routine administrative operations that rely on a correctly-"
+"configured <a href=\"@cron\">cron maintenance task</a> to run automatically. "
+"A number of other modules, including the feed aggregator, ping module and "
+"search also rely on <a href=\"@cron\">cron maintenance tasks</a>. For more "
+"information, see the online handbook entry for <a href=\"@handbook"
+"\">configuring cron jobs</a>."
+msgstr ""
+"自動実行のために正しく設定された<a href=\"@cron\">cronメンテナンスタスク</a>"
+"に依存する、一連の定期的な管理上の操作 － フィードアグリゲータ、pingや検索モ"
+"ジュールなど、多くの他のモジュールも<a href=\"@cron\">cronメンテナンスタスク"
+"</a>に依存します。 より詳しい情報は、オンラインハンドブックの<a href="
+"\"@handbook\">configuring cron jobs（英文）</a>を参照してください。 また、"
+"サーバでcronの利用が許可されていない場合は、<a href=\"http://drupal.jp/guide/"
+"cron_task_webcron\">cron タスクの設定 【 webcron の利用】</a>や、<a href="
+"\"http://drupal.jp/guide/cron_task_altcron\">「cron (crontab) が使えない場合"
+"の裏技」</a>も併せて参照してください。"
+
+#: modules/system/system.module:58
+msgid ""
+"basic configuration options for your site, including <a href=\"@date-settings"
+"\">date and time settings</a>, <a href=\"@file-system\">file system "
+"settings</a>, <a href=\"@clean-url\">clean URL support</a>, <a href=\"@site-"
+"info\">site name and other information</a>, and a <a href=\"@site-maintenance"
+"\">site maintenance</a> function for taking your site temporarily off-line."
+msgstr ""
+"<a href=\"@date-settings\">日付と時刻の設定</a>、<a href=\"@file-system\">"
+"ファイルシステムの設定</a>、<a href=\"@clean-url\">クリーンURLのサポート</"
+"a>、<a href=\"@site-info\">サイトの名前やその他の情報</a>などを含む、サイトの"
+"基本的な設定オプションや、サイトを一時的にオフラインにする<a href=\"@site-"
+"maintenance\">サイトメンテナンス</a>機能"
+
+#: modules/system/system.module:59
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@system"
+"\">System module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@system\">System module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/system/system.module:62
+msgid ""
+"Welcome to the administration section. Here you may control how your site "
+"functions."
+msgstr ""
+"管理セクションへようこそ。 ここではサイトがどのように機能するかをコントロール"
+"することができます。"
+
+#: modules/system/system.module:64
+msgid "This page shows you all available administration tasks for each module."
+msgstr "このページは、各モジュールで利用できるすべての管理タスクを表示します。"
+
+#: modules/system/system.module:66
+msgid ""
+"Select which themes are available to your users and specify the default "
+"theme. To configure site-wide display settings, click the \"configure\" task "
+"above. Alternatively, to override these settings in a specific theme, click "
+"the \"configure\" link for that theme. Note that different themes may have "
+"different regions available for displaying content; for consistency in "
+"presentation, you may wish to enable only one theme."
+msgstr ""
+"ユーザが利用可能なテーマの選択や、デフォルトのテーマを指定してください。 サイ"
+"ト全域の表示設定をするには、上にある「設定」をクリックしてください。 あるいは"
+"特定のテーマで、それらに優先する設定を行いたい場合は、テーマごとの「設定」を"
+"クリックしてください。 コンテンツを表示できる領域は、テーマによって異なる場合"
+"があることに注意してください。 サイト表示に一貫性を持たせるために、利用できる"
+"テーマを1つに絞ることも選択肢の1つです。"
+
+#: modules/system/system.module:67
+msgid ""
+"To change the appearance of your site, a number of <a href=\"@themes"
+"\">contributed themes</a> are available."
+msgstr ""
+"サイトの外観の変更に、多くの<a href=\"@themes\">寄与されたテーマ</a>が利用で"
+"きます。"
+
+#: modules/system/system.module:72
+msgid ""
+"These options control the display settings for the <code>%template</code> "
+"theme. When your site is displayed using this theme, these settings will be "
+"used. By clicking \"Reset to defaults,\" you can choose to use the <a href="
+"\"@global\">global settings</a> for this theme."
+msgstr ""
+"以下の設定は <b>%template</b> テーマの表示設定をコントロールします。 このテー"
+"マでサイトを表示する際には、この設定が使用されます。 「デフォルトに戻す」をク"
+"リックすることで、このテーマの設定に<a href=\"@global\">全般の設定</a>を適用"
+"することができます。"
+
+#: modules/system/system.module:74
+msgid ""
+"These options control the default display settings for your entire site, "
+"across all themes. Unless they have been overridden by a specific theme, "
+"these settings will be used."
+msgstr ""
+"以下の設定は、すべてのテーマにわたるサイト全体のデフォルトの表示設定をコント"
+"ロールします。 優先させる設定を行っていないテーマでは、これらの設定が使用され"
+"ます。"
+
+#: modules/system/system.module:76
+msgid ""
+"Modules are plugins that extend Drupal's core functionality. Enable modules "
+"by selecting the <em>Enabled</em> checkboxes below and clicking the <em>Save "
+"configuration</em> button. Once a module is enabled, new <a href="
+"\"@permissions\">permissions</a> may be available. To reduce server load, "
+"modules with their <em>Throttle</em> checkbox selected are temporarily "
+"disabled when your site becomes extremely busy. (Note that the <em>Throttle</"
+"em> checkbox is only available if the Throttle module is enabled.)"
+msgstr ""
+"モジュールはDrupalのコアの機能性を拡張するプラグインです。 モジュールを有効に"
+"するには、以下の「有効」チェックボックスにチェックを入れ、「設定の保存」ボタ"
+"ンをクリックしてください。 モジュールを有効にすると、新しい<a href="
+"\"@permissions\">権限</a>が利用可能になる場合があります。 「スロットル」"
+"チェックボックスにチェックを入れたモジュールは、サイトへのアクセスが一定数を"
+"超えた際、サーバの負荷を減少させるために一時的に無効にされます（「スロット"
+"ル」チェックボックスは、Throttle（スロットル）モジュールが有効の場合にのみ利"
+"用可能です）。 "
+
+#: modules/system/system.module:78
+msgid ""
+"The auto-throttle functionality must be enabled on the <a href=\"@throttle"
+"\">throttle configuration page</a> after having enabled the throttle module."
+msgstr ""
+"自動スロットル機能は、Throttle（スロットル）モジュールを有効にした上で、<a "
+"href=\"@throttle\">スロットルの設定ページ</a>で設定を行う必要があります。"
+
+#: modules/system/system.module:81
+msgid ""
+"It is important that <a href=\"@update-php\">update.php</a> is run every "
+"time a module is updated to a newer version."
+msgstr ""
+"モジュールが新しいバージョンに更新された際には、<a href=\"@update-php"
+"\">update.php</a> を必ず実行するようにしてください。"
+
+#: modules/system/system.module:82
+msgid ""
+"You can find all administration tasks belonging to a particular module on "
+"the <a href=\"@by-module\">administration by module page</a>."
+msgstr ""
+"特定のモジュールに属するすべての管理タスクは、<a href=\"@by-module\">モジュー"
+"ル別の管理ページ</a>で見つけることができます。"
+
+#: modules/system/system.module:83
+msgid ""
+"To extend the functionality of your site, a number of <a href=\"@modules"
+"\">contributed modules</a> are available."
+msgstr ""
+"サイトの機能性を拡張するために、多くの<a href=\"@modules\">寄与されたモジュー"
+"ル</a>が利用できます。"
+
+#: modules/system/system.module:86
+msgid ""
+"The uninstall process removes all data related to a module. To uninstall a "
+"module, you must first disable it. Not all modules support this feature."
+msgstr ""
+"アンインストール処理は、モジュールに関連するすべてのデータを削除します。 モ"
+"ジュールをアンインストールするには、はじめにモジュールを無効化する必要があり"
+"ます。 すべてのモジュールがこの機能をサポートするとは限りません。"
+
+#: modules/system/system.module:89
+msgid ""
+"The <em>Powered by Drupal</em> block is an optional link to the home page of "
+"the Drupal project. While there is absolutely no requirement that sites "
+"feature this link, it may be used to show support for Drupal."
+msgstr ""
+"<em>Powered by Drupal</em> ブロックは、Drupalプロジェクトサイトへの任意のリン"
+"クです。 このリンクは絶対的な必要条件ではありませんが、Drupalのサポートを示す"
+"ために使用することができます。"
+
+#: modules/system/system.module:94
+msgid ""
+"Actions are individual tasks that the system can do, such as unpublishing a "
+"piece of content or banning a user. Modules, such as the trigger module, can "
+"fire these actions when certain system events happen; for example, when a "
+"new post is added or when a user logs in. Modules may also provide "
+"additional actions."
+msgstr ""
+"アクションは1つのコンテンツを非掲載にしたり、ユーザをアクセス禁止にするなど、"
+"システムが行うことのできる個別のタスクです。 モジュール（トリガモジュールのよ"
+"うな）は、特定のシステムイベント（例えば、新しい投稿の追加時やユーザのログイ"
+"ン時など）が生じた際、それらのアクションを実行できます。 また、モジュールに"
+"よって追加のアクションが提供される場合もあります。"
+
+#: modules/system/system.module:95
+msgid ""
+"There are two types of actions: simple and advanced. Simple actions do not "
+"require any additional configuration, and are listed here automatically. "
+"Advanced actions can do more than simple actions; for example, send an e-"
+"mail to a specified address, or check for certain words within a piece of "
+"content. These actions need to be created and configured first before they "
+"may be used. To create an advanced action, select the action from the drop-"
+"down below and click the <em>Create</em> button."
+msgstr ""
+"アクションには単純なタイプと高度なタイプの2つがあります。 単純なアクションは"
+"追加設定を必要とせず、ここで自動的にリストされています。 高度なアクションは例"
+"えば、指定したアドレスにメール送信をしたり、1つのコンテンツ内で特定のワードを"
+"チェックするなど、単純なアクション以上のことを行うことができます。 これらのア"
+"クションを使用する前にまず、作成と設定を行う必要があります。 高度なアクション"
+"を作成するには、以下のドロップダウンからアクションを選択し、「作成」ボタンを"
+"クリックしてください。"
+
+#: modules/system/system.module:97
+msgid ""
+"You may proceed to the <a href=\"@url\">Triggers</a> page to assign these "
+"actions to system events."
+msgstr ""
+"これらのアクションをシステムイベントに割り当てるには、<a href=\"@url\">トリガ"
+"</a>ページへ移動してください。"
+
+#: modules/system/system.module:101
+msgid ""
+"An advanced action offers additional configuration options which may be "
+"filled out below. Changing the <em>Description</em> field is recommended, in "
+"order to better identify the precise action taking place. This description "
+"will be displayed in modules such as the trigger module when assigning "
+"actions to system events, so it is best if it is as descriptive as possible "
+"(for example, \"Send e-mail to Moderation Team\" rather than simply \"Send e-"
+"mail\")."
+msgstr ""
+"高度なアクションは以下に、追加の設定オプションを提供します。 行われる正確なア"
+"クションを特定しやすくするために、「説明」フィールドの変更を推奨します。 この"
+"説明はアクションをシステムイベントに割り当てる際、モジュール（トリガモジュー"
+"ルのような）で表示されます。 例えば、単純に「メールを送信」とするより、「モデ"
+"レーションチームにメールを送信」のように、より説明的にする方がよいでしょう。"
+
+#: modules/system/system.module:103
+msgid ""
+"Here you can find a short overview of your site's parameters as well as any "
+"problems detected with your installation. It may be useful to copy and paste "
+"this information into support requests filed on drupal.org's support forums "
+"and project issue queues."
+msgstr ""
+"サイトのパラメータの簡潔な概観や、設置上で検出された問題をここで知ることがで"
+"きます。 drupal.orgのサポートフォーラムや、プロジェクトの問題点キューにサポー"
+"トリクエストを提出する際、この情報をコピー＆ペーストすると役立ちます。"
+
+#: modules/system/system.module:561
+msgid "Selecting a different theme will change the look and feel of the site."
+msgstr ""
+"お好みのテーマを指定してください。 テーマを変更するとサイトのルック＆フィール"
+"が変更されます。"
+
+#: modules/system/system.module:573
+msgid "Time zone"
+msgstr "タイムゾーン"
+
+#: modules/system/system.module:576
+msgid ""
+"Select your current local time. Dates and times throughout this site will be "
+"displayed using this time zone."
+msgstr ""
+"あなたがお住まいの地域の、現在の時刻を指定してください。 指定されたタイムゾー"
+"ンは、サイト全般での日時の表示に使用されます。"
+
+#: modules/system/system.module:593
+msgid "Powered by Drupal"
+msgstr "Powered by Drupal"
+
+#: modules/system/system.module:603
+msgid "Badge color"
+msgstr "バッジの色"
+
+#: modules/system/system.module:605
+msgid "Black"
+msgstr "ブラック"
+
+#: modules/system/system.module:605
+msgid "Blue"
+msgstr "ブルー"
+
+#: modules/system/system.module:605
+msgid "Gray"
+msgstr "グレー"
+
+#: modules/system/system.module:609
+msgid "Badge size"
+msgstr "バッジのサイズ"
+
+#: modules/system/system.module:611
+msgid "Small"
+msgstr "小"
+
+#: modules/system/system.module:611
+msgid "Large"
+msgstr "大"
+
+#: modules/system/system.module:701
+msgid "Theme configuration"
+msgstr "テーマの設定"
+
+#: modules/system/system.module:724
+msgid "(site default theme)"
+msgstr "（サイトのデフォルトテーマ）"
+
+#: modules/system/system.module:1037
+msgid "The settings have not been saved because of the errors."
+msgstr "エラーが発生したため、設定が保存されませんでした。"
+
+#: modules/system/system.module:1208
+msgid "Configure permissions"
+msgstr "権限の設定"
+
+#: modules/system/system.module:1262
+msgid "When cron runs"
+msgstr "cron実行時"
+
+#: modules/system/system.module:1276
+msgid "Display a message to the user"
+msgstr "ユーザへメッセージを表示"
+
+#: modules/system/system.module:1297
+msgid "Redirect to URL"
+msgstr "URLにリダイレクト"
+
+#: modules/system/system.module:1317
+msgid "Choose an advanced action"
+msgstr "高度なアクションを選択してください"
+
+#: modules/system/system.module:1332
+msgid "Action type"
+msgstr "アクションのタイプ"
+
+#: modules/system/system.module:1352
+msgid "Actions available to Drupal:"
+msgstr "Drupalに利用できるアクション："
+
+#: modules/system/system.module:1378
+msgid "Make a new advanced action available"
+msgstr "新しい高度なアクションを利用可能にする"
+
+#: modules/system/system.module:1390
+msgid "Create"
+msgstr "作成"
+
+#: modules/system/system.module:1457
+msgid ""
+"A unique description for this advanced action. This description will be "
+"displayed in the interface of modules that integrate with actions, such as "
+"Trigger module."
+msgstr ""
+"この高度なアクションに固有の説明を入力してください。 この説明は、アクションと"
+"一体化したモジュール（トリガモジュールのような）のインターフェイスで表示され"
+"ます。"
+
+#: modules/system/system.module:1513
+msgid "The action has been successfully saved."
+msgstr "アクションが正常に保存されました。"
+
+#: modules/system/system.module:1531
+msgid "Are you sure you want to delete the action %action?"
+msgstr "本当に、アクション %action を削除してもよろしいですか？"
+
+#: modules/system/system.module:1533
+msgid "This cannot be undone."
+msgstr ""
+"この操作は元に戻すことができませんので、十分に注意して実行してください。"
+
+#: modules/system/system.module:1549
+msgid "Action %action was deleted"
+msgstr "アクション %action が削除されました"
+
+#: modules/system/system.module:1561
+msgid "Deleted orphaned action (%action)."
+msgstr "孤立したアクション（%action）が削除されました。"
+
+#: modules/system/system.module:1597
+msgid "Recipient"
+msgstr "受信者"
+
+#: modules/system/system.module:1600
+msgid ""
+"The email address to which the message should be sent OR enter %author if "
+"you would like to send an e-mail to the author of the original post."
+msgstr ""
+"メッセージを送信するメールアドレスか %author を入力してください。 %author を"
+"指定した場合、オリジナル投稿の投稿者へメールが送信されます。"
+
+#: modules/system/system.module:1607
+msgid "The subject of the message."
+msgstr "メッセージの件名を入力してください。"
+
+#: modules/system/system.module:1615
+msgid ""
+"The message that should be sent. You may include the following variables: %"
+"site_name, %username, %node_url, %node_type, %title, %teaser, %body. Not all "
+"variables will be available in all contexts."
+msgstr ""
+"送信するメッセージを記入してください。 次の変数を含めることができます： %"
+"site_name, %username, %node_url, %node_type, %title, %teaser, %body （すべて"
+"の変数が、すべてのコンテキストで使用できるとは限りません）"
+
+#: modules/system/system.module:1628
+msgid "Please enter a valid email address or %author."
+msgstr "有効なメールアドレスか %author を入力してください。"
+
+#: modules/system/system.module:1761
+msgid ""
+"The message to be displayed to the current user. You may include the "
+"following variables: %site_name, %username, %node_url, %node_type, %title, %"
+"teaser, %body. Not all variables will be available in all contexts."
+msgstr ""
+"現在のユーザへ表示されるメッセージを記入してください。 次の変数を含めることが"
+"できます： %site_name, %username, %node_url, %node_type, %title, %teaser, %"
+"body （すべての変数が、すべてのコンテキストで使用できるとは限りません）"
+
+#: modules/system/system.module:1834
+msgid ""
+"The URL to which the user should be redirected. This can be an internal URL "
+"like node/1234 or an external URL like http://drupal.org."
+msgstr ""
+"ユーザがリダイレクトされるURLを入力してください。 node/1234 のような内部リン"
+"クと、http://drupal.org のような外部リンクが使用できます。"
+
+#: modules/system/system.module:1897;1897
+msgid "Powered by Drupal, an open source content management system"
+msgstr "Powered by Drupal / オープンソースコンテンツマネージメントシステム"
+
+#: modules/system/system.module:1241
+msgid "Could not delete temporary file \"%path\" during garbage collection"
+msgstr ""
+"ガーベッジコレクション中に、一時ファイル \"%path\" を削除できませんでした"
+
+#: modules/system/system.module:1548
+msgid "Deleted action %aid (%action)"
+msgstr "アクション %aid（%action）が削除されました"
+
+#: modules/system/system.module:1675
+msgid "Cannot use %author token in this context."
+msgstr "このコンテキストで %author トークンは使用できません"
+
+#: modules/system/system.module:1706
+msgid "Sent email to %recipient"
+msgstr "%recipient へメールが送信されました"
+
+#: modules/system/system.module:1709
+msgid "Unable to send email to %recipient"
+msgstr "%recipient へメールが送信できませんでした"
+
+#: modules/system/system.module:158
+msgid "administer site configuration"
+msgstr "サイトの環境設定"
+
+#: modules/system/system.module:158
+msgid "access administration pages"
+msgstr "管理セクションへのアクセス"
+
+#: modules/system/system.module:158
+msgid "administer actions"
+msgstr "アクションの管理"
+
+#: modules/system/system.module:158
+msgid "access site reports"
+msgstr "サイトリポートへのアクセス"
+
+#: modules/system/system.module:158
+msgid "select different theme"
+msgstr "別テーマの選択"
+
+#: modules/system/system.module:158
+msgid "administer files"
+msgstr "ファイルの管理"
+
+#: modules/system/system.module:200
+msgid "File download"
+msgstr "ファイルダウンロード"
+
+#: modules/system/system.module:206
+msgid "Administer"
+msgstr "管理セクション"
+
+#: modules/system/system.module:213
+msgid "Compact mode"
+msgstr "コンパクトモード"
+
+#: modules/system/system.module:220
+msgid "By task"
+msgstr "タスク別"
+
+#: modules/system/system.module:227
+msgid "By module"
+msgstr "モジュール別"
+
+#: modules/system/system.module:235
+msgid "Content management"
+msgstr "コンテンツの管理"
+
+#: modules/system/system.module:236
+msgid "Manage your site's content."
+msgstr "サイトのコンテンツを管理します。"
+
+#: modules/system/system.module:246
+msgid "Site configuration"
+msgstr "サイトの環境設定"
+
+#: modules/system/system.module:247
+msgid "Adjust basic site configuration options."
+msgstr "基本的なサイト設定オプションを調整します。"
+
+#: modules/system/system.module:255
+msgid "Site building"
+msgstr "サイトの構築"
+
+#: modules/system/system.module:256
+msgid "Control how your site looks and feels."
+msgstr "サイトのルック＆フィールをコントロールします。"
+
+#: modules/system/system.module:265
+msgid "Settings for how your administrative pages should look."
+msgstr "管理ページに適用するテーマの設定をします。"
+
+#: modules/system/system.module:276
+msgid "Change which theme your site uses or allows users to set."
+msgstr "サイトに使用するテーマや、ユーザに利用を許可するテーマの設定をします。"
+
+#: modules/system/system.module:284
+msgid "Select the default theme."
+msgstr "デフォルトのテーマを選択します。"
+
+#: modules/system/system.module:296
+msgid "Global settings"
+msgstr "全般の設定"
+
+#: modules/system/system.module:314
+msgid "Enable or disable add-on modules for your site."
+msgstr "サイトで使用するアドオンモジュールの有効・無効化をします。"
+
+#: modules/system/system.module:343
+msgid "Actions"
+msgstr "アクション"
+
+#: modules/system/system.module:344;350
+msgid "Manage the actions defined for your site."
+msgstr "サイト用に定義されたアクションを管理します。"
+
+#: modules/system/system.module:349
+msgid "Manage actions"
+msgstr "アクションの管理"
+
+#: modules/system/system.module:356
+msgid "Configure an advanced action"
+msgstr "高度なアクションの設定"
+
+#: modules/system/system.module:363
+msgid "Delete action"
+msgstr "アクションの削除"
+
+#: modules/system/system.module:364
+msgid "Delete an action."
+msgstr "アクションを削除します。"
+
+#: modules/system/system.module:371
+msgid "Remove orphans"
+msgstr "孤立したアクションを削除"
+
+#: modules/system/system.module:379
+msgid "Site information"
+msgstr "サイト情報"
+
+#: modules/system/system.module:380
+msgid ""
+"Change basic site information, such as the site name, slogan, e-mail "
+"address, mission, front page and more."
+msgstr ""
+"サイト名・スローガン・メールアドレス・ミッション・フロントページなどの基本的"
+"なサイト情報を設定します。"
+
+#: modules/system/system.module:388
+msgid ""
+"Control how Drupal deals with errors including 403/404 errors as well as PHP "
+"error reporting."
+msgstr "PHP/SQLのエラー報告や、403/404を含むエラーの処理方法を設定します。"
+
+#: modules/system/system.module:395
+msgid "Logging and alerts"
+msgstr "ログと警告"
+
+#: modules/system/system.module:396
+msgid ""
+"Settings for logging and alerts modules. Various modules can route Drupal's "
+"system events to different destination, such as syslog, database, email, ..."
+"etc."
+msgstr ""
+"ログと警告モジュールの設定を行います。 さまざまなモジュールが異なる届け先"
+"（syslog、データベース、メールなど）に、Drupalのシステムイベントの経路を決め"
+"ることができます。"
+
+#: modules/system/system.module:402
+msgid "Performance"
+msgstr "パフォーマンス"
+
+# 「バンドワイズ」は誤読のため「帯域幅」に統一
+#: modules/system/system.module:403
+msgid ""
+"Enable or disable page caching for anonymous users and set CSS and JS "
+"bandwidth optimization options."
+msgstr ""
+"匿名ユーザ用ページキャッシュの有効・無効化や、CSSとJSの帯域幅最適化オプション"
+"を設定します。"
+
+#: (duplicate) modules/system/system.module:410
+#: modules/system/system.install:184
+msgid "File system"
+msgstr "ファイルシステム"
+
+#: modules/system/system.module:411
+msgid "Tell Drupal where to store uploaded files and how they are accessed."
+msgstr "アップロードされたファイルの保存先やアクセス方法を設定します。"
+
+#: modules/system/system.module:418
+msgid "Image toolkit"
+msgstr "画像ツールキット"
+
+#: modules/system/system.module:419
+msgid ""
+"Choose which image toolkit to use if you have installed optional toolkits."
+msgstr ""
+"任意のツールキットをインストールした場合、利用する画像ツールキットを選択しま"
+"す。"
+
+#: modules/system/system.module:426
+msgid "RSS publishing"
+msgstr "RSS配信"
+
+#: modules/system/system.module:427
+msgid ""
+"Configure the number of items per feed and whether feeds should be titles/"
+"teasers/full-text."
+msgstr "フィード単位の項目数と内容（タイトル／ティーザー／全文）を設定します。"
+
+#: modules/system/system.module:434
+msgid "Date and time"
+msgstr "日付と時刻"
+
+#: modules/system/system.module:435
+msgid ""
+"Settings for how Drupal displays date and time, as well as the system's "
+"default timezone."
+msgstr "日付と時刻の表示形式や、デフォルトのタイムゾーンを設定します。"
+
+#: modules/system/system.module:442
+msgid "Date and time lookup"
+msgstr "日付と時刻の照合"
+
+#: modules/system/system.module:449
+msgid "Site maintenance"
+msgstr "サイトメンテナンス"
+
+#: modules/system/system.module:450
+msgid "Take the site off-line for maintenance or bring it back online."
+msgstr "サイトメンテナンス用にオンライン・オフラインのモードを切り替えます。"
+
+#: modules/system/system.module:458
+msgid "Enable or disable clean URLs for your site."
+msgstr "クリーンURLの有効・無効化をします。"
+
+#: modules/system/system.module:465
+msgid "Clean URL check"
+msgstr "クリーンURLのチェック"
+
+#: modules/system/system.module:474
+msgid "Request test"
+msgstr "リクエストのテスト"
+
+#: modules/system/system.module:483
+msgid "Reports"
+msgstr "リポート"
+
+#: modules/system/system.module:484
+msgid "View reports from system logs and other status information."
+msgstr "システムログやその他の状況情報からリポートを表示します。"
+
+#: modules/system/system.module:492
+msgid "Status report"
+msgstr "現状報告"
+
+#: modules/system/system.module:493
+msgid ""
+"Get a status report about your site's operation and any detected problems."
+msgstr "サイトの稼働状況や検出された問題点に関する、現状報告の確認をします。"
+
+#: modules/system/system.module:500
+msgid "Run cron"
+msgstr "cronの実行"
+
+#: (duplicate) modules/system/system.module:507
+#: modules/system/system.install:36
+msgid "PHP"
+msgstr "PHP"
+
+#: modules/system/system.module:514
+msgid "SQL"
+msgstr "SQL"
+
+#: modules/system/system.module:0
+msgid "system"
+msgstr "システム"
+
+#: modules/system/system.module:0
+msgid "Footer"
+msgstr "フッタ"
+
+#: modules/system/system.install:417
+msgid ""
+"Named variable/value pairs created by Drupal core or any other module or "
+"theme. All variables are cached in memory at the start of every Drupal "
+"request so developers should not be careless about what is stored here."
+msgstr ""
+"Drupalコアまたは他のモジュールやテーマによって作成された、名前付きの変数と値"
+"のペア。 すべての変数は、すべてのDrupalリクエストのはじめにメモリにキャッシュ"
+"されるので、開発者はここに格納されるものに関して注意を払う必要があります"
+
+#: modules/system/system.install:420
+msgid "The name of the variable."
+msgstr "変数の名前"
+
+#: modules/system/system.install:426
+msgid "The value of the variable."
+msgstr "変数の値"
+
+#: modules/system/system.install:435
+msgid "Stores action information."
+msgstr "アクションの情報を格納します"
+
+#: modules/system/system.install:438;474
+msgid "Primary Key: Unique actions ID."
+msgstr "プライマリキー： 固有のアクションID"
+
+#: modules/system/system.install:444
+msgid ""
+"The object that that action acts on (node, user, comment, system or custom "
+"types.)"
+msgstr ""
+"アクションが作用するオブジェクト（node, user, comment, system or custom "
+"types）"
+
+#: modules/system/system.install:450
+msgid "The callback function that executes when the action runs."
+msgstr "アクション実行時に実行されるコールバック関数"
+
+#: modules/system/system.install:456
+msgid "Parameters to be passed to the callback function."
+msgstr "コールバック関数に渡されるパラメータ"
+
+#: modules/system/system.install:461
+msgid "Description of the action."
+msgstr "アクションの説明"
+
+#: modules/system/system.install:471
+msgid "Stores action IDs for non-default actions."
+msgstr "非デフォルト用のアクションIDを格納します"
+
+#: modules/system/system.install:483
+msgid ""
+"Stores details about batches (processes that run in multiple HTTP requests)."
+msgstr "バッチ（複数のHTTPリクエストで実行される処理）に関する詳細を格納します"
+
+#: modules/system/system.install:486
+msgid "Primary Key: Unique batch ID."
+msgstr "プライマリキー： 固有のバッチID"
+
+#: modules/system/system.install:491
+msgid ""
+"A string token generated against the current user's session id and the batch "
+"id, used to ensure that only the user who submitted the batch can "
+"effectively access it."
+msgstr ""
+"文字列トークンはカレントユーザのセッションIDとバッチIDに対して生成され、バッ"
+"チを提出したユーザのみがそれに有効にアクセスできるようにするために使用される"
+
+#: modules/system/system.install:496
+msgid ""
+"A Unix timestamp indicating when this batch was submitted for processing. "
+"Stale batches are purged at cron time."
+msgstr ""
+"処理のためにバッチが提出された際のUNIXタイムスタンプ。 古いバッチはcron時に消"
+"去される"
+
+#: modules/system/system.install:500
+msgid "A serialized array containing the processing data for the batch."
+msgstr "バッチ用処理データが含まれるシリアライズされた配列"
+
+#: modules/system/system.install:510
+msgid ""
+"Generic cache table for caching things not separated out into their own "
+"tables. Contributed modules may also use this to store cached items."
+msgstr ""
+"独自のテーブルに分離されないものをキャッシュする一般的なキャッシュテーブル。 "
+"寄与されたモジュールが、キャッシュされたアイテムを格納するために使用する場合"
+"もあります"
+
+#: modules/system/system.install:513
+msgid "Primary Key: Unique cache ID."
+msgstr "プライマリキー： 固有のキャッシュID"
+
+#: modules/system/system.install:519
+msgid "A collection of data to cache."
+msgstr "キャッシュするデータのコレクション"
+
+#: modules/system/system.install:524
+msgid ""
+"A Unix timestamp indicating when the cache entry should expire, or 0 for "
+"never."
+msgstr "キャッシュエントリの期限切れを示すUNIXタイムスタンプ（0 = 無期限）"
+
+#: modules/system/system.install:529
+msgid "A Unix timestamp indicating when the cache entry was created."
+msgstr "キャッシュエントリの作成日時を示すUNIXタイムスタンプ"
+
+#: modules/system/system.install:534
+msgid "Any custom HTTP headers to be added to cached data."
+msgstr "キャッシュデータに加えられる任意のカスタムHTTPヘッダ"
+
+#: modules/system/system.install:538
+msgid "A flag to indicate whether content is serialized (1) or not (0)."
+msgstr "コンテンツがシリアライズされている（1）・されていない（0）を示すフラグ"
+
+#: modules/system/system.install:549
+msgid ""
+"Cache table for the form system to store recently built forms and their "
+"storage data, to be used in subsequent page requests."
+msgstr ""
+"のちのページリクエストで使用するために、最近構築されたフォームとそれらの保存"
+"データを格納するフォームシステム用キャッシュテーブル"
+
+#: modules/system/system.install:551
+msgid ""
+"Cache table used to store compressed pages for anonymous users, if page "
+"caching is enabled."
+msgstr ""
+"ページキャッシュが有効の場合、匿名ユーザ用の圧縮したページを格納するキャッ"
+"シュテーブル"
+
+#: modules/system/system.install:553
+msgid ""
+"Cache table for the menu system to store router information as well as "
+"generated link trees for various menu/page/user combinations."
+msgstr ""
+"様々なmenu/page/userの組み合わせ用に生成されたリンクツリーや、経路決定情報を"
+"格納する、メニューシステム用キャッシュテーブル"
+
+#: modules/system/system.install:556
+msgid "Stores information for uploaded files."
+msgstr "アップロードされたファイルの情報を格納します"
+
+#: modules/system/system.install:559
+msgid "Primary Key: Unique files ID."
+msgstr "プライマリキー： 固有のファイルID"
+
+#: modules/system/system.install:564
+msgid "The {users}.uid of the user who is associated with the file."
+msgstr "ファイルと関連付けられたユーザの{users}.uid"
+
+#: modules/system/system.install:570
+msgid "Name of the file."
+msgstr "ファイルの名前"
+
+#: modules/system/system.install:576
+msgid "Path of the file relative to Drupal root."
+msgstr "Drupalルートに相対的なファイルパス"
+
+#: modules/system/system.install:582
+msgid "The file MIME type."
+msgstr "ファイルのMIMEタイプ"
+
+#: modules/system/system.install:588
+msgid "The size of the file in bytes."
+msgstr "ファイルサイズ（Byte）"
+
+#: modules/system/system.install:594
+msgid "A flag indicating whether file is temporary (1) or permanent (0)."
+msgstr "ファイルが一時的か恒久的かを示すフラグ（1 = 一時的、0 = 恒久的）"
+
+#: modules/system/system.install:599
+msgid "UNIX timestamp for when the file was added."
+msgstr "ファイルが追加された際のUNIXタイムスタンプ"
+
+#: modules/system/system.install:614
+msgid ""
+"Flood controls the threshold of events, such as the number of contact "
+"attempts."
+msgstr "コンタクトの試行数のような、フラッドコントロール用のイベントのしきい値"
+
+#: modules/system/system.install:617
+msgid "Unique flood event ID."
+msgstr "固有のフラッドイベントID"
+
+#: modules/system/system.install:621
+msgid "Name of event (e.g. contact)."
+msgstr "イベントの名前（例： contact）"
+
+#: modules/system/system.install:627
+msgid "Hostname of the visitor."
+msgstr "訪問者のホスト名"
+
+#: modules/system/system.install:633
+msgid "Timestamp of the event."
+msgstr "イベントのタイムスタンプ"
+
+#: modules/system/system.install:645
+msgid "A record of which {users} have read which {node}s."
+msgstr "どの{users}がどの{node}を読んだかの履歴"
+
+#: modules/system/system.install:648
+msgid "The {users}.uid that read the {node} nid."
+msgstr "{node} nidを読んだ{users}.uid"
+
+#: modules/system/system.install:653
+msgid "The {node}.nid that was read."
+msgstr "読まれた{node}.nid"
+
+#: modules/system/system.install:658
+msgid "The Unix timestamp at which the read occurred."
+msgstr "読まれた際のUNIXタイムスタンプ"
+
+#: modules/system/system.install:669
+msgid "Maps paths to various callbacks (access, page and title)"
+msgstr "パスを様々なコールバック（access, page, title）に対応付けます"
+
+#: modules/system/system.install:672
+msgid "Primary Key: the Drupal path this entry describes"
+msgstr "プライマリキー： エントリを表現するDrupalパス"
+
+#: modules/system/system.install:678
+msgid ""
+"A serialized array of function names (like node_load) to be called to load "
+"an object corresponding to a part of the current path."
+msgstr ""
+"カレントパスの一部に対応するオブジェクトをロードするために呼ばれる、関数名"
+"（node_loadのような）のシリアライズされた配列"
+
+#: modules/system/system.install:684
+msgid ""
+"A serialized array of function names (like user_current_to_arg) to be called "
+"to replace a part of the router path with another string."
+msgstr ""
+"経路決定パスの一部を別の文字列に置き換えるために呼ばれる、関数名"
+"（user_current_to_argのような）のシリアライズされた配列"
+
+#: modules/system/system.install:690
+msgid ""
+"The callback which determines the access to this router path. Defaults to "
+"user_access."
+msgstr ""
+"経路決定パスへのアクセスを決定するコールバック。 user_accessをデフォルトとす"
+"る"
+
+#: modules/system/system.install:696
+msgid "A serialized array of arguments for the access callback."
+msgstr "アクセスコールバック用の引数のシリアライズされた配列"
+
+#: modules/system/system.install:700
+msgid "The name of the function that renders the page."
+msgstr "ページを表示する関数の名前"
+
+#: modules/system/system.install:706
+msgid "A serialized array of arguments for the page callback."
+msgstr "ページコールバック用の引数のシリアライズされた配列"
+
+#: modules/system/system.install:710
+msgid "A numeric representation of how specific the path is."
+msgstr "パスがどの程度特定されるかの数値表現"
+
+#: modules/system/system.install:715
+msgid "Number of parts in this router path."
+msgstr "経路決定パス内の部分数"
+
+#: modules/system/system.install:721
+msgid ""
+"Only for local tasks (tabs) - the router path of the parent page (which may "
+"also be a local task)."
+msgstr ""
+"ローカルタスク（タブ）専用 － 親ページ（同様にローカルタスクの場合もある）の"
+"経路決定パス"
+
+#: modules/system/system.install:727
+msgid ""
+"Router path of the closest non-tab parent page. For pages that are not local "
+"tasks, this will be the same as the path."
+msgstr ""
+"最も近い非タブの親ページの経路決定パス。 ローカルタスク以外のページではパスと"
+"同じになる"
+
+#: modules/system/system.install:733
+msgid ""
+"The title for the current page, or the title for the tab if this is a local "
+"task."
+msgstr "カレントページのタイトルか、ローカルタスクの場合はタブのタイトル"
+
+#: modules/system/system.install:739
+msgid "A function which will alter the title. Defaults to t()"
+msgstr "タイトルを変更する関数。 t()をデフォルトとする"
+
+#: modules/system/system.install:745
+msgid ""
+"A serialized array of arguments for the title callback. If empty, the title "
+"will be used as the sole argument for the title callback."
+msgstr ""
+"タイトルコールバック用の引数のシリアライズされた配列。 空の場合、タイトルがタ"
+"イトルコールバック用の唯一の引数として使用される"
+
+#: modules/system/system.install:751
+msgid ""
+"Numeric representation of the type of the menu item, like MENU_LOCAL_TASK."
+msgstr "MENU_LOCAL_TASKのような、メニューアイテムタイプの数値表現"
+
+#: modules/system/system.install:756
+msgid ""
+"Name of a function used to render the block on the system administration "
+"page for this item."
+msgstr ""
+"アイテムのシステム管理ページにブロックを表示するために使用される関数の名前"
+
+#: modules/system/system.install:762
+msgid "A description of this item."
+msgstr "アイテムの説明"
+
+#: modules/system/system.install:766
+msgid ""
+"The position of the block (left or right) on the system administration page "
+"for this item."
+msgstr "アイテムのシステム管理ページでのブロックの位置（leftかright）"
+
+#: modules/system/system.install:772
+msgid ""
+"Weight of the element. Lighter weights are higher up, heavier weights go "
+"down."
+msgstr "要素のウェイト。 数値が小さいほど上へ、大きいほど下へ"
+
+#: modules/system/system.install:777
+msgid ""
+"The file to include for this element, usually the page callback function "
+"lives in this file."
+msgstr ""
+"要素のために含めるべきファイル。 通常、ページコールバック関数はこのファイルに"
+"存在する"
+
+#: modules/system/system.install:789
+msgid "Contains the individual links within a menu."
+msgstr "メニュー内の個々のリンクを格納します"
+
+#: modules/system/system.install:792
+msgid ""
+"The menu name. All links with the same menu name (such as 'navigation') are "
+"part of the same menu."
+msgstr ""
+"メニュー名。 同じメニュー名（'navigation'のような）を持つすべてのリンクは同じ"
+"メニューの一部となる"
+
+#: modules/system/system.install:798
+msgid "The menu link ID (mlid) is the integer primary key."
+msgstr "プライマリキー： 固有のメニューリンクID"
+
+#: modules/system/system.install:803
+msgid ""
+"The parent link ID (plid) is the mlid of the link above in the hierarchy, or "
+"zero if the link is at the top level in its menu."
+msgstr ""
+"親リンクID（階層内での上位リンクのmlid）か、ゼロ（メニュー最上位の場合）"
+
+#: modules/system/system.install:809
+msgid "The Drupal path or external path this link points to."
+msgstr "リンク先を示すDrupalパスか外部パス"
+
+#: modules/system/system.install:815
+msgid ""
+"For links corresponding to a Drupal path (external = 0), this connects the "
+"link to a {menu_router}.path for joins."
+msgstr ""
+"Drupalパス（external = 0）に対応したリンク用に、結合用に{menu_router}.pathへ"
+"リンクを結びつける"
+
+#: modules/system/system.install:821
+msgid ""
+"The text displayed for the link, which may be modified by a title callback "
+"stored in {menu_router}."
+msgstr ""
+"リンク用に表示されるテキスト。 {menu_router}に格納されたタイトルコールバック"
+"によって変更される場合もある"
+
+#: modules/system/system.install:827
+msgid ""
+"A serialized array of options to be passed to the url() or l() function, "
+"such as a query string or HTML attributes."
+msgstr ""
+"クエリ文字列やHTML属性のような、url()やl()に渡されるオプションのシリアライズ"
+"された配列"
+
+#: modules/system/system.install:831
+msgid "The name of the module that generated this link."
+msgstr "リンクを生成したモジュールの名前"
+
+#: modules/system/system.install:837
+msgid ""
+"A flag for whether the link should be rendered in menus. (1 = a disabled "
+"menu item that may be shown on admin screens, -1 = a menu callback, 0 = a "
+"normal, visible link)"
+msgstr ""
+"メニューでリンクを表示すべきかどうかのフラグ（1 = 管理画面では表示される無効"
+"化されたメニューアイテム、-1 = メニューコールバック、0 = 通常の可視リンク）"
+
+#: modules/system/system.install:843
+msgid ""
+"A flag to indicate if the link points to a full URL starting with a "
+"protocol, like http:// (1 = external, 0 = internal)."
+msgstr ""
+"リンクがプロトコル（http://のような）で始まる完全なURLを指すかどうかを示すフ"
+"ラグ（1 = 外部、0 = 内部）"
+
+#: modules/system/system.install:849
+msgid ""
+"Flag indicating whether any links have this link as a parent (1 = children "
+"exist, 0 = no children)."
+msgstr ""
+"任意のリンクがこのリンクを親としているかどうかを示すフラグ（1 = 子あり、0 = "
+"子なし）"
+
+#: modules/system/system.install:855
+msgid ""
+"Flag for whether this link should be rendered as expanded in menus - "
+"expanded links always have their child links displayed, instead of only when "
+"the link is in the active trail (1 = expanded, 0 = not expanded)"
+msgstr ""
+"メニュー内でリンクを展開して表示するかどうかのフラグ。 展開されたリンクは常に"
+"子リンクが表示される（1 = 展開、0 = 非展開）"
+
+#: modules/system/system.install:861
+msgid "Link weight among links in the same menu at the same depth."
+msgstr "同じメニュー内の同じ深度にあるリンク間でのウェイト"
+
+#: modules/system/system.install:866
+msgid ""
+"The depth relative to the top level. A link with plid == 0 will have depth "
+"== 1."
+msgstr "最上位に対する相対的な深度。 plid == 0 のリンクは depth == 1 となる"
+
+#: modules/system/system.install:872
+msgid ""
+"A flag to indicate that the user has manually created or edited the link (1 "
+"= customized, 0 = not customized)."
+msgstr ""
+"ユーザが手作業で作成したかリンクを編集したことを示すフラグ（1 = カスタマイ"
+"ズ、 0 = 非カスタマイズ）"
+
+#: modules/system/system.install:878
+msgid ""
+"The first mlid in the materialized path. If N = depth, then pN must equal "
+"the mlid. If depth > 1 then p(N-1) must equal the plid. All pX where X > "
+"depth must equal zero. The columns p1 .. p9 are also called the parents."
+msgstr ""
+"実現されたパス中の最初のmlid。 N = depthの場合、pNはmlidと等しくなければなら"
+"ない。 depth > 1の場合、p(N-1)はplidと等しくなければならない。 X > depthの場"
+"合、すべてのpXはゼロと等しくなければならない。 カラムp1..p9は親とも呼ばれる"
+
+#: modules/system/system.install:884
+msgid "The second mlid in the materialized path. See p1."
+msgstr "実現されたパス中の2番目のmlid（p1参照）"
+
+#: modules/system/system.install:890
+msgid "The third mlid in the materialized path. See p1."
+msgstr "実現されたパス中の3番目のmlid（p1参照）"
+
+#: modules/system/system.install:896
+msgid "The fourth mlid in the materialized path. See p1."
+msgstr "実現されたパス中の4番目のmlid（p1参照）"
+
+#: modules/system/system.install:902
+msgid "The fifth mlid in the materialized path. See p1."
+msgstr "実現されたパス中の5番目のmlid（p1参照）"
+
+#: modules/system/system.install:908
+msgid "The sixth mlid in the materialized path. See p1."
+msgstr "実現されたパス中の6番目のmlid（p1参照）"
+
+#: modules/system/system.install:914
+msgid "The seventh mlid in the materialized path. See p1."
+msgstr "実現されたパス中の7番目のmlid（p1参照）"
+
+#: modules/system/system.install:920
+msgid "The eighth mlid in the materialized path. See p1."
+msgstr "実現されたパス中の8番目のmlid（p1参照）"
+
+#: modules/system/system.install:926
+msgid "The ninth mlid in the materialized path. See p1."
+msgstr "実現されたパス中の9番目のmlid（p1参照）"
+
+#: modules/system/system.install:932
+msgid ""
+"Flag that indicates that this link was generated during the update from "
+"Drupal 5."
+msgstr "リンクがDrupal 5からのアップデート中に生成されたことを示すフラグ"
+
+#: modules/system/system.install:950
+msgid ""
+"Drupal's session handlers read and write into the sessions table. Each "
+"record represents a user session, either anonymous or authenticated."
+msgstr ""
+"Drupalのセッションハンドラはセッションテーブルを読み書きします。 各レコードは"
+"匿名か認証済みのセッションを表します"
+
+#: modules/system/system.install:953
+msgid "The {users}.uid corresponding to a session, or 0 for anonymous user."
+msgstr "セッションに対応する{users}.uidか0（匿名ユーザの場合）"
+
+#: modules/system/system.install:958
+msgid "Primary key: A session ID. The value is generated by PHP's Session API."
+msgstr ""
+"プライマリキー： セッションID（PHPのセッションAPIによって生成される値）"
+
+#: modules/system/system.install:964
+msgid "The IP address that last used this session ID (sid)."
+msgstr "セッションID（sid）を最後に使用したIPアドレス"
+
+#: modules/system/system.install:970
+msgid ""
+"The Unix timestamp when this session last requested a page. Old records are "
+"purged by PHP automatically."
+msgstr ""
+"セッションが最後にページリクエストをした際のUNIXタイムスタンプ。 古いレコード"
+"はPHPによって自動的に消去される"
+
+#: modules/system/system.install:975
+msgid ""
+"The time of this user's last post. This is used when the site has specified "
+"a minimum_cache_lifetime. See cache_get()."
+msgstr ""
+"このユーザの最終投稿時間。 サイトがminimum_cache_lifetimeを指定した場合に使用"
+"される。 cache_get()参照"
+
+#: modules/system/system.install:980
+msgid ""
+"The serialized contents of $_SESSION, an array of name/value pairs that "
+"persists across page requests by this session ID. Drupal loads $_SESSION "
+"from here at the start of each request and saves it at the end."
+msgstr ""
+"$_SESSIONのシリアライズされた内容（セッションIDによるページリクエストにわたっ"
+"て存続する、名前と値がペアの配列）。 Drupalは各リクエストの始めにここから"
+"$_SESSIONをロードし、終わりでそれを保存する"
+
+#: modules/system/system.install:993
+msgid ""
+"A list of all modules, themes, and theme engines that are or have been "
+"installed in Drupal's file system."
+msgstr ""
+"存在する（あるいはDrupalのファイルシステムにインストールされた）すべてのモ"
+"ジュール・テーマ・テーマエンジンのリスト"
+
+#: modules/system/system.install:996
+msgid ""
+"The path of the primary file for this item, relative to the Drupal root; e."
+"g. modules/node/node.module."
+msgstr ""
+"アイテムの主要なファイルのDrupalルートに相対的なパス（例：modules/node/node."
+"module）"
+
+#: modules/system/system.install:1002
+msgid "The name of the item; e.g. node."
+msgstr "アイテムの名前（例： node）"
+
+#: modules/system/system.install:1008
+msgid "The type of the item, either module, theme, or theme_engine."
+msgstr "アイテムのタイプ（module、theme、theme_engine）"
+
+#: modules/system/system.install:1014
+msgid "A theme's 'parent'. Can be either a theme or an engine."
+msgstr "テーマの「親」（テーマまたはエンジン）"
+
+#: modules/system/system.install:1020
+msgid "Boolean indicating whether or not this item is enabled."
+msgstr "アイテムが有効であるかどうかを示すフラグ"
+
+#: modules/system/system.install:1025
+msgid ""
+"Boolean indicating whether this item is disabled when the throttle.module "
+"disables throttleable items."
+msgstr ""
+"throttle.moduleがスロットル対応アイテムを無効化する際、このアイテムが無効化さ"
+"れるかどうかを示すフラグ"
+
+#: modules/system/system.install:1031
+msgid ""
+"Boolean indicating whether this module is loaded during Drupal's early "
+"bootstrapping phase (e.g. even before the page cache is consulted)."
+msgstr ""
+"モジュールがDrupalの初期ブートストラッピング段階（例えば、ページキャッシュを"
+"調べる以前にさえ）でロードされるかどうかを示すフラグ"
+
+#: modules/system/system.install:1036
+msgid ""
+"The module's database schema version number. -1 if the module is not "
+"installed (its tables do not exist); 0 or the largest N of the module's "
+"hook_update_N() function that has either been run or existed when the module "
+"was first installed."
+msgstr ""
+"モジュールのデータベーススキーマのバージョン番号。 モジュールが未インストール"
+"ならば -1（テーブルが存在しない）。 モジュールが最初にインストールされた際、"
+"モジュールのhook_update_N()が実行されたか存在するならば最大のN。 あるいは0"
+
+#: modules/system/system.install:1042
+msgid ""
+"The order in which this module's hooks should be invoked relative to other "
+"modules. Equal-weighted modules are ordered by name."
+msgstr ""
+"他のモジュールと相対的な、モジュールのフックを呼び出す順序。 ウェイトが同じ場"
+"合は名前順"
+
+#: modules/system/system.install:1047
+msgid ""
+"A serialized array containing information from the module's .info file; keys "
+"can include name, description, package, version, core, dependencies, "
+"dependents, and php."
+msgstr ""
+"モジュールの.infoファイルから提供される情報を含んだシリアライズされた配列。 "
+"キーはname、description、package、version、core、dependencies、dependents、"
+"phpを含むことができる"
+
+#: modules/system/system.install:1060
+msgid ""
+"A list of URL aliases for Drupal paths; a user may visit either the source "
+"or destination path."
+msgstr ""
+"Drupalパス用のURLエイリアスのリスト（ユーザはsrcかdstパスにアクセスすることが"
+"できる）"
+
+#: modules/system/system.install:1063
+msgid "A unique path alias identifier."
+msgstr "固有のパスエイリアス識別子"
+
+#: modules/system/system.install:1068
+msgid "The Drupal path this alias is for; e.g. node/12."
+msgstr "エイリアス対象のDrupalパス（例： node/12）"
+
+#: modules/system/system.install:1074
+msgid "The alias for this path; e.g. title-of-the-story."
+msgstr "パスのエイリアス（例： title-of-the-story）"
+
+#: modules/system/system.install:1080
+msgid ""
+"The language this alias is for; if blank, the alias will be used for unknown "
+"languages. Each Drupal path can have an alias for each supported language."
+msgstr ""
+"エイリアス対象の言語。 空白の場合、エイリアスは不明な言語で使用される。 各"
+"Drupalパスはサポートされる言語ごとにエイリアスを持てる"
+
+#: (duplicate) modules/system/system.install:20
+msgid "Drupal"
+msgstr "Drupal"
+
+#: (duplicate) modules/system/system.install:30
+msgid "Web server"
+msgstr "ウェブサーバ"
+
+#: (duplicate) modules/system/system.install:40
+msgid ""
+"Your PHP installation is too old. Drupal requires at least PHP %version."
+msgstr ""
+"このサーバにインストールされているPHPは古すぎます。 Drupalは少なくともPHP %"
+"version を必要とします。"
+
+#: (duplicate) modules/system/system.install:46
+msgid "PHP register globals"
+msgstr "PHP register globals"
+
+#: (duplicate) modules/system/system.install:55
+msgid ""
+"<em>register_globals</em> is enabled. Drupal requires this configuration "
+"directive to be disabled. Your site may not be secure when "
+"<em>register_globals</em> is enabled. The PHP manual has instructions for <a "
+"href=\"http://php.net/configuration.changes\">how to change configuration "
+"settings</a>."
+msgstr ""
+"<em>register_globals</em> が有効になっています。 Drupalでは、この設定ディレク"
+"ティブを無効にする必要があります。 <em>register_globals</em> が有効の場合、サ"
+"イトが安全ではなくなります。 PHPマニュアルの「<a href=\"http://php.net/"
+"configuration.changes\">設定を変更するには</a>」に変更のための説明がありま"
+"す。"
+
+#: (duplicate) modules/system/system.install:57
+msgid "Enabled ('@value')"
+msgstr "有効（'@value'）"
+
+#: (duplicate) modules/system/system.install:66
+msgid "PHP memory limit"
+msgstr "PHPメモリ制限"
+
+#: (duplicate) modules/system/system.install:73
+msgid ""
+"Consider increasing your PHP memory limit to %memory_minimum_limit to help "
+"prevent errors in the installation process."
+msgstr ""
+"インストール処理でのエラーを防ぐために、PHPメモリ制限を %"
+"memory_minimum_limit に増やすことを検討してください。"
+
+#: (duplicate) modules/system/system.install:76
+msgid ""
+"Consider increasing your PHP memory limit to %memory_minimum_limit to help "
+"prevent errors in the update process."
+msgstr ""
+"アップデート処理でのエラーを防ぐために、PHPメモリ制限を %"
+"memory_minimum_limit に増やすことを検討してください。"
+
+#: (duplicate) modules/system/system.install:79
+msgid ""
+"Depending on your configuration, Drupal can run with a %memory_limit PHP "
+"memory limit. However, a %memory_minimum_limit PHP memory limit or above is "
+"recommended, especially if your site uses additional custom or contributed "
+"modules."
+msgstr ""
+"設定次第では、Drupalは %memory_limit のPHPメモリ制限で稼働できますが、%"
+"memory_minimum_limit 以上のPHPメモリ制限を推奨します。 特に追加の拡張モジュー"
+"ルを使用する場合、より多くのメモリを必要とするでしょう。"
+
+#: (duplicate) modules/system/system.install:84
+msgid ""
+"Increase the memory limit by editing the memory_limit parameter in the file %"
+"configuration-file and then restart your web server (or contact your system "
+"administrator or hosting provider for assistance)."
+msgstr ""
+"ファイル %configuration-file 内の memory_limit パラメータを編集して、メモリ制"
+"限を増やしてから、ウェブサーバを再起動してください。 （または、システム管理者"
+"やホスティングプロバイダに問い合わせてください）"
+
+#: (duplicate) modules/system/system.install:87
+msgid ""
+"Contact your system administrator or hosting provider for assistance with "
+"increasing your PHP memory limit."
+msgstr ""
+"PHPメモリ制限を増やすために、システム管理者やホスティングプロバイダに問い合わ"
+"せてください。"
+
+#: (duplicate) modules/system/system.install:90
+msgid "See the <a href=\"@url\">Drupal requirements</a> for more information."
+msgstr ""
+"より詳しい情報は<a href=\"@url\">Drupal requirements（英文）</a>を参照してく"
+"ださい。"
+
+#: (duplicate) modules/system/system.install:107 ;254
+msgid "Not protected"
+msgstr "保護されていません"
+
+#: (duplicate) modules/system/system.install:112
+msgid ""
+"The directory %file is not protected from modifications and poses a security "
+"risk. You must change the directory's permissions to be non-writable. "
+msgstr ""
+"ディレクトリ %file は変更に対して保護されていないため、セキュリティ上の危険性"
+"があります。 ディレクトリのパーミッションを書き込み禁止に変更してください。"
+
+#: (duplicate) modules/system/system.install:115
+msgid ""
+"The file %file is not protected from modifications and poses a security "
+"risk. You must change the file's permissions to be non-writable."
+msgstr ""
+"ファイル %file は変更に対して保護されていないため、セキュリティ上の危険性があ"
+"ります。 ファイルのパーミッションを書き込み禁止に変更してください。"
+
+#: (duplicate) modules/system/system.install:120 ;261
+msgid "Protected"
+msgstr "保護されています"
+
+#: (duplicate) modules/system/system.install:123
+msgid "Configuration file"
+msgstr "設定ファイル"
+
+#: (duplicate) modules/system/system.install:133
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@cron-"
+"handbook\">configuring cron jobs</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの <a href=\"@cron-handbook"
+"\">configuring cron jobs（英文）</a>を参照してください。 また、サーバでcronの"
+"利用が許可されていない場合は、<a href=\"http://drupal.jp/guide/"
+"cron_task_webcron\">cron タスクの設定 【 webcron の利用】</a>や、<a href="
+"\"http://drupal.jp/guide/cron_task_altcron\">「cron (crontab) が使えない場合"
+"の裏技」</a>のような代用cronを検討するか、定期的に手動で実行してください。"
+"<br />"
+
+#: (duplicate) modules/system/system.install:157
+msgid ""
+"Cron has not run. Please visit the <a href=\"@status\">status report</a> for "
+"more information."
+msgstr ""
+"cronが未実行です。 より詳しい情報は、<a href=\"@status\">現状報告</a>を参照し"
+"てください。"
+
+#: (duplicate) modules/system/system.install:162
+msgid "Never run"
+msgstr "未実行"
+
+#: (duplicate) modules/system/system.install:163
+msgid "Cron has not run."
+msgstr "cronが未実行です。"
+
+#: (duplicate) modules/system/system.install:166
+msgid "Last run !time ago"
+msgstr "前回の実行 !time 前"
+
+#: (duplicate) modules/system/system.install:169
+msgid "Cron has not run recently."
+msgstr "cronがしばらく実行されていません。"
+
+#: (duplicate) modules/system/system.install:174
+msgid "Cron maintenance tasks"
+msgstr "cronメンテナンスタスク"
+
+#: (duplicate) modules/system/system.install:177
+msgid "You can <a href=\"@cron\">run cron manually</a>."
+msgstr "<a href=\"@cron\">cronを手動で実行</a>"
+
+#: (duplicate) modules/system/system.install:196
+msgid "Not writable"
+msgstr "書き込み不能"
+
+#: (duplicate) modules/system/system.install:201
+msgid "The directory %directory is not writable."
+msgstr "ディレクトリ %directory が書き込み可能ではありません。"
+
+#: (duplicate) modules/system/system.install:205
+msgid ""
+"You may need to set the correct directory at the <a href=\"@admin-file-system"
+"\">file system settings page</a> or change the current directory's "
+"permissions so that it is writable."
+msgstr ""
+"<a href=\"@admin-file-system\">ファイルシステムの設定ページ</a>で適切なディレ"
+"クトリを設定するか、現在のディレクトリのパーミッションを書き込み可能にする必"
+"要があります。"
+
+#: (duplicate) modules/system/system.install:210
+msgid ""
+"An automated attempt to create this directory failed, possibly due to a "
+"permissions problem. To proceed with the installation, either create the "
+"directory and modify its permissions manually, or ensure that the installer "
+"has the permissions to create it automatically. For more information, please "
+"see INSTALL.txt or the <a href=\"@handbook_url\">on-line handbook</a>."
+msgstr ""
+"おそらくパーミッションの問題により、このディレクトリの自動作成に失敗しまし"
+"た。 インストールを続行するには、手作業でディレクトリを作成してパーミッション"
+"を変更するか、インストーラにディレクトリを自動的に作成できるパーミッションを"
+"与えてください。 より詳しい情報は、INSTALL.txt か<a href=\"@handbook_url\">オ"
+"ンラインハンドブック（英文）</a>を参照してください。"
+
+#: (duplicate) modules/system/system.install:220
+msgid "Writable (<em>public</em> download method)"
+msgstr "書き込み可能 （ダウンロード方法： <em>パブリック</em> ）"
+
+#: (duplicate) modules/system/system.install:223
+msgid "Writable (<em>private</em> download method)"
+msgstr "書き込み可能 （ダウンロード方法： <em>プライベート</em> ）"
+
+#: (duplicate) modules/system/system.install:230
+msgid "Database updates"
+msgstr "データベースの更新状況"
+
+#: (duplicate) modules/system/system.install:243
+msgid ""
+"Some modules have database schema updates to install. You should run the <a "
+"href=\"@update\">database update script</a> immediately."
+msgstr ""
+"いくつかのモジュールには、インストールが必要なデータベーススキーマの更新があ"
+"ります。 直ちに<a href=\"@update\">データベースのアップデートスクリプト</a>を"
+"実行してください。"
+
+#: (duplicate) modules/system/system.install:256
+msgid ""
+"The update.php script is accessible to everyone without authentication "
+"check, which is a security risk. You must change the $update_free_access "
+"value in your settings.php back to FALSE."
+msgstr ""
+"update.php が認証チェック無しでアクセス可能なため、セキュリティ上の危険があり"
+"ます。 これを回避するために、settings.php の $update_free_access を FALSE に"
+"変更してください。"
+
+#: (duplicate) modules/system/system.install:264
+msgid "Access to update.php"
+msgstr "update.php へのアクセス"
+
+#: (duplicate) modules/system/system.install:275
+msgid "Not enabled"
+msgstr "有効になっていません"
+
+#: (duplicate) modules/system/system.install:277
+msgid ""
+"Update notifications are not enabled. It is <strong>highly recommended</"
+"strong> that you enable the update status module from the <a href=\"@module"
+"\">module administration page</a> in order to stay up-to-date on new "
+"releases. For more information please read the <a href=\"@update\">Update "
+"status handbook page</a>."
+msgstr ""
+"アップデート通知が有効になっていません。 最新のリリースで最新の状態にしておく"
+"ために、<a href=\"@module\">モジュールの管理ページ</a>で Update status モ"
+"ジュールを有効にすることを<strong>強くお勧めします</strong>。 より詳しい情報"
+"は、<a href=\"@update\">ハンドブックの Update status ページ（英文）</a>を参照"
+"してください。"
+
+#: (duplicate) modules/system/system.install:286
+msgid "HTTP request status"
+msgstr "HTTPリクエストの状況"
+
+#: (duplicate) modules/system/system.install:287
+msgid "Fails"
+msgstr "失敗"
+
+#: (duplicate) modules/system/system.install:289
+msgid ""
+"Your system or network configuration does not allow Drupal to access web "
+"pages, resulting in reduced functionality. This could be due to your "
+"webserver configuration or PHP settings, and should be resolved in order to "
+"download information about available updates, fetch aggregator feeds, sign "
+"in via OpenID, or use other network-dependent services."
+msgstr ""
+"システムまたはネットワークの設定が、Drupalがウェブページにアクセスすることを"
+"許可していません。 これは機能性の低下につながり、原因はサーバかPHPの設定にあ"
+"るかもしれません。 利用可能なアップデートに関するダウンロード情報の取得、アグ"
+"リゲータフィードの取得、OpenIDを通じたログイン、その他のネットワーク依存サー"
+"ビスを利用するために、この問題は解決されるべきです。"
+
+#: (duplicate) modules/system/system.install:293
+msgid "Update notifications"
+msgstr "アップデート通知"
+
+#: modules/system/system.js:0
+msgid "Testing clean URLs..."
+msgstr "クリーンURLのテスト..."
+
+#: modules/system/system.js:0
+msgid ""
+"Your system configuration does not currently support this feature. The <a "
+"href=\"http://drupal.org/node/15365\">handbook page on Clean URLs</a> has "
+"additional troubleshooting information."
+msgstr ""
+"現在のシステム設定ではこの機能をサポートしていません。 <a href=\"http://"
+"drupal.org/node/15365\">ハンドブックのClean URLsページ（英文）</a>に、トラブ"
+"ルシューティングのより詳しい情報が掲載されています。"

@@ -1,0 +1,804 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-filter)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  filter.admin.inc,v 1.8.2.1 2008/02/12 14:25:34 goba
+#  filter.module,v 1.204 2008/01/21 15:08:24 goba
+#  filter.pages.inc,v 1.2 2007/11/10 17:41:18 dries
+#  filter.install,v 1.5 2007/12/18 12:59:21 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/filter/filter.admin.inc:33
+msgid "All roles may use default format"
+msgstr "デフォルト書式はすべてのロールで利用できます"
+
+#: modules/filter/filter.admin.inc:33
+msgid "No roles may use this format"
+msgstr "この書式を利用できるロールはありません"
+
+#: modules/filter/filter.admin.inc:38
+msgid "Set default format"
+msgstr "デフォルトの入力書式に指定"
+
+#: modules/filter/filter.admin.inc:45
+msgid "Default format updated."
+msgstr "デフォルトの入力書式が更新されました。"
+
+#: modules/filter/filter.admin.inc:81 modules/filter/filter.module:83
+msgid "Add input format"
+msgstr "入力書式の追加"
+
+#: modules/filter/filter.admin.inc:97
+msgid "All roles for the default format must be enabled and cannot be changed."
+msgstr ""
+"この入力書式はデフォルトの入力書式に指定されているため、すべてのロールで利用"
+"可能となり、ロールの設定は変更できません。"
+
+#: modules/filter/filter.admin.inc:104
+msgid "Specify a unique name for this filter format."
+msgstr "この入力書式に固有の名称を入力してください。"
+
+#: modules/filter/filter.admin.inc:111
+msgid ""
+"Choose which roles may use this filter format. Note that roles with the "
+"\"administer filters\" permission can always use all the filter formats."
+msgstr ""
+"この入力書式を利用できるロールにチェックを入れてください。 ただし、「フィルタ"
+"の管理」権限を持ったユーザは、常にすべての入力書式が利用できることに留意して"
+"ください。"
+
+#: modules/filter/filter.admin.inc:130
+msgid "Filters"
+msgstr "フィルタ"
+
+#: modules/filter/filter.admin.inc:131
+msgid "Choose the filters that will be used in this filter format."
+msgstr "この入力書式で使用するフィルタを指定してください。"
+
+#: modules/filter/filter.admin.inc:146 modules/filter/filter.module:583
+msgid "More information about formatting options"
+msgstr "書式オプションに関するより詳しい情報..."
+
+#: modules/filter/filter.admin.inc:149
+msgid "No guidelines available."
+msgstr "ガイドラインはありません。"
+
+#: modules/filter/filter.admin.inc:151
+msgid ""
+"These are the guidelines that users will see for posting in this input "
+"format. They are automatically generated from the filter settings."
+msgstr ""
+"以下は、投稿フォームで表示される、この入力書式のガイドラインです。 これらは"
+"フィルタの設定に応じて自動的に生成されます。"
+
+#: modules/filter/filter.admin.inc:153 modules/filter/filter.module:512
+msgid "Formatting guidelines"
+msgstr "入力書式のガイドライン"
+
+#: modules/filter/filter.admin.inc:168
+msgid ""
+"Filter format names need to be unique. A format named %name already exists."
+msgstr ""
+"入力書式の名称 %name は、すでに存在しています。 他の入力書式と重複しない名称"
+"を入力してください。"
+
+#: modules/filter/filter.admin.inc:187
+msgid "Added input format %format."
+msgstr "入力書式 %format が追加されました。"
+
+#: modules/filter/filter.admin.inc:190
+msgid "The input format settings have been updated."
+msgstr "入力書式の設定が更新されました。"
+
+#: modules/filter/filter.admin.inc:252
+msgid "Are you sure you want to delete the input format %format?"
+msgstr "本当に、入力書式 %format を削除してもよろしいですか？"
+
+#: modules/filter/filter.admin.inc:252
+msgid ""
+"If you have any content left in this input format, it will be switched to "
+"the default input format. This action cannot be undone."
+msgstr ""
+"この入力書式を使ったコンテンツが残っている場合、それらはデフォルトの入力書式"
+"に切り替えられます。 この操作は元に戻すことができませんので、十分に注意して実"
+"行してください。"
+
+#: modules/filter/filter.admin.inc:255
+msgid "The default format cannot be deleted."
+msgstr "デフォルトの入力書式は削除できません。"
+
+#: modules/filter/filter.admin.inc:278
+msgid "Deleted input format %format."
+msgstr "入力書式 %format が削除されました。"
+
+#: modules/filter/filter.admin.inc:289
+msgid "Configure %format"
+msgstr "%format の設定"
+
+#: modules/filter/filter.admin.inc:312
+msgid "No settings are available."
+msgstr "設定できるものがありません。"
+
+#: modules/filter/filter.admin.inc:330
+msgid "Rearrange %format"
+msgstr "%format の並び替え"
+
+#: modules/filter/filter.admin.inc:391
+msgid "The filter ordering has been saved."
+msgstr "フィルタの順序付けが保存されました。"
+
+#: modules/filter/filter.pages.inc:35
+msgid "input formats"
+msgstr "入力書式"
+
+#: modules/filter/filter.module:23
+msgid ""
+"The filter module allows administrators to configure text input formats for "
+"use on your site. An input format defines the HTML tags, codes, and other "
+"input allowed in both content and comments, and is a key feature in guarding "
+"against potentially damaging input from malicious users. Two input formats "
+"included by default are <em>Filtered HTML</em> (which allows only an "
+"administrator-approved subset of HTML tags) and <em>Full HTML</em> (which "
+"allows the full set of HTML tags). Additional input formats may be created "
+"by an administrator."
+msgstr ""
+"Filter（フィルタ）モジュールは、サイトで使用できるテキストの入力書式を管理者"
+"が設定できるようにします。 入力書式はコンテンツとコメントで許可されるHTMLタ"
+"グ、コード、その他の入力を定義するとともに、悪意のあるユーザによる損害を与え"
+"かねない入力から保護する重要な機能です。 デフォルトで2つの入力書式、"
+"「Filtered HTML」（管理者の承認したHTMLタグのサブセットのみが使用可能）と、"
+"「Full HTML」（HTMLタグのフルセットが使用可能）が含まれています。 管理者が追"
+"加の入力書式を作成することもできます。"
+
+#: modules/filter/filter.module:24
+msgid ""
+"Each input format uses filters to manipulate text, and most input formats "
+"apply several different filters to text in a specific order. Each filter is "
+"designed for a specific purpose, and generally either adds, removes or "
+"transforms elements within user-entered text before it is displayed. A "
+"filter does not change the actual content of a post, but instead, modifies "
+"it temporarily before it is displayed. A filter may remove unapproved HTML "
+"tags, for instance, while another automatically adds HTML to make links "
+"referenced in text clickable."
+msgstr ""
+"各入力書式はテキストを操作するためにフィルタを使用し、ほとんどの入力書式で"
+"は、いくつかの異なるフィルタを特定の順序でテキストに適用します。 各フィルタは"
+"特定の用途に設計され、一般に、ユーザの入力したテキスト内の要素をそれらの表示"
+"前に追加・削除・変換します。 フィルタは実際の投稿内容は変更せず、表示前に一時"
+"的に変更した内容を出力します。 フィルタは、承認されていないHTMLタグを除去する"
+"こともあれば、テキスト内でクリック可能なリンクを作るために自動的にHTMLタグを"
+"加えることもあります。"
+
+#: modules/filter/filter.module:25
+msgid ""
+"Users can choose between the available input formats when creating or "
+"editing content. Administrators can configure which input formats are "
+"available to which user roles, as well as choose a default input format."
+msgstr ""
+"ユーザはコンテンツの作成や編集の際に、利用可能な入力書式の中から1つを選ぶこと"
+"ができます。 管理者は、ユーザロールごとの利用可能な入力書式の設定や、デフォル"
+"トの入力書式の選択を行えます。"
+
+#: modules/filter/filter.module:26
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@filter"
+"\">Filter module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@filter\">Filter module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/filter/filter.module:29
+msgid ""
+"<em>Input formats</em> define a way of processing user-supplied text in "
+"Drupal. Each input format uses filters to manipulate text, and most input "
+"formats apply several different filters to text, in a specific order. Each "
+"filter is designed to accomplish a specific purpose, and generally either "
+"removes elements from or adds elements to text before it is displayed. Users "
+"can choose between the available input formats when submitting content."
+msgstr ""
+"「入力書式」は、ユーザがDrupalに与えたテキストを処理する方法を定義します。 各"
+"入力書式はテキストを操作するためにフィルタを使用し、ほとんどの入力書式では、"
+"いくつかの異なるフィルタを特定の順序でテキストに適用します。 各フィルタは特定"
+"の用途に設計され、一般に、ユーザの入力したテキスト内の要素をそれらの表示前に"
+"追加・削除・変換します。 ユーザはコンテンツの作成や編集の際に、利用可能な入力"
+"書式の中から1つを選ぶことができます。"
+
+#: modules/filter/filter.module:30
+msgid ""
+"Use the list below to configure which input formats are available to which "
+"roles, as well as choose a default input format (used for imported content, "
+"for example). The default format is always available to users. All input "
+"formats are available to users in a role with the \"administer filters\" "
+"permission."
+msgstr ""
+"以下のリストを使用して、ロールごとの利用可能な入力書式の設定や、デフォルトの"
+"入力書式（例えば、インポートされたコンテンツに使用されます）の選択を行ってく"
+"ださい。 デフォルトに指定された入力書式は、常にユーザが利用可能となります。 "
+"「フィルタの管理」権限を持ったユーザは、すべての入力書式が利用可能となりま"
+"す。"
+
+#: modules/filter/filter.module:33
+msgid ""
+"Every <em>filter</em> performs one particular change on the user input, for "
+"example stripping out malicious HTML or making URLs clickable. Choose which "
+"filters you want to apply to text in this input format. If you notice some "
+"filters are causing conflicts in the output, you can <a href=\"@rearrange"
+"\">rearrange them</a>."
+msgstr ""
+"すべての「フィルタ」は、例えば悪意のあるHTMLの除去やURLをクリック可能にするな"
+"ど、ユーザの入力に対して1つの特定の変更を行います。 この入力書式でテキストに"
+"適用したいフィルタを選んでください。 いくつかのフィルタが表示の際にコンフリク"
+"トしていることに気付いた場合、<a href=\"@rearrange\">それらを並び替える</a>こ"
+"とができます。"
+
+#: modules/filter/filter.module:35
+msgid ""
+"If you cannot find the settings for a certain filter, make sure you have "
+"enabled it on the <a href=\"@url\">view tab</a> first."
+msgstr ""
+"特定のフィルタの設定が見つからない場合は、はじめに<a href=\"@url\">「編集」"
+"ページ</a>で、そのフィルタの有効化を確認してください。"
+
+# 例を変更
+#: modules/filter/filter.module:37
+msgid ""
+"Because of the flexible filtering system, you might encounter a situation "
+"where one filter prevents another from doing its job. For example: a word in "
+"an URL gets converted into a glossary term, before the URL can be converted "
+"to a clickable link. When this happens, rearrange the order of the filters."
+msgstr ""
+"柔軟なフィルタリングシステムのために、一方のフィルタ処理がもう一方のフィルタ"
+"処理を妨げる場合があります。 例えば、一般によく利用されるものに「HTMLフィル"
+"タ」（HTMLタグの除去）と「改行コンバータ」（改行を&lt;br /&gt;タグに変換）の"
+"組み合わせがあります。 この場合、改行を&lt;br /&gt;タグに変換する処理がHTMLタ"
+"グの除去処理より先に行われると、変換された&lt;br /&gt;タグは除去されてしまい"
+"望んだ結果が得られないことになります。 これを避けるために、フィルタには処理の"
+"優先順位を設定することができます。"
+
+#: modules/filter/filter.module:38
+msgid ""
+"Filters are executed from top-to-bottom. To change the order of the filters, "
+"modify the values in the <em>Weight</em> column or grab a drag-and-drop "
+"handle under the <em>Name</em> column and drag filters to new locations in "
+"the list. (Grab a handle by clicking and holding the mouse while hovering "
+"over a handle icon.) Remember that your changes will not be saved until you "
+"click the <em>Save configuration</em> button at the bottom of the page."
+msgstr ""
+"フィルタは上から順番に実行されます。 フィルタの順番を変更するには、「ウェイ"
+"ト」の値（数値が小さいほど上になります）を変更するか、名前のカラムにあるド"
+"ラッグアンドドロップハンドル（十字の矢印）をつかみ（ハンドルをつかむには、ハ"
+"ンドルアイコン上でマウスの左ボタンを押下したままにします）、リスト中の新しい"
+"位置へフィルタをドラッグしてください。 ページ下部にある「設定の保存」ボタンを"
+"クリックするまで、変更が保存されないことに注意してください。"
+
+#: modules/filter/filter.module:176;178
+msgid "Allowed HTML tags: @tags"
+msgstr "使用できるHTMLタグ： @tags"
+
+#: modules/filter/filter.module:183
+msgid ""
+"\n"
+"<p>This site allows HTML content. While learning all of HTML may feel "
+"intimidating, learning how to use a very small number of the most basic HTML "
+"\"tags\" is very easy. This table provides examples for each tag that is "
+"enabled on this site.</p>\n"
+"<p>For more information see W3C's <a href=\"http://www.w3.org/TR/html/"
+"\">HTML Specifications</a> or use your favorite search engine to find other "
+"sites that explain HTML.</p>"
+msgstr ""
+"\n"
+"<p>このサイトではHTMLで書かれたコンテンツの投稿を許可しています。 HTMLのすべ"
+"てを習得するのは気が引けるかもしれませんが、ごく少数の基本的なHTML「タグ」の"
+"使い方を習得するのはとても簡単です。 以下の表では、このサイトで利用できるタグ"
+"を、一例を挙げて説明しています。</p>\n"
+"<p>より詳細な情報は、W3Cの<a href=\"http://www.w3.org/TR/html/\">HTML "
+"Specifications（英文）</a>や、<a href=\"http://www.w3.org/Consortium/"
+"Translation/Japanese\">W3C 仕様書等の日本語訳集</a>を参照するか、好みの検索エ"
+"ンジンからHTMLについて解説しているサイトを探し、それらを参考にしてください。"
+"</p>"
+
+#: modules/filter/filter.module:187
+msgid "Anchors are used to make links to other pages."
+msgstr "アンカーは他ページへのリンク作成に使用します。"
+
+#: modules/filter/filter.module:188
+msgid ""
+"By default line break tags are automatically added, so use this tag to add "
+"additional ones. Use of this tag is different because it is not used with an "
+"open/close pair like all the others. Use the extra \" /\" inside the tag to "
+"maintain XHTML 1.0 compatibility"
+msgstr ""
+"デフォルトで改行タグは自動的に付加されますので、このタグは改行を追加したい場"
+"合に使用してください。 このタグはその他のほとんどのタグとは異なり、開始タグと"
+"終了タグのペアでは使いません。 「XHTML 1.0」との互換性を保つために、タグの中"
+"に余分な \" /\" を入れてください。"
+
+#: modules/filter/filter.module:188
+msgid "Text with <br />line break"
+msgstr "このテキストは<br />改行されます"
+
+#: modules/filter/filter.module:189
+msgid ""
+"By default paragraph tags are automatically added, so use this tag to add "
+"additional ones."
+msgstr ""
+"デフォルトで段落タグは自動的に付加されますので、このタグは段落タグを追加した"
+"い場合に使用してください。"
+
+#: modules/filter/filter.module:189
+msgid "Paragraph one."
+msgstr "段落 1"
+
+#: modules/filter/filter.module:189
+msgid "Paragraph two."
+msgstr "段落 2"
+
+#: modules/filter/filter.module:190;190
+msgid "Strong"
+msgstr "強調"
+
+#: modules/filter/filter.module:191;191
+msgid "Emphasized"
+msgstr "強調"
+
+#: modules/filter/filter.module:192;192
+msgid "Cited"
+msgstr "引用"
+
+#: modules/filter/filter.module:193
+msgid "Coded text used to show programming source code"
+msgstr "テキストをプログラムのソースコードとして明示するために使われます。"
+
+#: modules/filter/filter.module:193
+msgid "Coded"
+msgstr "コード"
+
+#: modules/filter/filter.module:194;194
+msgid "Bolded"
+msgstr "太字"
+
+#: modules/filter/filter.module:195;195
+msgid "Underlined"
+msgstr "下線"
+
+#: modules/filter/filter.module:196;196
+msgid "Italicized"
+msgstr "斜体"
+
+#: modules/filter/filter.module:197
+msgid "Superscripted"
+msgstr "上付き文字"
+
+#: modules/filter/filter.module:197
+msgid "<sup>Super</sup>scripted"
+msgstr "<sup>上付き</sup>文字"
+
+#: modules/filter/filter.module:198
+msgid "Subscripted"
+msgstr "下付き文字"
+
+#: modules/filter/filter.module:198
+msgid "<sub>Sub</sub>scripted"
+msgstr "<sub>下付き</sub>文字"
+
+#: modules/filter/filter.module:199;199
+msgid "Preformatted"
+msgstr "整形済みテキスト"
+
+#: modules/filter/filter.module:200
+msgid "Abbreviation"
+msgstr "略語"
+
+#: modules/filter/filter.module:200
+msgid "<abbr title=\"Abbreviation\">Abbrev.</abbr>"
+msgstr "<abbr title=\"デモンストレーション\">デモ</abbr>"
+
+#: modules/filter/filter.module:201
+msgid "Acronym"
+msgstr "頭字語"
+
+#: modules/filter/filter.module:201
+msgid "<acronym title=\"Three-Letter Acronym\">TLA</acronym>"
+msgstr "<acronym title=\"Contents Management System\">CMS</acronym>"
+
+#: modules/filter/filter.module:202;202
+msgid "Block quoted"
+msgstr "ブロック引用"
+
+#: modules/filter/filter.module:203;203
+msgid "Quoted inline"
+msgstr "インライン引用"
+
+#: modules/filter/filter.module:205
+msgid "Table"
+msgstr "テーブル"
+
+#: modules/filter/filter.module:205
+msgid "Table header"
+msgstr "テーブルヘッダ"
+
+#: modules/filter/filter.module:205
+msgid "Table cell"
+msgstr "テーブルセル"
+
+#: modules/filter/filter.module:207;207
+msgid "Deleted"
+msgstr "削除"
+
+#: modules/filter/filter.module:208;208
+msgid "Inserted"
+msgstr "挿入"
+
+#: modules/filter/filter.module:210
+msgid "Ordered list - use the &lt;li&gt; to begin each list item"
+msgstr ""
+"順序付きリスト - 各リスト項目を &lt;li&gt;&lt;/li&gt; で囲み、全体を &lt;"
+"ol&gt;&lt;/ol&gt; で囲みます。"
+
+#: modules/filter/filter.module:210;211
+msgid "First item"
+msgstr "1番目の項目"
+
+#: modules/filter/filter.module:210;211
+msgid "Second item"
+msgstr "2番目の項目"
+
+#: modules/filter/filter.module:211
+msgid "Unordered list - use the &lt;li&gt; to begin each list item"
+msgstr ""
+"順序無しリスト - 各リスト項目を &lt;li&gt;&lt;/li&gt; で囲み、全体を &lt;"
+"ul&gt;&lt;/ul&gt; で囲みます。"
+
+#: modules/filter/filter.module:214
+msgid ""
+"Definition lists are similar to other HTML lists. &lt;dl&gt; begins the "
+"definition list, &lt;dt&gt; begins the definition term and &lt;dd&gt; begins "
+"the definition description."
+msgstr ""
+"定義リストは他の HTML リストと似ています。 定義用語を &lt;dt&gt;&lt;/"
+"dt&gt; 、その用語の説明を&lt;dd&gt;&lt;/dd&gt; で囲み、全体を &lt;dl&gt;&lt;/"
+"dl&gt; で囲みます。"
+
+#: modules/filter/filter.module:214
+msgid "First term"
+msgstr "1番目の用語"
+
+#: modules/filter/filter.module:214
+msgid "First definition"
+msgstr "1番目の定義"
+
+#: modules/filter/filter.module:214
+msgid "Second term"
+msgstr "2番目の用語"
+
+#: modules/filter/filter.module:214
+msgid "Second definition"
+msgstr "2番目の定義"
+
+#: modules/filter/filter.module:217
+msgid "Subtitle"
+msgstr "見出し レベル2"
+
+#: modules/filter/filter.module:218
+msgid "Subtitle three"
+msgstr "見出し レベル3"
+
+#: modules/filter/filter.module:219
+msgid "Subtitle four"
+msgstr "見出し レベル4"
+
+#: modules/filter/filter.module:220
+msgid "Subtitle five"
+msgstr "見出し レベル5"
+
+#: modules/filter/filter.module:221
+msgid "Subtitle six"
+msgstr "見出し レベル6"
+
+#: modules/filter/filter.module:223
+msgid "Tag Description"
+msgstr "タグの説明"
+
+#: modules/filter/filter.module:223;252
+msgid "You Type"
+msgstr "記述例"
+
+#: modules/filter/filter.module:223;252
+msgid "You Get"
+msgstr "表示例"
+
+#: modules/filter/filter.module:237
+msgid "No help provided for tag %tag."
+msgstr "%tag タグのヘルプはありません。"
+
+#: modules/filter/filter.module:243
+msgid ""
+"\n"
+"<p>Most unusual characters can be directly entered without any problems.</"
+"p>\n"
+"<p>If you do encounter problems, try using HTML character entities. A common "
+"example looks like &amp;amp; for an ampersand &amp; character. For a full "
+"list of entities see HTML's <a href=\"http://www.w3.org/TR/html4/sgml/"
+"entities.html\">entities</a> page. Some of the available characters include:"
+"</p>"
+msgstr ""
+"\n"
+"<p>ほとんどの特殊記号は、特に問題なく直接入力することができます。</p>\n"
+"<p>問題が生じた場合は、HTMLのエンティティ表記を使用してみてください。 例え"
+"ば、&amp;amp; と入力した場合はアンド記号の「&」のように表示されます。 エン"
+"ティティの全リストは、HTMLの<a href=\"http://www.w3.org/TR/html4/sgml/"
+"entities.html\">エンティティ</a>ページを参照してください。</p><p>エンティティ"
+"表記の一例：</p>"
+
+#: modules/filter/filter.module:247
+msgid "Ampersand"
+msgstr "アンパサンド（&amp;）"
+
+#: modules/filter/filter.module:248
+msgid "Greater than"
+msgstr "大なり記号（&gt;）"
+
+#: modules/filter/filter.module:249
+msgid "Less than"
+msgstr "小なり記号（&lt;）"
+
+#: modules/filter/filter.module:250
+msgid "Quotation mark"
+msgstr "引用符（&quot;）"
+
+#: modules/filter/filter.module:252
+msgid "Character Description"
+msgstr "文字の説明"
+
+#: modules/filter/filter.module:266
+msgid "No HTML tags allowed"
+msgstr "HTMLタグは使用できません"
+
+#: modules/filter/filter.module:274
+msgid "Lines and paragraphs break automatically."
+msgstr "行と段落は自動的に折り返されます。"
+
+#: modules/filter/filter.module:276
+msgid ""
+"Lines and paragraphs are automatically recognized. The &lt;br /&gt; line "
+"break, &lt;p&gt; paragraph and &lt;/p&gt; close paragraph tags are inserted "
+"automatically. If paragraphs are not recognized simply add a couple blank "
+"lines."
+msgstr ""
+"行と段落は自動的に認識され、&lt;br /&gt;（改行タグ）や &lt;p&gt; &lt;/p&gt;"
+"（段落の開始・終了タグ）が自動的に挿入されます。 もし段落が認識されない場合"
+"は、空行を2つ加えてください。"
+
+#: modules/filter/filter.module:280
+msgid "Web page addresses and e-mail addresses turn into links automatically."
+msgstr ""
+"ウェブページアドレスとメールアドレスは、自動的にハイパーリンクに変換されま"
+"す。"
+
+#: modules/filter/filter.module:484
+msgid "Input format"
+msgstr "入力書式"
+
+#: modules/filter/filter.module:604;655
+msgid "HTML filter"
+msgstr "HTMLフィルタ"
+
+#: modules/filter/filter.module:604
+msgid "Line break converter"
+msgstr "改行コンバータ"
+
+#: modules/filter/filter.module:604;715
+msgid "URL filter"
+msgstr "URLフィルタ"
+
+#: modules/filter/filter.module:604
+msgid "HTML corrector"
+msgstr "HTMLコレクタ"
+
+#: modules/filter/filter.module:609
+msgid ""
+"Allows you to restrict whether users can post HTML and which tags to filter "
+"out. It will also remove harmful content such as JavaScript events, "
+"JavaScript URLs and CSS styles from those tags that are not removed."
+msgstr ""
+"ユーザが投稿できるHTMLタグを制限し、許可されていないタグの除去やエンティティ"
+"表記への変換を行います。 また、JavaScriptのイベント・JavaScriptのURL・CSSスタ"
+"イルなどの有害な内容を、除去されないタグから取り除きます。"
+
+#: modules/filter/filter.module:611
+msgid "Converts line breaks into HTML (i.e. &lt;br&gt; and &lt;p&gt; tags)."
+msgstr "段落や改行をHTMLタグ（&lt;p&gt;と&lt;br /&gt;）に変換します。"
+
+#: modules/filter/filter.module:613
+msgid "Turns web and e-mail addresses into clickable links."
+msgstr "ウェブとメールのアドレスをクリックできるリンクに変換します。"
+
+#: modules/filter/filter.module:615
+msgid "Corrects faulty and chopped off HTML in postings."
+msgstr "投稿内の不完全なHTMLを訂正します。"
+
+#: modules/filter/filter.module:660
+msgid "Filter HTML tags"
+msgstr "HTMLタグのフィルタ"
+
+#: modules/filter/filter.module:662
+msgid "Strip disallowed tags"
+msgstr "未許可のタグを除去"
+
+#: modules/filter/filter.module:662
+msgid "Escape all tags"
+msgstr "全タグをエンティティ（&xxx;）表記に変換"
+
+#: modules/filter/filter.module:663
+msgid ""
+"How to deal with HTML tags in user-contributed content. If set to \"Strip "
+"disallowed tags\", dangerous tags are removed (see below). If set to "
+"\"Escape tags\", all HTML is escaped and presented as it was typed."
+msgstr ""
+"ユーザから投稿されたコンテンツ内にある、HTMLタグの処理方法を指定してくださ"
+"い。 「未許可のタグを除去」を選択した場合は、以下で許可されているタグ以外は除"
+"去されます。 「全タグをエンティティ（&xxx;）表記に変換」を選択した場合は、す"
+"べてのタグをエンティティ表記に変換し、文字として表示されるようにします。"
+
+#: modules/filter/filter.module:671
+msgid ""
+"If \"Strip disallowed tags\" is selected, optionally specify tags which "
+"should not be stripped. JavaScript event attributes are always stripped."
+msgstr ""
+"使用を許可する任意のHTMLタグを入力してください。 これらは上記の「HTMLタグの"
+"フィルタ」で「未許可のタグを除去」を選択した場合にのみ有効で、入力されたタグ"
+"は除去されないようになります。 ただし、JavaScriptのイベント属性は常に除去され"
+"ます。"
+
+#: modules/filter/filter.module:675
+msgid "Display HTML help"
+msgstr "HTMLヘルプの表示"
+
+#: modules/filter/filter.module:677
+msgid ""
+"If enabled, Drupal will display some basic HTML help in the long filter tips."
+msgstr ""
+"詳細なHTMLヘルプを表示するかどうかを指定してください。 チェックを入れると、使"
+"用が許可されているタグのうち、一部の基本的なHTMLタグに関するヘルプを「<a "
+"href=\"?q=filter/tips\">コンテンツ作成のヒント</a>」ページに表示します。"
+
+# スパムリンク云々だと誤解が生じるため
+#: modules/filter/filter.module:681
+msgid "Spam link deterrent"
+msgstr "検索エンジンに対するリンク効果の抑止"
+
+#: modules/filter/filter.module:683
+msgid ""
+"If enabled, Drupal will add rel=\"nofollow\" to all links, as a measure to "
+"reduce the effectiveness of spam links. Note: this will also prevent valid "
+"links from being followed by search engines, therefore it is likely most "
+"effective when enabled for anonymous users."
+msgstr ""
+"すべてのリンクに <b>rel=\"nofollow\"</b> を追加するかどうかを指定してくださ"
+"い。 チェックを入れると、以下のようにアンカータグに rel=\"nofollow\" が追加さ"
+"れます。<pre>&lt;a href=\"http://drupal.jp/\" <strong>rel=\"nofollow\"</"
+"strong>&gt;≡ Drupal Japan ≡&lt;/a&gt;</pre>これは、Googleをはじめとする多くの"
+"検索サイトで、検索結果の上位にリストアップされる条件の1つを抑止する働きがあ"
+"り、主にスパムリンクの効果を減少させるために利用されます。 登録ユーザが投稿し"
+"たコンテンツ内の正当なリンクに対しても働くことになりますので、匿名ユーザにの"
+"み使用できる入力書式に適用することが、おそらく最も効果的です。"
+
+#: modules/filter/filter.module:720
+msgid "Maximum link text length"
+msgstr "リンクテキストの最長文字数"
+
+#: modules/filter/filter.module:723
+msgid ""
+"URLs longer than this number of characters will be truncated to prevent long "
+"strings that break formatting. The link itself will be retained; just the "
+"text portion of the link will be truncated."
+msgstr ""
+"リンクテキストとして使用できる文字数の上限を入力してください。 ここで指定され"
+"た文字数より長いテキストは、体裁を崩すのを防ぐために切り落とされます。 ただ"
+"し、この文字数はリンクテキスト部にのみ影響し、リンク（URL 文字列）自体には影"
+"響を与えません。"
+
+#: modules/filter/filter.module:153
+msgid "administer filters"
+msgstr "フィルタの管理"
+
+#: modules/filter/filter.module:71
+msgid "Input formats"
+msgstr "入力書式"
+
+#: modules/filter/filter.module:72
+msgid ""
+"Configure how content input by users is filtered, including allowed HTML "
+"tags. Also allows enabling of module-provided filters."
+msgstr ""
+"許可するHTMLタグを含め、ユーザによって入力されたコンテンツのフィルタ方法を設"
+"定します。 また、モジュールによって提供されたフィルタを有効化できるようにしま"
+"す。"
+
+#: modules/filter/filter.module:90
+msgid "Delete input format"
+msgstr "入力書式の削除"
+
+#: modules/filter/filter.module:97
+msgid "Compose tips"
+msgstr "コンテンツ作成のヒント"
+
+#: modules/filter/filter.module:128
+msgid "Rearrange"
+msgstr "並べ替え"
+
+#: modules/filter/filter.module:0
+msgid "filter"
+msgstr "フィルタ"
+
+#: modules/filter/filter.install:9
+msgid ""
+"Table that maps filters (HTML corrector) to input formats (Filtered HTML)."
+msgstr "入力書式(Filtered HTML)にフィルタ(HTML corrector)をマップするテーブル"
+
+#: modules/filter/filter.install:14
+msgid "Primary Key: Auto-incrementing filter ID."
+msgstr "プライマリキー： 自動インクリメントされるフィルタID"
+
+#: modules/filter/filter.install:20
+msgid ""
+"Foreign key: The {filter_formats}.format to which this filter is assigned."
+msgstr "フォーリンキー： このフィルタが割り当てられる{filter_formats}.format"
+
+#: modules/filter/filter.install:27
+msgid "The origin module of the filter."
+msgstr "フィルタの基点モジュール"
+
+#: modules/filter/filter.install:34
+msgid "ID to identify which filter within module is being referenced."
+msgstr "モジュール内でフィルタを識別するID"
+
+#: modules/filter/filter.install:41
+msgid "Weight of filter within format."
+msgstr "入力書式内でのフィルタのウェイト"
+
+#: modules/filter/filter.install:53
+msgid ""
+"Stores input formats: custom groupings of filters, such as Filtered HTML."
+msgstr "入力書式（「Filtered HTML」のようなフィルタのグループ）を格納します"
+
+#: modules/filter/filter.install:58
+msgid "Primary Key: Unique ID for format."
+msgstr "プライマリキー： 固有の入力書式ID"
+
+#: modules/filter/filter.install:65
+msgid "Name of the input format (Filtered HTML)."
+msgstr "入力書式の名前(例：Filtered HTML)"
+
+#: modules/filter/filter.install:72
+msgid "A comma-separated string of roles; references {role}.rid."
+msgstr "ロールのコンマ区切り文字列（{role}.rid参照）"
+
+#: modules/filter/filter.install:79
+msgid ""
+"Flag to indicate whether format is cachable. (1 = cachable, 0 = not cachable)"
+msgstr ""
+"入力書式がキャッシュ可能であるかどうかを示すフラグ（1 = キャッシュ可、0 = "
+"キャッシュ不可）"
+
+#: modules/filter/filter.install:87
+msgid ""
+"Cache table for the Filter module to store already filtered pieces of text, "
+"identified by input format and md5 hash of the text."
+msgstr ""
+"テキストの入力書式とMD5ハッシュ値で識別される、すでにフィルタしたテキストの一"
+"部を格納するフィルタモジュール用キャッシュテーブル"

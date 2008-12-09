@@ -1,0 +1,255 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-openid)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  openid.inc,v 1.8 2008/01/30 22:11:22 goba
+#  openid.pages.inc,v 1.5 2008/01/30 22:11:22 goba
+#  openid.module,v 1.19 2008/01/30 22:11:22 goba
+#  openid.install,v 1.3 2007/10/10 11:39:33 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/openid/openid.inc:44
+msgid "OpenID redirect"
+msgstr "OpenIDリダイレクト"
+
+#: modules/openid/openid.inc:67
+msgid "Send"
+msgstr "送信"
+
+#: modules/openid/openid.pages.inc:18
+msgid "OpenID login failed."
+msgstr "OpenIDでのログインに失敗しました。"
+
+#: modules/openid/openid.pages.inc:21
+msgid "OpenID login cancelled."
+msgstr "OpenIDでのログインは中止されました。"
+
+#: modules/openid/openid.pages.inc:39
+msgid "Successfully added %identity"
+msgstr "%identity が正常に追加されました"
+
+#: modules/openid/openid.pages.inc:66
+msgid "Add an OpenID"
+msgstr "OpenIDを追加"
+
+#: modules/openid/openid.pages.inc:74
+msgid "That OpenID is already in use on this site."
+msgstr "入力されたOpenIDは、すでにこのサイトで使用されています。"
+
+#: modules/openid/openid.pages.inc:88
+msgid "OpenID deleted."
+msgstr "OpenIDが削除されました。"
+
+#: modules/openid/openid.module:46
+msgid ""
+"This site supports <a href=\"@openid-net\">OpenID</a>, a secure way to log "
+"into many websites using a single username and password. OpenID can reduce "
+"the necessity of managing many usernames and passwords for many websites."
+msgstr ""
+"このサイトでは<a href=\"@openid-net\">OpenID</a>をサポートしています。 OpenID"
+"は、一組のユーザ名とパスワードを使って多数のウェブサイトにログインできる安全"
+"な方法で、ユーザ名とパスワードをサイトごとに管理する必要性を軽減できます。"
+
+#: modules/openid/openid.module:47
+msgid ""
+"To use OpenID you must first establish an identity on a public or private "
+"OpenID server. If you do not have an OpenID and would like one, look into "
+"one of the <a href=\"@openid-providers\">free public providers</a>. You can "
+"find out more about OpenID at <a href=\"@openid-net\">this website</a>."
+msgstr ""
+"OpenIDを使用するにはまず、パブリックかプライベートのOpenIDサーバでアイデン"
+"ティティを確立する必要があります。 OpenIDを持っていない場合は、<a href="
+"\"@openid-providers\">無料のパブリックプロバイダ</a>（日本語サイトは<a href="
+"\"http://ja.wikipedia.org/wiki/OpenID\">ウィキペディアのOpenIDエントリ</a>で"
+"いくつか紹介されています）の1つにアクセスしてみてください。 <a href="
+"\"@openid-net\">このウェブサイト</a>（または前述のウィキペディアエントリ）"
+"で、OpenIDに関するより多くの情報を得ることができます。"
+
+#: modules/openid/openid.module:48
+msgid ""
+"If you already have an OpenID, enter the URL to your OpenID server below (e."
+"g. myusername.openidprovider.com). Next time you login, you will be able to "
+"use this URL instead of a regular username and password. You can have "
+"multiple OpenID servers if you like; just keep adding them here."
+msgstr ""
+"すでにOpenIDを持っている場合は、OpenIDサーバへのURL（例：http://myusername."
+"example.com）を以下に入力してください。 次回のログインから、このURLを通常の"
+"ユーザ名とパスワードの代わりに使用することができます。 URLを追加してゆくこと"
+"で、複数のOpenIDサーバを使用できます。"
+
+#: modules/openid/openid.module:52
+msgid ""
+"OpenID is a secure method for logging into many websites with a single "
+"username and password. It does not require special software, and it does not "
+"share passwords with any site to which it is associated; including your site."
+msgstr ""
+"OpenIDは、一組のユーザ名とパスワードで多数のウェブサイトにログインするための"
+"安全な方法です。 OpenIDは特別なソフトウェアを必要とせず、あなたのサイトを含"
+"め、提携するいかなるサイトともパスワードを共有しません。"
+
+#: modules/openid/openid.module:53
+msgid ""
+"Users can create accounts using their OpenID, assign one or more OpenIDs to "
+"an existing account, and log in using an OpenID. This lowers the barrier to "
+"registration, which is good for the site, and offers convenience and "
+"security to the users. OpenID is not a trust system, so email verification "
+"is still necessary. The benefit stems from the fact that users can have a "
+"single password that they can use on many websites. This means they can "
+"easily update their single password from a centralized location, rather than "
+"having to change dozens of passwords individually."
+msgstr ""
+"ユーザはOpenIDを使用してアカウントを作成し、既存のアカウントに1つ以上のOpenID"
+"を割り当て、OpenIDを使用してログインすることができます。 これは登録の障壁を下"
+"げ（サイトに効果的）、ユーザに利便性と安全性を提供します。 OpenIDはトラスト組"
+"織ではないため、メールによる確認も必要となりますが、多数のウェブサイトで使用"
+"可能な単一のパスワードを持てるメリットがあります。 これによってユーザは多数の"
+"パスワードを管理する手間が省け、パスワードの管理が容易になります。"
+
+#: modules/openid/openid.module:54
+msgid ""
+"The basic concept is as follows: A user has an account on an OpenID server. "
+"This account provides them with a unique URL (such as myusername."
+"openidprovider.com). When the user comes to your site, they are presented "
+"with the option of entering this URL. Your site then communicates with the "
+"OpenID server, asking it to verify the identity of the user. If the user is "
+"logged into their OpenID server, the server communicates back to your site, "
+"verifying the user. If they are not logged in, the OpenID server will ask "
+"the user for their password. At no point does your site record, or need to "
+"record the user's password."
+msgstr ""
+"基本概念は以下のとおりです：<br /><ul><li>ユーザはOpenIDサーバ上にアカウント"
+"を持ちます。</li><li>このアカウントは http://myusername.example.com のような"
+"固有のURLで提供されます。</li><li>ユーザがあなたのサイトを訪れた際、このURLを"
+"入力するオプションが提示されます。</li><li>あなたのサイトはOpenIDサーバと通信"
+"し、入力されたURLでユーザの身元を確認するように依頼します。</li><li>ユーザが"
+"OpenIDサーバにログインしている場合、サーバはユーザを確認し、あなたのサイトへ"
+"連絡します。</li><li>ユーザがログインしていない場合、OpenIDサーバはユーザにパ"
+"スワードを要求します。</li><li>あなたのサイトが記録したり、ユーザのパスワード"
+"を記録する必要はどこにもありません。</li>"
+
+#: modules/openid/openid.module:55
+msgid ""
+"More information on OpenID is available at <a href=\"@openid-net\">OpenID."
+"net</a>."
+msgstr ""
+"OpenIDについてのより多くの情報が、<a href=\"@openid-net\">OpenID.net</a>で入"
+"手できます。 また、日本語の情報は<a href=\"http://ja.wikipedia.org/wiki/"
+"OpenID\">ウィキペディアのOpenIDエントリ</a>を参照してください。"
+
+#: modules/openid/openid.module:56
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@handbook"
+"\">OpenID module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@handbook\">OpenID module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/openid/openid.module:68
+msgid "Once you have verified your email address, you may log in via OpenID."
+msgstr ""
+"メールアドレスの確認がされ次第、OpenIDによるログインができるようになります。"
+
+#: modules/openid/openid.module:90;107
+msgid "Log in using OpenID"
+msgstr "OpenIDでログイン"
+
+#: modules/openid/openid.module:94
+msgid "Cancel OpenID login"
+msgstr "OpenIDでのログインを中止"
+
+#: modules/openid/openid.module:111
+msgid "What is OpenID?"
+msgstr "OpenIDとは？"
+
+#: modules/openid/openid.module:160
+msgid ""
+"Sorry, that is not a valid OpenID. Please ensure you have spelled your ID "
+"correctly."
+msgstr ""
+"有効なOpenIDではありません。 IDを正しく入力したことを確認してください。"
+
+#: modules/openid/openid.module:395
+msgid ""
+"You must validate your email address for this account before logging in via "
+"OpenID"
+msgstr ""
+"OpenIDによるログインの前に、このアカウントのメールアドレスを有効にする必要が"
+"あります。"
+
+#: modules/openid/openid.module:413
+msgid ""
+"OpenID registration failed for the reasons listed. You may register now, or "
+"if you already have an account you can <a href=\"@login\">log in</a> now and "
+"add your OpenID under \"My Account\""
+msgstr ""
+"OpenIDの登録はリストされた理由により失敗しました。 すぐにユーザ登録するか、す"
+"でにアカウントを持っている場合は<a href=\"@login\">ログイン</a>して「アカウン"
+"ト情報」であなたのOpenIDを加えることができます。"
+
+#: modules/openid/openid.module:14
+msgid "OpenID Login"
+msgstr "OpenIDでのログイン"
+
+# メニューにのみ使用され、長くなるため「アイデンティティ」は省略
+#: modules/openid/openid.module:21
+msgid "OpenID identities"
+msgstr "OpenID"
+
+#: modules/openid/openid.module:30
+msgid "Delete OpenID"
+msgstr "OpenIDの削除"
+
+#: modules/openid/openid.module:0
+msgid "openid"
+msgstr "openid"
+
+#: modules/openid/openid.install:25
+msgid ""
+"Stores temporary shared key association information for OpenID "
+"authentication."
+msgstr "OpenID認証用に一時的に共有される主要な提携情報を格納します"
+
+#: modules/openid/openid.install:30
+msgid "URI of the OpenID Provider endpoint."
+msgstr "OpenIDプロバイダのエンドポイントURI"
+
+#: modules/openid/openid.install:36
+msgid "Primary Key: Used to refer to this association in subsequent messages."
+msgstr "プライマリキー： 後のメッセージで提携の参照に使用される"
+
+#: modules/openid/openid.install:41
+msgid "The signature algorithm used: one of HMAC-SHA1 or HMAC-SHA256."
+msgstr "使用された署名アルゴリズム： HMAC-SHA1 か HMAC-SHA256"
+
+#: modules/openid/openid.install:46
+msgid ""
+"Valid association session types: \"no-encryption\", \"DH-SHA1\", and \"DH-"
+"SHA256\"."
+msgstr ""
+"有効な提携セッションタイプ： \"no-encryption\"、\"DH-SHA1\"、\"DH-SHA256\""
+
+#: modules/openid/openid.install:51
+msgid "The MAC key (shared secret) for this association."
+msgstr "提携のMACキー（共有秘密キー）"
+
+#: modules/openid/openid.install:57
+msgid "UNIX timestamp for when the association was created."
+msgstr "提携が作成された際のUNIXタイムスタンプ"
+
+#: modules/openid/openid.install:63
+msgid "The lifetime, in seconds, of this association."
+msgstr "提携の存続期間（秒単位）"

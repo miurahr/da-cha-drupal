@@ -1,0 +1,181 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-throttle)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  throttle.admin.inc,v 1.2 2008/01/08 10:35:43 goba
+#  throttle.module,v 1.83 2007/12/14 18:08:49 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/throttle/throttle.admin.inc:21
+msgid "Auto-throttle on anonymous users"
+msgstr "未ログインユーザの自動スロットル"
+
+#: modules/throttle/throttle.admin.inc:25
+msgid ""
+"The congestion control throttle can be automatically enabled when the number "
+"of anonymous users currently visiting your site exceeds the specified "
+"threshold. For example, to start the throttle when your site has 250 "
+"anonymous users online at once, enter '250' in this field. Leave this value "
+"blank or set to \"0\" if you do not wish to auto-throttle on anonymous "
+"users. You can inspect the current number of anonymous users using the "
+"\"Who's online\" block."
+msgstr ""
+"未ログインユーザに対するスロットル開始の「しきい値」を入力してください。 未ロ"
+"グインユーザのオンライン数がしきい値を超えたとき、スロットルが自動的に有効に"
+"なります。 例えば、250人の未ログインユーザがオンラインになったときにスロット"
+"ルを開始させたい場合は、<b>250</b> と入力してください。 未ログインユーザ数に"
+"よってスロットルを開始させたくない場合は、<b>0</b> を入力するか空欄にしてくだ"
+"さい。 現在の未ログインユーザのオンライン数は、<a href=\"?q=admin/build/block"
+"\">「オンライン状況」ブロック</a>を使用することで調べることができます。"
+
+#: modules/throttle/throttle.admin.inc:29
+msgid "Auto-throttle on authenticated users"
+msgstr "ログイン済みユーザの自動スロットル"
+
+#: modules/throttle/throttle.admin.inc:33
+msgid ""
+"The congestion control throttle can be automatically enabled when the number "
+"of authenticated users currently visiting your site exceeds the specified "
+"threshold. For example, to start the throttle when your site has 50 "
+"registered users online at once, enter '50' in this field. Leave this value "
+"blank or set to \"0\" if you do not wish to auto-throttle on authenticated "
+"users. You can inspect the current number of authenticated users using the "
+"\"Who's online\" block."
+msgstr ""
+"ログイン済みユーザに対するスロットル開始の「しきい値」を入力してください。 ロ"
+"グイン済みユーザのオンライン数がしきい値を超えたとき、スロットルが自動的に有"
+"効になります。 例えば、50人のログイン済みユーザがオンラインになったときにス"
+"ロットルを開始させたい場合は、<b>50</b> と入力してください。 ログイン済みユー"
+"ザ数によってスロットルを開始させたくない場合は、<b>0</b> を入力するか空欄にし"
+"てください。 現在のログイン済みユーザのオンライン数は、<a href=\"?q=admin/"
+"build/block\">「オンライン状況」ブロック</a>を使用することで調べることができ"
+"ます。"
+
+#: modules/throttle/throttle.admin.inc:37
+msgid "Auto-throttle probability limiter"
+msgstr "自動スロットル確率リミッタ"
+
+#: modules/throttle/throttle.admin.inc:40
+msgid ""
+"The auto-throttle probability limiter is an efficiency mechanism to "
+"statistically reduce the overhead of the auto-throttle. The limiter is "
+"expressed as a percentage of page views, so for example if set to the "
+"default of 10% we only perform the extra database queries to update the "
+"throttle status 1 out of every 10 page views. The busier your site, the "
+"lower you should set the limiter value."
+msgstr ""
+"「スロットルの状態」を更新するリミッタ値（確率）を指定してください。 これは統"
+"計的に自動スロットルのオーバーヘッドを軽減する効率メカニズムで、現在の「ス"
+"ロットルの状態」を更新するデータベースへの問い合わせ頻度を決定します。 リミッ"
+"タはページの表示回数に対するパーセンテージで表されます。 例えば、デフォルト値"
+"である <b>10%</b> に設定された場合、ページが10回表示されるごとに1回の確率で"
+"データベースへの問い合わせを行います。 同様に、<b>5%</b> を指定すれば20回に1"
+"回、<b>1%</b> なら100回に1回、あるいは逆に高いパーセンテージである <b>50%</"
+"b> なら2回に1回、<b>100%</b> ならばページ表示ごととなります。 アクセス数が多"
+"いサイトほど低いリミッタ値に設定するべきです。"
+
+#: modules/throttle/throttle.admin.inc:50;53
+msgid ""
+"%value is not a valid auto-throttle setting. Please enter a positive numeric "
+"value."
+msgstr ""
+"%value は無効な自動スロットルの設定です。 正(+)の数値を入力してください。"
+
+#: modules/throttle/throttle.module:121
+msgid ""
+"The throttle module provides a congestion control mechanism that "
+"automatically adjusts to a surge in incoming traffic. If your site is "
+"referenced by a popular website, or experiences a \"Denial of Service"
+"\" (DoS) attack, your webserver might become overwhelmed. The throttle "
+"mechanism is utilized by modules to temporarily disable CPU-intensive "
+"functionality, increasing performance. For instance, via the throttle "
+"module, modules may choose to disable resource-intensive blocks or the code "
+"within the site theme may temporarily disable user pictures in posts."
+msgstr ""
+"Throttle（スロットル）モジュールはサイトへの急激なアクセス増加を自動的に調整"
+"する、サイトの混雑緩和メカニズムを提供します。 スロットルメカニズムは、CPUに"
+"負担のかかる機能や転送量の多い機能を、一時的に無効にしてサイトのパフォーマン"
+"スを改善するために、他のモジュールによって利用されます。</p><p>例えば、とても"
+"人気の高いサイトからリンクされたり、あるいは悪意ある人による「<a href="
+"\"http://ja.wikipedia.org/wiki/DoS%E6%94%BB%E6%92%83\">サービス拒否（DoSや"
+"DDoS）攻撃</a>」を受けた場合、サーバに非常に高い負荷がかかり、ユーザへのサー"
+"ビスの停滞や最悪の場合はサーバがダウンする事態に陥る可能性さえあります。 この"
+"ような状態を緩和するために、例えば、モジュールがリソースを大幅に消費するブ"
+"ロックを無効化したり、サイトテーマ内のコードが投稿のユーザ画像表示を一時的に"
+"停止する場合があります。"
+
+#: modules/throttle/throttle.module:122
+msgid ""
+"The congestion control throttle can be automatically enabled when the number "
+"of anonymous or authenticated users currently visiting the site exceeds a "
+"specified threshold."
+msgstr ""
+"スロットルは、未ログイン・ログイン済みユーザにそれぞれ「しきい値」を設定し、"
+"サイトへのアクセス数が指定された「しきい値」を超えたとき、自動的に作動を開始"
+"させることができます。"
+
+#: modules/throttle/throttle.module:123
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@throttle"
+"\">Throttle module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@throttle\">Throttle "
+"module（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal."
+"jp/\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/throttle/throttle.module:126
+msgid ""
+"The throttle module provides a congestion control mechanism that "
+"automatically adjusts to a surge in incoming traffic. If your site is "
+"referenced by a popular website, or experiences a \"Denial of Service"
+"\" (DoS) attack, your webserver might become overwhelmed. The throttle "
+"mechanism is utilized by modules to temporarily disable CPU-intensive "
+"functionality, increasing performance."
+msgstr ""
+"Throttle（スロットル）モジュールはサイトへの急激なアクセス増加を自動的に調整"
+"する、サイトの混雑緩和メカニズムを提供します。 スロットルメカニズムは、CPUに"
+"負担のかかる機能や転送量の多い機能を、一時的に無効にしてサイトのパフォーマン"
+"スを改善するために、他のモジュールによって利用されます。"
+
+#: modules/throttle/throttle.module:110;0
+msgid "throttle"
+msgstr "スロットル"
+
+#: modules/throttle/throttle.module:110
+msgid "Throttle: %message"
+msgstr "スロットル： %message"
+
+#: modules/throttle/throttle.module:87
+msgid "1 user accessing site; throttle enabled."
+msgid_plural "@count users accessing site; throttle enabled."
+msgstr[0] "1 人の認証ユーザがアクセス： スロットル開始"
+msgstr[1] "@count 人の認証ユーザがアクセス： スロットル開始"
+
+#: modules/throttle/throttle.module:95
+msgid "1 guest accessing site; throttle enabled."
+msgid_plural "@count guests accessing site; throttle enabled."
+msgstr[0] "1 人のゲストユーザがアクセス： スロットル開始"
+msgstr[1] "@count 人のゲストユーザがアクセス： スロットル開始"
+
+#: modules/throttle/throttle.module:105
+msgid "1 guest accessing site; throttle disabled"
+msgid_plural "@count guests accessing site; throttle disabled"
+msgstr[0] "1 人のゲストユーザがアクセス： スロットル停止"
+msgstr[1] "@count 人のゲストユーザがアクセス： スロットル停止"
+
+#: modules/throttle/throttle.module:12
+msgid "Control how your site cuts out content during heavy load."
+msgstr "サイト混雑時にコンテンツの一部を除外するための基準を設定します。"

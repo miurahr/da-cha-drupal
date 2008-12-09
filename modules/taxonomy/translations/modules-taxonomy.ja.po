@@ -1,0 +1,705 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-taxonomy)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  taxonomy.admin.inc,v 1.22.2.1 2008/02/07 20:46:57 goba
+#  taxonomy.module,v 1.414 2008/01/27 17:55:15 goba
+#  taxonomy.install,v 1.7 2008/01/08 07:46:41 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/taxonomy/taxonomy.admin.inc:29
+msgid "edit vocabulary"
+msgstr "ボキャブラリの編集"
+
+#: modules/taxonomy/taxonomy.admin.inc:30
+msgid "list terms"
+msgstr "タームのリスト"
+
+#: modules/taxonomy/taxonomy.admin.inc:31
+msgid "add terms"
+msgstr "タームの追加"
+
+#: modules/taxonomy/taxonomy.admin.inc:85
+msgid "No vocabularies available."
+msgstr "利用できるボキャブラリはありません。"
+
+#: modules/taxonomy/taxonomy.admin.inc:122
+msgid "Vocabulary name"
+msgstr "ボキャブラリの名称"
+
+#: modules/taxonomy/taxonomy.admin.inc:125
+msgid "The name for this vocabulary, e.g., <em>\"Tags\"</em>."
+msgstr "ボキャブラリの名称を入力してください。 例：<em>タグ</em>"
+
+#: modules/taxonomy/taxonomy.admin.inc:131
+msgid "Description of the vocabulary; can be used by modules."
+msgstr ""
+"このボキャブラリについての説明を記入してください。 モジュールによって、この項"
+"目を利用する場合があります。"
+
+#: modules/taxonomy/taxonomy.admin.inc:134
+msgid "Help text"
+msgstr "ヘルプテキスト"
+
+#: modules/taxonomy/taxonomy.admin.inc:137
+msgid ""
+"Instructions to present to the user when selecting terms, e.g., <em>\"Enter "
+"a comma separated list of words\"</em>."
+msgstr ""
+"タームを選択する際、ユーザに提示する指示を記入してください。 例：<em>ワードの"
+"コンマ区切りのリストを入力してください。</em>"
+
+#: modules/taxonomy/taxonomy.admin.inc:148
+msgid "Select content types to categorize using this vocabulary."
+msgstr ""
+"このボキャブラリを使用して分類する、コンテンツタイプを指定してください。"
+
+#: modules/taxonomy/taxonomy.admin.inc:156
+msgid "Tags"
+msgstr "タグ"
+
+#: modules/taxonomy/taxonomy.admin.inc:158
+msgid ""
+"Terms are created by users when submitting posts by typing a comma separated "
+"list."
+msgstr ""
+"フリータギングを許可するかどうかを指定してください。 チェックを入れると、投稿"
+"の際にコンマで区切ったタグリストを入力することで、ユーザがタームを作成できる"
+"ようになります。"
+
+#: modules/taxonomy/taxonomy.admin.inc:161
+msgid "Multiple select"
+msgstr "複数選択"
+
+#: modules/taxonomy/taxonomy.admin.inc:163
+msgid ""
+"Allows posts to have more than one term from this vocabulary (always true "
+"for tags)."
+msgstr ""
+"このボキャブラリ内の複数のタームを投稿が持つことを、許可するかどうかを指定し"
+"てください。 なお、「タグ」は常に複数のタームを持てます。"
+
+#: modules/taxonomy/taxonomy.admin.inc:168
+msgid ""
+"At least one term in this vocabulary must be selected when submitting a post."
+msgstr ""
+"このボキャブラリ内のタームを最低でも1つは投稿に持たせることを、必須とするかど"
+"うかを指定してください。"
+
+#: modules/taxonomy/taxonomy.admin.inc:173
+msgid "Vocabularies are displayed in ascending order by weight."
+msgstr ""
+"ボキャブラリの表示順位を決める、ウェイトを指定してください。ウェイトの数値が"
+"小さいほど上部に、大きいほど下部に配置されます。"
+
+#: modules/taxonomy/taxonomy.admin.inc:202;203
+msgid "Created new vocabulary %name."
+msgstr "新しいボキャブラリ %name が作成されました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:206;207
+msgid "Updated vocabulary %name."
+msgstr "ボキャブラリ %name が更新されました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:254
+msgid "Terms in %vocabulary"
+msgstr "%vocabulary 内のターム"
+
+#: modules/taxonomy/taxonomy.admin.inc:409
+msgid "No terms available."
+msgstr "利用できるタームはありません。"
+
+#: modules/taxonomy/taxonomy.admin.inc:418;445;912
+msgid "Reset to alphabetical"
+msgstr "アルファベット順にリセット"
+
+#: modules/taxonomy/taxonomy.admin.inc:624
+msgid "Add term to %vocabulary"
+msgstr "%vocabulary にタームを追加"
+
+#: modules/taxonomy/taxonomy.admin.inc:663
+msgid "Term name"
+msgstr "タームの名称"
+
+# 冗長？
+#: modules/taxonomy/taxonomy.admin.inc:666
+msgid "The name of this term."
+msgstr ""
+"このタームの名称を入力してください。<br />例えば、このタームが「スポーツ」と"
+"いうボキャブラリに含まれる場合は「野球」や「サッカー」、「動物」ならば「イ"
+"ヌ」や「ネコ」、「フルーツ」ならば「リンゴ」や「バナナ」といったように、含ま"
+"れるボキャブラリに関連したものを指定するのが一般的です。"
+
+#: modules/taxonomy/taxonomy.admin.inc:672
+msgid ""
+"A description of the term. To be displayed on taxonomy/term pages and RSS "
+"feeds."
+msgstr ""
+"このタームについての説明を記入してください。 これはタクソノミーやタームのペー"
+"ジ、RSSフィードで表示されます。"
+
+#: modules/taxonomy/taxonomy.admin.inc:676
+msgid "Advanced options"
+msgstr "高度なオプション"
+
+#: modules/taxonomy/taxonomy.admin.inc:695
+msgid "Parents"
+msgstr "上位"
+
+#: modules/taxonomy/taxonomy.admin.inc:695
+msgid "Parent terms"
+msgstr "上位のターム"
+
+# タームという用語を生かすためにあえて「関連語」とはせず
+#: modules/taxonomy/taxonomy.admin.inc:696
+msgid "Related terms"
+msgstr "関連するターム"
+
+# 類似・同義タームのようにする手もあるがあえて造語はせず
+#: modules/taxonomy/taxonomy.admin.inc:700
+msgid "Synonyms"
+msgstr "シノニム（同義語）"
+
+#: modules/taxonomy/taxonomy.admin.inc:702
+msgid "Synonyms of this term, one synonym per line."
+msgstr "このタームのシノニム（同義語）を行単位で入力してください。"
+
+#: modules/taxonomy/taxonomy.admin.inc:708
+msgid "Terms are displayed in ascending order by weight."
+msgstr ""
+"タームの表示順位を決める、ウェイトを指定してください。ウェイトの数値が小さい"
+"ほど上部に、大きいほど下部に配置されます。"
+
+#: modules/taxonomy/taxonomy.admin.inc:739
+msgid "Weight value must be numeric."
+msgstr "ウェイトは数値である必要があります。"
+
+#: modules/taxonomy/taxonomy.admin.inc:768;769
+msgid "Created new term %term."
+msgstr "新しいターム %term が作成されました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:772;773
+msgid "Updated term %term."
+msgstr "ターム %term が更新されました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:818
+msgid "Set multiple term parents?"
+msgstr "複数のタームを上位に設定しますか？"
+
+#: modules/taxonomy/taxonomy.admin.inc:819
+msgid ""
+"Adding multiple parents to a term will cause the %vocabulary vocabulary to "
+"look for multiple parents on every term. Because multiple parents are not "
+"supported when using the drag and drop outline interface, drag and drop will "
+"be disabled if you enable this option. If you choose to have multiple "
+"parents, you will only be able to set parents by using the term edit form."
+msgstr ""
+"タームに複数の上位タームを加えた場合、ボキャブラリ %vocabulary はすべてのター"
+"ムで複数の上位タームを探すことになります。 ドラッグ＆ドロップのアウトラインイ"
+"ンターフェイスを使用する際、複数の上位タームはサポートされないため、このオプ"
+"ションを有効にするとドラッグ＆ドロップは無効になります。 このため複数の上位"
+"タームを持たせる場合、上位タームの設定はタームの編集フォームからのみとなりま"
+"す。"
+
+#: modules/taxonomy/taxonomy.admin.inc:820
+msgid ""
+"You may re-enable the drag and drop interface at any time by reducing "
+"multiple parents to a single parent for the terms in this vocabulary."
+msgstr ""
+"このボキャブラリ内のタームに対する上位タームを複数から単数に減らすことによっ"
+"て、いつでもドラッグ＆ドロップのインターフェイスを再度有効にすることができま"
+"す。"
+
+#: modules/taxonomy/taxonomy.admin.inc:821
+msgid "Set multiple parents"
+msgstr "複数の上位を設定"
+
+#: modules/taxonomy/taxonomy.admin.inc:838
+msgid "Are you sure you want to delete the term %title?"
+msgstr "本当に、ターム %title を削除してもよろしいですか？"
+
+#: modules/taxonomy/taxonomy.admin.inc:841
+msgid ""
+"Deleting a term will delete all its children if there are any. This action "
+"cannot be undone."
+msgstr ""
+"タームを削除すると、下位に含まれるすべてのタームも削除されます。<br />この操"
+"作は元に戻すことができませんので、十分に注意して実行してください。"
+
+#: modules/taxonomy/taxonomy.admin.inc:854;855
+msgid "Deleted term %name."
+msgstr "ターム %name が削除されました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:873
+msgid "Are you sure you want to delete the vocabulary %title?"
+msgstr "本当に、ボキャブラリ %title を削除してもよろしいですか？"
+
+#: modules/taxonomy/taxonomy.admin.inc:876
+msgid ""
+"Deleting a vocabulary will delete all the terms in it. This action cannot be "
+"undone."
+msgstr ""
+"ボキャブラリを削除すると、含まれるすべてのタームも削除されます。<br />この操"
+"作は元に戻すことができませんので、十分に注意して実行してください。"
+
+#: modules/taxonomy/taxonomy.admin.inc:888;889
+msgid "Deleted vocabulary %name."
+msgstr "ボキャブラリ %name が削除されました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:908
+msgid ""
+"Are you sure you want to reset the vocabulary %title to alphabetical order?"
+msgstr ""
+"本当に、ボキャブラリ %title をアルファベット順にリセットしてもよろしいです"
+"か？"
+
+#: modules/taxonomy/taxonomy.admin.inc:911
+msgid ""
+"Resetting a vocabulary will discard all custom ordering and sort items "
+"alphabetically."
+msgstr ""
+"ボキャブラリをリセットすると独自の順序付けはすべて破棄され、アイテムはアル"
+"ファベット順に並べ替えられます。"
+
+#: modules/taxonomy/taxonomy.admin.inc:923;924
+msgid "Reset vocabulary %name to alphabetical order."
+msgstr "ボキャブラリ %name はアルファベット順にリセットされました。"
+
+#: modules/taxonomy/taxonomy.admin.inc:203;207;769;773;855;889;924
+#: modules/taxonomy/taxonomy.module:0
+msgid "taxonomy"
+msgstr "タクソノミー"
+
+#: modules/taxonomy/taxonomy.module:418
+msgid "- None selected -"
+msgstr "- 選択されていません -"
+
+#: modules/taxonomy/taxonomy.module:421
+msgid "- None -"
+msgstr "- なし -"
+
+# 冗長？
+#: modules/taxonomy/taxonomy.module:517
+msgid ""
+"A comma-separated list of terms describing this content. Example: funny, "
+"bungee jumping, \"Company, Inc.\"."
+msgstr ""
+"このコンテンツを表現する言葉を入力してください。 ここに入力された言葉はそのま"
+"まタームとなり、それを使用したカテゴリにコンテンツが分類されます。 複数の言葉"
+"を指定したい場合は、それぞれの言葉をコンマで区切って入力してください。 また、"
+"指定したい言葉の中にコンマが含まれる場合は <b>\"Co., Ltd.\"</b> のように引用"
+"符で括ってください。&nbsp;&nbsp;例： Drupal, CMS, ブログ, \"Drupal Japan "
+"Co., Ltd.\""
+
+#: modules/taxonomy/taxonomy.module:548
+msgid "Vocabularies"
+msgstr "ボキャブラリ"
+
+#: modules/taxonomy/taxonomy.module:635
+msgid "The %name vocabulary can not be modified in this way."
+msgstr "ボキャブラリ %name をこの方法で修正することはできません。"
+
+#: modules/taxonomy/taxonomy.module:1133
+msgid "There are currently no posts in this category."
+msgstr "現在のところ、このカテゴリに投稿はありません。"
+
+#: modules/taxonomy/taxonomy.module:1236
+msgid ""
+"The taxonomy module allows you to categorize content using various systems "
+"of classification. Free-tagging vocabularies are created by users on the fly "
+"when they submit posts (as commonly found in blogs and social bookmarking "
+"applications). Controlled vocabularies allow for administrator-defined short "
+"lists of terms as well as complex hierarchies with multiple relationships "
+"between different terms. These methods can be applied to different content "
+"types and combined together to create a powerful and flexible method of "
+"classifying and presenting your content."
+msgstr ""
+"Taxonomy（タクソノミー）モジュールは、様々な分類方式を使用してコンテンツを分"
+"類できるようにします。 フリータギングボキャブラリは、一般にブログやソーシャル"
+"ブックマークに見られるように、ユーザが投稿する際にその場で作成されます。 コン"
+"トロールドボキャブラリは、異なるターム間で複数の関連を持つ複雑な階層構造に"
+"も、管理者に定義されたタームの候補リストにも利用できます。 これらの方法は異な"
+"るコンテンツタイプに適用でき、コンテンツを分類し提示する強力で柔軟な方法を作"
+"成するために、相互に組み合わせることもできます。"
+
+#: modules/taxonomy/taxonomy.module:1237
+msgid ""
+"For example, when creating a recipe site, you might want to classify posts "
+"by both the type of meal and preparation time. A vocabulary for each allows "
+"you to categorize using each criteria independently instead of creating a "
+"tag for every possible combination."
+msgstr ""
+"例えばレシピサイトを作成する場合、食事の種類と準備時間の両方で投稿を分類する"
+"といいでしょう。 それぞれのボキャブラリは、あらゆる可能な組み合わせに対してタ"
+"グを作る代わりに、単独で各基準を使用して分類することができるようにします。"
+
+#: modules/taxonomy/taxonomy.module:1238
+msgid "Type of Meal: <em>Appetizer, Main Course, Salad, Dessert</em>"
+msgstr "食事の種類： <em>前菜, メインコース, サラダ, デザート</em>"
+
+#: modules/taxonomy/taxonomy.module:1239
+msgid "Preparation Time: <em>0-30mins, 30-60mins, 1-2 hrs, 2hrs+</em>"
+msgstr "準備時間： <em>0-30分, 30-60分, 1-2時間, 2時間以上</em>"
+
+#: modules/taxonomy/taxonomy.module:1240
+msgid ""
+"Each taxonomy term (often called a 'category' or 'tag' in other systems) "
+"automatically provides lists of posts and a corresponding RSS feed. These "
+"taxonomy/term URLs can be manipulated to generate AND and OR lists of posts "
+"classified with terms. In our recipe site example, it then becomes easy to "
+"create pages displaying 'Main courses', '30 minute recipes', or '30 minute "
+"main courses and appetizers' by using terms on their own or in combination "
+"with others. There are a significant number of contributed modules which you "
+"to alter and extend the behavior of the core module for both display and "
+"organization of terms."
+msgstr ""
+"それぞれのタクソノミーターム（他のシステムではよく「カテゴリ」や「タグ」と呼"
+"ばれます）は、投稿の一覧と、対応するRSSフィードを自動的に提供します。 これら"
+"のタクソノミーやタームのURLは、タームで分類された投稿のANDとORの一覧を生成す"
+"るために、操作することができます。 本レシピサイトの例では、タームを単独または"
+"他と組み合わせて使用することにより、「メインコース」「30分レシピ」「30分メイ"
+"ンコースと前菜」などを表示するページの作成が容易になります。 タームの表示や構"
+"成用に、コアモジュールの振る舞いの変更や拡張ができる、かなりの数の寄与された"
+"モジュールがあります。"
+
+#: modules/taxonomy/taxonomy.module:1241
+msgid ""
+"Terms can also be organized in parent/child relationships from the admin "
+"interface. An example would be a vocabulary grouping countries under their "
+"parent geo-political regions. The taxonomy module also enables advanced "
+"implementations of hierarchy, for example placing Turkey in both the 'Middle "
+"East' and 'Europe'."
+msgstr ""
+"タームは管理インターフェイスから、親子（上位／下位）関係で組織化することもで"
+"きます。 例として国々を親（上位）、その地政学的な地域を子（下位）としてグルー"
+"プ化するボキャブラリが挙げられます。 タクソノミーモジュールはまた、例えば「ト"
+"ルコ」を「中東」と「ヨーロッパ」の両方に配置するような、階層構造の高度な実装"
+"を実現します。"
+
+#: modules/taxonomy/taxonomy.module:1242
+msgid ""
+"The taxonomy module supports the use of both synonyms and related terms, but "
+"does not directly use this functionality. However, optional contributed or "
+"custom modules may make full use of these advanced features."
+msgstr ""
+"タクソノミーモジュールはシノニム（同義語）と関連するターム（関連語）の使用を"
+"サポートしますが、直接この機能性を利用することはありません。 しかしながらオプ"
+"ションの拡張モジュールでは、これらの拡張機能を完全に利用することができます。"
+
+#: modules/taxonomy/taxonomy.module:1243
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@taxonomy"
+"\">Taxonomy module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@taxonomy\">Taxonomy "
+"module（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal."
+"jp/\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/taxonomy/taxonomy.module:1246
+msgid ""
+"The taxonomy module allows you to categorize your content using both tags "
+"and administrator defined terms. It is a flexible tool for classifying "
+"content with many advanced features. To begin, create a 'Vocabulary' to hold "
+"one set of terms or tags. You can create one free-tagging vocabulary for "
+"everything, or separate controlled vocabularies to define the various "
+"properties of your content, for example 'Countries' or 'Colors'."
+msgstr ""
+"タクソノミーモジュールは、タグや管理者定義のタームを使用してコンテンツを分類"
+"できるようにします。 それは多くの拡張機能を備えた、コンテンツを分類するための"
+"柔軟なツールです。 はじめに、タームやタグを保持するための「ボキャブラリ」を作"
+"成してください。 あらゆるものを保持するフリータギングボキャブラリや、 例えば"
+"「国々」や「色」などのようにコンテンツの様々な特性を定義する、個別のコント"
+"ロールドボキャブラリを作成できます。"
+
+#: modules/taxonomy/taxonomy.module:1247
+msgid ""
+"Use the list below to configure and review the vocabularies defined on your "
+"site, or to list and manage the terms (tags) they contain. A vocabulary may "
+"(optionally) be tied to specific content types as shown in the <em>Type</em> "
+"column and, if so, will be displayed when creating or editing posts of that "
+"type. Multiple vocabularies tied to the same content type will be displayed "
+"in the order shown below. To change the order of a vocabulary, grab a drag-"
+"and-drop handle under the <em>Name</em> column and drag it to a new location "
+"in the list. (Grab a handle by clicking and holding the mouse while hovering "
+"over a handle icon.) Remember that your changes will not be saved until you "
+"click the <em>Save</em> button at the bottom of the page."
+msgstr ""
+"サイトで定義されているボキャブラリの設定やレビュー、または含まれるターム（タ"
+"グ）の一覧や管理に、以下のリストを使用してください。 「タイプ」カラムに表示さ"
+"れているように、ボキャブラリは任意で特定のコンテンツタイプに関連付けることが"
+"でき、関連付けられたボキャブラリはそのタイプの投稿の作成や編集の際に表示され"
+"ます。 同じコンテンツタイプに関連付けられた複数のボキャブラリは、以下に表示さ"
+"れた順序で表示されます。 ボキャブラリの順序を変更するには、「名前」カラムにあ"
+"るドラッグアンドドロップハンドル（十字の矢印）をつかみ（ハンドルをつかむに"
+"は、ハンドルアイコン上でマウスの左ボタンを押下したままにします）、リスト中の"
+"新しい位置へドラッグしてください。 ページ下部にある「保存」ボタンをクリックす"
+"るまで、変更が保存されないことに注意してください。"
+
+#: modules/taxonomy/taxonomy.module:1252
+msgid ""
+"%capital_name is a free-tagging vocabulary. To change the name or "
+"description of a term, click the <em>edit</em> link next to the term."
+msgstr ""
+"%capital_name はフリータギングボキャブラリです。 タームの名前や説明を変更する"
+"には、タームの隣にある「編集」リンクをクリックしてください。"
+
+#: modules/taxonomy/taxonomy.module:1256
+msgid ""
+"%capital_name is a flat vocabulary. You may organize the terms in the %name "
+"vocabulary by using the handles on the left side of the table. To change the "
+"name or description of a term, click the <em>edit</em> link next to the term."
+msgstr ""
+"%capital_name はフラットなボキャブラリです。 テーブルの左側にあるハンドルを使"
+"用することにより、%name ボキャブラリ内のタームを整理できます。 タームの名前や"
+"説明を変更するには、タームの隣にある「編集」リンクをクリックしてください。"
+
+#: modules/taxonomy/taxonomy.module:1258
+msgid ""
+"%capital_name is a single hierarchy vocabulary. You may organize the terms "
+"in the %name vocabulary by using the handles on the left side of the table. "
+"To change the name or description of a term, click the <em>edit</em> link "
+"next to the term."
+msgstr ""
+"%capital_name は単階層構造のボキャブラリです。 テーブルの左側にあるハンドルを"
+"使用することにより、%name ボキャブラリ内のタームを整理できます。 タームの名前"
+"や説明を変更するには、タームの隣にある「編集」リンクをクリックしてください。"
+
+#: modules/taxonomy/taxonomy.module:1260
+msgid ""
+"%capital_name is a multiple hierarchy vocabulary. To change the name or "
+"description of a term, click the <em>edit</em> link next to the term. Drag "
+"and drop of multiple hierarchies is not supported, but you can re-enable "
+"drag and drop support by editing each term to include only a single parent."
+msgstr ""
+"%capital_name は多階層構造のボキャブラリです。 タームの名前や説明を変更するに"
+"は、タームの隣にある「編集」リンクをクリックしてください。 多階層構造のドラッ"
+"グ＆ドロップはサポートされていませんが、単一の下位のみを含むように各タームを"
+"編集することにより、ドラッグ＆ドロップのサポートを再度有効にすることができま"
+"す。"
+
+#: modules/taxonomy/taxonomy.module:1263
+msgid ""
+"Define how your vocabulary will be presented to administrators and users, "
+"and which content types to categorize with it. Tags allows users to create "
+"terms when submitting posts by typing a comma separated list. Otherwise "
+"terms are chosen from a select list and can only be created by users with "
+"the \"administer taxonomy\" permission."
+msgstr ""
+"ボキャブラリを管理者とユーザにどのように提示し、どのコンテンツタイプを分類す"
+"るかを定義してください。 タグは、投稿の際にコンマ区切りのリストを入力すること"
+"により、ユーザがタームの作成をできるようにします。 タグが許可されていない場"
+"合、タームは「タクソノミーの管理」権限を持つユーザのみが作成でき、選択リスト"
+"から選ぶようになります。"
+
+#: modules/taxonomy/taxonomy.module:1302
+msgid "After saving a new term to the database"
+msgstr "新しいタームをデータベースへ保存後"
+
+#: modules/taxonomy/taxonomy.module:1305
+msgid "After saving an updated term to the database"
+msgstr "更新されたタームをデータベースへ保存後"
+
+#: modules/taxonomy/taxonomy.module:1308
+msgid "After deleting a term"
+msgstr "タームの削除後"
+
+#: modules/taxonomy/taxonomy.module:13
+msgid "administer taxonomy"
+msgstr "タクソノミーの管理"
+
+#: modules/taxonomy/taxonomy.module:114
+msgid "Manage tagging, categorization, and classification of your content."
+msgstr "コンテンツのタグ付けや分類を管理します。"
+
+#: modules/taxonomy/taxonomy.module:128
+msgid "Add vocabulary"
+msgstr "ボキャブラリの追加"
+
+#: modules/taxonomy/taxonomy.module:137
+msgid "Edit vocabulary"
+msgstr "ボキャブラリの編集"
+
+#: modules/taxonomy/taxonomy.module:145
+msgid "Edit term"
+msgstr "タームの編集"
+
+#: modules/taxonomy/taxonomy.module:152
+msgid "Taxonomy term"
+msgstr "タクソノミーターム"
+
+#: modules/taxonomy/taxonomy.module:161
+msgid "Autocomplete taxonomy"
+msgstr "タクソノミーの自動補完"
+
+#: modules/taxonomy/taxonomy.module:168
+msgid "List terms"
+msgstr "タームのリスト"
+
+#: modules/taxonomy/taxonomy.module:183
+msgid "Add term"
+msgstr "タームの追加"
+
+#: modules/taxonomy/taxonomy.install:9
+msgid "Stores term information."
+msgstr "タームの情報を格納します"
+
+#: modules/taxonomy/taxonomy.install:15
+msgid "Primary Key: Unique term ID."
+msgstr "プライマリキー： 固有のタームID"
+
+#: modules/taxonomy/taxonomy.install:22
+msgid "The {vocabulary}.vid of the vocabulary to which the term is assigned."
+msgstr "タームが割り当てられたボキャブラリの{vocabulary}.vid"
+
+#: modules/taxonomy/taxonomy.install:29
+msgid "The term name."
+msgstr "タームの名前"
+
+#: modules/taxonomy/taxonomy.install:35
+msgid "A description of the term."
+msgstr "タームの説明"
+
+#: modules/taxonomy/taxonomy.install:42
+msgid "The weight of this term in relation to other terms."
+msgstr "他のタームとの関係におけるタームのウェイト"
+
+#: modules/taxonomy/taxonomy.install:53
+msgid "Stores the hierarchical relationship between terms."
+msgstr "ターム間の階層的な関係を格納します"
+
+#: modules/taxonomy/taxonomy.install:60
+msgid "Primary Key: The {term_data}.tid of the term."
+msgstr "プライマリキー： タームの{term_data}.tid"
+
+#: modules/taxonomy/taxonomy.install:67
+msgid ""
+"Primary Key: The {term_data}.tid of the term's parent. 0 indicates no parent."
+msgstr "プライマリキー： 親タームの{term_data}.tid（0は親なしを示す）"
+
+#: modules/taxonomy/taxonomy.install:77
+msgid "Stores the relationship of terms to nodes."
+msgstr "ノードに対するタームの関係を格納します"
+
+#: modules/taxonomy/taxonomy.install:84
+msgid "Primary Key: The {node}.nid of the node."
+msgstr "プライマリキー： ノードの{node}.nid"
+
+#: modules/taxonomy/taxonomy.install:98
+msgid "Primary Key: The {term_data}.tid of a term assigned to the node."
+msgstr "プライマリキー： ノードに割り当てられたタームの{term_data}.tid"
+
+#: modules/taxonomy/taxonomy.install:109
+msgid "Stores non-hierarchical relationships between terms."
+msgstr "ターム間の非階層的な関係を格納します"
+
+#: modules/taxonomy/taxonomy.install:114
+msgid "Primary Key: Unique term relation ID."
+msgstr "プライマリキー： 固有のタームリレーションID"
+
+#: modules/taxonomy/taxonomy.install:121
+msgid "The {term_data}.tid of the first term in a relationship."
+msgstr "関係における最初のタームの{term_data}.tid"
+
+#: modules/taxonomy/taxonomy.install:128
+msgid "The {term_data}.tid of the second term in a relationship."
+msgstr "関係における2番目のタームの{term_data}.tid"
+
+#: modules/taxonomy/taxonomy.install:141
+msgid "Stores term synonyms."
+msgstr "タームのシノニム（同義語）を格納します"
+
+#: modules/taxonomy/taxonomy.install:146
+msgid "Primary Key: Unique term synonym ID."
+msgstr "プライマリキー： 固有のタームシノニムID"
+
+#: modules/taxonomy/taxonomy.install:153
+msgid "The {term_data}.tid of the term."
+msgstr "タームの{term_data}.tid"
+
+#: modules/taxonomy/taxonomy.install:160
+msgid "The name of the synonym."
+msgstr "シノニムの名前"
+
+#: modules/taxonomy/taxonomy.install:171
+msgid "Stores vocabulary information."
+msgstr "ボキャブラリの情報を格納します"
+
+#: modules/taxonomy/taxonomy.install:177
+msgid "Primary Key: Unique vocabulary ID."
+msgstr "プライマリキー： 固有のボキャブラリID"
+
+#: modules/taxonomy/taxonomy.install:184
+msgid "Name of the vocabulary."
+msgstr "ボキャブラリの名前"
+
+#: modules/taxonomy/taxonomy.install:190
+msgid "Description of the vocabulary."
+msgstr "ボキャブラリの説明"
+
+#: modules/taxonomy/taxonomy.install:197
+msgid "Help text to display for the vocabulary."
+msgstr "ボキャブラリ用に表示するヘルプテキスト"
+
+#: modules/taxonomy/taxonomy.install:205
+msgid ""
+"Whether or not related terms are enabled within the vocabulary. (0 = "
+"disabled, 1 = enabled)"
+msgstr "ボキャブラリ内で関連するタームが有効かどうか（0 = 無効、1 = 有効）"
+
+#: modules/taxonomy/taxonomy.install:213
+msgid ""
+"The type of hierarchy allowed within the vocabulary. (0 = disabled, 1 = "
+"single, 2 = multiple)"
+msgstr "ボキャブラリ内で許可される階層タイプ（0 = 無効、1 = 単数、2 = 複数）"
+
+#: modules/taxonomy/taxonomy.install:221
+msgid ""
+"Whether or not multiple terms from this vocabulary may be assigned to a "
+"node. (0 = disabled, 1 = enabled)"
+msgstr ""
+"このボキャブラリから複数のタームをノードに割り当てられるかどうか（0 = 無効、"
+"1 = 有効）"
+
+#: modules/taxonomy/taxonomy.install:229
+msgid ""
+"Whether or not terms are required for nodes using this vocabulary. (0 = "
+"disabled, 1 = enabled)"
+msgstr "このボキャブラリのタームがノードに必須かどうか（0 = 無効、1 = 有効）"
+
+#: modules/taxonomy/taxonomy.install:237
+msgid ""
+"Whether or not free tagging is enabled for the vocabulary. (0 = disabled, 1 "
+"= enabled)"
+msgstr "ボキャブラリでフリータギングが有効かどうか（0 = 無効、1 = 有効）"
+
+#: modules/taxonomy/taxonomy.install:244
+msgid "The module which created the vocabulary."
+msgstr "ボキャブラリを作成したモジュール"
+
+#: modules/taxonomy/taxonomy.install:251
+msgid "The weight of the vocabulary in relation to other vocabularies."
+msgstr "他のボキャブラリとの関係におけるボキャブラリのウェイト"
+
+#: modules/taxonomy/taxonomy.install:261
+msgid "Stores which node types vocabularies may be used with."
+msgstr "ボキャブラリを使用できるコンテンツタイプを格納します"
+
+#: modules/taxonomy/taxonomy.install:268
+msgid "Primary Key: the {vocabulary}.vid of the vocabulary."
+msgstr "プライマリキー： ボキャブラリの{vocabulary}.vid"
+
+#: modules/taxonomy/taxonomy.install:275
+msgid "The {node}.type of the node type for which the vocabulary may be used."
+msgstr "ボキャブラリを使用できるノードタイプの{node}.type"

@@ -1,0 +1,89 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-tracker)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  tracker.pages.inc,v 1.5 2007/11/28 10:29:20 dries
+#  tracker.module,v 1.154 2007/12/14 18:08:49 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/tracker/tracker.pages.inc:57
+msgid "!time ago"
+msgstr "!time 前"
+
+# 「タイトル」としたいところだが今後他で使われないとも限らないので……
+#: modules/tracker/tracker.pages.inc:65
+msgid "Post"
+msgstr "投稿"
+
+#: modules/tracker/tracker.pages.inc:65
+msgid "Last updated"
+msgstr "最終更新"
+
+#: modules/tracker/tracker.module:15
+msgid ""
+"The tracker module displays the most recently added or updated content on "
+"your site, and provides user-level tracking to follow the contributions of "
+"particular authors."
+msgstr ""
+"Tracker（トラッカー）モジュールは、サイトでごく最近に追加や更新が行われたコン"
+"テンツを表示するとともに、特定投稿者の寄稿を追うためのユーザレベルのトラッキ"
+"ングを提供します。"
+
+#: modules/tracker/tracker.module:16
+msgid ""
+"The <em>Recent posts</em> page is available via a link in the navigation "
+"menu block and displays new and recently-updated content (including the "
+"content type, the title, the author's name, number of comments, and time of "
+"last update) in reverse chronological order. Posts are marked updated when "
+"changes occur in the text, or when new comments are added. To use the "
+"tracker module to follow a specific user's contributions, select the "
+"<em>Track</em> tab from the user's profile page."
+msgstr ""
+"ナビゲーションメニューブロックのリンクから利用できる「最近の投稿」ページは、"
+"新規や最近更新されたコンテンツ（コンテンツタイプ、タイトル、投稿者、コメント"
+"数、最終更新時間を含む）を、新しいものから順番に表示します。 テキストが変更さ"
+"れたり、新しいコメントが付いた場合、投稿には「更新」マークが付きます。 特定"
+"ユーザの寄稿を追うには、ユーザのプロフィールページで「トラック」タブを選択し"
+"ます。"
+
+#: modules/tracker/tracker.module:17
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@tracker"
+"\">Tracker module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@tracker\">Tracker module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/tracker/tracker.module:27
+msgid "Recent posts"
+msgstr "最近の投稿"
+
+#: modules/tracker/tracker.module:34
+msgid "All recent posts"
+msgstr "サイト全般の最近の投稿"
+
+#: modules/tracker/tracker.module:39
+msgid "My recent posts"
+msgstr "自分の最近の投稿"
+
+#: modules/tracker/tracker.module:53
+msgid "Track posts"
+msgstr "投稿の軌跡"
+
+#: modules/tracker/tracker.module:0
+msgid "tracker"
+msgstr "トラッカー"

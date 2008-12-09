@@ -1,0 +1,79 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (misc)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  drupal.js,v 1.41.2.1 2008/02/06 12:18:04 goba
+#  tabledrag.js,v 1.13.2.1 2008/02/08 18:54:10 goba
+#  tableselect.js,v 1.8 2007/11/19 12:15:16 goba
+#  teaser.js,v 1.12 2008/01/09 12:10:04 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: misc/drupal.js:0
+msgid "Unspecified error"
+msgstr "特定できないエラー"
+
+#: misc/drupal.js:0
+msgid ""
+"An error occurred. \n"
+"@uri\n"
+"@text"
+msgstr ""
+"エラーが発生しました。 \n"
+"@uri\n"
+"@text"
+
+#: misc/drupal.js:0
+msgid ""
+"An error occurred. \n"
+"@uri\n"
+"(no information available)."
+msgstr ""
+"エラーが発生しました。 \n"
+"@uri\n"
+"（情報がありません）"
+
+#: misc/drupal.js:0
+msgid ""
+"An HTTP error @status occurred. \n"
+"@uri"
+msgstr ""
+"HTTPエラー @status が発生しました。 \n"
+"@uri"
+
+#: misc/tabledrag.js:0
+msgid "Drag to re-order"
+msgstr "ドラッグして並べ替え"
+
+#: misc/tabledrag.js:0
+msgid ""
+"Changes made in this table will not be saved until the form is submitted."
+msgstr "フォームが送信されるまで、このテーブルでの変更は保存されません。"
+
+#: misc/tableselect.js:0
+msgid "Select all rows in this table"
+msgstr "このテーブルのすべての列を選択する"
+
+#: misc/tableselect.js:0
+msgid "Deselect all rows in this table"
+msgstr "このテーブルのすべての列を非選択にする"
+
+#: misc/teaser.js:0;0
+msgid "Split summary at cursor"
+msgstr "カーソル位置でティーザー（概要）を分離"
+
+#: misc/teaser.js:0;0
+msgid "Join summary"
+msgstr "ティーザー（概要）を連結"

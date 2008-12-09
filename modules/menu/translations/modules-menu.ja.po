@@ -1,0 +1,451 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-menu)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  menu.admin.inc,v 1.26.2.3 2008/02/11 15:12:53 goba
+#  menu.module,v 1.157.2.1 2008/02/11 15:12:53 goba
+#  menu.install,v 1.9 2008/01/30 20:27:28 goba
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/menu/menu.admin.inc:54
+msgid "There are no menu items yet."
+msgstr "メニュー項目はまだありません。"
+
+#: modules/menu/menu.admin.inc:72 modules/menu/menu.module:235
+msgid "disabled"
+msgstr "無効"
+
+#: modules/menu/menu.admin.inc:104
+msgid "reset"
+msgstr "リセット"
+
+#: modules/menu/menu.admin.inc:175
+msgid "Menu item"
+msgstr "メニュー項目"
+
+#: modules/menu/menu.admin.inc:177;299
+msgid "Expanded"
+msgstr "展開"
+
+#: modules/menu/menu.admin.inc:230 modules/menu/menu.module:358
+msgid "Menu settings"
+msgstr "メニューの設定"
+
+#: modules/menu/menu.admin.inc:260
+msgid ""
+"The path this menu item links to. This can be an internal Drupal path such "
+"as %add-node or an external URL such as %drupal. Enter %front to link to the "
+"front page."
+msgstr ""
+"このメニュー項目がリンクするパスを入力してください。 パスには %add-node のよ"
+"うなDrupalの内部パスや、 %drupal のような外部のURLを指定できます。 %front を"
+"入力するとフロントページへのリンクとなります。"
+
+#: modules/menu/menu.admin.inc:279 modules/menu/menu.module:385
+msgid "Menu link title"
+msgstr "メニューリンクのタイトル"
+
+#: modules/menu/menu.admin.inc:281
+msgid ""
+"The link text corresponding to this item that should appear in the menu."
+msgstr "メニューで表示される、項目に対応したリンクテキストを入力してください。"
+
+#: modules/menu/menu.admin.inc:289
+msgid "The description displayed when hovering over a menu item."
+msgstr ""
+"マウスカーソルをメニュー項目に乗せた際に表示される、簡単な説明文を入力してく"
+"ださい。"
+
+#: modules/menu/menu.admin.inc:295
+msgid "Menu items that are not enabled will not be listed in any menu."
+msgstr ""
+"この項目を有効にする場合はチェックを入れてください。 有効にされていないメ"
+"ニュー項目は、いかなるメニューにもリストされません。"
+
+#: modules/menu/menu.admin.inc:301
+msgid ""
+"If selected and this menu item has children, the menu will always appear "
+"expanded."
+msgstr ""
+"このメニュー項目の下位にサブメニューがあり、常にそれを展開した状態で表示した"
+"い場合は、ここにチェックを入れてください。"
+
+#: modules/menu/menu.admin.inc:315 modules/menu/menu.module:401
+msgid ""
+"The maximum depth for an item and all its children is fixed at !maxdepth. "
+"Some menu items may not be available as parents if selecting them would "
+"exceed this limit."
+msgstr ""
+"メニュー内での上位となる項目を指定してください。 メニュー項目とそのすべての下"
+"位項目の階層最大深度は !maxdepth に固定されます。 メニュー内で最大深度にある"
+"項目は、上位項目として利用できなくなっています。"
+
+#: modules/menu/menu.admin.inc:323 modules/menu/menu.module:411
+msgid ""
+"Optional. In the menu, the heavier items will sink and the lighter items "
+"will be positioned nearer the top."
+msgstr ""
+"同じ階層にあるメニュー間での表示順位を決める、ウェイトを指定してください。"
+"ウェイトの数値が小さいほど上部に、大きいほど下部に配置されます。"
+
+#: modules/menu/menu.admin.inc:379 modules/menu/menu.module:302
+msgid "There was an error saving the menu link."
+msgstr "メニューリンクの保存中にエラーが発生しました。"
+
+#: modules/menu/menu.admin.inc:403
+msgid "Menu name"
+msgstr "メニューの名前"
+
+#: modules/menu/menu.admin.inc:405
+msgid ""
+"The machine-readable name of this menu. This text will be used for "
+"constructing the URL of the <em>menu overview</em> page for this menu. This "
+"name must contain only lowercase letters, numbers, and hyphens, and must be "
+"unique."
+msgstr ""
+"このメニューの「コンピュータが扱える名前」を入力してください。 このテキスト"
+"は、このメニュー用の「メニューの概観」ページのURLを構築するために使用されま"
+"す。 名前には小文字・数字・ハイフンのみが含まれ、固有である必要があります。"
+
+#: modules/menu/menu.admin.inc:460
+msgid "Are you sure you want to delete the custom menu %title?"
+msgstr "本当に、カスタムメニュー %title を削除してもよろしいですか？"
+
+#: modules/menu/menu.admin.inc:492
+msgid "The custom menu %title has been deleted."
+msgstr "カスタムメニュー %title が削除されました。"
+
+#: modules/menu/menu.admin.inc:502
+msgid ""
+"The menu name may only consist of lowercase letters, numbers, and hyphens."
+msgstr "メニューの名前には英小文字・数字・ハイフンのみが使用できます。"
+
+#: modules/menu/menu.admin.inc:512
+msgid "The menu already exists."
+msgstr "メニューはすでに存在します。"
+
+#: modules/menu/menu.admin.inc:564
+msgid "Are you sure you want to delete the custom menu item %item?"
+msgstr "本当に、カスタムメニュー項目 %item を削除してもよろしいですか？"
+
+#: modules/menu/menu.admin.inc:574
+msgid "The menu item %title has been deleted."
+msgstr "メニュー項目 %title が削除されました。"
+
+#: modules/menu/menu.admin.inc:584
+msgid "Are you sure you want to reset the item %item to its default values?"
+msgstr "本当に、アイテム %item をデフォルトの値に戻してもよろしいですか？"
+
+#: modules/menu/menu.admin.inc:584
+msgid "Any customizations will be lost. This action cannot be undone."
+msgstr ""
+"すべての変更は失われます。この操作は元に戻すことができませんので、十分に注意"
+"して実行してください。"
+
+#: modules/menu/menu.admin.inc:593
+msgid "The menu item was reset to its default settings."
+msgstr "メニュー項目はデフォルトの設定に戻されました。"
+
+#: modules/menu/menu.admin.inc:603
+msgid ""
+"The menu module allows on-the-fly creation of menu links in the content "
+"authoring forms. The following option sets the default menu in which a new "
+"link will be added."
+msgstr ""
+"メニューモジュールはコンテンツの作成フォーム内で、その場でメニューリンクを作"
+"成できるようにします。 以下のオプションは、新しいリンクが加えられるデフォルト"
+"メニューを設定します。"
+
+#: modules/menu/menu.admin.inc:609
+msgid "Default menu for content"
+msgstr "コンテンツ用デフォルトメニュー"
+
+#: modules/menu/menu.admin.inc:612
+msgid ""
+"Choose the menu to be the default in the menu options in the content "
+"authoring form."
+msgstr ""
+"コンテンツの作成フォームでの、メニューオプションのデフォルトとするメニューを"
+"指定してください。"
+
+#: modules/menu/menu.admin.inc:616
+msgid "No primary links"
+msgstr "プライマリリンクなし"
+
+#: modules/menu/menu.admin.inc:619
+msgid "Source for the primary links"
+msgstr "プライマリリンク用ソース"
+
+#: modules/menu/menu.admin.inc:623
+msgid "Select what should be displayed as the primary links."
+msgstr "プライマリリンクとして表示するものを指定してください。"
+
+#: modules/menu/menu.admin.inc:626
+msgid "No secondary links"
+msgstr "セカンダリリンクなし"
+
+#: modules/menu/menu.admin.inc:629
+msgid "Source for the secondary links"
+msgstr "セカンダリリンク用ソース"
+
+#: modules/menu/menu.admin.inc:633
+msgid ""
+"Select what should be displayed as the secondary links. You can choose the "
+"same menu for secondary links as for primary links (currently %primary). If "
+"you do this, the children of the active primary menu link will be displayed "
+"as secondary links."
+msgstr ""
+"セカンダリリンクとして表示するものを指定してください。 セカンダリリンクにはプ"
+"ライマリリンク（現在は%primary）と同じメニューを指定することもできます。 その"
+"場合、アクティブなプライマリリンクの下位項目がセカンダリリンクとして表示され"
+"ます。"
+
+#: modules/menu/menu.admin.inc:493
+msgid "Deleted custom menu %title and all its menu items."
+msgstr "カスタムメニュー %title と、すべてのメニュー項目が削除されました。"
+
+#: modules/menu/menu.admin.inc:575
+msgid "Deleted menu item %title."
+msgstr "メニュー項目 %title が削除されました。"
+
+#: modules/menu/menu.admin.inc:457
+msgid ""
+"<strong>Warning:</strong> There is currently 1 menu item in %title. It will "
+"be deleted (system-defined items will be reset)."
+msgid_plural ""
+"<strong>Warning:</strong> There are currently @count menu items in %title. "
+"They will be deleted (system-defined items will be reset)."
+msgstr[0] ""
+"<strong>警告：</strong> 現時点で %title には 1 のメニュー項目がありますが、そ"
+"れは削除（システム定義の項目はリセット）されます。"
+msgstr[1] ""
+"<strong>警告：</strong> 現時点で %title に @count のメニュー項目があります"
+"が、それらは削除（システム定義の項目はリセット）されます。"
+
+#: modules/menu/menu.admin.inc:505
+msgid "The menu name can't be longer than 1 character."
+msgid_plural "The menu name can't be longer than @count characters."
+msgstr[0] "メニューの名前を1文字以上にはできません。"
+msgstr[1] "メニューの名前を@count文字以上にはできません。"
+
+#: modules/menu/menu.module:21
+msgid ""
+"The menu module provides an interface to control and customize Drupal's "
+"powerful menu system. Menus are a hierarchical collection of links, or menu "
+"items, used to navigate a website, and are positioned and displayed using "
+"Drupal's flexible block system. By default, three menus are created during "
+"installation: <em>Navigation</em>, <em>Primary links</em>, and <em>Secondary "
+"links</em>. The <em>Navigation</em> menu contains most links necessary for "
+"working with and navigating your site, and is often displayed in either the "
+"left or right sidebar. Most Drupal themes also provide support for "
+"<em>Primary links</em> and <em>Secondary links</em>, by displaying them in "
+"either the header or footer of each page. By default, <em>Primary links</em> "
+"and <em>Secondary links</em> contain no menu items but may be configured to "
+"contain custom menu items specific to your site."
+msgstr ""
+"Menu（メニュー）モジュールは、Drupalの強力なメニューシステムのコントロールと"
+"カスタマイズができる、インターフェイスを提供します。 メニューは、サイトのナビ"
+"ゲーションに使用される階層構造のリンク（メニュー項目）集で、Drupalの柔軟なブ"
+"ロックシステムを使用して配置や表示が行われます。 デフォルトでインストール時に"
+"<em>Navigation（ナビゲーション）</em>、<em>Primary links（プライマリリンク）"
+"</em>、<em>Secondary links（セカンダリリンク）</em>の3つのメニューが作成され"
+"ます。 「ナビゲーション」メニューはサイトと共に動作し、ナビゲートに必要なほと"
+"んどのリンクを含み、多くの場合左右どちらかのサイドバー内に表示されます。 ま"
+"た、大部分のDrupalテーマでは、各ページのヘッダやフッタに表示される「プライマ"
+"リリンク」と「セカンダリリンク」をサポートしています。 デフォルトで「プライマ"
+"リリンク」と「セカンダリリンク」にメニュー項目は含まれていませんが、サイト特"
+"有のカスタムメニュー項目を含めるために設定することができます。"
+
+#: modules/menu/menu.module:22
+msgid ""
+"The <a href=\"@menu\">menus page</a> displays all menus currently available "
+"on your site. Select a menu from this list to add or edit a menu item, or to "
+"rearrange items within the menu. Create new menus using the <a href=\"@add-"
+"menu\">add menu page</a> (the block containing a new menu must also be "
+"enabled on the <a href=\"@blocks\">blocks administration page</a>)."
+msgstr ""
+"<a href=\"@menu\">メニューページ</a>では、サイトで現在利用可能なすべてのメ"
+"ニューが表示されます。 メニュー項目の追加や編集、メニュー内での項目の再配置を"
+"するには、このリストからメニューを選択してください。 <a href=\"@add-menu\">メ"
+"ニューの追加ページ</a>で新しいメニューを作成できます。（新しいメニューを含ん"
+"だブロックも<a href=\"@blocks\">ブロックの管理ページ</a>で有効化する必要があ"
+"ります)"
+
+#: modules/menu/menu.module:23
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@menu"
+"\">Menu module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@menu\">Menu module（英"
+"文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/menu/menu.module:26
+msgid ""
+"Menus are a collection of links (menu items) used to navigate a website. The "
+"menus currently available on your site are displayed below. Select a menu "
+"from this list to manage its menu items."
+msgstr ""
+"メニューはサイトのナビゲーションに使用されるリンク（メニュー項目）集です。 以"
+"下はサイトで現在使用可能なメニューです。 メニュー項目を管理するには、リストか"
+"らメニューを選択してください。"
+
+#: modules/menu/menu.module:28
+msgid ""
+"Enter the name for your new menu. Remember to enable the newly created block "
+"in the <a href=\"@blocks\">blocks administration page</a>."
+msgstr ""
+"新しく作成したいメニューの名称を入力してください。 新しいメニューブロックを表"
+"示するためには、<a href=\"@blocks\">ブロックの管理ページ</a>で有効化する必要"
+"があることを忘れないでください。"
+
+#: modules/menu/menu.module:30
+msgid ""
+"To rearrange menu items, grab a drag-and-drop handle under the <em>Menu "
+"item</em> column and drag the items (or group of items) to a new location in "
+"the list. (Grab a handle by clicking and holding the mouse while hovering "
+"over a handle icon.) Remember that your changes will not be saved until you "
+"click the <em>Save configuration</em> button at the bottom of the page."
+msgstr ""
+"メニュー項目を再配置するには、「メニュー項目」カラムにあるドラッグアンドド"
+"ロップハンドル（十字の矢印）をつかみ（ハンドルをつかむには、ハンドルアイコン"
+"上でマウスの左ボタンを押下したままにします）、リスト中の新しい位置へメニュー"
+"項目（またはメニュー項目のグループ）をドラッグしてください。 ページ下部にある"
+"「設定の保存」ボタンをクリックするまで、変更が保存されないことに注意してくだ"
+"さい。"
+
+#: modules/menu/menu.module:32
+msgid "Enter the title and path for your new menu item."
+msgstr "新しいメニュー項目のタイトルとパスを入力してください。"
+
+#: modules/menu/menu.module:372
+msgid "Delete this menu item."
+msgstr "このメニュー項目を削除"
+
+#: modules/menu/menu.module:387
+msgid ""
+"The link text corresponding to this item that should appear in the menu. "
+"Leave blank if you do not wish to add this post to the menu."
+msgstr ""
+"メニューで表示される、項目に対応したリンクテキストを入力してください。 この投"
+"稿をメニューに追加したくない場合は空欄にしてください。"
+
+#: modules/menu/menu.module:40
+msgid "administer menu"
+msgstr "メニューの管理"
+
+#: modules/menu/menu.module:48
+msgid "Menus"
+msgstr "メニュー"
+
+#: modules/menu/menu.module:49
+msgid ""
+"Control your site's navigation menu, primary links and secondary links. as "
+"well as rename and reorganize menu items."
+msgstr ""
+"サイトのナビゲーションメニューやプライマリ・セカンダリリンクのコントロール、"
+"メニュー項目のリネームや再編成をします。"
+
+#: modules/menu/menu.module:57
+msgid "List menus"
+msgstr "メニューの一覧"
+
+#: modules/menu/menu.module:63
+msgid "Add menu"
+msgstr "メニューの追加"
+
+#: modules/menu/menu.module:78
+msgid "Customize menu"
+msgstr "メニューのカスタマイズ"
+
+#: modules/menu/menu.module:88
+msgid "List items"
+msgstr "項目の一覧"
+
+#: modules/menu/menu.module:94
+msgid "Add item"
+msgstr "項目の追加"
+
+#: modules/menu/menu.module:101
+msgid "Edit menu"
+msgstr "メニューの編集"
+
+#: modules/menu/menu.module:108
+msgid "Delete menu"
+msgstr "メニューの削除"
+
+#: modules/menu/menu.module:115
+msgid "Edit menu item"
+msgstr "メニュー項目の編集"
+
+#: modules/menu/menu.module:122
+msgid "Reset menu item"
+msgstr "メニュー項目のリセット"
+
+#: modules/menu/menu.module:129
+msgid "Delete menu item"
+msgstr "メニュー項目の削除"
+
+#: modules/menu/menu.install:31
+msgid ""
+"Holds definitions for top-level custom menus (for example, Primary Links)."
+msgstr "最上位のカスタムメニュー（例：プライマリリンク）の定義を格納します"
+
+#: modules/menu/menu.install:38
+msgid ""
+"Primary Key: Unique key for menu. This is used as a block delta so length is "
+"32."
+msgstr ""
+"プライマリキー： 固有のメニュー用キー（ブロックデルタとして使用されるため長さ"
+"は32）"
+
+#: modules/menu/menu.install:45
+msgid "Menu title; displayed at top of block."
+msgstr "ブロックのトップで表示されるメニュータイトル"
+
+#: modules/menu/menu.install:50
+msgid "Menu description."
+msgstr "メニューの説明"
+
+#: (duplicate) modules/menu/menu.install:12
+msgid ""
+"The navigation menu is provided by Drupal and is the main interactive menu "
+"for any site. It is usually the only menu that contains personalized links "
+"for authenticated users, and is often not even visible to anonymous users."
+msgstr ""
+"ナビゲーションメニューはDrupalによって提供され、あらゆるサイトにとってメイン"
+"の対話型メニューです。 通常、匿名ユーザには表示されない認証済みユーザ用の個別"
+"リンクを含む、唯一のメニューです。"
+
+#: (duplicate) modules/menu/menu.install:13
+msgid ""
+"Primary links are often used at the theme layer to show the major sections "
+"of a site. A typical representation for primary links would be tabs along "
+"the top."
+msgstr ""
+"プライマリリンクはサイトの主要なセクションを表示するために、多くの場合テーマ"
+"層において使用されます。 プライマリリンクの典型的な表現は、トップに沿ったタブ"
+"になります。"
+
+#: (duplicate) modules/menu/menu.install:14
+msgid ""
+"Secondary links are often used for pages like legal notices, contact "
+"details, and other secondary navigation items that play a lesser role than "
+"primary links"
+msgstr ""
+"セカンダリリンクは、リーガルノーティスやコンタクトの詳細、プライマリリンクよ"
+"り下位の役割を果たす副ナビゲーション項目のように、多くの場合はページ用に使用"
+"されます。"

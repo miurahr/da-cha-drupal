@@ -1,0 +1,467 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-contact)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  contact.admin.inc,v 1.3 2007/11/09 07:55:13 dries
+#  contact.pages.inc,v 1.6.2.1 2008/02/12 14:42:50 goba
+#  contact.module,v 1.103 2008/01/16 12:46:52 goba
+#  contact.install,v 1.10 2007/12/18 12:59:21 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/contact/contact.admin.inc:18;47
+msgid "Recipients"
+msgstr "受信者"
+
+#: modules/contact/contact.admin.inc:43
+msgid "Example: 'website feedback' or 'product information'."
+msgstr ""
+"利用者に分かり易いカテゴリの名称を入力してください。<br />例： 「サイトへのご"
+"意見」「製品情報のご請求」"
+
+#: modules/contact/contact.admin.inc:49
+msgid ""
+"Example: 'webmaster@example.com' or 'sales@example.com,support@example.com'. "
+"To specify multiple recipients, separate each e-mail address with a comma."
+msgstr ""
+"このカテゴリのメールを受信するアドレスを入力してください。 複数の受信者を指定"
+"する場合は、コンマで区切って入力してください。<br />例： 'webmaster@example."
+"com' 、 'sales@example.com,support@example.com'"
+
+#: modules/contact/contact.admin.inc:53
+msgid "Auto-reply"
+msgstr "自動返信"
+
+#: modules/contact/contact.admin.inc:55
+msgid ""
+"Optional auto-reply. Leave empty if you do not want to send the user an auto-"
+"reply message."
+msgstr ""
+"利用者に自動返信したい場合は、そのメッセージを記入してください。 自動返信メッ"
+"セージを送りたくない場合は、空欄にしてください。"
+
+#: modules/contact/contact.admin.inc:60
+msgid ""
+"When listing categories, those with lighter (smaller) weights get listed "
+"before categories with heavier (larger) weights. Categories with equal "
+"weights are sorted alphabetically."
+msgstr ""
+"コンタクトフォームや設定ページでの表示順位を指定してください。 カテゴリが一覧"
+"表示される際、ウェイトの数値が小さいほど上部に、大きいほど下部に配置されま"
+"す。 また、ウェイトが同じ場合はアルファベット順に配置されます。"
+
+#: modules/contact/contact.admin.inc:66
+msgid ""
+"Set this to <em>Yes</em> if you would like this category to be selected by "
+"default."
+msgstr ""
+"このカテゴリをデフォルトで選択済みにするかどうかを指定してください。 「は"
+"い」 を選ぶと、コンタクトフォームのドロップダウンリスト内で選択済みになりま"
+"す。"
+
+#: modules/contact/contact.admin.inc:86
+msgid "You must enter one or more recipients."
+msgstr "1人以上の受信者の入力が必須です。"
+
+#: modules/contact/contact.admin.inc:92
+msgid "%recipient is an invalid e-mail address."
+msgstr "%recipient は無効なメールアドレスです。"
+
+#: modules/contact/contact.admin.inc:114
+msgid "Category %category has been added."
+msgstr "カテゴリ %category が追加されました。"
+
+#: modules/contact/contact.admin.inc:120
+msgid "Category %category has been updated."
+msgstr "カテゴリ %category が更新されました。"
+
+#: modules/contact/contact.admin.inc:138
+msgid "Are you sure you want to delete %category?"
+msgstr "本当に、%category を削除してもよろしいですか？"
+
+#: modules/contact/contact.admin.inc:147
+msgid "Category %category has been deleted."
+msgstr "カテゴリ %category が削除されました。"
+
+# 直訳すれば追加情報だが、用途と語感を考え、あえてインフォメーションに
+#: modules/contact/contact.admin.inc:156
+msgid "Additional information"
+msgstr "追加インフォメーション"
+
+#: modules/contact/contact.admin.inc:157 modules/contact/contact.pages.inc:41
+msgid "You can leave a message using the contact form below."
+msgstr "以下のコンタクトフォームからメッセージを送信することができます。"
+
+#: modules/contact/contact.admin.inc:158
+msgid ""
+"Information to show on the <a href=\"@form\">contact page</a>. Can be "
+"anything from submission guidelines to your postal address or telephone "
+"number."
+msgstr ""
+"<a href=\"@form\">コンタクトページ</a>で上部に表示されるインフォメーションを"
+"記入してください。 所在地や電話番号のような付加的な連絡情報を提供したり、メッ"
+"セージ送信のガイドラインを提示するなど、あらゆることに活用できます。"
+
+#: modules/contact/contact.admin.inc:161
+msgid "Hourly threshold"
+msgstr "時間単位のしきい値"
+
+#: modules/contact/contact.admin.inc:164
+msgid ""
+"The maximum number of contact form submissions a user can perform per hour."
+msgstr ""
+"ユーザがコンタクトフォームから送信できる、1時間あたりの最大回数を指定してくだ"
+"さい。"
+
+#: modules/contact/contact.admin.inc:168
+msgid "Enable personal contact form by default"
+msgstr "デフォルトでパーソナルコンタクトフォームを有効にする"
+
+#: modules/contact/contact.admin.inc:170
+msgid "Default status of the personal contact form for new users."
+msgstr ""
+"新規ユーザのパーソナルコンタクトフォームのデフォルト値を「有効」にする場合、"
+"ここにチェックを入れてください。"
+
+#: modules/contact/contact.admin.inc:115
+msgid "Contact form: category %category added."
+msgstr "コンタクトフォーム： カテゴリ %category が追加されました。"
+
+#: modules/contact/contact.admin.inc:121
+msgid "Contact form: category %category updated."
+msgstr "コンタクトフォーム： カテゴリ %category が更新されました。"
+
+#: modules/contact/contact.admin.inc:148
+msgid "Contact form: category %category deleted."
+msgstr "コンタクトフォーム： カテゴリ %category が削除されました。"
+
+#: modules/contact/contact.pages.inc:17
+msgid ""
+"You cannot send more than %number messages per hour. Please try again later."
+msgstr ""
+"1時間に %number 回以上のメッセージ送信はできません。 しばらく経ってから再試行"
+"してください。"
+
+#: modules/contact/contact.pages.inc:49
+msgid "Your e-mail address"
+msgstr "あなたのメールアドレス"
+
+#: modules/contact/contact.pages.inc:88;197
+msgid "Send yourself a copy."
+msgstr "コピーを自分宛に送信したい場合は、ここにチェックを入れてください。"
+
+#: modules/contact/contact.pages.inc:99
+msgid ""
+"The contact form has not been configured. <a href=\"@add\">Add one or more "
+"categories</a> to the form."
+msgstr ""
+"コンタクトフォームが設定されていません。 フォームに<a href=\"@add\">1つ以上の"
+"カテゴリを追加</a>してください。"
+
+#: modules/contact/contact.pages.inc:109
+msgid "You must select a valid category."
+msgstr "カテゴリの選択は必須です。"
+
+#: modules/contact/contact.pages.inc:112
+msgid "You must enter a valid e-mail address."
+msgstr "有効なメールアドレスを入力する必要があります。"
+
+#: modules/contact/contact.pages.inc:147
+msgid "Your message has been sent."
+msgstr "メッセージは送信されました"
+
+#: modules/contact/contact.pages.inc:161
+msgid ""
+"You need to provide a valid e-mail address to contact other users. Please "
+"update your <a href=\"@url\">user information</a> and try again."
+msgstr ""
+"他のユーザと連絡を取るために、有効なメールアドレスを提供する必要があります。 "
+"<a href=\"@url\">アカウント情報</a>でメールアドレスを正しく登録してから再試行"
+"してください。"
+
+#: modules/contact/contact.pages.inc:164
+msgid ""
+"You cannot contact more than %number users per hour. Please try again later."
+msgstr ""
+"1時間に %number 人以上のユーザと連絡を取ることはできません。 しばらく経ってか"
+"ら再試行してください。"
+
+#: modules/contact/contact.pages.inc:179
+msgid "From"
+msgstr "送信元"
+
+#: modules/contact/contact.pages.inc:183
+msgid "To"
+msgstr "宛先"
+
+#: modules/contact/contact.pages.inc:232
+msgid "The message has been sent."
+msgstr "メッセージが送信されました。"
+
+#: modules/contact/contact.pages.inc:146
+msgid "%name-from sent an e-mail regarding %category."
+msgstr "%name-from さんから %category についてのメールが送信されました。"
+
+#: modules/contact/contact.pages.inc:231
+msgid "%name-from sent %name-to an e-mail."
+msgstr "%name-from さんから %name-to さんへメールが送信されました。"
+
+#: modules/contact/contact.module:15
+msgid ""
+"The contact module facilitates communication via e-mail, by allowing your "
+"site's visitors to contact one another (personal contact forms), and by "
+"providing a simple way to direct messages to a set of administrator-defined "
+"recipients (the <a href=\"@contact\">contact page</a>). With either form, "
+"users specify a subject, write their message, and (optionally) have a copy "
+"of their message sent to their own e-mail address."
+msgstr ""
+"Contact（コンタクト）モジュールは、サイトの訪問者が相互に連絡を取れるようにし"
+"たり（パーソナルコンタクトフォーム）、管理者が定義した受信者グループにメッ"
+"セージを配信する簡単な方法（<a href=\"@contact\">サイト用コンタクトページ</"
+"a>）を提供することで、メールによるコミュニケーションを容易にします。 パーソナ"
+"ル・サイト用のいずれかのフォームで、ユーザは件名を指定し、メッセージを書き、"
+"任意で自分のメールアドレスにメッセージのコピーを送ることができます。"
+
+#: modules/contact/contact.module:16
+msgid ""
+"Personal contact forms allow users to be contacted via e-mail, while keeping "
+"recipient e-mail addresses private. Users may enable or disable their "
+"personal contact forms by editing their <em>My account</em> page. If "
+"enabled, a <em>Contact</em> tab leading to their personal contact form is "
+"available on their user profile. Site administrators have access to all "
+"personal contact forms (even if they have been disabled). The <em>Contact</"
+"em> tab is only visible when viewing another user's profile (users do not "
+"see their own <em>Contact</em> tab)."
+msgstr ""
+"パーソナルコンタクトフォームは、受信者のメールアドレスを公開せずに、ユーザが"
+"メールで連絡を取れるようにします。 ユーザは「アカウント情報」ページで、パーソ"
+"ナルコンタクトフォームの有効・無効を切り替えることができます。 有効にした場"
+"合、パーソナルコンタクトフォームへ誘導する「コンタクト」タブが、ユーザプロ"
+"フィールで利用可能となります。 サイト管理者はこの設定に関わらず、すべてのパー"
+"ソナルコンタクトフォームにアクセス可能です。 「コンタクト」タブは別のユーザの"
+"プロフィールでのみ表示され、自分のプロフィールでは表示されません。"
+
+#: modules/contact/contact.module:17
+msgid ""
+"The <a href=\"@contact\">contact page</a> provides a simple form for "
+"visitors to leave comments, feedback, or other requests. Messages are routed "
+"by selecting a category from a list of administrator-defined options; each "
+"category has its own set of e-mail recipients. Common categories for a "
+"business site include, for example, \"Website feedback\" (messages are "
+"forwarded to web site administrators) and \"Product information\" (messages "
+"are forwarded to members of the sales department). The actual e-mail "
+"addresses defined within a category are not displayed. Only users in roles "
+"with the <em>access site-wide contact form</em> permission may access the <a "
+"href=\"@contact\">contact page</a>."
+msgstr ""
+"<a href=\"@contact\">コンタクトページ</a>は、訪問者がコメントやフィードバッ"
+"ク、その他のリクエストを残すための単純なフォームを提供します。 管理者の定義し"
+"たオプションリストからカテゴリが選択されることで、メッセージは各カテゴリに関"
+"連付けられた受信者グループに送信されます。 例えば、ビジネスサイト用の一般的な"
+"カテゴリには、「サイトへのフィードバック」（メッセージはサイト管理者へ送信）"
+"や、「製品情報」（メッセージは販売部のメンバーへ送信）などが含まれます。 定義"
+"された実際のメールアドレスは、カテゴリ内には表示されません。 <a href="
+"\"@contact\">コンタクトページ</a>には、「サイト用コンタクトフォームへのアクセ"
+"ス」権限を持ったユーザのみがアクセスできます。"
+
+#: modules/contact/contact.module:18
+msgid ""
+"A link to your site's <a href=\"@contact\">contact page</a> from the main "
+"<em>Navigation</em> menu is created, but is disabled by default. Create a "
+"similar link on another menu by adding a menu item pointing to the path "
+"\"contact\""
+msgstr ""
+"メインの「ナビゲーション」メニュー内に<a href=\"@contact\">コンタクトページ</"
+"a>へのリンクが作成されます（デフォルトでは無効化されています）。 パス "
+"\"contact\" を指すメニュー項目を追加することで、別のメニューに同様のリンクを"
+"作成できます。"
+
+#: modules/contact/contact.module:19
+msgid ""
+"Customize the <a href=\"@contact\">contact page</a> with additional "
+"information (like physical location, mailing address, and telephone number) "
+"using the <a href=\"@contact-settings\">contact form settings page</a>. The "
+"<a href=\"@contact-settings\">settings page</a> also provides configuration "
+"options for the maximum number of contact form submissions a user may "
+"perform per hour, and the default status of users' personal contact forms."
+msgstr ""
+"<a href=\"@contact-settings\">コンタクトフォームの設定ページ</a>で、<a href="
+"\"@contact\">コンタクトページ</a>の追加インフォメーション（所在地や電話番号、"
+"あるいはガイドラインなど）をカスタマイズできます。 また、ユーザがコンタクト"
+"フォームから送信できる1時間あたりの最大回数や、ユーザのパーソナルコンタクト"
+"フォームのデフォルト状態も設定できます。"
+
+#: modules/contact/contact.module:20
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@contact"
+"\">Contact module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@contact\">Contact module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/contact/contact.module:23
+msgid ""
+"This page lets you set up <a href=\"@form\">your site-wide contact form</a>. "
+"To do so, add one or more categories. You can associate different recipients "
+"with each category to route e-mails to different people. For example, you "
+"can route website feedback to the webmaster and direct product information "
+"requests to the sales department. On the <a href=\"@settings\">settings "
+"page</a>, you can customize the information shown above the contact form. "
+"This can be useful to provide additional contact information such as your "
+"postal address and telephone number."
+msgstr ""
+"このページで<a href=\"@form\">サイト用のコンタクトフォーム</a>をセットアップ"
+"します。 サイト用コンタクトフォームを使うにはまず、1つ以上のカテゴリを加えて"
+"ください。 コンタクトフォームからのメールを、内容などに応じてそれぞれ異なる人"
+"に送信するために、カテゴリごとに異なる受信者を指定することができます。 例え"
+"ば、サイトへの意見などはウェブ担当者に送り、製品情報の請求などは営業部へ送る"
+"ということができます。 <a href=\"@settings\">環境設定のページ</a>では、コンタ"
+"クトフォームの上部に表示されるインフォメーションを、カスタマイズすることがで"
+"きます。 これは、所在地や電話番号のような付加的な連絡情報を提供したり、コンタ"
+"クトフォームを利用するユーザへの案内などを表示するのに役立ちます。"
+
+#: modules/contact/contact.module:25
+msgid ""
+"The menu item can be customized and configured only once the menu module has "
+"been <a href=\"@modules-page\">enabled</a>."
+msgstr ""
+"メニュー項目の設定やカスタマイズは、メニューモジュールが<a href=\"@modules-"
+"page\">有効化</a>されている場合にのみ行うことができます。"
+
+#: modules/contact/contact.module:30
+msgid ""
+"The contact module also adds a <a href=\"@menu-settings\">menu item</a> "
+"(disabled by default) to the navigation block."
+msgstr ""
+"コンタクトモジュールはさらに、ナビゲーションメニューに<a href=\"@menu-"
+"settings\">メニュー項目</a>（デフォルトでは無効）を加えます。"
+
+#: modules/contact/contact.module:140
+msgid "Contact settings"
+msgstr "コンタクトの設定"
+
+#: modules/contact/contact.module:145
+msgid "Personal contact form"
+msgstr "パーソナルコンタクトフォーム"
+
+#: modules/contact/contact.module:147
+msgid ""
+"Allow other users to contact you by e-mail via <a href=\"@url\">your "
+"personal contact form</a>. Note that while your e-mail address is not made "
+"public to other members of the community, privileged users such as site "
+"administrators are able to contact you even if you choose not to enable this "
+"feature."
+msgstr ""
+"他のユーザが<a href=\"@url\">あなたのパーソナルコンタクトフォーム</a>を通じ"
+"て、あなたにメールで連絡を取れるようにしたい場合はここにチェックを入れてくだ"
+"さい。 なお、この機能を有効にしても、あなたのメールアドレスが他のユーザに公開"
+"されることはありませんが、サイト管理者のような特権を持ったユーザは、この機能"
+"の有効・無効にかかわらず、あなたと連絡を取ることができることに留意してくださ"
+"い。"
+
+#: modules/contact/contact.module:168;174
+msgid "[!category] !subject"
+msgstr "[!category] !subject"
+
+#: modules/contact/contact.module:169
+msgid "!name sent a message using the contact form at !form."
+msgstr ""
+"コンタクトフォーム(!form)から送信された\n"
+"!name さんのメッセージです。"
+
+#: modules/contact/contact.module:183
+msgid ""
+"!name (!name-url) has sent you a message via your contact form (!form-url) "
+"at !site."
+msgstr ""
+"あなたのコンタクトフォームからメッセージが送られました。\n"
+"サイト： !site （!form-url）\n"
+"送信者： !name (!name-url)"
+
+#: modules/contact/contact.module:184
+msgid ""
+"If you don't want to receive such e-mails, you can change your settings at !"
+"url."
+msgstr ""
+"このようなメールを受け取りたくない場合は、以下のURLで「コンタクトの\n"
+"設定」を変更してください。\n"
+"アカウントの設定： !url"
+
+#: modules/contact/contact.module:185
+msgid "Message:"
+msgstr "メッセージ:"
+
+#: modules/contact/contact.module:39
+msgid "access site-wide contact form"
+msgstr "サイト用コンタクトフォームへのアクセス"
+
+#: modules/contact/contact.module:39
+msgid "administer site-wide contact form"
+msgstr "サイト用コンタクトフォームの管理"
+
+#: modules/contact/contact.module:46
+msgid "Contact form"
+msgstr "コンタクトフォーム"
+
+#: modules/contact/contact.module:47
+msgid "Create a system contact form and set up categories for the form to use."
+msgstr ""
+"サイト用コンタクトフォームの作成と、フォームで使用するカテゴリのセットアップ"
+"をします。"
+
+#: modules/contact/contact.module:67
+msgid "Edit contact category"
+msgstr "コンタクトカテゴリの編集"
+
+#: modules/contact/contact.module:74
+msgid "Delete contact"
+msgstr "コンタクトの削除"
+
+#: modules/contact/contact.module:0
+msgid "contact"
+msgstr "コンタクト"
+
+#: modules/contact/contact.install:29
+msgid "Contact form category settings."
+msgstr "コンタクトフォームのカテゴリ設定"
+
+#: modules/contact/contact.install:35
+msgid "Primary Key: Unique category ID."
+msgstr "プライマリキー： 固有のカテゴリID"
+
+#: modules/contact/contact.install:42
+msgid "Category name."
+msgstr "カテゴリ名"
+
+#: modules/contact/contact.install:48
+msgid "Comma-separated list of recipient e-mail addresses."
+msgstr "受信者メールアドレスのコンマ区切りリスト"
+
+#: modules/contact/contact.install:54
+msgid "Text of the auto-reply message."
+msgstr "自動返信メッセージのテキスト"
+
+#: modules/contact/contact.install:61
+msgid "The category's weight."
+msgstr "カテゴリのウェイト"
+
+#: modules/contact/contact.install:68
+msgid ""
+"Flag to indicate whether or not category is selected by default. (1 = Yes, 0 "
+"= No)"
+msgstr ""
+"デフォルトでカテゴリが選択されているかどうかを示すフラグ（1 = はい、0 = いい"
+"え）"

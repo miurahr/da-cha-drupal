@@ -1,0 +1,522 @@
+# -----------------------------------------------------------------------------
+# Japanese translation of Drupal (modules-profile)
+#
+# Copyright (c) 2006-2008  Drupal Japan  ( http://drupal.jp/ )  /
+#                          Takafumi      ( jp.drupal@imagine **reverse order**)
+#
+# Generated from file:
+#  profile.admin.inc,v 1.8 2008/01/21 15:20:43 goba
+#  profile.module,v 1.236 2008/02/03 19:36:46 goba
+#  profile.pages.inc,v 1.2 2007/12/08 14:06:22 goba
+#  profile.install,v 1.12 2007/12/18 12:59:22 dries
+#
+# -----------------------------------------------------------------------------
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2008-02-15 13:50+0100\n"
+"Last-Translator: Takafumi <jp.drupal@imagine **reverse order**>\n"
+"Language-Team: Drupal Japan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/profile/profile.admin.inc:55
+msgid "Add new field"
+msgstr "新規フィールドの追加"
+
+#: modules/profile/profile.admin.inc:82
+msgid "Profile fields have been updated."
+msgstr "プロフィールフィールドが更新されました。"
+
+#: modules/profile/profile.admin.inc:115
+msgid ""
+"No fields in this category. If this category remains empty when saved, it "
+"will be removed."
+msgstr ""
+"このカテゴリにフィールドはありません。 このカテゴリが空のままで保存された場合"
+"は削除されます。"
+
+#: modules/profile/profile.admin.inc:144
+msgid "No fields available."
+msgstr "利用できるフィールドがありません。"
+
+#: modules/profile/profile.admin.inc:178
+msgid "edit %title"
+msgstr "%title の編集"
+
+#: modules/profile/profile.admin.inc:196
+msgid "add new %type"
+msgstr "新しい %type の追加"
+
+#: modules/profile/profile.admin.inc:211
+msgid "Field settings"
+msgstr "フィールドの設定"
+
+#: modules/profile/profile.admin.inc:217
+msgid ""
+"The category the new field should be part of. Categories are used to group "
+"fields logically. An example category is \"Personal information\"."
+msgstr ""
+"このフィールドを含めるカテゴリ名を入力してください。 カテゴリは論理的にフィー"
+"ルドをグループ化するために使用されます。 例えば、「個人情報」というカテゴリ名"
+"で「本名」「年齢」「居住地」といったフィールドをグループ化することができま"
+"す。"
+
+#: modules/profile/profile.admin.inc:223
+msgid ""
+"The title of the new field. The title will be shown to the user. An example "
+"title is \"Favorite color\"."
+msgstr ""
+"このフィールドのタイトルを入力してください。 タイトルは例えば「本名」や「年"
+"齢」といったもので、ユーザに表示されます。"
+
+#: modules/profile/profile.admin.inc:227
+msgid "Form name"
+msgstr "フォームでの名称"
+
+# 原文と異なるがより詳細に説明するため（冗長？）
+#: modules/profile/profile.admin.inc:229
+msgid ""
+"The name of the field. The form name is not shown to the user but used "
+"internally in the HTML code and URLs.\n"
+"Unless you know what you are doing, it is highly recommended that you prefix "
+"the form name with <code>profile_</code> to avoid name clashes with other "
+"fields. Spaces or any other special characters except dash (-) and "
+"underscore (_) are not allowed. An example name is \"profile_favorite_color"
+"\" or perhaps just \"profile_color\"."
+msgstr ""
+"このフィールドのフォームでの名称を入力してください。 これはユーザには表示され"
+"ず、HTML コード内部でフィールドの <b>name</b> 属性として使用されます。 このた"
+"め、入力する文字にはアルファベットと数字を使用するようにしてください。 また特"
+"殊文字のうち、ダッシュ（-）とアンダースコア（_）は使用できますが、それ以外の"
+"特殊文字（例えば <b>&lt;</b> や <b>&</b> など）は使用できません。 また、日本"
+"語のようなマルチバイト文字も使用を避けるようにしてください。 他のフィールドと"
+"の衝突を避けるため、名称には <b>profile_</b> というプレフィックスを付けること"
+"をお勧めします。 よくわからない場合は、フィールドのタイトルを英語やローマ字に"
+"したものを <b>profile_</b> に続けて付加してください。 例えば「本名」であれば "
+"<b>profile_real_name</b>、「年齢」であれば <b>profile_age</b> のように入力し"
+"てください。"
+
+#: modules/profile/profile.admin.inc:234
+msgid "Explanation"
+msgstr "説明"
+
+#: modules/profile/profile.admin.inc:236
+msgid ""
+"An optional explanation to go with the new field. The explanation will be "
+"shown to the user."
+msgstr ""
+"このフィールドに伴う任意の説明を記入してください。 これはユーザに表示され、入"
+"力や選択をする上での手助けとなります。"
+
+#: modules/profile/profile.admin.inc:240
+msgid "Selection options"
+msgstr "選択オプション"
+
+#: modules/profile/profile.admin.inc:242
+msgid ""
+"A list of all options. Put each option on a separate line. Example options "
+"are \"red\", \"blue\", \"green\", etc."
+msgstr ""
+"すべての選択項目を行単位で区切って入力してください。 例えば「職業」という"
+"フィールドであれば、「学生」「会社員」「自営業」などの項目を各行に入力してく"
+"ださい。"
+
+#: modules/profile/profile.admin.inc:246
+msgid "Visibility"
+msgstr "閲覧の制限"
+
+#: modules/profile/profile.admin.inc:248
+msgid ""
+"Hidden profile field, only accessible by administrators, modules and themes."
+msgstr "隠しフィールド： 管理者とモジュールやテーマだけがアクセスできる"
+
+#: modules/profile/profile.admin.inc:248
+msgid "Private field, content only available to privileged users."
+msgstr ""
+"プライベートフィールド： 「ユーザの管理」権限のような、特権を持ったユーザだけ"
+"が内容を閲覧できる"
+
+#: modules/profile/profile.admin.inc:248
+msgid ""
+"Public field, content shown on profile page but not used on member list "
+"pages."
+msgstr ""
+"パブリックフィールド： プロフィールページにのみ内容が表示され、ユーザリストの"
+"ページには表示されない"
+
+#: modules/profile/profile.admin.inc:248
+msgid "Public field, content shown on profile page and on member list pages."
+msgstr ""
+"パブリックフィールド： プロフィールとユーザリストの両ページに内容が表示される"
+
+#: modules/profile/profile.admin.inc:252;259
+msgid "Page title"
+msgstr "ページのタイトル"
+
+# 原文と異なるがより詳細に説明するため（冗長？）
+#: modules/profile/profile.admin.inc:254
+msgid ""
+"To enable browsing this field by value, enter a title for the resulting "
+"page. The word <code>%value</code> will be substituted with the "
+"corresponding value. An example page title is \"People whose favorite color "
+"is %value\". This is only applicable for a public field."
+msgstr ""
+"このフィールドの値ごとのユーザ一覧ページを表示したい場合は、ここにページのタ"
+"イトルを入力してください。 例えば「職業」というフィールドであれば、「学生」"
+"「会社員」「自営業」などの各項目ごとに一致するユーザ一覧ページを表示できま"
+"す。 値の内容は <b>%value</b> に代入され、ページのタイトルに使用することがで"
+"きます。 例えば「職業」の場合、<b>職業が「%value」のユーザ</b> としておくと、"
+"このフィールドの値がユーザのプロフィールページでリンクとなり、それをクリック"
+"することで「職業」の値に応じたユーザ一覧が表示されます。 なお、この項目は「閲"
+"覧の制限」が「パブリックフィールド」に指定されている場合にのみ適用されます。"
+
+# 原文と異なるがより詳細に説明するため（冗長？）
+#: modules/profile/profile.admin.inc:261
+msgid ""
+"To enable browsing this field by value, enter a title for the resulting "
+"page. An example page title is \"People who are employed\". This is only "
+"applicable for a public field."
+msgstr ""
+"このフィールドの値ごとのユーザ一覧ページを表示したい場合は、ここにページのタ"
+"イトルを入力してください。 例えば「自動車を所有」というフィールドの場合、<b>"
+"車を持っているユーザ</b> としておくと、このフィールドにチェックを入れたユーザ"
+"のプロフィールページで <b>自動車を所有</b> がリンクとなり、それをクリックする"
+"ことで「車を持っているユーザ」というユーザ一覧ページが表示されます。 なお、こ"
+"の項目は「閲覧の制限」が「パブリックフィールド」に指定されている場合にのみ適"
+"用されます。"
+
+#: modules/profile/profile.admin.inc:267
+msgid ""
+"The weights define the order in which the form fields are shown. Lighter "
+"fields \"float up\" towards the top of the category."
+msgstr ""
+"フィールドの表示順位を決める、ウェイトを指定してください。ウェイトの数値が小"
+"さいほど上部に、大きいほど下部に配置されます。"
+
+#: modules/profile/profile.admin.inc:270
+msgid "Form will auto-complete while user is typing."
+msgstr "フォームでのキー入力中の自動補完を有効にする"
+
+#: modules/profile/profile.admin.inc:274
+msgid "The user must enter a value."
+msgstr "ユーザの入力必須項目に指定する"
+
+#: modules/profile/profile.admin.inc:278
+msgid "Visible in user registration form."
+msgstr "ユーザ登録フォームに表示する"
+
+#: modules/profile/profile.admin.inc:282
+msgid "Save field"
+msgstr "フィールドの保存"
+
+#: modules/profile/profile.admin.inc:293
+msgid ""
+"The specified form name contains one or more illegal characters. Spaces or "
+"any other special characters except dash (-) and underscore (_) are not "
+"allowed."
+msgstr ""
+"「フォームでの名称」に不正な文字が含まれています。 ダッシュ（-）とアンダース"
+"コア（_）以外の特殊文字（例えば <b>&lt;</b> や <b>&amp;</b> など）や、空白文"
+"字は使用できません。"
+
+#: modules/profile/profile.admin.inc:297
+msgid "The specified form name is reserved for use by Drupal."
+msgstr ""
+"指定された「フォームでの名称」は、Drupalが使用するために予約されています。"
+
+#: modules/profile/profile.admin.inc:304
+msgid "The specified category name is reserved for use by Drupal."
+msgstr "指定されたカテゴリ名は、Drupalが使用するために予約されています。"
+
+#: modules/profile/profile.admin.inc:316
+msgid "The specified title is already in use."
+msgstr "指定されたタイトルはすでに使用されています。"
+
+#: modules/profile/profile.admin.inc:319
+msgid "The specified name is already in use."
+msgstr "指定された名称はすでに使用されています。"
+
+#: modules/profile/profile.admin.inc:323
+msgid "A hidden field cannot be required."
+msgstr "隠しフィールドは必須にできません。"
+
+#: modules/profile/profile.admin.inc:326
+msgid "A hidden field cannot be set to visible on the user registration form."
+msgstr "隠しフィールドはユーザ登録フォームで表示するようにはできません。"
+
+#: modules/profile/profile.admin.inc:344
+msgid "The field has been created."
+msgstr "フィールドが作成されました。"
+
+#: modules/profile/profile.admin.inc:350
+msgid "The field has been updated."
+msgstr "フィールドが更新されました。"
+
+#: modules/profile/profile.admin.inc:372
+msgid "Are you sure you want to delete the field %field?"
+msgstr "本当に、フィールド %field を削除してもよろしいですか？"
+
+#: modules/profile/profile.admin.inc:373
+msgid ""
+"This action cannot be undone. If users have entered values into this field "
+"in their profile, these entries will also be deleted. If you want to keep "
+"the user-entered data, instead of deleting the field you may wish to <a href="
+"\"@edit-field\">edit this field</a> and change it to a hidden profile field "
+"so that it may only be accessed by administrators."
+msgstr ""
+" この操作は元に戻すことができませんので、十分に注意して実行してください。"
+"<br />ユーザがプロフィールのこのフィールドに値を入力していた場合、それらの値"
+"もすべて削除されます。 ユーザが入力した値を保存しておきたい場合は、フィールド"
+"を削除するのではなく、<a href=\"@edit-field\">フィールドを編集</a>して管理者"
+"だけがアクセスできる「隠しプロフィールフィールド」に変更してください。"
+
+#: modules/profile/profile.admin.inc:386
+msgid "The field %field has been deleted."
+msgstr "フィールド %field が削除されました。"
+
+#: modules/profile/profile.admin.inc:345;387 modules/profile/profile.module:0
+msgid "profile"
+msgstr "プロフィール"
+
+#: modules/profile/profile.admin.inc:345
+msgid "Profile field %field added under category %category."
+msgstr ""
+"プロフィールフィールド %field が、カテゴリ %category に追加されました。"
+
+#: modules/profile/profile.admin.inc:387
+msgid "Profile field %field deleted."
+msgstr "プロフィールフィールド %field が削除されました。"
+
+#: modules/profile/profile.pages.inc:102 modules/profile/profile.module:80
+msgid "User list"
+msgstr "ユーザリスト"
+
+#: modules/profile/profile.module:35
+msgid ""
+"The profile module allows custom fields (such as country, full name, or age) "
+"to be defined and displayed in the <em>My Account</em> section. This permits "
+"users of a site to share more information about themselves, and can help "
+"community-based sites organize users around specific information."
+msgstr ""
+"Profile（プロフィール）モジュールは、カスタムフィールド（国名、フルネーム、年"
+"齢のような）を定義し、「アカウント情報」セクションで表示できるようにします。 "
+"これはサイトのユーザが自身に関するより多くの情報を共有できるようにし、またコ"
+"ミュニティベースのサイトが特定の情報に基づいてユーザをまとめるのに役立ちま"
+"す。"
+
+#: modules/profile/profile.module:36
+msgid "The following types of fields can be added to a user profile:"
+msgstr ""
+"ユーザプロフィールには、以下のフィールドタイプを追加することができます："
+
+#: modules/profile/profile.module:37;541
+msgid "single-line textfield"
+msgstr "一行テキストフィールド"
+
+#: modules/profile/profile.module:38;542
+msgid "multi-line textfield"
+msgstr "複数行テキストフィールド"
+
+#: modules/profile/profile.module:39;543
+msgid "checkbox"
+msgstr "チェックボックス"
+
+#: modules/profile/profile.module:40;544
+msgid "list selection"
+msgstr "選択リスト"
+
+#: modules/profile/profile.module:41;545
+msgid "freeform list"
+msgstr "フリーフォームリスト"
+
+#: modules/profile/profile.module:43;547
+msgid "date"
+msgstr "日付"
+
+#: modules/profile/profile.module:44
+msgid ""
+"For more information, see the online handbook entry for <a href=\"@profile"
+"\">Profile module</a>."
+msgstr ""
+"より詳しい情報は、オンラインハンドブックの<a href=\"@profile\">Profile module"
+"（英文）</a>エントリを参照するか、日本サイトの<a href=\"http://drupal.jp/"
+"\">&nbsp;≡ Drupal Japan ≡&nbsp;</a>を訪れてみてください。"
+
+#: modules/profile/profile.module:47
+msgid ""
+"This page displays a list of the existing custom profile fields to be "
+"displayed on a user's <em>My Account</em> page. To provide structure, "
+"similar or related fields may be placed inside a category. To add a new "
+"category (or edit an existing one), edit a profile field and provide a new "
+"category name. To change the category of a field or the order of fields "
+"within a category, grab a drag-and-drop handle under the Title column and "
+"drag the field to a new location in the list. (Grab a handle by clicking and "
+"holding the mouse while hovering over a handle icon.) Remember that your "
+"changes will not be saved until you click the <em>Save configuration</em> "
+"button at the bottom of the page."
+msgstr ""
+"このページは、ユーザの「アカウント情報」ページで表示される、既存のカスタムプ"
+"ロフィールフィールドの一覧を表示します。 類似または関連するフィールドは、構造"
+"化するためにカテゴリ内に配置することができます。 新しいカテゴリの追加や既存の"
+"カテゴリを編集するには、プロフィールフィールドを編集し、新しいカテゴリ名を与"
+"えてください。 フィールドのカテゴリや、カテゴリ内でのフィールドの順番を変更す"
+"るには、タイトルのカラムにあるドラッグアンドドロップハンドル（十字の矢印）を"
+"つかみ（ハンドルをつかむには、ハンドルアイコン上でマウスの左ボタンを押下した"
+"ままにします）、リスト中の新しい位置へフィールドをドラッグしてください。 ペー"
+"ジ下部にある「設定の保存」ボタンをクリックするまで、変更が保存されないことに"
+"注意してください。"
+
+#: modules/profile/profile.module:137
+msgid "Author information"
+msgstr "投稿者の情報"
+
+#: modules/profile/profile.module:148
+msgid "Link to full user profile"
+msgstr "ユーザプロフィールへのリンク"
+
+#: modules/profile/profile.module:150
+msgid "Profile fields to display"
+msgstr "表示するプロフィールのフィールド"
+
+#: modules/profile/profile.module:153
+msgid ""
+"Select which profile fields you wish to display in the block. Only fields "
+"designated as public in the <a href=\"@profile-admin\">profile field "
+"configuration</a> are available."
+msgstr ""
+"「投稿者の情報」ブロックで表示したいフィールドを指定してください。 指定可能な"
+"項目は、<a href=\"@profile-admin\">プロフィールフィールドの設定</a>で「パブ"
+"リックフィールド」に指定された項目のみとなります。"
+
+#: modules/profile/profile.module:185
+msgid "View full user profile"
+msgstr "ユーザプロフィールを表示"
+
+#: modules/profile/profile.module:190
+msgid "About %name"
+msgstr "%nameさんについて"
+
+#: modules/profile/profile.module:333
+msgid ""
+"Put each item on a separate line or separate them by commas. No HTML allowed."
+msgstr ""
+"リストの各項目を、行単位またはコンマで区切って入力してください。 なお、HTMLは"
+"使用できません。"
+
+#: modules/profile/profile.module:435
+msgid "The value provided for %field is not a valid URL."
+msgstr "%field で指定された値は有効なURLではありません。"
+
+# 「～の～は必須です」としたいが、フィールドタイプが不定なので「必須項目」
+#: modules/profile/profile.module:440
+msgid "The field %field is required."
+msgstr "フィールド %field は必須項目です。"
+
+#: modules/profile/profile.module:87
+msgid "Profiles"
+msgstr "プロフィール"
+
+#: modules/profile/profile.module:88
+msgid "Create customizable fields for your users."
+msgstr "ユーザのためのカスタマイズ可能なフィールドを作成します。"
+
+#: modules/profile/profile.module:95
+msgid "Add field"
+msgstr "フィールドの追加"
+
+#: modules/profile/profile.module:102
+msgid "Profile category autocomplete"
+msgstr "プロフィールカテゴリの自動補完"
+
+#: modules/profile/profile.module:108
+msgid "Edit field"
+msgstr "フィールドの編集"
+
+#: modules/profile/profile.module:115
+msgid "Delete field"
+msgstr "フィールドの削除"
+
+#: modules/profile/profile.module:122
+msgid "Profile autocomplete"
+msgstr "プロフィールの自動補完"
+
+#: modules/profile/profile.install:27
+msgid "Stores profile field information."
+msgstr "プロフィールフィールドの情報を格納します"
+
+#: modules/profile/profile.install:32
+msgid "Primary Key: Unique profile field ID."
+msgstr "プライマリキー： 固有のプロフィールフィールドID"
+
+#: modules/profile/profile.install:38
+msgid "Title of the field shown to the end user."
+msgstr "エンドユーザに表示されるフィールドのタイトル"
+
+#: modules/profile/profile.install:45
+msgid "Internal name of the field used in the form HTML and URLs."
+msgstr "フォームのHTMLやURLで使用されるフィールドの内部名"
+
+#: modules/profile/profile.install:50
+msgid "Explanation of the field to end users."
+msgstr "エンドユーザに対するフィールドの説明"
+
+#: modules/profile/profile.install:56
+msgid "Profile category that the field will be grouped under."
+msgstr "フィールドがグループ化されるプロフィールカテゴリ"
+
+#: modules/profile/profile.install:62
+msgid "Title of page used for browsing by the field's value"
+msgstr "フィールドの値によるブラウジングに使用されるページのタイトル"
+
+#: modules/profile/profile.install:68
+msgid "Type of form field."
+msgstr "フォームフィールドのタイプ"
+
+#: modules/profile/profile.install:75
+msgid "Weight of field in relation to other profile fields."
+msgstr "他のプロフィールフィールドとの関係におけるフィールドのウェイト"
+
+#: modules/profile/profile.install:82
+msgid "Whether the user is required to enter a value. (0 = no, 1 = yes)"
+msgstr ""
+"ユーザによる値の入力を必須とするかどうかのフラグ（0 = いいえ、1 = はい）"
+
+#: modules/profile/profile.install:89
+msgid ""
+"Whether the field is visible in the user registration form. (1 = yes, 0 = no)"
+msgstr "ユーザ登録フォームに表示するかどうかのフラグ（0 = いいえ、1 = はい）"
+
+#: modules/profile/profile.install:96
+msgid ""
+"The level of visibility for the field. (0 = hidden, 1 = private, 2 = public "
+"on profile but not member list pages, 3 = public on profile and list pages)"
+msgstr ""
+"フィールドの表示レベル（0 = 隠す、1 = プライベート、2 = プロフィールでは公開"
+"するがメンバーリストページでは公開しない、3 = プロフィールとリストページで公"
+"開）"
+
+#: modules/profile/profile.install:103
+msgid "Whether form auto-completion is enabled. (0 = disabled, 1 = enabled)"
+msgstr "フォームの自動補完を有効にするかどうかのフラグ（0 = 無効、1 = 有効）"
+
+#: modules/profile/profile.install:108
+msgid "List of options to be used in a list selection field."
+msgstr "選択リストフィールドで使用されるオプションのリスト"
+
+#: modules/profile/profile.install:117
+msgid "Stores values for profile fields."
+msgstr "プロフィールフィールドの値を格納します"
+
+#: modules/profile/profile.install:124
+msgid "The {profile_fields}.fid of the field."
+msgstr "フィールドの{profile_fields}.fid"
+
+#: modules/profile/profile.install:131
+msgid "The {users}.uid of the profile user."
+msgstr "プロフィールユーザの{users}.uid"
+
+#: modules/profile/profile.install:136
+msgid "The value for the field."
+msgstr "フィールドの値"
