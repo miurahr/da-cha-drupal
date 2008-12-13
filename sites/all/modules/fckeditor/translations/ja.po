@@ -1,0 +1,837 @@
+# $Id$
+#
+# Japanese translation of Drupal (fckeditor)
+# Copyright 2008 admin <matsuda@albert.co.jp>
+# Generated from files:
+#  fckeditor.info,v 1.1.2.1.2.1 2007/10/30 13:42:51 wwalc Exp
+#  fckeditor.module,v 1.19.2.6.2.36 2008/08/01 08:35:38 wwalc Exp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2008-08-12 09:52+0900\n"
+"PO-Revision-Date: 2008-08-13 12:30+0900\n"
+"Last-Translator: PineRay <pineray@nifty.com>\n"
+"Language-Team: Japanese <matsuda@albert.co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: sites/all/modules/fckeditor/fckeditor.info:0
+#: sites/all/modules/fckeditor/fckeditor.module:182
+msgid "FCKeditor"
+msgstr "FCKeditor"
+
+#: sites/all/modules/fckeditor/fckeditor.info:0
+msgid "Enables the usage of FCKeditor (WYSIWYG) instead of plain text fields."
+msgstr "プレーンなテキストフィールドの代わりに、FCKeditor (WYSIWYGエディタ) を使用できるようにします。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:44
+msgid "<p>Note: FCKeditor is highly configurable. The most commonly used features are listed below. If you want to take a look at all available settings, open <code>!fckconfig</code> and then customize <code>!fckeditor_config</code> to your needs. This is also the only way to define new toolbar sets. It is advised to not edit <code>fckconfig.js</code> because you may overwrite it accidentally when you update the editor.</p>"
+msgstr "<p>注意: FCKeditorはとても柔軟です。最も一般的に用いられる機能は以下にリストアップされています。利用可能な設定をすべて見たければ <code>!fckconfig</code> を開けてみて、それから必要に応じて <code>!fckeditor_config</code> をカスタマイズしてください。これはまた、新しいツールバーセットを定義するただ1つの方法でもあります。エディタをアップデートする際に誤って上書きしてしまう可能性があるので、<code>fckconfig.js</code>を編集しないことをオススメします。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:49
+msgid "Enables the usage of FCKeditor (WYSIWYG editor) instead of plain text fields."
+msgstr "プレーンなテキストフィールドの代わりに、FCKeditor (WYSIWYGエディタ) を使用できるようにします。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:53
+msgid "<p>The Global Profile allows you to define settings that are common for all profiles. Values defined in other profiles will be appended to the global configuration. This way you can avoid repeating some of the settings that are usually the same in each profile.</p>"
+msgstr "<p>共通プロフィールでは、すべてのプロフィールに共通する設定を行うことができます。その他のプロフィールでは、共通の設定に追加する値を設定することができます。このように、通常はそれぞれのプロフィールで共通であることを繰り返し設定するのを避けることができるのです。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:56
+msgid "<p>The FCKeditor module allows Drupal to replace textarea fields with a rich text or <acronym title=\"What You See Is What You Get\">WYSIWYG</acronym> editor. This editor brings many of the powerful functionalities of known desktop editors like Word to the web. It's relatively lightweight and doesn't require any kind of installation on the client computer.</p><p>More information about the editor is located at the !fckeditorlink. A small user guide is located at !userguidelink.</p>"
+msgstr "<p>FCKeditorによって、Drupalはリッチテキストエディタまたは<acronym title=\"What You See Is What You Get\">WYSIWYG</acronym>エディタでテキストエリアのフィールドを置き換えることができます。Wordのようなデスクトップのエディタでは既知の強力な機能の多くをウェブに持ち込みます。それは比較的軽量で、クライアントコンピュータへのいかなるインストールも必要としません</p><p>エディタに関するより詳しい情報は、!fckeditorlinkにあります。ちょっとしたユーザガイドは!userguidelinkにあります。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:58;66;71;372
+msgid "FCKeditor homepage"
+msgstr "FCKeditorホームページ"
+
+#: sites/all/modules/fckeditor/fckeditor.module:59;67
+msgid "FCKeditor userguide"
+msgstr "FCKeditorユーザガイド"
+
+#: sites/all/modules/fckeditor/fckeditor.module:61
+msgid "<p>Profiles can be defined based on user roles. A FCKeditor profile can define which pages receive this FCKeditor capability, what buttons or themes are enabled for the editor, how the editor is displayed, and a few other editor functions. It is possible also to define the Global Profile that will hold values that will be appended to all other profiles.</p><p>Lastly, only users with the <code>!access1</code> !permission will be able to use FCKeditor. </p>"
+msgstr "<p>ユーザのロールを元に、プロフィールを設定することができます。FCKeditorのプロフィールでは、どのページでFCKeditorを使用可能にするか、どのボタンやテーマをエディタで利用可能にするか、どのようにエディタを表示するか、その他いくつかの機能を設定することができます。また、他のプロフィールすべてに値を追加する共通プロフィールを設定することもできます。</p><p>最後に、<code>!access1</code>の!permissionを持つユーザだけが、FCKeditorを使用することができます。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:61;1394
+msgid "permission"
+msgstr "権限"
+
+#: sites/all/modules/fckeditor/fckeditor.module:61;459;488;1252;1346;1394;133
+msgid "access fckeditor"
+msgstr "FCKeditorへのアクセス"
+
+#: sites/all/modules/fckeditor/fckeditor.module:64
+msgid "<p>The FCKeditor module allows Drupal to replace textarea fields with a rich text or <acronym title=\"What You See Is What You Get\">WYSIWYG</acronym> editor. This editor brings many of the powerful functionalities of known desktop editors like Word to the web. It's relatively lightweight and doesn't require any kind of installation on the client computer.</p><p>More information is located at the !fckeditorlink. A small user guide is located at !userguidelink.</p>"
+msgstr "<p>FCKeditorによって、Drupalはリッチテキストエディタまたは<acronym title=\"What You See Is What You Get\">WYSIWYG</acronym>エディタでテキストエリアのフィールドを置き換えることができます。Wordのようなデスクトップのエディタでは既知の強力な機能の多くをウェブに持ち込みます。それは比較的軽量で、クライアントコンピュータへのいかなるインストールも必要としません</p><p>エディタに関するより詳しい情報は、!fckeditorlinkにあります。ちょっとしたユーザガイドは!userguidelinkにあります。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:69
+msgid "<h3>Installation</h3><p>Go to the !fckeditorlink and download the latest version. Then uncompress the contents of the \"fckeditor\" directory of the downloaded file to %fckeditordir.</p>"
+msgstr "<h3>インストール</h3><p>!fckeditorlinkにアクセスして、最新のバージョンをダウンロードします。それから、ダウンロードしたファイルに含まれている「fckeditor」ディレクトリの中身を %fckeditordir に展開します。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:74
+msgid "<h3>Configuration</h3><ol><li>Enable the module as usual from Drupal's admin pages.</li><li>Grant permissions for use of FCKeditor in <code>!path2</code></li><li>Under <code>!path1</code>, create the fckeditor profiles. In each profile you can choose which textareas will be replaced by FCKeditor, select default toolbar and configure some more advanced settings </li><li>For the Rich Text Editing to work you also need to configure your !filterlink for the users that may access Rich Text Editing. Either grant those users Full HTML access or use the following: <br/><code>!filter</code>. </li><li>To have a better control over line breaks, you may disable <code>Line break converter</code> in the chosen filter (recommended).</li><li>Modify the fckeditor.config.js file to custom your needs (optional).<br />You may copy the needed configuration lines from the default FCKeditor configuration settings (modules/fckeditor/fckeditor/fckconfig.js), the lines in fckeditor.config.js will override most settings.</li></ol>"
+msgstr "<h3>設定</h3><ol><li>Drupalの管理ページから、通常通りモジュールを有効にします。</li><li><code>!path2</code>で、FCKeditorを使用するアクセス権限を与えます。</li><li><code>!path1</code>で、FCKeditorのプロフィールを作成します。 それぞれのプロフィールで、どのテキストエリアにFCKeditorを設置するかの選択や、デフォルトツールバーの選択、より高度な設定を行うことができます。</li><li>リッチテキストエディタを動作させるためには、リッチテキストエディタへアクセスする可能性があるユーザに!filterlinkを設定する必要があります。Full HTMLへアクセスできるようにするか、または以下のタグを使用可能にします: <br/><code>!filter</code>. </li><li>改行をより制御しやすくするために、選択した入力書式で<code>改行変換</code>を無効にすることができます (推奨)。</li><li>必要にあわせて fckeditor.config.js ファイルに修正を加えてください (任意)。<br />FCKeditorのデフォルトの設定 (modules/fckeditor/fckeditor/fckconfig.js) から、必要な行をコピーすることもできます。fckeditor.config.js は、ほとんどの設定を上書きします。</li></ol>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:76
+msgid "Administer > Settings > FCKeditor"
+msgstr "管理 > サイト設定 > FCKeditor"
+
+#: sites/all/modules/fckeditor/fckeditor.module:77
+msgid "Administer > User Management > Access Control"
+msgstr "管理 > ユーザ管理 > アクセス制御"
+
+#: sites/all/modules/fckeditor/fckeditor.module:82
+msgid "filters"
+msgstr "入力書式"
+
+#: sites/all/modules/fckeditor/fckeditor.module:84
+msgid "<h3>Installation troubleshooting</h3><p>If your FCKeditor does not show you must check if all files are extracted correctly. The directory %fckeditordir should have the following files <code>fckeditor.js, fckconfig.js, fckstyles.xml, fcktemplates.xml</code> and a directory named <code>editor</code>.</p>"
+msgstr "<h3>インストールにおけるトラブルシューティング</h3><p>FCKeditorが表示されない場合は、すべてのファイルが正しく存在するか確認してください。 %fckeditordir ディレクトリには、以下のファイル <code>fckeditor.js、fckconfig.js、fckstyles.xml、fcktemplates.xml</code> および <code>editor</code> ディレクトリが無くてはなりません。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:88
+msgid "The correct directory structure is as follows: <blockquote><pre>!structure</pre></blockquote>"
+msgstr "正しいディレクトリ構造は以下の通りです: <blockquote><pre>!structure</pre></blockquote>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:91
+msgid "<h3>Plugins: Teaser break and Pagebreak</h3><p>By default, FCKeditor module comes with two plugins that can handle teaser break (&lt;!--break--&gt;) and pagebreak (&lt;!--pagebreak--&gt;). You can enable any (or even both) of them.<ol><li>Open <code>!fckeditor.config.js</code> and uncomment these three lines: <pre>!code</pre></li><li>The second step is to add buttons to the toolbar (in the same file). The button names are: <code>DrupalBreak, DrupalPageBreak</code>. For example if you have a toolbar with an array of buttons defined as follows: <pre>!buttons1</pre> simply add those two buttons at the end of array: <pre>!buttons2</pre> (remember about single quotes).</li></ol></p>"
+msgstr "<h3>プラグイン: ティーザー区切りと改ページ</h3><p>デフォルトでは、FCKeditorモジュールにはティーザー区切り (&lt;!--break--&gt;) と改ページ (&lt;!--pagebreak--&gt;) を扱う2つのプラグインがあります。そのどちらも (あるいは両方を) 有効にすることができます。<ol><li><code>!fckeditor.config.js</code> を開いて、以下の3行のコメントを外します: <pre>!code</pre></li><li>次に、ツールバーにボタンを追加します (同ファイル)。ボタンの名前は <code>DrupalBreak</code> および <code>DrupalPageBreak</code> です。例えば、以下のようなボタンの配列 <pre>!buttons1</pre> を持つツールバーであれば、配列の後ろに2つのボタンを追加するだけです (シングルクオートで囲むことに注意)。 <pre>!buttons2</pre> </li></ol></p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:102
+msgid "<h3>Uploading images and files</h3><p>There are three ways of uploading files: By using the built-in file browser, by using a module like !imce or using the core upload module.</p>"
+msgstr "<h3>画像とファイルのアップロード</h3><p>ファイルをアップロードするには3つの方法があります: 組み込まれているファイルブラウザを使用する、または!imceのようなモジュールを使用する、コアのuploadモジュールを使用するという方法です。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:104;1687
+msgid "IMCE"
+msgstr "IMCE"
+
+#: sites/all/modules/fckeditor/fckeditor.module:108
+msgid "<h3>How to enable the file browser</h3><p>The editor gives the end user the flexibility to create a custom file browser that can be integrated on it. The included file browser allows users to view the content of a specific directory on the server and add new content to that directory (create folders and upload files).</p><p><ol><li>To enable file browsing you need to edit the connector configuration file in your fckeditor module directory, the file should be in:<blockquote><code>!config3</code> <br/> (FCKeditor 2.5+)<br/><br/> or <br/><br/><code>!config1</code><br/> and <br/><code>!config2</code> <br/> (FCKeditor 2.3.x - 2.4.x)</blockquote></p><p>In this file(s) you will need to enable the file browser by adding one line that includes file with the special authentication function for Drupal (<code>filemanager.config.php</code>). Add this code: <blockquote><code>!code1</code><br/> (FCKeditor 2.5+)</blockquote> or <blockquote><code>!code2</code> <br/> (FCKeditor 2.3.x - 2.4.x)</blockquote> straight below this line: <blockquote><code>!code3</code></blockquote> The config.php file also holds some other important settings, please take a look at it and adjust it to your needs (optional).</p></li>"
+msgstr "<h3>ファイルブラウザを有効にする方法</h3><p>エディタと組み合わせることのできる独自のファイルブラウザを作成する柔軟性を、エンドユーザは与えられています。組み込まれているファイルブラウザによって、ユーザはサーバにある特定のディレクトリの中身を閲覧でき、そのディレクトリに新しいコンテンツを追加 (フォルダの作成やファイルのアップロード) することができます。</p><p><ol><li>ファイルブラウザを有効にするためには、FCKeditorモジュールのディレクトリにあるコネクタの設定ファイルを編集する必要があります。設定ファイルは以下の場所にあります:<blockquote><code>!config3</code> <br/> (FCKeditor 2.5+)<br/><br/> または <br/><br/><code>!config1</code><br/> および <br/><code>!config2</code> <br/> (FCKeditor 2.3.x - 2.4.x)</blockquote></p><p>このファイルにDrupalの特別な認証機能 (<code>filemanager.config.php</code>) をインクルードする1行を加えることで、ファイルブラウザを有効にします。以下の行の直下に追加します: <blockquote><code>!code3</code></blockquote> 以下のコードを追加します: <blockquote><code>!code1</code><br/> (FCKeditor 2.5+)</blockquote> または <blockquote><code>!code2</code> <br/> (FCKeditor 2.3.x - 2.4.x)</blockquote> config.php ファイルにはその他にも重要な設定がありますので、必要にあわせてちょうせいしてください (任意)。</p></li>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:118
+msgid "<li>As of Drupal 5.2, additional step is required: locate file named <code>settings.php</code> inside your drupal directory (usually <code>sites/default/settings.php</code>) and set <strong><code>&#36;cookie_domain</code></strong> variable to the appropiate domain (remember to uncomment that line). If you not do this, FCKeditor will claim that file browser is disabled</li>"
+msgstr "<li>Drupal 5.2では、追加のステップが必要となります: <code>settings.php</code>をDrupalディレクトリ (通常は <code>sites/default/settings.php</code>) に設置して、適切なドメインの <strong><code>&#36;cookie_domain</code></strong> 変数を設定します (その行のコメントを外すことを忘れないで下さい)。もしもこれを行わなければ、ファイルブラウザが無効であるとFCKeditorに判断されます。</li>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:119
+msgid "<li>Enabling file uploads is <strong>a security risk</strong>. That's why you have to grant a !link to enable the file browser to certain groups.</li>"
+msgstr "<li>ファイルのアップロードを許可すると、<strong>セキュリティリスク</strong>につながります。 そのため、特定のグループには!linkを与えなくてはなりません。</li>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:119
+msgid "separate permission"
+msgstr "別々のアクセス権限"
+
+#: sites/all/modules/fckeditor/fckeditor.module:120
+msgid "<li>Lastly, adjust the !fb for each !profile.</li></ol>"
+msgstr "<li>最後に、!profileごとに!fbを調整します。</li></ol>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:120;1673;1682
+msgid "File browser settings"
+msgstr "ファイルブラウザの設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:120
+msgid "profile"
+msgstr "プロフィール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:121
+msgid "<h3>Modules: Image Assist</h3><p>Image Assist can be integrated with FCKeditor. To do this, simply copy the <code>!iaf1</code> file to <code>!iaf2</code>.</p>"
+msgstr "<h3>モジュール: Image Assist</h3><p>Image AssistとFCKeditorを組み合わせることができます。そうするには、<code>!iaf1</code> ファイルを <code>!iaf2</code> へ単純にコピーするだけです。</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:184
+msgid "Configure the rich editor."
+msgstr "リッチエディタの設定を行います。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:206;316
+msgid "Include mode selected, but no fields/paths given. Enter at least one path or field where FCKeditor should appear."
+msgstr "組込モードが選択されていますが、フィールドまたはパスが全く指定されていません。FCKeditorを設置するフィールドまたはパスを、少なくともひとつは入力してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:210
+msgid "Minimum rows must be a valid number"
+msgstr "最小行数には数字を正しく入力してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:214
+msgid "If FCKeditor is enabled by default, popup window must be disabled."
+msgstr "FCKeditorがデフォルトで有効になっていれば、ポップアップウィンドウは無効にしなくてはなりません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:218
+msgid "If toggle is enabled, popup window must be disabled."
+msgstr "切り替えを有効にするならば、ポップアップウィンドウを無効にしなくてはなりません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:222
+msgid "You must give a profile name."
+msgstr "プロフィール名を入力してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:226
+msgid "Enter valid width. Ex: 400 or 100%"
+msgstr "幅を正しく入力してください。例: 400 または 100%"
+
+#: sites/all/modules/fckeditor/fckeditor.module:231
+msgid "CSS path is not empty. Please set the \"Editor CSS\" option to \"define css\" mode."
+msgstr "CSSのパスが指定されています。「エディタのCSS」オプションを「CSSを定義」モードに設定してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:234
+msgid "Double quotes are not allowed in CSS path."
+msgstr "CSSのパスにはダブルクオートを使用できません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:237;249
+msgid "Enter valid path, do not surround it with quotes."
+msgstr "クオートで囲まずに、パスを正しく入力してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:243
+msgid "Path to predefined styles is not empty. Please set the \"Predefined styles\" option to \"define path to fckstyles.xml\" mode."
+msgstr "定義済みスタイルへのパスが指定されています。「定義済みスタイル」オプションを「fckstyles.xml へのパスを定義」モードに設定してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:246
+msgid "Double quotes are not allowed in path."
+msgstr "パスにダブルクオートを使用することはできません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:255
+msgid "Enter valid, semicolon separated, list of HTML font formats (no semicolon at the end of list expected)."
+msgstr "HTMLフォントの書式を、セミコロンで区切ったリストで正しく入力してください (リストの最後にはセミコロンは不要です)。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:263;271;323;331
+msgid "Invalid field specified: %1"
+msgstr "指定されたフィールドが不正です: %1"
+
+#: sites/all/modules/fckeditor/fckeditor.module:280;288;340;348
+msgid "Invalid path specified: %1"
+msgstr "指定されたパスが不正です: %1"
+
+#: sites/all/modules/fckeditor/fckeditor.module:295
+msgid "Path to uploaded files is required."
+msgstr "アップロードファイルへのパスを指定してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:298
+msgid "Absolute path to uploaded files is required."
+msgstr "アップロードファイルへの絶対パスを指定してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:368
+msgid "checking for %filename"
+msgstr "%filename の確認"
+
+#: sites/all/modules/fckeditor/fckeditor.module:370
+msgid "The FCKeditor component is not installed correctly. Please go to the !fckeditorlink to download the latest version. After that you must extract the files to %modulepath and make sure that the directory %modulesubdir and the file %modulefile exist. Refer to the !readme for more information."
+msgstr "FCKeditorの構成が正しくインストールされていません。!fckeditorlinkにアクセスして、最新のバージョンをダウンロードしてください。それから、ダウンロードしたファイルを %modulepath に展開して、%modulesubdir ディレクトリと %modulefile ファイルが存在していることを確認してください。より詳しい情報は、!readmeを参照してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:403;408
+msgid "Edit FCKeditor profile"
+msgstr "FCKeditorプロフィールを編集"
+
+#: sites/all/modules/fckeditor/fckeditor.module:414
+msgid "Deleted profile"
+msgstr "プロフィールを削除"
+
+#: sites/all/modules/fckeditor/fckeditor.module:420
+msgid "Deleted Global profile"
+msgstr "共通プロフィールを削除"
+
+#: sites/all/modules/fckeditor/fckeditor.module:424;1365
+msgid "Create profile"
+msgstr "プロフィールを作成"
+
+#: sites/all/modules/fckeditor/fckeditor.module:425;1369
+msgid "Update profile"
+msgstr "プロフィールを更新"
+
+#: sites/all/modules/fckeditor/fckeditor.module:428
+msgid "Your FCKeditor profile has been updated."
+msgstr "FCKeditorプロフィールを更新しました。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:428
+msgid "Your FCKeditor profile has been created."
+msgstr "FCKeditorプロフィールを作成しました。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:436;1223
+msgid "Create global profile"
+msgstr "共通プロフィールを作成"
+
+#: sites/all/modules/fckeditor/fckeditor.module:437;1227
+msgid "Update global profile"
+msgstr "共通プロフィールを更新"
+
+#: sites/all/modules/fckeditor/fckeditor.module:441
+msgid "FCKeditor global profile has been saved."
+msgstr "FCKeditor共通プロフィールを保存しました。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:450
+msgid "FCKeditor settings"
+msgstr "FCKeditorの設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:454
+msgid "Could not find the FCKeditor engine installed at <strong>!fckeditor-directory</strong>. Please !download, uncompress it and copy the folder into !fckeditor-path."
+msgstr "<strong>!fckeditor-directory</strong>にインストールされたFCKeditorエンジンが見つかりません。!downloadして解凍し、!fckeditor-path にフォルダをコピーしてください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:454
+msgid "download FCKeditor"
+msgstr "FCKeditorをダウンロード"
+
+#: sites/all/modules/fckeditor/fckeditor.module:458
+msgid "There is currently no role with the <strong>!access</strong> permission. Visit !acl administration section."
+msgstr "現在、<strong>!access</strong>のアクセス権限を持つロールがありません。!aclの管理ページに足を運んでください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:459
+msgid "Access control"
+msgstr "アクセス制御"
+
+#: sites/all/modules/fckeditor/fckeditor.module:477
+msgid "No FCKeditor profiles found. At this moment, nobody is able to use FCKeditor. Create new profile below."
+msgstr "FCKeditorのプロフィールがありません。現在、FCKeditorを誰も利用できません。以下で新しいプロフィールを作成してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:488
+msgid "Not all roles with <strong>!access</strong> permission are associated with FCKeditor profiles. As a result, users having the following roles may be unable to use FCKeditor: !list Create new or edit FCKeditor profiles below and in the <strong>Basic setup</strong> section, check &quot;Roles allowed to use this profile&quot;."
+msgstr "<strong>!access</strong>のアクセス権限を持つロールで、FCKeditorのプロフィールに関連付けられていないものがあります。そのため、以下のロールを持つユーザはFCKeditorを使用できない可能性があります: !list<br />FCKeditorのプロフィールを下記で新しく作成するか編集して、<strong>基本設定</strong>セクションの「このプロフィールの仕様を許可されたロール」を確認してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:538;565
+msgid "Profile"
+msgstr "プロフィール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:538
+msgid "Roles"
+msgstr "ロール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:538;565
+msgid "Operations"
+msgstr "操作"
+
+#: sites/all/modules/fckeditor/fckeditor.module:547;564
+msgid "edit"
+msgstr "編集"
+
+#: sites/all/modules/fckeditor/fckeditor.module:547;564
+msgid "delete"
+msgstr "削除"
+
+#: sites/all/modules/fckeditor/fckeditor.module:550
+msgid "Profiles"
+msgstr "プロフィール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:552
+msgid "Create new profile"
+msgstr "新しいプロフィールを作成"
+
+#: sites/all/modules/fckeditor/fckeditor.module:555
+msgid "No profiles found. Click here to !create."
+msgstr "プロフィールがありません。こちらをクリックして!createしてください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:555
+msgid "create a new profile"
+msgstr "新しいプロフィールを作成"
+
+#: sites/all/modules/fckeditor/fckeditor.module:560
+msgid "Global Profile not found. Click here to !create."
+msgstr "共通プロフィールがありません。こちらをクリックして!createしてください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:560
+msgid "create the global profile"
+msgstr "共通プロフィールを作成"
+
+#: sites/all/modules/fckeditor/fckeditor.module:563
+msgid "Global Settings"
+msgstr "共通の設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:564
+msgid "FCKeditor Global Profile"
+msgstr "FCKeditor共通プロフィール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:689;690
+msgid "Switch to plain text editor"
+msgstr "プレーンテキストエディタへ切り替え"
+
+#: sites/all/modules/fckeditor/fckeditor.module:689;690
+msgid "Switch to rich text editor"
+msgstr "リッチテキストエディタへ切り替え"
+
+#: sites/all/modules/fckeditor/fckeditor.module:866
+msgid "Open rich editor"
+msgstr "リッチエディタを開く"
+
+#: sites/all/modules/fckeditor/fckeditor.module:879
+msgid "<div class=\"textarea-identifier description\">The ID for !excluding this element is: !id - the path is: !path</div>"
+msgstr "<div class=\"textarea-identifier description\">このエレメントを!excludingするIDは !id で、パスは !path です。</div>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:880
+msgid "excluding or including"
+msgstr "排除または組込"
+
+#: sites/all/modules/fckeditor/fckeditor.module:903
+msgid "Rich Text Editor settings"
+msgstr "リッチテキストエディタの設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:911;1489
+msgid "Default state"
+msgstr "デフォルトの状態"
+
+#: sites/all/modules/fckeditor/fckeditor.module:913;953;1491;1531
+msgid "enabled"
+msgstr "有効"
+
+#: sites/all/modules/fckeditor/fckeditor.module:913;953;1491;1531
+msgid "disabled"
+msgstr "無効"
+
+#: sites/all/modules/fckeditor/fckeditor.module:914
+msgid "Should rich-text editing be enabled or disabled by default in textarea fields? If disabled, rich text editor may still be enabled using toggle or popup window."
+msgstr "テキストエリアフィールドでリッチテキストエディタを使用しての編集をデフォルトで有効にしますか？ 無効であれば、切り替えのリンクやポップアップウィンドウを使用するまではリッチテキストエディタを利用できません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:919;1497
+msgid "Show disable/enable rich text editor toggle"
+msgstr "リッチテキストエディタの有効/無効を切り替えるリンクを表示"
+
+#: sites/all/modules/fckeditor/fckeditor.module:921;929;978;1402;1499;1507;1556;1606;1614;1694;1701
+msgid "true"
+msgstr "true"
+
+#: sites/all/modules/fckeditor/fckeditor.module:921;929;978;1402;1499;1507;1556;1606;1614;1694;1701
+msgid "false"
+msgstr "false"
+
+#: sites/all/modules/fckeditor/fckeditor.module:922
+msgid "Whether or not to show the disable/enable rich text editor toggle below the textarea. Works only if FCKeditor is not running a popup window (see below)."
+msgstr "リッチテキストエディタの有効/無効を切り替えられるリンクを、テキストエリアの下に表示するかどうか。ポップアップウィンドウでFCKeditorを使用 (下記参照) していない場合に限り動作します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:927;1505
+msgid "Use FCKeditor in a popup window"
+msgstr "ポップアップウィンドウでFCKeditorを使用"
+
+#: sites/all/modules/fckeditor/fckeditor.module:930;1508
+msgid "If this option is enabled a link to a popup window will be used instead of a textarea replace."
+msgstr "このオプションが有効であれば、テキストエリアの代わりにポップアップウィンドウへのリンクを表示します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:935;1513
+msgid "Skin"
+msgstr "スキン"
+
+#: sites/all/modules/fckeditor/fckeditor.module:938
+msgid "Choose a FCKeditor skin."
+msgstr "FCKeditorのスキンを選択します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:943;1521
+msgid "Toolbar"
+msgstr "ツールバー"
+
+#: sites/all/modules/fckeditor/fckeditor.module:946
+msgid "Choose a FCKeditor toolbar set."
+msgstr "FCKeditorのツールバーセットを選択します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:951;1529
+msgid "Start the toolbar expanded"
+msgstr "ツールバーを展開して表示"
+
+#: sites/all/modules/fckeditor/fckeditor.module:954;1532
+msgid "The toolbar start expanded or collapsed."
+msgstr "はじめに表示する際、ツールバーを展開した状態にするか、折りたたんだ状態にするか。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:959;1537
+msgid "Width"
+msgstr "幅"
+
+#: sites/all/modules/fckeditor/fckeditor.module:961;1539
+msgid "Width in pixels or percent. Ex: 400 or 100%"
+msgstr "幅をピクセルまたはパーセンテージで入力。例: 400 または 100%"
+
+#: sites/all/modules/fckeditor/fckeditor.module:968;1546
+msgid "Language"
+msgstr "言語"
+
+#: sites/all/modules/fckeditor/fckeditor.module:971;1549
+msgid "The language for the FCKeditor interface."
+msgstr "FCKeditorインターフェースの言語"
+
+#: sites/all/modules/fckeditor/fckeditor.module:976;1554
+msgid "Auto-detect language"
+msgstr "言語の自動判別"
+
+#: sites/all/modules/fckeditor/fckeditor.module:979;1557
+msgid "Use auto detect user language feature."
+msgstr "ユーザの言語を自動で判別する機能を使用します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1210;1351
+msgid "administer"
+msgstr "管理者"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1211;1352;0
+msgid "fckeditor"
+msgstr "FCKeditor"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1212
+msgid "Add new FCKeditor global profile"
+msgstr "新しいFCKeditor共通プロフィールを追加"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1219
+msgid "Global profile already exist. Only one global profile is allowed."
+msgstr "共通プロフィールはすでに存在しています。共通プロフィールは1つしか設定できません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1232
+msgid "Main setup"
+msgstr "主な設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1244
+msgid "Role precedence"
+msgstr "ロールの優先順位"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1246
+msgid "A user having <strong>multiple roles</strong> gets the permissions of the highest one. Sort role IDs according to their <strong>precedence from higher to lower</strong> by putting > in between.<br />"
+msgstr "<strong>複数のロール</strong>を持つユーザは、そのうちで最も高いアクセス権限を得ます。ロールの優先順位に従って、<strong>高いほうから低いほうへ</strong>、間に > を置きながらロールIDを並べてください。<br />"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1249
+msgid "Here is the id-name pairs of roles having access to FCKeditor:"
+msgstr "FCKeditorへのアクセス権限を持つロールのIDと名前の組み合わせです。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1252
+msgid "You haven't assigned the <code>!access1</code> !permissions yet."
+msgstr "<code>!access1</code>の!permissionsをまだ付与していません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1252;1347
+msgid "permissions"
+msgstr "アクセス権限"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1257;1408
+msgid "Visibility settings"
+msgstr "表示設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1264;1422
+msgid "Use inclusion or exclusion mode"
+msgstr "組込モードまたは排斥モードを使用"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1266;1424
+msgid "exclude"
+msgstr "排斥"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1266;1424
+msgid "include"
+msgstr "組込"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1267;1425
+msgid "Choose the way of disabling/enabling FCKeditor on selected fields/paths (see below). Use exclude to disable FCKeditor on selected fields/paths. Use include if you want to load FCKeditor only on selected paths/fields."
+msgstr "選択したフィールドやパス (下記参照) でFCKeditorを無効または有効にする方法を選択してください。選択したフィールドやパスでFCKeditorを無効にするには排除を使用します。選択したフィールドやパスでFCKeditorを有効にするには組込を使用します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1277;1435
+msgid "Fields to exclude/include"
+msgstr "排斥/組込するフィールド"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1283;1441
+msgid "Enter names (HTML ID's) of fields that may or may not have an FCKeditor, depending on the chosen option for the inclusion/exclusion mode.<br />You may separate the different entries by commas, spaces or newlines."
+msgstr "組込/排斥モードの選択にしたがって、FCKeditorを設置するまたは設置しないフィールドの名前 (HTMLのID) を入力してください。<br />コンマやスペースや改行でエントリを区切ります。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1293;1451
+msgid "Paths to exclude/include"
+msgstr "排斥/組込するパス"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1299;1457
+msgid "Enter drupal paths here, depending on the chosen option for the inclusion/exclusion mode.<br />Paths may be used the same way as in the drupal blocks configuration.<br />You may separate the different entries by commas, spaces or newlines. <br />You may also use * as a wildcard character (for example <code>comment/*</code>)."
+msgstr "組込/排斥モードの選択にしたがって、Drupalのパスをここに入力してください。<br />Drupalのブロック設定と同じ方法でパスを使用します。<br />コンマやスペースや改行でエントリを区切ります。<br />また、ワイルドカード文字として * を使用できます (例: <code>comment/*</code>)。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1304;1462
+msgid "Force simplified toolbar on the following fields"
+msgstr "以下のフィールドでシンプルなツールバーを強制"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1308;1467
+msgid "Enter names (HTML ID's) of fields that should have the simplified toolbar.<br />If you don't want to use this feature, simply leave this field empty.<br />You may separate the different entries by commas, spaces or newlines."
+msgstr "シンプルなツールバーにするフィールドの名前 (HTMLのID) を入力してください。<br />この機能を利用しない場合は、このフィールドを空欄にします。<br />コンマやスペースや改行でエントリを区切ります。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1313;1472
+msgid "Force simplified toolbar on the following paths"
+msgstr "以下のパスでシンプルなツールバーを強制"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1317;1477
+msgid "Enter drupal paths that should have the simplified toolbar.<br />If you don't want to use this feature, simply leave this field empty.<br />Paths may be used the same way as in the drupal blocks configuration.<br />You may separate the different entries by commas, spaces or newlines.<br />You may also use * as a wildcard character (for example <code>comment/*</code>)."
+msgstr "シンプルなツールバーにするDrupalのパスを入力してください。<br />この機能を利用しない場合は、このフィールドを空欄にします。<br />Drupalのブロック設定と同じ方法でパスを使用します。<br />コンマやスペースや改行でエントリを区切ります。<br />また、ワイルドカード文字として * を使用できます (例: <code>comment/*</code>)。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1344
+msgid "You haven't assigned <code>!access1</code> !permissions yet.<br/>It is recommended to assign the <code>!access1</code> !permissions before updating FCKeditor profiles."
+msgstr "<code>!access1</code>の!permissionsをまだ付与していません。<br/>FCKeditorのプロフィールを更新する前に、<code>!access1</code>の!permissionsを付与することをオススメします。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1353
+msgid "Add new FCKeditor profile"
+msgstr "新しいFCKeditorプロフィールを追加"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1363
+msgid "Not all user roles are shown since they already have fckeditor profiles. You must first unassign profiles in order to add them to a new one."
+msgstr "すでにいずれかのプロフィールを割り当てられているものがあるので、すべてのユーザロールが表示されているわけではありません。他のプロフィールを割り当てられているユーザロールに新しいプロフィールを割り当てるには、まず現在のプロフィールを取り除かなければなりません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1374
+msgid "Basic setup"
+msgstr "基本設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1381
+msgid "Profile name"
+msgstr "プロフィール名"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1385
+msgid "Enter a name for this profile. This name is only visible within the fckeditor administration page."
+msgstr "このプロフィールの名前を入力します。FCKeditorの管理ページでのみ、この名前は表示されます。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1391
+msgid "Roles allowed to use this profile"
+msgstr "このプロフィールの使用を許可されたロール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1394
+msgid "Only roles with '!access1' permission will be shown here. If no role is available, make sure that you have assigned the '!access1' !permission."
+msgstr "'!access1'のアクセス権限を持つロールだけがここに表示されます。ロールがなければ、'!access1'のアクセス権限を付与しているか確かめてください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1400
+msgid "Allow users to customize FCKeditor appearance"
+msgstr "FCKeditorの外見をユーザがカスタマイズできるようにする"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1403
+msgid "If allowed, users will be able to override <code>Editor appearance</code> by visiting their profile page."
+msgstr "許可されていれば、ユーザは各自のプロフィールページで<code>エディタの外見</code>を上書きできるようになります。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1415
+msgid "Minimum rows"
+msgstr "最小行数"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1417
+msgid "FCKeditor will be triggered if the textarea has more rows than entered here. Enter '1' if you do not want to use this feature."
+msgstr "テキストエリアがここに入力した行数を超えれば、FCKeditorが有効となります。この機能を使用しない場合は「1」を入力します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1482
+msgid "Editor appearance"
+msgstr "エディタの外見"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1492
+msgid "Default editor state. If disabled, rich text editor may still be enabled using toggle or popup window."
+msgstr "エディタのデフォルトの状態。無効であれば、切り替えのリンクやポップアップウィンドウを使用するまではリッチテキストエディタを利用できません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1500
+msgid "Whether or not to show the disable/enable rich text editor toggle below the textarea. Works only if FCKeditor is not running in a popup window (see below)."
+msgstr "リッチテキストエディタの有効/無効を切り替えられるリンクを、テキストエリアの下に表示するかどうか。ポップアップウィンドウでFCKeditorを使用 (下記参照) していない場合に限り動作します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1516
+msgid "Choose a default skin."
+msgstr "デフォルトのスキンを選択します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1524
+msgid "Choose a default toolbar set. To define new toolbar, edit <code>fckeditor.config.js</code> located in !module_path."
+msgstr "デフォルトのツールバーセットを選択します。新しいツールバーを定義するには、!module_path にある <code>fckeditor.config.js</code> を編集します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1572
+msgid "Cleanup and output"
+msgstr "クリーンアップと出力"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1579
+msgid "Enter mode"
+msgstr "Enterモード"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1582
+msgid "Set which tag FCKeditor should use when [Enter] key is pressed."
+msgstr "[Enter]キーを押したとき、FCKeditorがどのタグを挿入するかを指定します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1587
+msgid "Shift + Enter mode"
+msgstr "Shift + Enterモード"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1590
+msgid "Set which tag FCKeditor should use when [Shift] + [Enter] is pressed."
+msgstr "[Shift] + [Enter]を押したとき、FCKeditorがどのタグを挿入するかを指定します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1595
+msgid "Font formats"
+msgstr "フォントの書式"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1599
+msgid "Semicolon separated list of HTML font formats. Allowed values are: p;div;pre;address;h1;h2;h3;h4;h5;h6"
+msgstr "HTMLフォントの書式を、セミコロンで区切ったリストで入力します。可能な値: p;div;pre;address;h1;h2;h3;h4;h5;h6"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1604
+msgid "Apply source formatting"
+msgstr "ソースを整形"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1607
+msgid "When set to \"true\" the editor will format the XHTML when switching from WYSIWYG view to Source view, by inserting line breaks on some tags endings and indenting paragraphs, tables and lists."
+msgstr "「true」に設定すると、WYSIWYGビューからソースビューに切り替えたときに、タグの終わりに改行を挿入したり段落やテーブルやリストを挿入して、ソースをXHTMLに整形します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1612
+msgid "Format output"
+msgstr "出力を整形"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1615
+msgid "When set to \"true\" the editor will format the XHTML output by inserting line breaks on some tags endings and indenting paragraphs, tables and lists."
+msgstr "「true」に設定すると、タグの終わりに改行を挿入したり段落やテーブルやリストを挿入して、出力をXHTMLに整形します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1630
+msgid "CSS"
+msgstr "CSS"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1637
+msgid "Editor CSS"
+msgstr "エディタのCSS"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1639
+msgid "use theme css"
+msgstr "テーマのCSSを使用"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1639
+msgid "define css"
+msgstr "CSSを定義"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1639;1656
+msgid "FCKeditor default"
+msgstr "FCKeditorのデフォルト"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1640
+msgid "Defines the CSS to be used in the editor area.<br />use theme css - load style.css from current site theme.<br/>define css - enter path for css file below.<br />FCKeditor default - uses default CSS from editor."
+msgstr "エディタエリアで使用するCSSを決定します。<br />テーマのCSSを使用 - 現在のサイトテーマから style.css を読み込みます。<br />CSSを定義 - CSSファイルへのパスを下記で入力します。<br />FCKeditorのデフォルト - エディタのデフォルトのCSSを使用します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1645
+msgid "CSS path"
+msgstr "CSSのパス"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1649
+msgid "Enter path to CSS file (<em>example: css/editor.css</em>) or a list of css files seperated by a comma (<em>example: /themes/garland/style.css,http://example.com/style.css</em>).<br />Macros: %h (host name: !host), %t (path to theme: !theme)<br />Be sure to select \"define css\" above."
+msgstr "CSSファイルへのパス (<em>例: css/editor.css</em>) またはCSSファイルのコンマ区切りのリスト (<em>例: /themes/garland/style.css,http://example.com/style.css</em>) を入力してください。<br />マクロ: %h (ホスト名: !host), %t (テーマへのパス: !theme)<br />上記で「CSSを定義」を選択しているか確認してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1654
+msgid "Predefined styles"
+msgstr "定義済みスタイル"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1656
+msgid "use theme fckstyles.xml"
+msgstr "テーマの fckstyles.xml を使用"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1656
+msgid "define path to fckstyles.xml"
+msgstr "fckstyles.xml へのパスを定義"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1657
+msgid "Define the location of <code>fckstyles.xml</code> file. It is used by the &quot;Style&quot; dropdown list available in the Default toolbar.<br />Copy !fckstyles.xml inside your theme directory (<code>!theme</code>) and adjust it to your needs."
+msgstr "<code>fckstyles.xml</code> ファイルの場所を定義します。デフォルトのツールバーにある&quot;Style&quot;で使用します。<br />テーマディレクトリに !fckstyles.xml をコピーして (<code>!theme</code>) 、必要にあわせて調整を加えます。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1662
+msgid "Predefined styles path"
+msgstr "定義済みスタイルへのパス"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1666
+msgid "Enter path to XML file with predefined styles (<em>example: /fckstyles.xml</em>).<br />Macros: %h (host name: !host), %t (path to theme: !theme), %m (path to FCKeditor module: !module)<br />Be sure to select \"define path to fckstyles.xml\" above."
+msgstr "定義済みスタイルのXMLファイルへのパス (<em>例: /fckstyles.xml</em>) を入力してください。<br />マクロ: %h (ホスト名: !host)、%t (テーマへのパス: !theme)、%m (FCKeditorモジュールへのパス: !module)<br />上記で「fckstyles.xml へのパスを定義」を選択しているか確認してください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1676
+msgid "The file browser settings are not diplayed because you have configured IMCE to handle file browsing."
+msgstr "IMCEでファイルを管理するように設定しているため、ファイルブラウザの設定は表示されません。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1685
+msgid "Set file browser settings. If you enable file uploads and disable basic and advanced file management, you will need to manage your images and other files with the core upload module or a contrib module like !imce. Please note that these options require manual configuration, check !readme for more information.<br />"
+msgstr "ファイルブラウザの設定を行います。ファイルのアップロードが有効になっていながら、基本的なファイル管理と高度なものの双方が無効になっている場合は、コアのuploadモジュールや!imceのような外部モジュールで画像その他のファイルを管理する必要があります。これらのオプションには手作業での設定が欠かせないことに注意してください。より詳しい情報は!readmeを確認してください。<br />"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1695
+msgid "Allow basic file management"
+msgstr "基本的なファイル管理を許可"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1697
+msgid "Allow quick uploads."
+msgstr "簡単なアップロードを許可します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1702
+msgid "Allow advanced file management"
+msgstr "高度なファイル管理を許可"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1704
+msgid "Allow file management in the advanced file manager."
+msgstr "拡張ファイルマネージャーでのファイル管理を許可します。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1712
+msgid "Path to uploaded files"
+msgstr "アップロードファイルへのパス"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1716
+msgid "Path to uploaded files relative to the document root.<br />Available wildcard characters:<br/><strong>%b</strong> - base URL path of the Drupal installation (!base).<br/><strong>%f</strong> - Drupal file system path where the files are stored (!files).<br /><strong>%u</strong> - User ID.<br />Current path: !path"
+msgstr "ドキュメントルートからアップロードファイルへの相対パスです。<br />ワイルドカード文字を使用可能です:<br /><strong>%b</strong> - Drupalのインストール先URLパス (!base)<br/><strong>%f</strong> - ファイル保存先のDrupalファイルシステムパス (!files)<br /><strong>%u</strong> - ユーザID<br />現在のパス: !path"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1720
+msgid "Absolute path to uploaded files"
+msgstr "アップロードファイルへの絶対パス"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1724
+msgid "The path to the local directory (in the server) which points to the path defined above. If empty, FCKeditor will try to discover the right path.<br />Available wildcard characters:<br/><strong>%d</strong> - server path to document root (!root).<br /><strong>%b</strong> - base URL path of the Drupal installation (!base).<br/><strong>%f</strong> - Drupal file system path where the files are stored (!files).<br /><strong>%u</strong> - User ID.<br />Current path: !path"
+msgstr "上記で設定したパスを示す (サーバ内の) ローカルディレクトリへのパス。空欄の場合は、FCKeditorは適切なパスを探し出そうとします。<br />ワイルドカード文字を使用可能です:<br/><strong>%d</strong> - ドキュメントルートへのサーバパス (!root)<br /><strong>%b</strong> - Drupalのインストール先URLパス (!base)<br/><strong>%f</strong> - ファイル保存先のDrupalファイルシステムパス (!files).<br /><strong>%u</strong> - ユーザID.<br />現在のパス: !path"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1727
+msgid "Setting relative path to uploaded files has been disabled because private downloads are enabled and this path is calculated automatically."
+msgstr "プライベートダウンロードが有効かつパスを自動的に算出するため、アップロードファイルへの相対パスの設定は無効です。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1729
+msgid "Setting path to uploaded files has been disabled because private downloads are enabled and this path is calculated automatically."
+msgstr "プライベートダウンロードが有効かつパスを自動的に算出するため、アップロードファイルへのパスの設定は無効です。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1736
+msgid "Advanced options"
+msgstr "高度な設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1743
+msgid "Link to paths only"
+msgstr "パスへのリンクのみ"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1743
+msgid "Link using internal: links"
+msgstr "internal: links を使用したリンク"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1743
+msgid "Allow user to select between paths and internal links"
+msgstr "パスと内部リンクを選択可能"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1744
+msgid "Path Filter & Link To Content integration"
+msgstr "Path FilterとLink To Contentの統合"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1746
+msgid "With !plink extension it is possible to use :internal links. By default !link extension is linking to nodes using paths."
+msgstr "!plinkで拡張することにより内部リンクを使用できます。デフォルトでは、!linkによる拡張機能はノードへのリンクをパスで張ります。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1746
+msgid "Path Filter"
+msgstr "Path Filter"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1746
+msgid "Link To Content"
+msgstr "Link To Content"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1751
+msgid "Custom javascript configuration"
+msgstr "JavaScriptのカスタム設定"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1755
+msgid "Warning: to change FCKeditor configuration globally, you should modify the config file: <code>!fckeditor_config</code>.<br/>Sometimes it is required to change the FCKeditor configuration for selected profile. Use this box to define settings that are uniqe for this profile.<br/>Available options are listed in the !docs.<br/>Warning: if you make something wrong here, FCKeditor may fail to load.<br/>For example to disable some advanced tabs in dialog windows in FCKeditor, add the following: !example"
+msgstr "警告: FCKeditorの全般的な設定を変更するには、設定ファイル: <code>!fckeditor_config</code> を修正しなくてはなりません。<br />選択したプロフィールのためにFCKeditorの設定を変更する必要があることもあります。このプロフィールに固有の設定を行うには、このボックスを使用してください。<br />使用可能なオプションは!docsに記されています。<br />警告: もしここで何か間違いを起こせば、FCKeditorは読み込みに失敗する可能性があります。<br />例えば、FCKeditorのダイアログウィンドウでいくつかの拡張タブを無効にするには、以下の記述を追加します: !example"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1758
+msgid "FCKeditor documentation"
+msgstr "FCKeditorのドキュメント"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1898;1902
+msgid "Yes, delete!"
+msgstr "はい、削除します！"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1899
+msgid "!profile profile"
+msgstr "!profileプロフィール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1903
+msgid "Global Profile"
+msgstr "共通プロフィール"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1906
+msgid "Confirm profile deletion"
+msgstr "プロフィール削除の確認"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1907
+msgid "You're about to delete the FCKeditor profile, read the question below carefully."
+msgstr "FCKeditorプロフィールを削除しようとしています。下記の質問をよくお読みください。"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1909
+msgid "<p>Are you sure that you want to delete the !profile?</p><p>!yes !no</p>"
+msgstr "<p>!profileを本当に削除しますか？</p><p>!yes !no</p>"
+
+#: sites/all/modules/fckeditor/fckeditor.module:1912
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: sites/all/modules/fckeditor/fckeditor.module:133
+msgid "administer fckeditor"
+msgstr "FCKeditorの管理"
+
+#: sites/all/modules/fckeditor/fckeditor.module:133
+msgid "allow fckeditor file uploads"
+msgstr "FCKeditorによるファイルのアップロード"
+
