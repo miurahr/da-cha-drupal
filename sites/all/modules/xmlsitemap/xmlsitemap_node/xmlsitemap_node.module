@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlsitemap_node.module,v 1.19.2.8 2008/11/29 12:45:16 kiam Exp $
+// $Id: xmlsitemap_node.module,v 1.19.2.13 2008/12/06 13:07:18 kiam Exp $
 
 /**
  * @file
@@ -318,6 +318,9 @@ function _xmlsitemap_node_frontpage() {
  *  site map URL.
  */
 function _xmlsitemap_node_links($excludes = array()) {
+  if (empty($excludes)) {
+    $excludes = array('');
+  }
   switch ($GLOBALS['db_type']) {
     case 'mysql':
     case 'mysqli':
@@ -329,27 +332,14 @@ function _xmlsitemap_node_links($excludes = array()) {
       $cast = 'VARCHAR';
       break;
   }
+  $columns = 'n.nid, n.type, n.promote, n.changed, xn.previously_changed, xn.priority_override';
+  $query = "SELECT $columns, $coalesce(ua.dst) AS alias FROM {node} n";
   if (module_exists('comment')) {
-    $columns = 'n.nid, n.type, n.promote, s.comment_count, n.changed, xn.previously_changed, s.last_comment_timestamp, xn.previous_comment, xn.priority_override';
-    $query = "
-      SELECT $columns, $coalesce(ua.dst) AS alias
-      FROM {node} n
-      LEFT JOIN {node_comment_statistics} s ON n.nid = s.nid";
+    $columns .= ', s.comment_count, s.last_comment_timestamp, xn.previous_comment';
+    $query .= " LEFT JOIN {node_comment_statistics} s ON n.nid = s.nid";
   }
-  else {
-    $columns = 'n.nid, n.type, n.promote, n.changed, xn.previously_changed, xn.priority_override';
-    $query = "
-      SELECT $columns, $coalesce(ua.dst) AS alias
-      FROM {node} n";
-  }
-  $query .= "
-    LEFT JOIN {url_alias} ua ON ua.src = CONCAT('node/', CAST(n.nid AS $cast))
-    LEFT JOIN {xmlsitemap_node} xn ON n.nid = xn.nid
-    WHERE n.status > 0
-    AND (n.type NOT IN ('". implode("', '", $excludes) ."') AND xn.priority_override IS NULL OR xn.priority_override >= 0)
-    AND n.nid <> %d
-    GROUP BY $columns";
-  $result = db_query(db_rewrite_sql($query), _xmlsitemap_node_frontpage());
+  $query .= " LEFT JOIN {url_alias} ua ON ua.src = CONCAT('node/', CAST(n.nid AS $cast)) LEFT JOIN {xmlsitemap_node} xn ON n.nid = xn.nid WHERE n.status > 0 AND (n.type NOT IN (". db_placeholders($excludes, 'varchar') .") AND xn.priority_override IS NULL OR xn.priority_override >= 0) AND n.nid <> %d GROUP BY $columns";
+  $result = db_query(db_rewrite_sql($query), array_merge($excludes, array(_xmlsitemap_node_frontpage())));
   while ($node = db_fetch_object($result)) {
     db_query("INSERT INTO {xmlsitemap} (loc, lastmod, changefreq, priority) VALUES ('%s', %d, %d, %f)", xmlsitemap_url('node/'. $node->nid, $node->alias, NULL, NULL, TRUE), variable_get('xmlsitemap_node_count_comments', TRUE) ? max($node->changed, $node->last_comment_timestamp) : $node->changed, xmlsitemap_node_frequency($node), xmlsitemap_node_priority($node));
   }

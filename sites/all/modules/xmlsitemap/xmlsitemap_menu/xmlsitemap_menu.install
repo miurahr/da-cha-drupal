@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlsitemap_menu.install,v 1.1.4.3 2008/11/28 16:12:48 kiam Exp $
+// $Id: xmlsitemap_menu.install,v 1.1.4.6 2008/12/08 19:07:01 kiam Exp $
 
 /**
  * @file
@@ -28,28 +28,25 @@ function xmlsitemap_menu_disable() {
  * Implementation of hook_install().
  */
 function xmlsitemap_menu_install() {
-  $t = get_t();
   $id = db_result(db_query_range("SELECT menu_name FROM {menu_custom} WHERE menu_name = '%s'", 'menu-xmlsitemap'), 0, 1);
   if ($id === FALSE) {
-    db_query("INSERT INTO {menu_custom} (menu_name, title, description) VALUES (%d, '%s', '%s')", 'menu-xmlsitemap', $t('XML Sitemap'), $t('The menu from where <em>XML Sitemap: Menu</em> looks for the menus to add to the sitemap.'));
+    db_query("INSERT INTO {menu_custom} (menu_name, title, description) VALUES ('%s', '%s', '%s')", 'menu-xmlsitemap', t('XML Sitemap'), t('The menu from where <em>XML Sitemap: Menu</em> looks for the menus to add to the sitemap.'));
     menu_rebuild();
   }
 }
 
 /**
  * Implementation of hook_update_N().
- * Remove a variable used in the previous version of the module.
-*/
+ */
 function xmlsitemap_menu_update_6000() {
   $ret = array();
-  $t = get_t();
   $result = @update_sql("DELETE FROM {variable} WHERE name = 'xmlsitemap_menu_custom_menu'");
   if ($result['success']) {
     $ret[] = $result;
   }
-  $id = db_result(db_query_range("SELECT menu_name FROM {menu_custom} WHERE menu_name = '%s'", 'menu-xmlsitemap'), 0, 1);
+  $id = db_result(db_query_range("SELECT menu_name FROM {menu_custom} WHERE menu_name = 'menu-xmlsitemap'"), 0, 1);
   if ($id === FALSE) {
-    $result = update_sql("INSERT INTO {menu_custom} (menu_name, title, description) VALUES (%d, '%s', '%s')", 'menu-xmlsitemap', $t('XML Sitemap'), $t('The menu from where <em>XML Sitemap: Menu</em> looks for the menus to add to the sitemap.'));
+    $result = update_sql("INSERT INTO {menu_custom} (menu_name, title, description) VALUES ('%s', '%s', '%s')", 'menu-xmlsitemap', t('XML Sitemap'), $t('The menu from where <em>XML Sitemap: Menu</em> looks for the menus to add to the sitemap.'));
     if ($result['success']) {
       menu_rebuild();
     }
@@ -60,16 +57,23 @@ function xmlsitemap_menu_update_6000() {
 
 /**
  * Implementation of hook_update_N().
-*/
+ */
 function xmlsitemap_menu_update_6100() {
   return array();
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function xmlsitemap_menu_update_6101() {
+  return xmlsitemap_menu_update_6000();
 }
 
 /**
  * Implementation of hook_uninstall().
  */
 function xmlsitemap_menu_uninstall() {
-  @db_query("DELETE FROM {menu_links} WHERE menu_name = '%s'", 'menu-xmlsitemap');
-  @db_query("DELETE FROM {menu_custom} WHERE menu_name = '%s'", 'menu-xmlsitemap');
+  db_query("DELETE FROM {menu_links} WHERE menu_name LIKE 'menu-xmlsitemap%'");
+  db_query("DELETE FROM {menu_custom} WHERE menu_name LIKE 'menu-xmlsitemap%'");
   db_query("DELETE FROM {variable} WHERE name LIKE 'xmlsitemap\_menu\_%'");
 }

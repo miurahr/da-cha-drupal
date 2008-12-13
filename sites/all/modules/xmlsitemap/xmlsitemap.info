@@ -1,12 +1,12 @@
-; $Id: xmlsitemap.info,v 1.2 2008/05/20 17:48:46 darrenoh Exp $
+; $Id: xmlsitemap.info,v 1.2.2.2 2008/12/07 16:47:53 kiam Exp $
 name = XML Sitemap
-description = Creates an XML site map in accordance with the sitemaps.org specification.
+description = Creates an XML site map in accordance with sitemaps.org specifications.
 package = XML Sitemap
 core = 6.x
 
-; Information added by drupal.org packaging script on 2008-11-30
+; Information added by drupal.org packaging script on 2008-12-09
 version = "6.x-1.x-dev"
 core = "6.x"
 project = "xmlsitemap"
-datestamp = "1228004285"
+datestamp = "1228781839"
 

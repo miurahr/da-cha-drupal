@@ -1,9 +1,9 @@
 <?php
-// $Id: xmlsitemap_file.install,v 1.1.4.4 2008/11/29 19:25:15 kiam Exp $
+// $Id: xmlsitemap_file.install,v 1.1.4.11 2008/12/08 16:28:21 kiam Exp $
 
 /**
  * @file
- * Install file for XML Sitemap: File
+ * Install file for XML Sitemap: File.
  */
 
 /*****************************************************************************
@@ -18,25 +18,6 @@ function xmlsitemap_file_enable() {
   if ($weight !== FALSE) {
     db_query("UPDATE {system} SET weight = %d WHERE type = 'module' AND name = 'xmlsitemap_file'", ++$weight);
   }
-  db_query("INSERT INTO {xmlsitemap_file} (fid, nid)
-    SELECT f.fid, f.nid FROM {files} f
-    LEFT JOIN {xmlsitemap_file} xf ON f.fid = xf.fid
-    WHERE xf.fid IS NULL"
-  );
-  $result = db_query("SELECT * FROM {files} f
-    INNER JOIN {xmlsitemap_file} xf ON f.fid = xf.fid"
-  );
-  while ($file = db_fetch_object($result)) {
-    $changed = filemtime($file->filepath);
-    if ($changed > $file->changed) {
-      db_query("UPDATE {xmlsitemap_file}
-        SET previously_changed = changed, changed = %d
-        WHERE fid = %d",
-        $changed, $file->fid
-      );
-    }
-  }
-  xmlsitemap_update_sitemap();
 }
 
 /**
@@ -56,10 +37,16 @@ function xmlsitemap_file_schema() {
       'fid' => array(
         'description' => t('The ID of the file.'),
         'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'nid' => array(
-        'description' => t('The ID of the node to which the file is associated.'),
+        'description' => t('The ID of the node containing the file.'),
         'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'changed' => array(
         'description' => t('The change time of the file.'),
@@ -70,8 +57,10 @@ function xmlsitemap_file_schema() {
         'type' => 'int',
       ),
     ),
+    'unique keys' => array('fid_nid' => array('fid', 'nid')),
     'primary keys' => array('fid'),
   );
+  return $schema;
 }
 
 /**
@@ -84,13 +73,61 @@ function xmlsitemap_file_install() {
 /**
  * Implementation of hook_update_N().
  */
+function xmlsitemap_file_update_6000() {
+  $ret = array();
+  $schema = xmlsitemap_file_schema();
+  db_drop_primary_key($ret, 'xmlsitemap_file');
+  $result = array();
+  @db_drop_unique_key($result, 'xmlsitemap_file', 'fid_nid');
+  if ($result[0]['success']) {
+    $ret[] = $result[0];
+  }
+  db_change_field($ret, 'xmlsitemap_file', 'fid', 'fid', $schema['xmlsitemap_file']['fields']['nid'], array('primary keys' => array('fid')));
+  if (!db_column_exists('xmlsitemap_file', 'nid')) {
+    db_add_field($ret, 'xmlsitemap_file', 'nid', $schema['xmlsitemap_file']['fields']['nid'], array('unique keys' => array('fid_nid' => array('fid', 'nid'))));
+  }
+  else {
+    db_change_field($ret, 'xmlsitemap_file', 'nid', 'nid', $schema['xmlsitemap_file']['fields']['nid'], array('unique keys' => array('fid_nid' => array('fid', 'nid'))));
+  }
+  return $ret;
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
 function xmlsitemap_file_update_6100() {
   return array();
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function xmlsitemap_file_update_6101() {
+  return array();
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function xmlsitemap_file_update_6102() {
+  return xmlsitemap_file_update_6000();
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function xmlsitemap_file_update_6103() {
+  $ret = array();
+  $result = update_sql("DELETE FROM {xmlsitemap_file} WHERE nid = 0");
+  if ($result['success']) {
+    $ret[] = $result;
+  }
+  return $ret;
 }
 
 /**
  * Implementation of hook_uninstall().
  */
 function xmlsitemap_file_uninstall() {
-  db_query("DROP TABLE {xmlsitemap_file}");
+  drupal_uninstall_schema('xmlsitemap_file');
 }

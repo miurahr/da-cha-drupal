@@ -1,4 +1,4 @@
-$Id: INSTALL.txt,v 1.2.2.1 2008/11/28 11:12:58 kiam Exp $
+$Id: INSTALL.txt,v 1.2.2.3 2008/12/07 16:47:53 kiam Exp $
 XML Sitemap Module
 
 Installation Instructions:
@@ -13,3 +13,5 @@ Installation Instructions:
 3. The sitemap is now operational at http://www.example.com/?q=sitemap.xml.
    Configure advanced options at
    http://www.example.com/?q=admin/settings/xmlsitemap.
+
+4. Enable the clean URLs, if they are not already enabled.

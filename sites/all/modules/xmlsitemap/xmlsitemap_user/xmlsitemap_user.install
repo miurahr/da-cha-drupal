@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlsitemap_user.install,v 1.6.2.5 2008/11/29 19:25:15 kiam Exp $
+// $Id: xmlsitemap_user.install,v 1.6.2.6 2008/12/06 10:17:35 kiam Exp $
 
 /*****************************************************************************
  * Drupal hooks.
@@ -125,12 +125,12 @@ function xmlsitemap_user_update_6000() {
   $result = array();
   @db_drop_field($result, 'xmlsitemap_user', 'pid');
   if ($result[0]['success']) {
-    $ret = array_merge($ret, $result);
+    $ret[] = $result;
   }
   $result = array();
   @db_drop_index($result, 'xmlsitemap_user_role', 'pid');
   if ($result[0]['success']) {
-    $ret = array_merge($ret, $result);
+    $ret[] = $result;
   }
   return $ret;
 }

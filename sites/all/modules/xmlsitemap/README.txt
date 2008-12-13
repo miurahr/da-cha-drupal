@@ -1,4 +1,4 @@
-$Id: README.txt,v 1.3.2.1 2008/11/28 11:12:58 kiam Exp $
+$Id: README.txt,v 1.3.2.3 2008/12/07 16:47:53 kiam Exp $
 XML Sitemap Module
 Author: Matthew Loar <matthew at loar dot name>
 This module was originally written as part of Google Summer of Code 2005.

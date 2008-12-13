@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlsitemap.install,v 1.5.2.19 2008/11/28 20:48:55 kiam Exp $
+// $Id: xmlsitemap.install,v 1.5.2.22 2008/12/07 16:47:53 kiam Exp $
 
 /*****************************************************************************
  * Drupal hooks.
@@ -22,26 +22,21 @@ function xmlsitemap_schema() {
       'loc' => array(
         'description' => t('The path of this node.'),
         'type' => 'varchar',
-        'length' => 256,
+        'length' => 255,
         'not null' => TRUE,
         'default' => '',
       ),
       'lastmod' => array(
         'description' => t('Last change time.'),
         'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
       ),
       'changefreq' => array(
         'description' => t('The frequency of the changes.'),
         'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
       ),
       'priority' => array(
         'description' => t('The priority of this node in the sitemap.'),
         'type' => 'float',
-        'not null' => TRUE,
       ),
     ),
   );
@@ -147,16 +142,17 @@ function xmlsitemap_update_6103() {
  */
 function xmlsitemap_update_6104() {
   $ret = array();
-  @db_drop_primary_key($ret, 'xmlsitemap');
-  @db_change_field($ret, 'xmlsitemap', 'loc', 'loc', 
-    array(
-      'description' => t('The path of this node.'),
-      'type' => 'varchar',
-      'length' => 256,
-      'not null' => TRUE,
-      'default' => '',
-    )
-  );
+  $schema = xmlsitemap_schema();
+  $result = array();
+  @db_drop_primary_key($result, 'xmlsitemap');
+  if ($result[0]['success']) {
+    $ret[] = $result[0];
+  }
+  $result = array();
+  @db_change_field($result, 'xmlsitemap', 'loc', 'loc', $schema['xmlsitemap']['fields']['loc']);
+  if ($result[0]['success']) {
+    $ret[] = $result[0];
+  }
   if (!variable_get('xmlsitemap_update', FALSE)) {
     variable_set('xmlsitemap_update', TRUE);
     $ret[] = array(
@@ -195,22 +191,17 @@ function xmlsitemap_update_6106() {
  */
 function xmlsitemap_update_6107() {
   $ret = array();
-  @db_change_field($ret, 'xmlsitemap', 'lastmod', 'lastmod', 
-    array(
-      'description' => t('Last change time.'),
-      'type' => 'int',
-      'unsigned' => TRUE,
-      'not null' => FALSE,
-    )
-  );
-  @db_change_field($ret, 'xmlsitemap', 'changefreq', 'changefreq', 
-    array(
-      'description' => t('The frequency of the changes.'),
-      'type' => 'int',
-      'unsigned' => TRUE,
-      'not null' => FALSE,
-    )
-  );
+  $schema = xmlsitemap_schema();
+  $result = array();
+  @db_change_field($result, 'xmlsitemap', 'lastmod', 'lastmod', $schema['xmlsitemap']['fields']['lastmod']);
+  if ($result[0]['success']) {
+    $ret[] = $result[0];
+  }
+  $result = array();
+  @db_change_field($result, 'xmlsitemap', 'changefreq', 'changefreq', $schema['xmlsitemap']['fields']['lastmod']);
+  if ($result[0]['success']) {
+    $ret[] = $result[0];
+  }
   if (!variable_get('xmlsitemap_update', FALSE)) {
     variable_set('xmlsitemap_update', TRUE);
     $ret[] = array(
