@@ -1,4 +1,23 @@
-$Id: CHANGELOG.txt,v 1.2.2.69 2008/11/19 11:05:57 wwalc Exp $
+$Id: CHANGELOG.txt,v 1.2.2.78 2008/12/12 23:21:29 wwalc Exp $
+
+-- 2008-12-12 version 6.x-1.x-dev
+* #338923 Improved description of security setting
+* #336915 Gracefully degrade when not finding a textbox
+FCKeditor module now doesn to require "." in the include_path to work
+* #321844 Fixed: FCKeditor and Image Assist not working together
+
+-- 2008-12-05 version 6.x-1.x-dev
+* #331329 Added expermimental support for Link to content/node integration
+
+-- 2008-12-04 version 6.x-1.x-dev
+* #341806 Fixed: Random problems with teaser break
+* #342155 Added webform fields to the default exclusion list
+
+-- 2008-12-01 version 6.x-1.x-dev
+* #321818 Fixed: FCKeditor not displaying on any posts except initial ones
+
+-- 2008-11-25 version 6.x-1.x-dev
+* #336753 Fixed: All text disappears
 
 -- 2008-11-19 version 6.x-1.x-dev
 * #334947 Added LoginToboggan administration pages to the default exclusion list

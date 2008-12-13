@@ -1,5 +1,5 @@
 <?php
-// $Id: fckeditor.install,v 1.2.2.22 2008/11/19 10:05:54 wwalc Exp $
+// $Id: fckeditor.install,v 1.2.2.23 2008/12/04 16:39:08 wwalc Exp $
 
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
@@ -129,6 +129,7 @@ function fckeditor_install() {
   "edit-piwik-pages\n".
   "edit-piwik-codesnippet\n".
   "edit-feedburner-useragents\n".
+  "edit-webform-*\n".
   "edit-target\n"
   );
   

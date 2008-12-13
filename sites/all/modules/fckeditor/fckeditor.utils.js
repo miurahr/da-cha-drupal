@@ -1,4 +1,4 @@
-// $Id: fckeditor.utils.js,v 1.2.2.22 2008/10/23 06:22:44 wwalc Exp $
+// $Id: fckeditor.utils.js,v 1.2.2.25 2008/12/12 20:27:03 wwalc Exp $
 var fckIsRunning = new Array;
 var fckIsLaunching = new Array;
 var fckLaunchedTextareaId = new Array;
@@ -28,7 +28,7 @@ function Toggle(js_id, textareaID, textTextarea, TextRTE, xss_check)
       fckIsLaunching[js_id] = true;
       $(".img_assist-button").hide();
       if (xss_check && $('#' + textareaID).attr('class').indexOf("filterxss2") != -1) {
-        $.post(Drupal.settings.basePath + 'fckeditor/xss', {
+        $.post(Drupal.settings.basePath + 'index.php?q=fckeditor/xss', {
             text: $('#' + textareaID).val(),
             'filters[]': Drupal.settings.fckeditor_filters[js_id]
           }, 
@@ -213,12 +213,12 @@ function FCKeditor_OnComplete( editorInstance )
   if (oElem != null) {
     oElem.style.display = '';
   }
-
-  editorInstance.LinkedField.form.onsubmit = doFCKeditorSave;
   
   // If the textarea isn't visible update the content from the editor.
   $(editorInstance.LinkedField.form).submit(DoFCKeditorTeaserStuff);
 
+  editorInstance.Events.AttachEvent( 'OnAfterLinkedFieldUpdate', DoFCKeditorTeaserStuff ) ;
+  
   var teaser = false;
   var teaserCheckbox = false;
   
@@ -242,9 +242,12 @@ function FCKeditor_OnComplete( editorInstance )
 
 function FCKeditorReplaceTextarea(textarea_id, oFCKeditor, xss_check)
 {
+  if ($('#' + oFCKeditor.Config['TextareaID']).length === 0) {
+    return;
+  }
   $(".img_assist-button").hide();
   if (xss_check && $('#' + oFCKeditor.Config['TextareaID']).attr('class').indexOf("filterxss") != -1) {
-    $.post(Drupal.settings.basePath + 'fckeditor/xss', {
+    $.post(Drupal.settings.basePath + 'index.php?q=fckeditor/xss', {
       text: $('#' + textarea_id).val(),
       'filters[]': Drupal.settings.fckeditor_filters[textarea_id]
       }, 

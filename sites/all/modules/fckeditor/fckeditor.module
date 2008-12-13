@@ -1,5 +1,5 @@
 <?php
-// $Id: fckeditor.module,v 1.20.2.71 2008/11/19 12:44:17 wwalc Exp $
+// $Id: fckeditor.module,v 1.20.2.76 2008/12/12 20:42:13 wwalc Exp $
 /**
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
@@ -96,7 +96,7 @@ function fckeditor_help($path, $arg) {
       $output .= t('The correct directory structure is as follows: <blockquote><pre>!structure</pre></blockquote>', array(
       '!structure' => "modules\n   fckeditor\n      <em>fckeditor.module</em>\n      fckeditor\n         _samples\n         editor\n         <em>COPY_HERE.txt</em>\n         <em>fckconfig.js</em>\n         ..."
       ));
-      $output .= t("<h3>Plugins: Teaser break and Pagebreak</h3><p>By default, FCKeditor module comes with two plugins that can handle teaser break (&lt;!--break--&gt;) and pagebreak (&lt;!--pagebreak--&gt;). You can enable any (or even both) of them.<ol><li>Open <code>!fckeditor.config.js</code> and uncomment these three lines: <pre>!code</pre></li><li>The second step is to add buttons to the toolbar (in the same file). The button names are: <code>DrupalBreak, DrupalPageBreak</code>. For example if you have a toolbar with an array of buttons defined as follows: <pre>!buttons1</pre> simply add those two buttons at the end of array: <pre>!buttons2</pre> (remember about single quotes).</li></ol></p>",
+      $output .= t("<h3>Plugins: Teaser break and Pagebreak</h3><p>By default, FCKeditor module comes with two plugins that can handle teaser break (&lt;!--break--&gt;) and pagebreak (&lt;!--pagebreak--&gt;). You can enable any (or even both) of them.<ol><li>Open <code>!fckeditor.config.js</code> and uncomment these three lines: <pre>!code</pre></li><li>The second step is to add buttons to the toolbar (in the same file). The button names are: <code>DrupalBreak, DrupalPageBreak</code>. For example if you have a toolbar with an array of buttons defined as follows: <pre>!buttons1</pre> simply add those two buttons at the end of array: <pre>!buttons2</pre> (remember about single quotes).</li><li>Note that the &lt;--pagebreak--&gt; tag is not supported by default in Drupal. You should install the <a href=\"!paging\" target=\"_blank\">Paging</a> module to enable the &lt;!--pagebreak--&gt; tag support. Please refer to the Paging module documentation for detailed installation instructions.</li></ol></p>",
       array(
       '!fckeditor.config.js' => base_path() . drupal_get_path('module', 'fckeditor') .'/fckeditor.config.js',
       '!code' => "
@@ -104,6 +104,7 @@ function fckeditor_help($path, $arg) {
       FCKConfig.Plugins.Add( 'drupalbreak' ) ;
       FCKConfig.Plugins.Add( 'drupalpagebreak' ) ;
       ",
+      "!paging" => "http://drupal.org/project/paging",
       '!buttons1' => "['Image','Flash','Table','Rule','SpecialChar']",
       '!buttons2' => "['Image','Flash','Table','Rule','SpecialChar', 'DrupalBreak', 'DrupalPageBreak']",
       ));
@@ -215,7 +216,7 @@ function fckeditor_process_form(&$form) {
           $formats = element_children($element);          
           
           foreach ($formats as $format_id) {
-            $format = $element[$format_id]['#default_value'];
+            $format = !empty($element[$format_id]['#default_value']) ? $element[$format_id]['#default_value'] : $element[$format_id]['#value'];
             break;
           }
           
@@ -319,6 +320,8 @@ function fckeditor_menu() {
  * AJAX callback - XSS filter
  */
 function fckeditor_filter_xss() {
+  $GLOBALS['devel_shutdown'] = FALSE;
+
   if (!isset($_POST['text']) || !is_string($_POST['text']) || !is_array($_POST['filters'])) {
     exit;
   }
@@ -330,6 +333,10 @@ function fckeditor_filter_xss() {
     $module = strtok($module_delta, "/");
     $delta = strtok("/");
     $format = strtok("/");
+    
+    if (!module_hook($module, 'filter')) {
+      continue;
+    }
     
     //built-in filter module, a special case where we would like to strip XSS and nothing more
     if ($module == 'filter' && $delta == 0) {
@@ -879,7 +886,6 @@ function fckeditor_process_textarea($element) {
       $js_id = 'oFCK_'. $num++;
       $id2id[$element['#id']] = $js_id;
     }
-    $_fckeditor_js_ids[$element['#id']] = $js_id;
     $fckeditor_on = ($conf['default']=='t') ? 1 : 0 ;
 
     $xss_check = 0;
@@ -954,6 +960,7 @@ function fckeditor_process_textarea($element) {
       $toolbar = FCKEDITOR_FORCE_SIMPLE_TOOLBAR_NAME;
     }
     $textarea_id = $conf['show_toggle'] == 't' ? $js_id : $element['#id'];
+    $_fckeditor_js_ids[$element['#id']] = $textarea_id;
     $js = $js_id ." = new FCKeditor( '". $textarea_id ."' );
 ". $js_id .".BasePath	= '". $module_full_path ."/fckeditor/';
 ". $js_id .".Config['CustomConfigurationsPath'] = \"". $module_full_path ."/fckeditor.config.js?". @filemtime($module_drupal_path ."/fckeditor.config.js") ."\";
@@ -1134,10 +1141,13 @@ function fckeditor_process_textarea($element) {
       // if no popup mode, add the editor initialization to the footer 	 
       // this obviously needs print($closure) in page.tpl.php 	 
       if ($fckeditor_on && !$processed) {
-        drupal_add_js('if (Drupal.jsEnabled) {$(document).ready(function() {if (typeof ('. $js_id .') != "undefined") { 	 
-          if ($("#edit-teaser-js").size() && $("#edit-teaser-js").val().length){ 	 
-            $("#edit-body").val($("#edit-teaser-js").val() + "<!--break-->" + $("#edit-body").val()); 	 
-	        }
+        $str = "";
+        if ($element['#id'] == 'edit-body') {
+          $str = 'if ($("#edit-teaser-js").size() && $("#edit-teaser-js").val().length){
+            $("#edit-body").val($("#edit-teaser-js").val() + "<!--break-->" + $("#edit-body").val());
+	        }';
+        }
+        drupal_add_js('if (Drupal.jsEnabled) {$(document).ready(function() {if (typeof ('. $js_id .') != "undefined") { '. $str .'
 	        window.setTimeout("FCKeditorReplaceTextarea(\''. $textarea_id .'\','. $js_id .','. $xss_check .');",100);}});}', 'inline', 'footer');
       }
     }
@@ -1670,7 +1680,7 @@ function fckeditor_profile_form_build($sth, $edit) {
   $form['security'] = array(
     '#type' => 'fieldset',
     '#title' => t('Security'),
-    '#description' => t('Because Drupal stores content in an unmodified form, it is necessary to perform additional security checks before FCKeditor renders the Html content for editing.') .' '. t('Without security filters, when you decide to edit an article which contains a malicious attack (like xss), that code will be rendered along with the html and therefore executed by your browser.') .' '. t('Before FCKeditor renders the content in its editor, it makes an AJAX call to check the node\'s textarea for which filters are checked below and are in the textarea\'s input format.') .' '. t('For example, if you\'re using a Filtered HTML input format and have checked the HTML filter below, it will be executed. However, if you edit node with Full HTML input format assigned, HTML filter will not be executed.') .' '. t('Most obvious is when using a custom module\'s security filter which allows html attributes but strips attribute xss when viewed, but FCKeditor will attempt to show original content when edited which could be malicious. Now same filter if checked below will run when edited to clean up content.'),    
+    '#description' => '<p>' . t("When Drupal saves user data input through a textarea, it's saved in the database in unmodified form. That's why all untrusted textarea input should be run through an input format filter before outputting it to the screen.") . '</p>' .'<p>' . t("Drupal will not, however, filter data for content editor's editing a textarea. Normally, there is no security risk because the unmodified code is displayed as text and will not be rendered as HTML. But with FCKeditor installed, this is not the case, and content editor's are subject to having raw, untrusted code running inside their browsers.") . '</p>' . '<p>' . t("To address this issue, you should select a security filters below to prevent FCKeditor from rendering malicious code. Note that if a textarea's input format is set to \"Full HTML\" (or if the input format of the node doesn't include the filter), FCKeditor will properly ignore the setting below and will not run the code through the security filter.") . '</p>' . '<p>' .  t("If any textareas on your site are accessible to unwanted users, we recommend checking the \"HTML Filter\". You may have other modules installed that provide other kinds of security filters and you may use those as long as you trust them to properly filter out malicious code. Note that not all the filters below are security filters and will provide no protection.") . '</p>',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE
   );
@@ -2113,14 +2123,18 @@ function fckeditor_idsearch($search, $array) {
  */
 function fckeditor_is_compatible_client() {
 
-  $fckeditor_main_file = drupal_get_path('module', 'fckeditor') .'/fckeditor/fckeditor.php';
+  if (!function_exists('version_compare') || version_compare(phpversion(), '5', '<'))
+    $fckeditor_main_file  = drupal_get_path('module', 'fckeditor') .'/fckeditor/fckeditor_php4.php';
+  else
+    $fckeditor_main_file  = drupal_get_path('module', 'fckeditor') .'/fckeditor/fckeditor_php5.php';
+  
   if (file_exists($fckeditor_main_file)) {
     include_once $fckeditor_main_file;
     if (function_exists('FCKeditor_IsCompatibleBrowser')) {
       return FCKeditor_IsCompatibleBrowser();
     }
-    else {
-      $fck = new FCKeditor("fake");
+    else if (class_exists('FCKeditor')) {
+      $fck = new FCKeditor('fake');
       return $fck->IsCompatible();
     }
   }

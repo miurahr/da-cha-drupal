@@ -1,4 +1,4 @@
-// $Id: fckeditor.config.js,v 1.5.2.10 2008/11/19 12:00:07 wwalc Exp $
+// $Id: fckeditor.config.js,v 1.5.2.13 2008/12/12 19:45:25 wwalc Exp $
 
 /*
  WARNING: clear browser's cache after you modify this file.
@@ -15,9 +15,13 @@
 //uncomment these three lines to enable teaser break and page break plugins
 //remember to add 'DrupalBreak' and 'DrupalPageBreak' buttons to the toolbar
 FCKConfig.PluginsPath = '../../plugins/' ;
-FCKConfig.Plugins.Add( 'drupalbreak', 'en,pl' ) ;
+FCKConfig.Plugins.Add( 'drupalbreak', 'en,pl,ru' ) ;
 FCKConfig.Plugins.Add( 'imgassist' ) ;
-//FCKConfig.Plugins.Add( 'drupalpagebreak', 'en,pl' ) ;
+//To enable plugins below you should install additional Drupal modules.
+//Please refer to the README.txt for more instructions.
+//FCKConfig.Plugins.Add( 'drupalpagebreak', 'en,pl,ru' ) ;
+//FCKConfig.Plugins.Add( 'linktonode', 'en,pl' ) ;
+//FCKConfig.Plugins.Add( 'linktomenu', 'en,pl' ) ;
 
 /*
  This toolbar is dedicated to users with "Full HTML" access 
@@ -33,10 +37,17 @@ FCKConfig.ToolbarSets["DrupalFull"] = [
 //as of FCKeditor 2.5 you can use also 'Blockquote' button
 //['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
 ['JustifyLeft','JustifyCenter','JustifyRight'],
+/* 
+ * EXPERIMENTAL
+ * Uncomment the line below to enable linktonode and linktomenu buttons
+ * ATTENTION: Link to Content module must be installed first!
+ * Remember to load appropriate plugins with FCKConfig.Plugins.Add command a couple of lines above
+ */
+//['Link','Unlink','LinkToNode','LinkToMenu','Anchor'],
 ['Link','Unlink','Anchor'],
 ['Image','Flash','Table','Rule','SpecialChar','DrupalBreak'],
-//uncomment this line to enable teaser break and page break buttons
-//remember to load appropriate plugins with FCKConfig.Plugins.Add command a couple of lines below
+//uncomment this line to enable the page break button
+//remember to load appropriate plugin with FCKConfig.Plugins.Add command a couple of lines above
 //['Image','Flash','Table','Rule','SpecialChar','DrupalBreak','DrupalPageBreak'],
 '/',
 ['FontFormat','FontName','FontSize'],
@@ -52,15 +63,25 @@ FCKConfig.ToolbarSets["DrupalFiltered"] = [
 ['Source'],
 ['Cut','Copy','Paste','PasteText','PasteWord'],
 ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-//as of FCKeditor 2.5 you can use also 'Blockquote' button
-//['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
+/* 
+ * EXPERIMENTAL
+ * Uncomment the line below to enable linktonode and linktomenu buttons
+ * ATTENTION: Link to Content module must be installed first!
+ * Remember to load appropriate plugins with FCKConfig.Plugins.Add command a couple of lines above
+ */
+//['Link','Unlink','LinkToNode','LinkToMenu','Anchor'],
 ['Link','Unlink','Anchor'],
 ['Image','Flash','Table','Rule','Smiley','SpecialChar'],
 '/',
 ['FontFormat'],
 ['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
 ['OrderedList','UnorderedList','-','Outdent','Indent'],
+//as of FCKeditor 2.5 you can use also 'Blockquote' button
+//['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
 ['JustifyLeft','JustifyCenter','JustifyRight','DrupalBreak'],
+//uncomment this line to enable the page break button
+//remember to load appropriate plugin with FCKConfig.Plugins.Add command a couple of lines above
+//['JustifyLeft','JustifyCenter','JustifyRight','DrupalBreak','DrupalPageBreak'],
 ] ;
 
 //helper function to add button at the end of the toolbar
