@@ -45,17 +45,6 @@ function xmlsitemap_schema() {
 }
 
 /**
- * Fix a 6100 table creation error
- */
-function xmlsitemap_update_6101() {
-  if (!db_table_exists('xmlsitemap')) {
-    $schema = xmlsitemap_schema();
-    db_create_table($ret, 'xmlsitemap', $schema['xmlsitemap']);
-  }
-  return $ret;
-}
-
-/**
  * Implementation of hook_install().
  */
 function xmlsitemap_install() {
@@ -120,6 +109,13 @@ function xmlsitemap_update_6000() {
  * Implementation of hook_update_N().
  */
 function xmlsitemap_update_6100() {
+  return array();
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function xmlsitemap_update_6101() {
   return array();
 }
 
