@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense_cse.install,v 1.1 2008/07/21 00:21:34 kbahey Exp $
+// $Id: adsense_cse.install,v 1.1.2.1 2009/02/10 01:35:20 jcnventura Exp $
 
 /**
  * @file
@@ -18,6 +18,7 @@ function adsense_cse_uninstall() {
   variable_del('adsense_cse_logo');
   variable_del('adsense_cse_number_blocks');
   variable_del('adsense_cse_textbox_length');
+  variable_del('adsense_cse_language');
   $settings = db_query("SELECT name FROM {variable} WHERE name LIKE 'adsense\_cse\_ad\_block\_%'");
   while ($variable = db_fetch_object($settings)) {
     variable_del($variable->name);

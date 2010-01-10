@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense_search.module,v 1.1.2.5 2008/09/11 23:12:35 jcnventura Exp $
+// $Id: adsense_search.module,v 1.1.2.11 2009/07/03 12:05:50 jcnventura Exp $
 
 /**
  * @file
@@ -39,6 +39,8 @@ define('ADSENSE_SEARCH_TEXTBOX_LENGTH_DEFAULT', 31);
 function adsense_search_menu() {
   $items = array();
 
+  $results_path = variable_get('clean_url', 0) ? ADSENSE_CSE_RESULTS_PATH : '.';
+
   $items['admin/settings/adsense/search'] = array(
     'title' => 'Search',
     'page callback' => 'drupal_get_form',
@@ -48,7 +50,7 @@ function adsense_search_menu() {
     'type' => MENU_LOCAL_TASK,
     'file' => 'adsense_search.admin.inc',
   );
-  $items[ADSENSE_SEARCH_RESULTS_PATH] = array(
+  $items[$results_path] = array(
     'title' => 'Search Results',
     'page callback' => '_adsense_search_results',
     'access callback' => TRUE,
@@ -63,6 +65,8 @@ function adsense_search_menu() {
  * Implementation of hook_block().
  */
 function adsense_search_block($op = 'list', $delta = 0, $edit = array()) {
+  $block = NULL;
+
   switch ($op) {
     case 'list':
       $max = variable_get('adsense_search_number_blocks', ADSENSE_SEARCH_NUMBER_BLOCKS_DEFAULT);
@@ -171,7 +175,15 @@ function _adsense_search_get_searchbox($client, $channel = NULL) {
 
   $language = variable_get('adsense_search_language', ADSENSE_SEARCH_LANGUAGE_DEFAULT);
   $textbox_length = variable_get('adsense_search_textbox_length', ADSENSE_SEARCH_TEXTBOX_LENGTH_DEFAULT);
-  $results_path = ADSENSE_SEARCH_RESULTS_PATH;
+
+  if (variable_get('clean_url', 0)) {
+    $results_path = url(ADSENSE_SEARCH_RESULTS_PATH, array('absolute' => TRUE));
+    $hidden_q_field = "";
+  }
+  else {
+    $results_path = $base_url;
+    $hidden_q_field = '<input type="hidden" name="q" value="." />';
+  }
 
   if ($logo != 'adsense_search_logo_on_button') {
     $btn = t('Search');
@@ -216,7 +228,7 @@ function _adsense_search_get_searchbox($client, $channel = NULL) {
 
   // Searched domains >=1 (2 or 3)
   if ($domain_1) {
-   $part4 = "<tr>\n<td>\n<input type=\"radio\" name=\"sitesearch\" value=\"$domain_1\" id=\"ss2\"></input>\n" .
+    $part4 = "<tr>\n<td>\n<input type=\"radio\" name=\"sitesearch\" value=\"$domain_1\" id=\"ss2\"></input>\n" .
             "<label for=\"ss2\" title=\"Search $domain_1\"><font size=\"-1\" color=\"$box_text_color\">$domain_1</font></label></td>\n";
     if ($domain_2) {
       $part4 .= "<td>\n<input type=\"radio\" name=\"sitesearch\" value=\"$domain_2\" id=\"ss3\"></input>\n" .
@@ -244,12 +256,12 @@ function _adsense_search_get_searchbox($client, $channel = NULL) {
   $part7 = variable_get('adsense_search_safe_mode', ADSENSE_SEARCH_SAFE_MODE_DEFAULT) ? '<input type="hidden" name="safe" value="active"></input>' : '';
 
   $output = <<<SEARCH_TXT
-<div class='adsense adsense_search'>
 <!-- SiteSearch Google -->
-<form method="get" action="$base_url/$results_path" target="_top">
+<form method="get" action="$results_path" target="_top">
 <table border="0" bgcolor="$box_background_color">
 <tr><td nowrap="nowrap" valign="top" align="left" height="32">
 $part1
+$hidden_q_field
 <input type="hidden" name="domains" value="$domain"></input>
 <label for="sbi" style="display: none">Enter your search terms</label>
 <input type="text" name="as_q" size="$textbox_length" maxlength="255" value="" id="sbi"></input>
@@ -281,11 +293,7 @@ $part7
 </td></tr></table>
 </form>
 <!-- SiteSearch Google -->
-</div>
 SEARCH_TXT;
-
-  // Remove empty lines
-  $output = str_replace("\n\n", "\n", $output);
 
   return $output;
 }

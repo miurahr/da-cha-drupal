@@ -7,9 +7,9 @@ description = Displays Google AdSense ads on your site to earn revenue. Requires
 package = Adsense
 core = 6.x
 
-; Information added by drupal.org packaging script on 2008-11-11
-version = "6.x-1.0-beta3"
+; Information added by drupal.org packaging script on 2009-08-05
+version = "6.x-1.2"
 core = "6.x"
 project = "adsense"
-datestamp = "1226362803"
+datestamp = "1249507210"
 

@@ -1,17 +1,17 @@
-; $Id: revenue_sharing_basic.info,v 1.1.2.2 2008/08/18 20:03:04 jcnventura Exp $
+; $Id: revenue_sharing_basic.info,v 1.1.2.3 2009/05/12 23:37:34 jcnventura Exp $
 ; Copyright 2005-2008 Khalid Baheyeldin http://2bits.com
 ; Copyright 2008      Joao Ventura      http://www.venturas.org
 
 name = Revenue sharing basic (old)
-description = Basic revenue sharing for the Google Adsense module
+description = Revenue sharing for the Google Adsense module
 dependencies[] = adsense
 dependencies[] = profile
 package = Adsense
 core = 6.x
 
-; Information added by drupal.org packaging script on 2008-11-11
-version = "6.x-1.0-beta3"
+; Information added by drupal.org packaging script on 2009-08-05
+version = "6.x-1.2"
 core = "6.x"
 project = "adsense"
-datestamp = "1226362803"
+datestamp = "1249507210"
 

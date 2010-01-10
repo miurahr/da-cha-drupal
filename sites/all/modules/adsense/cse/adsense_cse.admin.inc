@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense_cse.admin.inc,v 1.1.2.2 2008/09/11 22:51:59 jcnventura Exp $
+// $Id: adsense_cse.admin.inc,v 1.1.2.5 2009/05/13 00:04:20 jcnventura Exp $
 
 /**
  * @file
@@ -51,7 +51,7 @@ function adsense_cse_settings() {
 
   $form['searchbox']['adsense_cse_color_box_background'] = array(
     '#type' => 'select',
-    '#title' => t('Background Color'),
+    '#title' => t('Background color'),
     '#default_value' => variable_get('adsense_cse_color_box_background', ADSENSE_CSE_COLOR_BOX_BACKGROUND_DEFAULT),
     '#options' => array(
       'FFFFFF' => t('White'),
@@ -73,6 +73,13 @@ function adsense_cse_settings() {
     '#default_value' => variable_get('adsense_cse_textbox_length', ADSENSE_CSE_TEXTBOX_LENGTH_DEFAULT),
     '#size' => 2,
     '#maxlength' => 2,
+  );
+
+  $form['searchbox']['adsense_cse_language'] = array(
+    '#type' => 'select',
+    '#title' => t('Watermark Language'),
+    '#default_value' => variable_get('adsense_cse_language', ADSENSE_CSE_LANGUAGE_DEFAULT),
+    '#options' => _adsense_search_options_language(),
   );
 
   $form['result'] = array(
@@ -138,7 +145,7 @@ function _adsense_cse_settings_validate($form, &$form_state) {
   if (($textbox_length < $min ) || ($textbox_length > $max )) {
     form_set_error('adsense_cse_textbox_length', t("Text Box Length must be between !min and !max", array('!min' => $min, '!max' => $max)));
   }
-  $min = 795;
+  $min = ($form_state['values']['adsense_cse_ad_location'] == 'adsense_cse_loc_top_bottom') ? 500 : 795;
   $max = 10000;
   $frame_width = $form_state['values']['adsense_cse_frame_width'];
   if (($frame_width < $min ) || ($frame_width > $max )) {

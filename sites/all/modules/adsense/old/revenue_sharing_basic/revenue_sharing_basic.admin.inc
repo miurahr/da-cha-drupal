@@ -1,5 +1,5 @@
 <?php
-// $Id: revenue_sharing_basic.admin.inc,v 1.3.2.3 2008/09/11 22:52:00 jcnventura Exp $
+// $Id: revenue_sharing_basic.admin.inc,v 1.3.2.5 2009/05/12 23:37:34 jcnventura Exp $
 
 /**
  * @file
@@ -46,41 +46,92 @@ function revenue_sharing_basic_settings() {
     '#description'   => t('This is the profile field that holds the AdSense Client ID for the site owner as well as (optionally) for site users who participate in revenue sharing. You must enabled the profile module and create a new field for this.'),
   );
 
-  $form['revenue'] = array(
+  $form['percentage'] = array(
     '#type'        => 'fieldset',
     '#collapsible' => TRUE,
     '#collapsed'   => FALSE,
-    '#title'       => t('Revenue sharing options'),
+    '#title'       => t('Revenue sharing percentage'),
   );
 
-  $form['revenue']['revenue_sharing_basic_revenue_enable'] = array(
-    '#type'          => 'checkbox',
-    '#title'         => t('Enable revenue sharing'),
-    '#return_value'  => 1,
-    '#default_value' => variable_get('revenue_sharing_basic_revenue_enable', REVENUE_SHARING_BASIC_REVENUE_ENABLE_DEFAULT),
-    '#description'   => t('Note that enabling this will disable AdSense code caching, which can cause more resource usage for busy sites. The referral feature requires the referral module to be installed.')
-  );
+  $options = drupal_map_assoc(range(0, 100, 5));
 
-  $form['revenue']['revenue_sharing_basic_percentage_author'] = array(
+  $form['percentage']['revenue_sharing_basic_percentage_author'] = array(
     '#type'          => 'select',
     '#title'         => t('Percentage of node views going to author'),
     '#default_value' => variable_get('revenue_sharing_basic_percentage_author', REVENUE_SHARING_BASIC_PERCENTAGE_AUTHOR_DEFAULT),
-    '#options'       => drupal_map_assoc(array(0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100)),
+    '#options'       => $options,
   );
 
-  if (module_exists('referral')) {
-    $form['revenue']['revenue_sharing_basic_percentage_refer'] = array(
+  $form['percentage']['role'] = array(
+    '#type'        => 'fieldset',
+    '#title'       => t('Percentage of node views going to author with the following roles'),
+    '#description' => t('When the author belongs to one or more roles, the percentage of node views using his AdSense Client ID will be the maximum between the author value and the following settings for each role.'),
+    '#theme'       => 'revenue_sharing_basic_author_percentage_role',
+  );
+
+  $roles = user_roles(TRUE);
+  unset($roles[array_search('authenticated user', $roles)]);
+  foreach ($roles as $role => $role_desc) {
+    $form['percentage']['role']['revenue_sharing_basic_percentage_role_'. $role] = array(
       '#type'          => 'select',
-      '#title'         => t('Percentage of node views going to user who referred the author'),
-      '#default_value' => variable_get('revenue_sharing_basic_percentage_refer', REVENUE_SHARING_BASIC_PERCENTAGE_REFER_DEFAULT),
-      '#options'       => drupal_map_assoc(array(0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100)),
-      '#description'   => t('This feature requires the referral module to be installed.')
+      '#title'         => t($role_desc),
+      '#default_value' => variable_get('revenue_sharing_basic_percentage_role_'. $role, REVENUE_SHARING_BASIC_PERCENTAGE_ROLE_DEFAULT),
+      '#options'       => $options,
     );
   }
 
-  $form['#redirect'] = 'admin/settings/adsense/id';
+  if (module_exists('referral')) {
+    $form['percentage']['revenue_sharing_basic_percentage_refer'] = array(
+      '#type'          => 'select',
+      '#title'         => t('Percentage of node views going to user who referred the author'),
+      '#default_value' => variable_get('revenue_sharing_basic_percentage_refer', REVENUE_SHARING_BASIC_PERCENTAGE_REFER_DEFAULT),
+      '#options'       => $options,
+    );
+  }
+
+  $form['content_types'] = array(
+    '#type'        => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed'   => FALSE,
+    '#title'       => t('Content types'),
+  );
+
+  $types = node_get_types();
+  foreach ($types as $type => $name) {
+    $form['content_types']['revenue_sharing_basic_node_type_'. $type] = array(
+      '#type'          => 'checkbox',
+      '#title'         => $name->name,
+      '#default_value' => variable_get('revenue_sharing_basic_node_type_'. $type, REVENUE_SHARING_BASIC_NODE_TYPE_DEFAULT),
+    );
+  }
+
+  $form['#redirect'] = 'admin/settings/adsense/publisher';
 
   return system_settings_form($form);
+}
+
+/**
+ * Theme the author percentage part of the settings page.
+ *
+ * @ingroup themeable
+ */
+function theme_revenue_sharing_basic_author_percentage_role($form) {
+  $output = '';
+  $elements = element_children($form);
+  if (!empty($elements)) {
+    $header = array(t('Role'), t('Percentage'));
+    foreach ($elements as $key) {
+      $row = array();
+      $row[] = $form[$key]['#title'];
+      unset($form[$key]['#title']);
+      $row[] = drupal_render($form[$key]);
+      $rows[] = $row;
+    }
+    $output .= theme('table', $header, $rows);
+  }
+
+  $output .= drupal_render($form);
+  return $output;
 }
 
 /**

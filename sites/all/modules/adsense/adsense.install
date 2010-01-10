@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense.install,v 1.10.2.3 2008/09/15 14:35:08 kbahey Exp $
+// $Id: adsense.install,v 1.10.2.5 2009/03/31 14:41:01 jcnventura Exp $
 
 /**
  * @file
@@ -10,8 +10,8 @@
  * Implementation of hook_install().
  */
 function adsense_install() {
-  drupal_set_message(t("AdSense settings are available under !link",
-    array( '!link' => l('Administer > Site configuration > AdSense ',  'admin/settings/adsense' ) )
+  drupal_set_message(st("AdSense settings are available under !link",
+    array( '!link' => l(st('Administer > Site configuration > AdSense'),  'admin/settings/adsense' ) )
   ));
 }
 
@@ -74,6 +74,6 @@ function adsense_update_6000() {
     variable_del($variable->name);
   }
 
-  $ret[] = array();
+  $ret = array();
   return $ret;
 }

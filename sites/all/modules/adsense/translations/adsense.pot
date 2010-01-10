@@ -1,37 +1,39 @@
-# $Id: adsense.pot,v 1.1.2.2 2008/09/11 22:52:00 jcnventura Exp $
+# $Id: adsense.pot,v 1.1.2.3 2009/05/13 00:04:20 jcnventura Exp $
 #
 # LANGUAGE translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
-#  adsense.admin.inc,v 1.5 2008/08/18 15:46:11 jcnventura
-#  adsense_cse.admin.inc,v 1.2 2008/08/10 20:20:20 jcnventura
-#  adsense_managed.admin.inc,v 1.2 2008/08/10 20:20:21 jcnventura
-#  revenue_sharing_basic.admin.inc,v 1.3 2008/08/13 00:00:42 jcnventura
-#  adsense.module,v 1.75 2008/08/18 19:35:13 jcnventura
-#  adsense_cse.results.inc,v 1.2 2008/08/10 20:20:20 jcnventura
-#  adsense_search.results.inc,v 1.2 2008/08/10 20:20:21 jcnventura
-#  adsense.install,v 1.11 2008/08/10 20:20:20 jcnventura
+#  adsense.admin.inc,v 1.1.2.5 2009/03/31 14:41:01 jcnventura
+#  adsense_cse.admin.inc,v 1.1.2.4 2009/02/10 01:35:20 jcnventura
+#  adsense_managed.admin.inc,v 1.1.2.2 2008/09/11 22:52:00 jcnventura
+#  revenue_sharing_basic.admin.inc,v 1.3.2.5 2009/05/12 23:37:34 jcnventura
+#  adsense.module,v 1.68.2.18 2009/03/31 14:41:01 jcnventura
+#  adsense_search.results.inc,v 1.1.2.3 2009/03/31 14:41:02 jcnventura
 #  adsense.info,v 1.6 2008/07/21 00:21:33 kbahey
+#  adsense_click.info,v 1.2.2.1 2008/12/19 01:32:37 jcnventura
 #  adsense_cse.info,v 1.1 2008/07/21 00:21:34 kbahey
 #  adsense_managed.info,v 1.1 2008/07/21 00:21:34 kbahey
-#  adsense_oldcode.info,v 1.2 2008/08/11 02:06:38 jcnventura
-#  revenue_sharing_basic.info,v 1.1 2008/08/11 02:06:38 jcnventura
+#  adsense_oldcode.info,v 1.1.2.1 2008/08/11 02:19:15 jcnventura
+#  revenue_sharing_basic.info,v 1.1.2.3 2009/05/12 23:37:34 jcnventura
 #  adsense_search.info,v 1.1 2008/07/21 00:21:34 kbahey
-#  adsense_search.admin.inc,v 1.4 2008/08/20 22:24:30 jcnventura
-#  adsense_oldcode.admin.inc,v 1.4 2008/08/20 22:24:30 jcnventura
-#  adsense_cse.module,v 1.6 2008/08/20 00:31:32 jcnventura
-#  adsense_managed.module,v 1.5 2008/08/11 21:58:50 jcnventura
-#  adsense_oldcode.module,v 1.5 2008/08/20 00:31:32 jcnventura
-#  adsense_search.module,v 1.5 2008/08/20 00:31:32 jcnventura
-#  adsense.help.inc,v 1.1 2008/08/10 21:48:43 jcnventura
-#  adsense.search_options.inc,v 1.2 2008/08/10 20:20:20 jcnventura
-#  revenue_sharing_basic.module,v 1.4 2008/08/18 15:46:11 jcnventura
+#  adsense_click.admin.inc,v 1.1.4.2 2008/12/19 01:32:37 jcnventura
+#  adsense_click.logs.inc,v 1.1.4.2 2008/12/19 01:32:37 jcnventura
+#  adsense_click.module,v 1.2.2.10 2008/12/19 01:32:37 jcnventura
+#  adsense_search.admin.inc,v 1.1.2.2 2008/09/11 22:52:00 jcnventura
+#  adsense_oldcode.admin.inc,v 1.1.2.2 2008/09/11 22:52:00 jcnventura
+#  adsense_managed.module,v 1.1.2.7 2009/03/31 14:41:02 jcnventura
+#  adsense_oldcode.module,v 1.1.2.7 2009/03/31 14:41:02 jcnventura
+#  adsense_cse.module,v 1.1.2.8 2009/02/10 01:35:20 jcnventura
+#  adsense_search.module,v 1.1.2.10 2009/03/31 14:41:02 jcnventura
+#  adsense.help.inc,v 1.1.2.7 2009/03/31 14:41:02 jcnventura
+#  adsense.search_options.inc,v 1.1.2.1 2008/08/10 22:26:34 jcnventura
+#  revenue_sharing_basic.module,v 1.4.2.10 2009/05/12 23:37:34 jcnventura
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2008-08-21 03:11+0200\n"
+"POT-Creation-Date: 2009-05-13 01:59+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -40,240 +42,276 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: adsense.admin.inc:24;111 cse/adsense_cse.admin.inc:26 managed/adsense_managed.admin.inc:24 old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:25
+#: adsense.admin.inc:25;152 cse/adsense_cse.admin.inc:26 managed/adsense_managed.admin.inc:24 old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:25
 msgid "Help and instructions"
 msgstr ""
 
-#: adsense.admin.inc:36
+#: adsense.admin.inc:37
 msgid "Visibility"
 msgstr ""
 
-#: adsense.admin.inc:41
+#: adsense.admin.inc:42
 msgid "Show AdSense on specific pages"
 msgstr ""
 
-#: adsense.admin.inc:43
+#: adsense.admin.inc:44
 msgid "Show on every page except the listed pages."
 msgstr ""
 
-#: adsense.admin.inc:43
+#: adsense.admin.inc:44
 msgid "Show on only the listed pages."
 msgstr ""
 
-#: adsense.admin.inc:50
+#: adsense.admin.inc:51
 msgid "Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are  %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page."
 msgstr ""
 
-#: adsense.admin.inc:57
-msgid "Advanced options"
+#: adsense.admin.inc:61
+msgid "Show if the following PHP code returns <code>TRUE</code> (PHP-mode, experts only)."
 msgstr ""
 
 #: adsense.admin.inc:62
-msgid "Enable test mode?"
-msgstr ""
-
-#: adsense.admin.inc:64
-msgid "This enables you to test the AdSense module settings. This can be useful in some situations: for example, testing whether revenue sharing is working properly or not without having to display real ads on your site. It is best to test this after you log out."
+msgid "If the PHP-mode is chosen, enter PHP code between %php. Note that executing incorrect PHP-code can break your Drupal site."
 msgstr ""
 
 #: adsense.admin.inc:69
-msgid "Disable Google AdSense ads?"
+msgid "Advanced options"
 msgstr ""
 
-#: adsense.admin.inc:71
-msgid "This disables all display of Google AdSense ads from your web site. This is useful in certain situations, such as site upgrades, or if you make a copy of the site for development and test purposes."
+#: adsense.admin.inc:74
+msgid "Enable test mode?"
 msgstr ""
 
 #: adsense.admin.inc:76
-msgid "Placeholder when ads are disabled?"
+msgid "This enables you to test the AdSense module settings. This can be useful in some situations: for example, testing whether revenue sharing is working properly or not without having to display real ads on your site. It is best to test this after you log out."
 msgstr ""
 
-#: adsense.admin.inc:78
-msgid "This causes an empty box to be displayed in place of the ads when they are disabled."
+#: adsense.admin.inc:81
+msgid "Disable Google AdSense ads?"
 msgstr ""
 
 #: adsense.admin.inc:83
+msgid "This disables all display of Google AdSense ads from your web site. This is useful in certain situations, such as site upgrades, or if you make a copy of the site for development and test purposes."
+msgstr ""
+
+#: adsense.admin.inc:88
+msgid "Placeholder when ads are disabled?"
+msgstr ""
+
+#: adsense.admin.inc:90
+msgid "This causes an empty box to be displayed in place of the ads when they are disabled."
+msgstr ""
+
+#: adsense.admin.inc:95
 msgid "Placeholder text to display"
 msgstr ""
 
-#: adsense.admin.inc:86
+#: adsense.admin.inc:98
 msgid "Enter any text to display as a placeholder when ads are disabled."
 msgstr ""
 
-#: adsense.admin.inc:91
+#: adsense.admin.inc:103
 msgid "Enable AdSense section targeting?"
 msgstr ""
 
-#: adsense.admin.inc:93
+#: adsense.admin.inc:105
 msgid "This better targets Google ads to the teaser and body of nodes."
 msgstr ""
 
-#: adsense.admin.inc:121
+#: adsense.admin.inc:112
+msgid "Undocumented options"
+msgstr ""
+
+#: adsense.admin.inc:113
+msgid "Warning: Use of these options is AT YOUR OWN RISK. Google will never generate an ad with any of these options, so using one of them is a violation of Google AdSense's Terms and Conditions. USE OF THESE OPTIONS MAY RESULT IN GETTING BANNED FROM THE PROGRAM. You may lose all the revenue accumulated in your account. FULL RESPONSABILITY FOR THE USE OF THESE OPTIONS IS YOURS. In other words, don't complain to the authors about getting banned, even if using one of these options was provided as a solution to a reported problem."
+msgstr ""
+
+#: adsense.admin.inc:120
+msgid "I agree"
+msgstr ""
+
+#: adsense.admin.inc:125
+msgid "Use Google's AdSense test option?"
+msgstr ""
+
+#: adsense.admin.inc:127
+msgid "With this option set, Google will not count any clicks or page impressions. Revenue is not generated. Make sure that you disable this option in production servers. [!statement]"
+msgstr ""
+
+#: adsense.admin.inc:127
+msgid "Unofficial statement"
+msgstr ""
+
+#: adsense.admin.inc:132
+msgid "Language to display ads"
+msgstr ""
+
+#: adsense.admin.inc:162
 msgid "Site Google AdSense Publisher ID"
 msgstr ""
 
-#: adsense.admin.inc:124
+#: adsense.admin.inc:165
 msgid "This is the Google AdSense Publisher ID for the site owner. It is used if no other ID is suitable. Get this in your Google Adsense account. It should be similar to %id."
 msgstr ""
 
-#: adsense.admin.inc:131
+#: adsense.admin.inc:172
 msgid "Publisher ID module"
 msgstr ""
 
-#: adsense.module:25
-msgid "Google AdSense"
-msgstr ""
-
-#: adsense.module:51
+#: adsense.module:54
 msgid "4-links 120x90"
 msgstr ""
 
-#: adsense.module:52
+#: adsense.module:55
 msgid "4-links 160x90"
 msgstr ""
 
-#: adsense.module:53
+#: adsense.module:56
 msgid "4-links 180x90"
 msgstr ""
 
-#: adsense.module:54
+#: adsense.module:57
 msgid "4-links 200x90"
 msgstr ""
 
-#: adsense.module:55
+#: adsense.module:58
 msgid "4-links 468x15"
 msgstr ""
 
-#: adsense.module:56
+#: adsense.module:59
 msgid "4-links 728x15"
 msgstr ""
 
-#: adsense.module:57
+#: adsense.module:60
 msgid "5-links 120x90"
 msgstr ""
 
-#: adsense.module:58
+#: adsense.module:61
 msgid "5-links 160x90"
 msgstr ""
 
-#: adsense.module:59
+#: adsense.module:62
 msgid "5-links 180x90"
 msgstr ""
 
-#: adsense.module:60
+#: adsense.module:63
 msgid "5-links 200x90"
 msgstr ""
 
-#: adsense.module:61
+#: adsense.module:64
 msgid "5-links 468x15"
 msgstr ""
 
-#: adsense.module:62
+#: adsense.module:65
 msgid "5-links 728x15"
 msgstr ""
 
-#: adsense.module:63
+#: adsense.module:66
 msgid "Vertical banner"
 msgstr ""
 
-#: adsense.module:64
+#: adsense.module:67
 msgid "Skyscraper"
 msgstr ""
 
-#: adsense.module:65
+#: adsense.module:68
 msgid "Button"
 msgstr ""
 
-#: adsense.module:66
+#: adsense.module:69
 msgid "Wide Skyscraper"
 msgstr ""
 
-#: adsense.module:67
+#: adsense.module:70
 msgid "Small Rectangle"
 msgstr ""
 
-#: adsense.module:68
+#: adsense.module:71
 msgid "Small Square"
 msgstr ""
 
-#: adsense.module:69
+#: adsense.module:72
 msgid "Half Banner"
 msgstr ""
 
-#: adsense.module:70
+#: adsense.module:73
 msgid "Square"
 msgstr ""
 
-#: adsense.module:71
+#: adsense.module:74
 msgid "Medium Rectangle"
 msgstr ""
 
-#: adsense.module:72
+#: adsense.module:75
 msgid "Large Rectangle"
 msgstr ""
 
-#: adsense.module:73
+#: adsense.module:76
 msgid "Banner"
 msgstr ""
 
-#: adsense.module:74
+#: adsense.module:77
 msgid "Leaderboard"
 msgstr ""
 
-#: adsense.module:82
+#: adsense.module:85
 msgid "AdSense for Search"
 msgstr ""
 
-#: adsense.module:174
+#: adsense.module:179
 msgid "AdSense tag"
 msgstr ""
 
-#: adsense.module:178
+#: adsense.module:183
 msgid "Substitutes an AdSense special tag with an ad."
 msgstr ""
 
-#: adsense.module:209
+#: adsense.module:219
+msgid "The HTML corrector filter has a bug that causes problems with the use of the AdSense tag. Disabling the HTML corrector filter is recommended."
+msgstr ""
+
+#: adsense.module:228
 msgid "Use the special tag [adsense:<em>format</em>:<em>slot</em>] or [adsense:<em>format</em>:<em>[group]</em>:<em>[channel]</em><em>[:slot]</em>] or [adsense:block:<em>location</em>] to display Google AdSense ads."
 msgstr ""
 
-#: (duplicate) adsense.module:148 ;106 cse/adsense_cse.results.inc:17 old/search/adsense_search.results.inc:17
+#: (duplicate) adsense.module:162 ;120 old/search/adsense_search.results.inc:17
 msgid "AdSense"
 msgstr ""
 
-#: (duplicate) adsense.module:149 
-msgid "Publisher ID is not set. Please configure it in the <a href=\"@url\">AdSense settings page</a>."
+#: (duplicate) adsense.module:163 
+msgid "Publisher ID is not set."
 msgstr ""
 
-#: adsense.module:96
+#: (duplicate) adsense.module:164 
+msgid "Please configure it in the <a href=\"@url\">AdSense settings page</a>."
+msgstr ""
+
+#: adsense.module:99
 msgid "administer adsense"
 msgstr ""
 
-#: adsense.module:96
+#: adsense.module:99
 msgid "hide adsense"
 msgstr ""
 
-#: adsense.module:107
+#: adsense.module:99
+msgid "use PHP for ad visibility"
+msgstr ""
+
+#: adsense.module:121
 msgid "Configure Google AdSense Ads."
 msgstr ""
 
-#: adsense.module:114
+#: adsense.module:128
 msgid "Settings"
 msgstr ""
 
-#: adsense.module:119
+#: adsense.module:133
 msgid "Publisher ID"
 msgstr ""
 
-#: adsense.module:128
+#: adsense.module:142
 msgid "Site ID"
-msgstr ""
-
-#: adsense.module:0
-msgid "adsense"
-msgstr ""
-
-#: adsense.install:13
-msgid "AdSense settings are available under !link"
 msgstr ""
 
 #: adsense.info:0
@@ -284,8 +322,88 @@ msgstr ""
 msgid "Displays Google AdSense ads on your site to earn revenue. Requires at least one additional ad unit generator module."
 msgstr ""
 
-#: adsense.info:0 cse/adsense_cse.info:0 managed/adsense_managed.info:0 old/oldcode/adsense_oldcode.info:0 old/revenue_sharing_basic/revenue_sharing_basic.info:0 old/search/adsense_search.info:0
+#: adsense.info:0 contrib/adsense_click/adsense_click.info:0 cse/adsense_cse.info:0 managed/adsense_managed.info:0 old/oldcode/adsense_oldcode.info:0 old/revenue_sharing_basic/revenue_sharing_basic.info:0 old/search/adsense_search.info:0
 msgid "Adsense"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.admin.inc:15
+msgid "Click tracking"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.admin.inc:20
+msgid "Enable AdSense click tracking?"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.admin.inc:22
+msgid "Logs IP and time of <a href=!url>AdSense clicks</a>. This can be very useful in tracking which of your pages generate the most clicks, as well as help if click fraud is suspected."
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.admin.inc:26
+msgid "Enable name resolution of IP addresses?"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.admin.inc:28
+msgid "Display the domain name instead of the IP address. This can slow down the display of the logs page and tie up a PHP process for several seconds. On some hosting providers it may not be available."
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:14
+msgid "Timestamp"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:15;46
+msgid "Path"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:16
+msgid "IP/Host"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:17
+msgid "Referrer"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:47;70 contrib/adsense_click/adsense_click.module:22
+msgid "Clicks"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:48
+msgid "Last"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.logs.inc:69
+msgid "Day"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.module:66
+msgid "view clicks"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.module:23
+msgid "Track the clicks on Adsense ads."
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.module:32
+msgid "AdSense clicks"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.module:33
+msgid "Track AdSense clicks."
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.module:40
+msgid "Top pages"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.module:47
+msgid "By day"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.info:0
+msgid "AdSense Click Tracking"
+msgstr ""
+
+#: contrib/adsense_click/adsense_click.info:0
+msgid "Tracks clicks to Google Adsense"
 msgstr ""
 
 #: cse/adsense_cse.admin.inc:38 old/search/adsense_search.admin.inc:25
@@ -308,8 +426,8 @@ msgstr ""
 msgid "Below the search box"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:54 old/search/adsense_search.admin.inc:78
-msgid "Background Color"
+#: cse/adsense_cse.admin.inc:54 old/oldcode/adsense_oldcode.admin.inc:92 old/search/adsense_search.admin.inc:78
+msgid "Background color"
 msgstr ""
 
 #: cse/adsense_cse.admin.inc:57 old/search/adsense_search.admin.inc:81;93
@@ -332,92 +450,92 @@ msgstr ""
 msgid "Text Box Length"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:82 old/search/adsense_search.admin.inc:123
+#: cse/adsense_cse.admin.inc:80
+msgid "Watermark Language"
+msgstr ""
+
+#: cse/adsense_cse.admin.inc:89 old/search/adsense_search.admin.inc:123
 msgid "Search Results Style"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:87 old/search/adsense_search.admin.inc:128
+#: cse/adsense_cse.admin.inc:94 old/search/adsense_search.admin.inc:128
 msgid "Country or territory for Google domain"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:94 old/search/adsense_search.admin.inc:135
+#: cse/adsense_cse.admin.inc:101 old/search/adsense_search.admin.inc:135
 msgid "Width of results area"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:102
+#: cse/adsense_cse.admin.inc:109
 msgid "Ad Location"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:105
+#: cse/adsense_cse.admin.inc:112
 msgid "Top and Right"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:106
+#: cse/adsense_cse.admin.inc:113
 msgid "Top and Bottom"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:107
+#: cse/adsense_cse.admin.inc:114 managed/adsense_managed.module:94 old/oldcode/adsense_oldcode.module:120
 msgid "Right"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:115 managed/adsense_managed.admin.inc:36 old/oldcode/adsense_oldcode.admin.inc:22 old/search/adsense_search.admin.inc:226
+#: cse/adsense_cse.admin.inc:122 managed/adsense_managed.admin.inc:36 old/oldcode/adsense_oldcode.admin.inc:22 old/search/adsense_search.admin.inc:226
 msgid "AdSense Blocks"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:120 managed/adsense_managed.admin.inc:41 old/oldcode/adsense_oldcode.admin.inc:27 old/search/adsense_search.admin.inc:231
+#: cse/adsense_cse.admin.inc:127 managed/adsense_managed.admin.inc:41 old/oldcode/adsense_oldcode.admin.inc:27 old/search/adsense_search.admin.inc:231
 msgid "Number of blocks"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:139 old/search/adsense_search.admin.inc:268
+#: cse/adsense_cse.admin.inc:146 old/search/adsense_search.admin.inc:268
 msgid "Text Box Length must be between !min and !max"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:145
+#: cse/adsense_cse.admin.inc:152
 msgid "Results area width must be between !min and !max"
 msgstr ""
 
-#: cse/adsense_cse.admin.inc:149 managed/adsense_managed.admin.inc:58 old/oldcode/adsense_oldcode.admin.inc:168 old/search/adsense_search.admin.inc:273
+#: cse/adsense_cse.admin.inc:156 managed/adsense_managed.admin.inc:58 old/oldcode/adsense_oldcode.admin.inc:168 old/search/adsense_search.admin.inc:273
 msgid "Number of blocks can't be a negative number"
 msgstr ""
 
-#: cse/adsense_cse.results.inc:17 old/search/adsense_search.results.inc:17
-msgid "Search keywords: %keyword"
-msgstr ""
-
-#: cse/adsense_cse.module:62
+#: cse/adsense_cse.module:65
 msgid "AdSense CSE: unconfigured "
 msgstr ""
 
-#: cse/adsense_cse.module:73 managed/adsense_managed.module:61 old/oldcode/adsense_oldcode.module:82 old/search/adsense_search.module:90
+#: cse/adsense_cse.module:76 managed/adsense_managed.module:61 old/oldcode/adsense_oldcode.module:82 old/search/adsense_search.module:92
 msgid "Block description"
 msgstr ""
 
-#: cse/adsense_cse.module:76 managed/adsense_managed.module:64 old/oldcode/adsense_oldcode.module:85 old/search/adsense_search.module:93
+#: cse/adsense_cse.module:79 managed/adsense_managed.module:64 old/oldcode/adsense_oldcode.module:85 old/search/adsense_search.module:95
 msgid "A brief description of your block. Used on the <a href=\"@overview\">block overview page</a>."
 msgstr ""
 
-#: cse/adsense_cse.module:83 managed/adsense_managed.module:80
+#: cse/adsense_cse.module:86 managed/adsense_managed.module:80
 msgid "Ad Slot ID"
 msgstr ""
 
-#: cse/adsense_cse.module:85
+#: cse/adsense_cse.module:88
 msgid "This is the provided by the AdSense site in the Search Box Code \"cx\" field. This is usually provided in the form partner-<em>Publisher ID</em>:<em>Slot Id</em>. If the code provided is, for example, partner-pub-0123456789:<strong>abcdef-ghij</strong>, then insert only <strong>abcdef-ghij</strong> here."
 msgstr ""
 
-#: cse/adsense_cse.module:98 managed/adsense_managed.module:95 old/oldcode/adsense_oldcode.module:122 old/search/adsense_search.module:114
+#: cse/adsense_cse.module:101 managed/adsense_managed.module:109 old/oldcode/adsense_oldcode.module:135 old/search/adsense_search.module:116
 msgid "AdSense unconfigured block. <a href=!url>Click to configure.</a>"
 msgstr ""
 
-#: cse/adsense_cse.module:31
+#: cse/adsense_cse.module:143 old/search/adsense_search.module:187;45
+msgid "Search"
+msgstr ""
+
+#: cse/adsense_cse.module:144;34
 msgid "Custom Search"
 msgstr ""
 
-#: cse/adsense_cse.module:40 old/search/adsense_search.module:52
+#: cse/adsense_cse.module:43 old/search/adsense_search.module:54
 msgid "Search Results"
-msgstr ""
-
-#: cse/adsense_cse.module:0
-msgid "adsense_cse"
 msgstr ""
 
 #: cse/adsense_cse.info:0
@@ -442,6 +560,18 @@ msgstr ""
 
 #: help/adsense.help.inc:23
 msgid "Height"
+msgstr ""
+
+#: help/adsense.help.inc:35
+msgid "Custom search help"
+msgstr ""
+
+#: help/adsense.help.inc:38
+msgid "Adsense CSE module (which must be enabled; !link) and refer to its help"
+msgstr ""
+
+#: help/adsense.help.inc:38
+msgid "modules"
 msgstr ""
 
 #: includes/adsense.search_options.inc:17
@@ -1652,12 +1782,28 @@ msgstr ""
 msgid "This is the Ad Slot ID from your Google Adsense account, such as 0123456789."
 msgstr ""
 
-#: managed/adsense_managed.module:22
-msgid "Managed Ads"
+#: managed/adsense_managed.module:88 old/oldcode/adsense_oldcode.module:114
+msgid "Ad alignment"
 msgstr ""
 
-#: managed/adsense_managed.module:0
-msgid "adsense_managed"
+#: managed/adsense_managed.module:91 old/oldcode/adsense_oldcode.admin.inc:118 old/oldcode/adsense_oldcode.module:75;117 old/search/adsense_search.module:85
+msgid "None"
+msgstr ""
+
+#: managed/adsense_managed.module:92 old/oldcode/adsense_oldcode.module:118
+msgid "Left"
+msgstr ""
+
+#: managed/adsense_managed.module:93 old/oldcode/adsense_oldcode.module:119
+msgid "Centered"
+msgstr ""
+
+#: managed/adsense_managed.module:96 old/oldcode/adsense_oldcode.module:122
+msgid "Select the horizontal alignment of the ad within the block."
+msgstr ""
+
+#: managed/adsense_managed.module:22
+msgid "Managed Ads"
 msgstr ""
 
 #: managed/adsense_managed.info:0
@@ -1700,16 +1846,12 @@ msgstr ""
 msgid "Both"
 msgstr ""
 
-#: old/oldcode/adsense_oldcode.admin.inc:76
+#: old/oldcode/adsense_oldcode.admin.inc:76 old/search/adsense_search.admin.inc:89
 msgid "Text color"
 msgstr ""
 
 #: old/oldcode/adsense_oldcode.admin.inc:84
 msgid "Border color"
-msgstr ""
-
-#: old/oldcode/adsense_oldcode.admin.inc:92
-msgid "Background color"
 msgstr ""
 
 #: old/oldcode/adsense_oldcode.admin.inc:100
@@ -1722,10 +1864,6 @@ msgstr ""
 
 #: old/oldcode/adsense_oldcode.admin.inc:116
 msgid "Alternate URL color"
-msgstr ""
-
-#: old/oldcode/adsense_oldcode.admin.inc:118 old/oldcode/adsense_oldcode.module:75 old/search/adsense_search.module:83
-msgid "None"
 msgstr ""
 
 #: old/oldcode/adsense_oldcode.admin.inc:118
@@ -1776,16 +1914,12 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
-#: old/oldcode/adsense_oldcode.module:107 old/search/adsense_search.module:100
+#: old/oldcode/adsense_oldcode.module:107 old/search/adsense_search.module:102
 msgid "Channel"
 msgstr ""
 
 #: old/oldcode/adsense_oldcode.module:34
 msgid "Old Code Ads"
-msgstr ""
-
-#: old/oldcode/adsense_oldcode.module:0
-msgid "adsense_oldcode"
 msgstr ""
 
 #: old/oldcode/adsense_oldcode.info:0
@@ -1809,43 +1943,47 @@ msgid "This is the profile field that holds the AdSense Client ID for the site o
 msgstr ""
 
 #: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:53
-msgid "Revenue sharing options"
+msgid "Revenue sharing percentage"
 msgstr ""
 
-#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:58
-msgid "Enable revenue sharing"
-msgstr ""
-
-#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:61
-msgid "Note that enabling this will disable AdSense code caching, which can cause more resource usage for busy sites. The referral feature requires the referral module to be installed."
-msgstr ""
-
-#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:66
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:60
 msgid "Percentage of node views going to author"
 msgstr ""
 
-#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:74
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:67
+msgid "Percentage of node views going to author with the following roles"
+msgstr ""
+
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:68
+msgid "When the author belongs to one or more roles, the percentage of node views using his AdSense Client ID will be the maximum between the author value and the following settings for each role."
+msgstr ""
+
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:86
 msgid "Percentage of node views going to user who referred the author"
 msgstr ""
 
-#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:77
-msgid "This feature requires the referral module to be installed."
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:96
+msgid "Content types"
 msgstr ""
 
-#: (duplicate) old/revenue_sharing_basic/revenue_sharing_basic.module:44 
-msgid "Revenue Sharing (basic)"
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:122
+msgid "Role"
 msgstr ""
 
-#: (duplicate) old/revenue_sharing_basic/revenue_sharing_basic.module:45 
-msgid "Drupal page cache is enabled. This causes conflicts with revenue sharing, since the pages are stored in the cache and are not dynamically generated. If you experience issues with revenue sharing, then disable the page cache."
+#: old/revenue_sharing_basic/revenue_sharing_basic.admin.inc:122
+msgid "Percentage"
 msgstr ""
 
-#: old/revenue_sharing_basic/revenue_sharing_basic.module:22
-msgid "Basic Revenue Sharing"
+#: (duplicate) old/revenue_sharing_basic/revenue_sharing_basic.module:56 ;22
+msgid "Revenue Sharing"
 msgstr ""
 
-#: old/revenue_sharing_basic/revenue_sharing_basic.module:0
-msgid "revenue_sharing_basic"
+#: (duplicate) old/revenue_sharing_basic/revenue_sharing_basic.module:57 
+msgid "Drupal page cache is enabled."
+msgstr ""
+
+#: (duplicate) old/revenue_sharing_basic/revenue_sharing_basic.module:58 
+msgid "This causes conflicts with revenue sharing, since the pages are stored in the cache and are not dynamically generated. If you experience issues with revenue sharing, then disable the page cache."
 msgstr ""
 
 #: old/revenue_sharing_basic/revenue_sharing_basic.info:0
@@ -1853,7 +1991,7 @@ msgid "Revenue sharing basic (old)"
 msgstr ""
 
 #: old/revenue_sharing_basic/revenue_sharing_basic.info:0
-msgid "Basic revenue sharing for the Google Adsense module"
+msgid "Revenue sharing for the Google Adsense module"
 msgstr ""
 
 #: old/search/adsense_search.admin.inc:26
@@ -1878,10 +2016,6 @@ msgstr ""
 
 #: old/search/adsense_search.admin.inc:72
 msgid "Search button below text box"
-msgstr ""
-
-#: old/search/adsense_search.admin.inc:89
-msgid "Text Color"
 msgstr ""
 
 #: old/search/adsense_search.admin.inc:99
@@ -1920,20 +2054,16 @@ msgstr ""
 msgid "Logo Background"
 msgstr ""
 
-#: old/search/adsense_search.module:74
+#: old/search/adsense_search.results.inc:17
+msgid "Search keywords: %keyword"
+msgstr ""
+
+#: old/search/adsense_search.module:76
 msgid "AdSense Search: unconfigured "
 msgstr ""
 
-#: old/search/adsense_search.module:177;43
-msgid "Search"
-msgstr ""
-
-#: old/search/adsense_search.module:199
+#: old/search/adsense_search.module:210
 msgid "Google Search"
-msgstr ""
-
-#: old/search/adsense_search.module:0
-msgid "adsense_search"
 msgstr ""
 
 #: old/search/adsense_search.info:0

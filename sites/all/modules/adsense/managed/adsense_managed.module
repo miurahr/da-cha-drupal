@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense_managed.module,v 1.1.2.4 2008/09/11 22:52:00 jcnventura Exp $
+// $Id: adsense_managed.module,v 1.1.2.8 2009/07/03 12:05:50 jcnventura Exp $
 
 /**
  * @file
@@ -35,6 +35,8 @@ function adsense_managed_menu() {
  * Implementation of hook_block().
  */
 function adsense_managed_block($op = 'list', $delta = 0, $edit = array()) {
+  $block = NULL;
+
   switch ($op) {
     case 'list':
       $max = variable_get('adsense_managed_number_blocks', ADSENSE_MANAGED_NUMBER_BLOCKS_DEFAULT);
@@ -82,10 +84,24 @@ function adsense_managed_block($op = 'list', $delta = 0, $edit = array()) {
         '#description' => t('This is the Ad Slot ID from your Google Adsense account, such as 0123456789.'),
         '#required' => TRUE,
       );
+
+      $form['ad_align'] = array(
+        '#type' => 'select',
+        '#title' => t('Ad alignment'),
+        '#default_value' => ($ad) ? $ad[3] : 'center',
+        '#options' => array(
+          '' => t('None'),
+          'left' => t('Left'),
+          'center' => t('Centered'),
+          'right' => t('Right')
+        ),
+        '#description' => t('Select the horizontal alignment of the ad within the block.'),
+      );
+
       return $form;
 
     case 'save':
-      $data = implode(':', array(urlencode($edit['info']), $edit['ad_format'], $edit['ad_slot']));
+      $data = implode(':', array(urlencode($edit['info']), $edit['ad_format'], $edit['ad_slot'], $edit['ad_align']));
       variable_set('adsense_managed_ad_block_'. $delta, $data);
       return;
 
@@ -93,6 +109,9 @@ function adsense_managed_block($op = 'list', $delta = 0, $edit = array()) {
       if (_adsense_page_match()) {
         $ad = _adsense_managed_get_block_config($delta);
         $block['content'] = ($ad) ? adsense_display(array('format' => $ad[1], 'slot' => $ad[2])) : t('AdSense unconfigured block. <a href=!url>Click to configure.</a>', array('!url' => url('admin/build/block/configure/adsense_managed/'. $delta)));
+        if (!empty($ad[3])) {
+          $block['content'] = "<div style='text-align:${ad[3]}'>${block['content']}</div>";
+        }
       }
       break;
     }
@@ -133,24 +152,31 @@ function _adsense_managed_get_ad($format, $client, $slot) {
   if (($ad === NULL) || empty($slot)) {
     $output = "";
   }
+  elseif (variable_get('adsense_test_mode', ADSENSE_TEST_MODE_DEFAULT)) {
+    $output = _adsense_format_box("client = ${client}<br />slot = ${slot}<br />width = ${ad['width']}<br />height = ${ad['height']}", $ad['width'], $ad['height']);
+  }
   else {
-    $width = $ad['width'];
-    $height = $ad['height'];
+    $secret = '';
+    if (variable_get('adsense_secret_adtest', ADSENSE_SECRET_ADTEST_DEFAULT)) {
+      $secret .= "google_adtest = 'on';\n";
+    }
+    if ($lang = variable_get('adsense_secret_language', ADSENSE_SECRET_LANGUAGE_DEFAULT)) {
+      $secret .= "google_language = '$lang';";
+    }
 
     $output = <<<MANAGED_TXT
-<div class="adsense">
 <script type="text/javascript"><!--
 google_ad_client = "$client";
 /* $format */
 google_ad_slot = "$slot";
-google_ad_width = $width;
-google_ad_height = $height;
+google_ad_width = ${ad['width']};
+google_ad_height = ${ad['height']};
+$secret
 //-->
 </script>
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-</div>
 MANAGED_TXT;
   }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense.help.inc,v 1.1.2.5 2008/11/06 15:10:57 kbahey Exp $
+// $Id: adsense.help.inc,v 1.1.2.8 2009/06/04 22:01:56 jcnventura Exp $
 // Copyright 2005-2008 Khalid Baheyeldin - http://2bits.com
 // Copyright 2008 Joao Ventura - http://www.venturas.org
 
@@ -15,7 +15,7 @@
  *   HTML with the help text
  */
 function adsense_help_text() {
-  $base = base_path();
+  $base = rtrim(base_path(), '/');
 
   // Get the ad formats
   $ads = adsense_ad_formats();
@@ -31,16 +31,12 @@ function adsense_help_text() {
   // Create the ad format text
   $ad_formats_text = theme('table', $headers, $rows);
 
-  $referral_link = 'http://baheyeldin.com/click/476/1';
   if (module_exists('adsense_cse')) {
-    $custom_search_link = l(t('Custom search help'), '/admin/settings/adsense/cse');
-error_log(__LINE__ . ": $custom_search_link");
+    $custom_search_link = l(t('Custom search help'), 'admin/settings/adsense/cse');
   }
   else {
-    $custom_search_link = t('Adsense CSE module (which must be enabled; !link) and refer to its help', array('!link' => l('modules', 'admin/build/modules')));
-error_log(__LINE__ . ": $custom_search_link");
+    $custom_search_link = t('Adsense CSE module (which must be enabled; !link) and refer to its help', array('!link' => l(t('modules'), 'admin/build/modules')));
   }
-    
 
   $output = <<<EOF
 <h2>Overview</h2>
@@ -48,11 +44,7 @@ error_log(__LINE__ . ": $custom_search_link");
 AdSense ads on their web site, thus earning revenue.</p>
 
 <h2>Prerequisites</h2>
-<p>You must have a Google AdSense account before using this module.  If you do
-not have an account, then please consider using <a href="$referral_link">the
-modules author's referral link</a>, which provides us with a referral fee from
-Google at absolutely no cost to you. This page also contains various useful
-links and resources on AdSense, and how to optimize your site for it.</p>
+<p>You must have a Google AdSense account before using this module.</p>
 
 <h2>Configuration</h2>
 <p>To use this module, you need to select one of the Adsense Client ID
@@ -71,7 +63,7 @@ in any phptemplate based theme.</p>
 <h3>Using blocks</h3>
 <p>The easiest way to get started with this module is to use one or more of
 the pre-defined blocks.</p>
-<p>Visit the <a href="/admin/build/block">blocks</a> configuration page,
+<p>Visit the <a href="$base/admin/build/block">blocks</a> configuration page,
 and click on the <strong>configure</strong> link of one of the AdSense blocks.
 You must select a format, a group, and a channel.</p>
 <p>Enable the block, and specify a region for it to be displayed in.</p>
@@ -101,7 +93,7 @@ an array containing the following fields:</p>
 and enclose it in PHP tags.</p>
 
 <pre>
-print adsense_display(array('format' => '468x60', 'slot' => 0123456789));
+print adsense_display(array('format' => '468x60', 'slot' => '0123456789'));
 </pre>
 
 <p> If you want to make sure that you do not get errors if the AdSense module
@@ -109,7 +101,7 @@ is accidentally disabled or deleted, then use the longer form:</p>
 
 <pre>
 if (module_exists('adsense')) {
-  print adsense_display(array('format' => '468x60', 'slot' => 0123456789));
+  print adsense_display(array('format' => '468x60', 'slot' => '0123456789'));
 }
 </pre>
 
@@ -119,7 +111,7 @@ theme. This requires some familiarity with PHP. Edit the appropriate
 <strong>.tpl.php</strong> file in your theme directory, and add:</p>
 
 <pre>
-print adsense_display(array('format' => '468x60', slot => 0123456789));
+print adsense_display(array('format' => '468x60', slot => '0123456789'));
 </pre>
 
 <p>Make sure you enclose it in PHP tags.</p>
@@ -128,7 +120,7 @@ disabling the module:</p>
 
 <pre>
 if (module_exists('adsense')) {
-  print adsense_display(array('format' => '468x60', 'slot' => 0123456789));
+  print adsense_display(array('format' => '468x60', 'slot' => '0123456789'));
 }
 </pre>
 

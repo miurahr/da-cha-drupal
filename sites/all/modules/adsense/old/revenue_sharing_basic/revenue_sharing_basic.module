@@ -1,6 +1,5 @@
 <?php
-//$Id: revenue_sharing_basic.module,v 1.4.2.3 2008/09/11 22:52:00 jcnventura Exp $
-// Copyright 2005-2008 Khalid Baheyeldin http://2bits.com
+// $Id: revenue_sharing_basic.module,v 1.4.2.12 2009/05/19 21:25:49 jcnventura Exp $
 
 /**
  * @file
@@ -9,8 +8,9 @@
 
 define('REVENUE_SHARING_BASIC_CLIENT_ID_PROFILE_FIELD_DEFAULT', 0);
 define('REVENUE_SHARING_BASIC_PERCENTAGE_AUTHOR_DEFAULT', 0);
+define('REVENUE_SHARING_BASIC_PERCENTAGE_ROLE_DEFAULT', 0);
 define('REVENUE_SHARING_BASIC_PERCENTAGE_REFER_DEFAULT', 0);
-define('REVENUE_SHARING_BASIC_REVENUE_ENABLE_DEFAULT', 0);
+define('REVENUE_SHARING_BASIC_NODE_TYPE_DEFAULT', 1);
 
 /**
  * Implementation of hook_menu().
@@ -18,8 +18,8 @@ define('REVENUE_SHARING_BASIC_REVENUE_ENABLE_DEFAULT', 0);
 function revenue_sharing_basic_menu() {
   $items = array();
 
-  $items['admin/settings/adsense/id/revenue_sharing_basic'] = array(
-    'title' => 'Basic Revenue Sharing',
+  $items['admin/settings/adsense/publisher/revenue_sharing_basic'] = array(
+    'title' => 'Revenue Sharing',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('revenue_sharing_basic_settings'),
     'access arguments' => array('administer adsense'),
@@ -31,6 +31,18 @@ function revenue_sharing_basic_menu() {
 }
 
 /**
+ * Implementation of hook_theme().
+ */
+function revenue_sharing_basic_theme() {
+  return array(
+    'revenue_sharing_basic_author_percentage_role' => array(
+      'arguments' => array('form'),
+      'file' => 'revenue_sharing_basic.admin.inc',
+    ),
+  );
+}
+
+/**
  * Implementation of hook_requirements().
  */
 function revenue_sharing_basic_requirements($phase) {
@@ -39,10 +51,11 @@ function revenue_sharing_basic_requirements($phase) {
   switch ($phase) {
     // At runtime, make sure that we have a publisher ID
     case 'runtime':
-      if (variable_get('cache', 0)) {
-        $requirements['adsense_basic_id'] = array(
-          'title' => $t('Revenue Sharing (basic)'),
-          'value' => $t('Drupal page cache is enabled. This causes conflicts with revenue sharing, since the pages are stored in the cache and are not dynamically generated. If you experience issues with revenue sharing, then disable the page cache.'),
+      if (variable_get('cache', 0) && (variable_get('adsense_id_module', ADSENSE_ID_MODULE_DEFAULT) == 'revenue_sharing_basic_adsense')) {
+        $requirements['revenue_sharing_nocache'] = array(
+          'title' => $t('Revenue Sharing'),
+          'value' => $t('Drupal page cache is enabled.'),
+          'description' => $t('This causes conflicts with revenue sharing, since the pages are stored in the cache and are not dynamically generated. If you experience issues with revenue sharing, then disable the page cache.'),
           'severity' => REQUIREMENT_WARNING,
         );
       }
@@ -79,7 +92,7 @@ function revenue_sharing_basic_adsense($op, $args = array()) {
   switch ($op) {
     case 'settings':
         return array(
-          'name' => 'Revenue sharing (basic)',
+          'name' => 'Revenue sharing',
           'desc' => 'DOES NOT WORK with new code ad units, such as "Managed Ads" or "Custom Search".',
         );
       break;
@@ -106,6 +119,8 @@ function revenue_sharing_basic_adsense($op, $args = array()) {
  *   Publisher ID of the user who referred the page author.
  */
 function revenue_sharing_basic_choose_client($format) {
+  global $user;
+
   if (isset($format)) {
     // This module can't handle the selection of an appropriate Slot ID
     // Give up!
@@ -114,28 +129,37 @@ function revenue_sharing_basic_choose_client($format) {
 
   $site_client = variable_get('adsense_basic_id', ADSENSE_BASIC_ID_DEFAULT);
 
-  if (!variable_get('revenue_sharing_basic_revenue_enable', REVENUE_SHARING_BASIC_REVENUE_ENABLE_DEFAULT)) {
+  $info = revenue_sharing_basic_get_node_info();
+  if (empty($info) || !variable_get('revenue_sharing_basic_node_type_'. $info['type'], REVENUE_SHARING_BASIC_NODE_TYPE_DEFAULT)) {
     return $site_client;
   }
 
-  $uid = revenue_sharing_basic_get_node_uid();
-  $percent_author   = variable_get('revenue_sharing_basic_percentage_author', REVENUE_SHARING_BASIC_PERCENTAGE_AUTHOR_DEFAULT);
+  $percents[0] = variable_get('revenue_sharing_basic_percentage_author', REVENUE_SHARING_BASIC_PERCENTAGE_AUTHOR_DEFAULT);
+
+  $author_user = user_load(array('uid' => $info['uid']));
+  foreach ($author_user->roles as $role => $role_desc) {
+    $percents[$role] = variable_get('revenue_sharing_basic_percentage_role_'. $role, REVENUE_SHARING_BASIC_PERCENTAGE_ROLE_DEFAULT);
+  }
+  arsort($percents);
+  $percent_author = array_shift($percents);
+
   $percent_referral = variable_get('revenue_sharing_basic_percentage_refer', REVENUE_SHARING_BASIC_PERCENTAGE_REFER_DEFAULT);
 
   // Toss the dice and see who gets their ad displayed
   $random = mt_rand(1, 100);
   if ($random <= $percent_author) {
-    $client = revenue_sharing_basic_get_profile_client_id($uid);
+    $client = revenue_sharing_basic_get_profile_client_id($info['uid']);
   }
   elseif ($random <= ($percent_author + $percent_referral)) {
-    $client = revenue_sharing_basic_get_referral_client_id($uid);
+    $client = revenue_sharing_basic_get_referral_client_id($info['uid']);
   }
   else {
     $client = $site_client;
   }
 
   // Last check to see that we have a valid client
-  if (!$client) {
+  // Check that the current user doesn't view ads with it's own Publisher ID
+  if ((!$client) || ($client == revenue_sharing_basic_get_profile_client_id($user->uid))) {
     $client = $site_client;
   }
 
@@ -163,22 +187,22 @@ function revenue_sharing_basic_get_profile_client_id($uid) {
 }
 
 /**
- * Provide the User ID of the author of the current page
+ * Provide the node type and the User ID of the author of the current page
  *
  * @return
  *   User ID of author, or NULL if it wasn't possible to discover one
  */
-function revenue_sharing_basic_get_node_uid() {
-  static $node_uid = NULL;
+function revenue_sharing_basic_get_node_info() {
+  static $info = array();
 
-  if ((!$node_uid) && (arg(0) == 'node') && is_numeric(arg(1))) {
+  if ((!$info) && (arg(0) == 'node') && is_numeric(arg(1))) {
     $node = node_load(arg(1));
 
     // Cache the results
-    $node_uid = $node->uid;
+    $info = array('uid' => $node->uid, 'type' => $node->type);
   }
 
-  return $node_uid;
+  return $info;
 }
 
 /**

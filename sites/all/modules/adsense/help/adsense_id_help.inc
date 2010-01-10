@@ -1,5 +1,5 @@
 <?php
-// $Id: adsense_id_help.inc,v 1.1.2.2 2008/11/06 15:10:57 kbahey Exp $
+// $Id: adsense_id_help.inc,v 1.1.2.3 2008/12/13 23:09:10 jcnventura Exp $
 // Copyright 2005-2008 Khalid Baheyeldin - http://2bits.com
 // Copyright 2008 Joao Ventura - http://www.venturas.org
 
@@ -21,7 +21,7 @@ function adsense_id_help_text() {
 that does not need revenue sharing.</p>
 
 <h2>Prerequisites</h2>
-<p>You must have a Google AdSense account before using this module.
+<p>You must have a Google AdSense account before using this module.</p>
 
 <h2>Configuration</h2>
 <p>To use this module, simply enter your Google Adsense Publisher ID in the text field, and click

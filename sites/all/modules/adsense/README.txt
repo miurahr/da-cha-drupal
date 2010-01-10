@@ -1,4 +1,4 @@
-$Id: README.txt,v 1.20.2.4 2008/11/06 15:10:57 kbahey Exp $
+$Id: README.txt,v 1.20.2.5 2008/12/18 08:44:42 jcnventura Exp $
 
 Copyright 2005-2008 Khalid Baheyeldin (http://2bits.com)
 Copyright 2008      Joao Ventura      (http://www.venturas.org)
@@ -87,7 +87,7 @@ function your_module_adsense($op, $args = array()) {
 }
 
 Your module's settings form must be of type MENU_LOCAL_TASK and located in
-'admin/settings/adsense/id/your_module'.
+'admin/settings/adsense/publisher/your_module'.
 
 After you install the module, it should appear on the adsense module settings
 page, along with other modules. You should be able to select it, and configure
