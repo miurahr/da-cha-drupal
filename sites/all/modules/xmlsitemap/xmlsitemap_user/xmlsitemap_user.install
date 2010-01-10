@@ -1,5 +1,10 @@
 <?php
-// $Id: xmlsitemap_user.install,v 1.6.2.6 2008/12/06 10:17:35 kiam Exp $
+// $Id: xmlsitemap_user.install,v 1.6.2.61 2009/06/16 14:10:43 earnie Exp $
+
+/**
+ * @file
+ * Installation file for XML sitemap user.
+ */
 
 /*****************************************************************************
  * Drupal hooks.
@@ -9,28 +14,14 @@
  * Implementation of hook_enable().
  */
 function xmlsitemap_user_enable() {
-  $weight = db_result(db_query("SELECT weight FROM {system} WHERE type = 'module' AND name = 'pathauto'"));
-  if ($weight !== FALSE) {
-    db_query("UPDATE {system} SET weight = %d WHERE type = 'module' AND name = 'xmlsitemap_user'", ++$weight);
-  }
-  db_query("INSERT INTO {xmlsitemap_user} (uid, last_changed)
-    SELECT u.uid, u.created FROM {users} u
-    LEFT JOIN {xmlsitemap_user} xu ON xu.uid = u.uid
-    WHERE u.uid <> 0 AND xu.uid IS NULL"
-  );
-  db_query("INSERT INTO {xmlsitemap_user_role} (rid)
-    SELECT r.rid FROM {role} r
-    LEFT JOIN {xmlsitemap_user_role} xur ON xur.rid = r.rid
-    WHERE r.rid > 2 AND xur.rid IS NULL"
-  );
-  xmlsitemap_update_sitemap();
+  xmlsitemap_flag_sitemap();
 }
 
 /**
  * Implementation of hook_disable().
  */
 function xmlsitemap_user_disable() {
-  xmlsitemap_update_sitemap();
+  xmlsitemap_flag_sitemap();
 }
 
 /**
@@ -38,46 +29,64 @@ function xmlsitemap_user_disable() {
  */
 function xmlsitemap_user_schema() {
   $schema['xmlsitemap_user'] = array(
-    'description' => t('The base table for xmlsitemap_user.'),
+    'description' => 'The base table for xmlsitemap_user.',
     'fields' => array(
       'uid' => array(
-        'description' => t('The user ID.'),
+        'description' => 'The user ID.',
         'type' => 'int',
         'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
-      'last_changed' => array(
-        'description' => t('Keeps track of new changes.'),
+      'changed' => array(
+        'description' => 'The Unix timestamp of the last change.',
         'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'previously_changed' => array(
-        'description' => t('Keeps track of old changes.'),
+        'description' => 'The Unix timestamp of the previous change.',
         'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'comments' => array(
+        'description' => 'The number of comments authored from the user.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'priority_override' => array(
-        'description' => t('Stores the index value.'),
+        'description' => 'The priority of the term in the sitemap.',
         'type' => 'float',
+        'not null' => TRUE,
+        'default' => -2.0,
       ),
     ),
     'primary key' => array('uid'),
   );
-
   $schema['xmlsitemap_user_role'] = array(
-    'description' => t('The base table for xmlsitemap.'),
+    'description' => 'The user roles settings table.',
     'fields' => array(
       'rid' => array(
-        'description' => t('The role ID.'),
+        'description' => 'The role ID.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
       'priority' => array(
-        'description' => t('Stores the index value.'),
+        'description' => 'The priority assigned to the role.',
         'type' => 'float',
+        'not null' => TRUE,
+        'default' => 0.5,
       ),
     ),
     'primary key' => array('rid'),
   );
-
   return $schema;
 }
 
@@ -86,67 +95,221 @@ function xmlsitemap_user_schema() {
  */
 function xmlsitemap_user_install() {
   drupal_install_schema('xmlsitemap_user');
-}
-
-/**
- * Implementation of hook_update_N().
- * Add missing URL aliases.
- */
-function xmlsitemap_user_update_1() {
-  $ret = array(update_sql("UPDATE {xmlsitemap_user} SET pid = NULL WHERE pid = 0"));
-  switch ($GLOBALS['db_type']) {
-    case 'mysql':
-    case 'mysqli':
-      $ret[] = @update_sql("
-        UPDATE {xmlsitemap_user} xu, {url_alias} ua SET xu.pid = ua.pid
-        WHERE xu.pid IS NULL AND ua.src = CONCAT('user/', CAST(xu.uid AS CHAR))
-      ");
-      break;
-    case 'pgsql':
-      $ret[] = @update_sql("
-        UPDATE {xmlsitemap_user} SET pid = {url_alias}.pid FROM {url_alias}
-        WHERE {xmlsitemap_user}.pid IS NULL AND {url_alias}.src = CONCAT('user/', CAST(uid AS VARCHAR))
-      ");
-      break;
-  }
-  return $ret;
-}
-
-/**
- * Implementation of hook_update_N().
- */
-function xmlsitemap_user_update_6000() {
-  $ret = array();
-  $result = array();
-  @db_drop_index($result, 'xmlsitemap_user', 'pid');
-  if ($result[0]['success']) {
-    $ret = $result;
-  }
-  $result = array();
-  @db_drop_field($result, 'xmlsitemap_user', 'pid');
-  if ($result[0]['success']) {
-    $ret[] = $result;
-  }
-  $result = array();
-  @db_drop_index($result, 'xmlsitemap_user_role', 'pid');
-  if ($result[0]['success']) {
-    $ret[] = $result;
-  }
-  return $ret;
+  db_query("UPDATE {system} SET weight = 10 WHERE name = 'xmlsitemap_user'");
 }
 
 /**
  * Implementation of hook_update_N().
  */
 function xmlsitemap_user_update_6100() {
-  return array();
+  $ret = array();
+  if (db_table_exists('xmlsitemap_user')) {
+    if (db_column_exists('xmlsitemap_user', 'pid')) {
+      $result = array();
+      @db_drop_index($result, 'xmlsitemap_user', 'pid');
+      if ($result[0]['success']) {
+        $ret = $result[0];
+      }
+      db_drop_field($ret, 'xmlsitemap_user', 'pid');
+    }
+    if (db_column_exists('xmlsitemap_user', 'uid')) {
+      $result = array();
+      @db_drop_primary_key($result, 'xmlsitemap_user');
+      if ($result[0]['success']) {
+        $ret[] = $result[0];
+      }
+      db_change_field($ret, 'xmlsitemap_user', 'uid', 'uid',
+        array(
+          'description' => 'The user ID.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        array('primary key' => array('uid'))
+      );
+    }
+    if (db_column_exists('xmlsitemap_user', 'last_changed')) {
+      db_change_field($ret, 'xmlsitemap_user', 'last_changed', 'changed',
+        array(
+          'description' => 'The Unix timestamp of the last change.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        )
+      );
+    }
+    else {
+      if (db_column_exists('xmlsitemap_user', 'changed')) {
+        db_change_field($ret, 'xmlsitemap_user', 'changed', 'changed',
+          array(
+            'description' => 'The Unix timestamp of the last change.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          )
+        );
+      }
+      else {
+        db_add_field($ret, 'xmlsitemap_user', 'changed',
+          array(
+            'description' => 'The Unix timestamp of the last change.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          )
+        );
+      }
+    }
+    if (!db_column_exists('xmlsitemap_user', 'comments')) {
+      db_add_field($ret, 'xmlsitemap_user', 'comments',
+        array(
+          'description' => 'The number of comments authored from the user.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        )
+      );
+    }
+    $ret[] = update_sql("UPDATE {xmlsitemap_user}
+      SET priority_override = -2.0
+      WHERE priority_override IS NULL"
+    );
+    db_change_field($ret, 'xmlsitemap_user', 'priority_override', 'priority_override',
+      array(
+        'description' => 'The priority of the term in the sitemap.',
+        'type' => 'float',
+        'not null' => TRUE,
+        'default' => -2.0,
+      )
+    );
+  }
+  else {
+    db_create_table($ret, 'xmlsitemap_user',
+      array(
+        'description' => 'The base table for xmlsitemap_user.',
+        'fields' => array(
+          'uid' => array(
+            'description' => 'The user ID.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          ),
+          'changed' => array(
+            'description' => 'The Unix timestamp of the last change.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          ),
+          'previously_changed' => array(
+            'description' => 'The Unix timestamp of the previous change.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          ),
+          'comments' => array(
+            'description' => 'The number of comments authored from the user.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          ),
+          'priority_override' => array(
+            'description' => 'The priority of the term in the sitemap.',
+            'type' => 'float',
+            'not null' => TRUE,
+            'default' => -2.0,
+          ),
+        ),
+        'primary key' => array('uid'),
+      )
+    );
+  }
+  if (db_table_exists('xmlsitemap_user_role')) {
+    if (db_column_exists('xmlsitemap_user_role', 'pid')) {
+      $result = array();
+      @db_drop_index($result, 'xmlsitemap_user_role', 'pid');
+      if ($result[0]['success']) {
+        $ret = $result[0];
+      }
+      db_drop_field($ret, 'xmlsitemap_user_role', 'pid');
+    }
+    $result = array();
+    @db_drop_primary_key($result, 'xmlsitemap_user_role');
+    if ($result[0]['success']) {
+      $ret[] = $result[0];
+    }
+    db_change_field($ret, 'xmlsitemap_user_role', 'rid', 'rid',
+      array(
+        'description' => 'The role ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      array('primary key' => array('rid'))
+    );
+    $ret[] = update_sql("UPDATE {xmlsitemap_user_role}
+      SET priority = 0.5
+      WHERE priority IS NULL"
+    );
+    db_change_field($ret, 'xmlsitemap_user_role', 'priority', 'priority',
+      array(
+        'description' => t('The priority assigned to the role.'),
+        'type' => 'float',
+        'not null' => TRUE,
+        'default' => 0.5,
+      )
+    );
+    db_change_field($ret, 'xmlsitemap_user_role', 'priority', 'priority',
+      array(
+        'description' => t('The priority assigned to the role.'),
+        'type' => 'float',
+        'not null' => TRUE,
+        'default' => 0.5,
+      )
+    );
+  }
+  else {
+    db_create_table($ret, 'xmlsitemap_user_role',
+      array(
+       'description' => 'The base table for xmlsitemap.',
+       'fields' => array(
+          'rid' => array(
+            'description' => 'The role ID.',
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+            'default' => 0,
+          ),
+          'priority' => array(
+            'description' => t('The priority assigned to the role.'),
+            'type' => 'float',
+            'not null' => TRUE,
+            'default' => 0.5,
+          ),
+       ),
+       'primary key' => array('rid'),
+      )
+    );
+  }
+  return $ret;
 }
 
 /**
  * Implementation of hook_update_N().
+ *
  */
-function xmlsitemap_user_update_6101() {
-  return xmlsitemap_user_update_6000();
+function xmlsitemap_user_update_6113() {
+  $ret[] = update_sql("UPDATE {system} SET weight = 10 WHERE name = 'xmlsitemap_user'");
+  return $ret;
 }
 
 /**

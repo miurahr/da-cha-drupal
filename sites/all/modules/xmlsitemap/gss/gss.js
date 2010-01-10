@@ -1,4 +1,4 @@
-// $Id: gss.js,v 1.1 2007/11/09 17:56:05 darrenoh Exp $
+// $Id: gss.js,v 1.1.6.3 2009/06/12 14:34:45 earnie Exp $
 
 var selectedColor = "blue";
 var defaultColor = "black";
@@ -17,13 +17,11 @@ function initXsl(tabName,fileType) {
     html = ".0.";
     freq = ".2.";
     initTable(tabName);
-    setSort(tabName, 3, 1);
   }
   else {
     desc = ".1.";
     html = ".0.";
     initTable(tabName);
-    setSort(tabName, 1, 1);
   }
 
   var theURL = document.getElementById("head1");
