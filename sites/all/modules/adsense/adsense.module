@@ -558,7 +558,11 @@ function _adsense_page_match() {
   // and it also prevents warnings about mixed-content
   // Thanks to Brad Konia http://drupal.org/node/29585
   // Should be restricted when running on Apache only
-  if (isset($_SERVER['SERVER_SOFTWARE']) && (stripos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) && 
+  // 
+  // hack for PHP4 - we don't have secure page operate.
+  // by H.Miura
+  // - original - : if (isset($_SERVER['SERVER_SOFTWARE']) && (stripos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) && 
+  if (isset($_SERVER['SERVER_SOFTWARE']) && (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) && 
       isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) {
     return FALSE;
   }
