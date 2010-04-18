@@ -126,7 +126,8 @@ function _update_process_info_list(&$projects, $list, $project_type) {
         'name' => $project_name,
         // Only save attributes from the .info file we care about so we do not
         // bloat our RAM usage needlessly.
-        'info' => update_filter_project_info($file->info),
+        //'info' => update_filter_project_info($file->info),
+        'info' => $file->info,
         'datestamp' => $file->info['datestamp'],
         'includes' => array($file->name => $file->info['name']),
         'project_type' => $project_name == 'drupal' ? 'core' : $project_type,
