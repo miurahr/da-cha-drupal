@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense.admin.inc,v 1.1.2.5 2009/03/31 14:41:01 jcnventura Exp $
 
 /**
  * @file
@@ -15,8 +14,8 @@
  * @ingroup forms
  */
 function adsense_main_settings() {
-  include_once(drupal_get_path('module', 'adsense') .'/help/adsense.help.inc');
-  require_once(drupal_get_path('module', 'adsense') .'/includes/adsense.search_options.inc');
+  include_once(drupal_get_path('module', 'adsense') . '/help/adsense.help.inc');
+  include_once(drupal_get_path('module', 'adsense') . '/includes/adsense.search_options.inc');
 
   $form['help'] = array(
     '#type'        => 'fieldset',
@@ -26,8 +25,7 @@ function adsense_main_settings() {
   );
 
   $form['help']['help'] = array(
-    '#type'  => 'markup',
-    '#value' => adsense_help_text(),
+    '#markup' => adsense_help_text(),
   );
 
   $form['visibility'] = array(
@@ -49,6 +47,7 @@ function adsense_main_settings() {
     '#default_value' => variable_get('adsense_access_pages', ADSENSE_ACCESS_PAGES_DEFAULT),
     '#rows' => 3,
     '#description' => t("Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are  %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
+    '#wysiwyg' => FALSE,
   );
 
   $access = user_access('use PHP for ad visibility');
@@ -59,7 +58,7 @@ function adsense_main_settings() {
   }
   elseif ($access) {
     $form['visibility']['adsense_visibility']['#options'][] = t('Show if the following PHP code returns <code>TRUE</code> (PHP-mode, experts only).');
-    $form['visibility']['adsense_access_pages']['#description'] .= ' '. t('If the PHP-mode is chosen, enter PHP code between %php. Note that executing incorrect PHP-code can break your Drupal site.', array('%php' => '<?php ?>'));
+    $form['visibility']['adsense_access_pages']['#description'] .= ' ' . t('If the PHP-mode is chosen, enter PHP code between %php. Note that executing incorrect PHP-code can break your Drupal site.', array('%php' => '<?php ?>'));
   }
 
   $form['advanced'] = array(
@@ -143,7 +142,7 @@ function adsense_main_settings() {
  * @ingroup forms
  */
 function adsense_id_settings() {
-  include_once(drupal_get_path('module', 'adsense') .'/help/adsense_id_help.inc');
+  include_once(drupal_get_path('module', 'adsense') . '/help/adsense_id_help.inc');
 
   $form['help'] = array(
     '#type'        => 'fieldset',
@@ -153,8 +152,7 @@ function adsense_id_settings() {
   );
 
   $form['help']['help'] = array(
-    '#type'  => 'markup',
-    '#value' => adsense_id_help_text(),
+    '#markup' => adsense_id_help_text(),
   );
 
   $form['adsense_basic_id'] = array(
@@ -177,7 +175,7 @@ function adsense_id_settings() {
   else {
     $form['adsense_id_module'] = array(
       '#type'  => 'hidden',
-      '#value' => $options[0],
+      '#value' => 'adsense_basic',
     );
   }
 
@@ -190,7 +188,13 @@ function adsense_id_settings() {
  * Validate adsense_id_settings form.
  */
 function _adsense_id_settings_validate($form, &$form_state) {
+  // Trim remaning whitespace.
   $form_state['values']['adsense_basic_id'] = trim($form_state['values']['adsense_basic_id']);
+
+  // Verify it's a valid Adsense publisher ID.
+  if (!preg_match('/^pub-[0-9]+$/', $form_state['values']['adsense_basic_id'])) {
+    form_set_error('adsense_basic_id', t('A valid Google AdSense Publisher ID is case sensitive and formatted like %id.', array('%id' => 'pub-9999999999999')));
+  }
 }
 
 /**
@@ -200,7 +204,7 @@ function _adsense_id_settings_validate($form, &$form_state) {
  *   array of selectable Publisher ID functions
  */
 function _adsense_id_settings_client_id_mods() {
-  $ret['adsense_basic'] = 'Use the site Publisher ID always';
+  $ret['adsense_basic'] = 'Always use the site Publisher ID.';
 
   $funcs = get_defined_functions();
   foreach ($funcs['user'] as $func) {

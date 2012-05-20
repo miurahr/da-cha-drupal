@@ -3,6 +3,7 @@
 /**
  * adsense_click.js - fires counter to log adsense clicks
  */
+(function ($) {
 var lastStatus = '';
 
 function adsense_click(e) {
@@ -30,3 +31,4 @@ for (var i = 0; i < elements.length; i++) {
   }
 }
 
+})(jQuery);

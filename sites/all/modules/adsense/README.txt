@@ -1,4 +1,3 @@
-$Id: README.txt,v 1.20.2.5 2008/12/18 08:44:42 jcnventura Exp $
 
 Copyright 2005-2008 Khalid Baheyeldin (http://2bits.com)
 Copyright 2008      Joao Ventura      (http://www.venturas.org)
@@ -31,13 +30,13 @@ directory.
 
 Configuration
 -------------
-To enable this module, visit Administer -> Site building -> Modules, and
-enable adsense, and one of the other modules in the Adsense group. The modules
-marked as '(old)' are not using the new 'Managed Ads' feature of Google
-AdSense, so you should only use them if you have ads in the old format or if
-you know what you're doing.
+To enable this module, visit Administration -> Modules, and enable adsense,
+and one of the other modules in the Adsense group.  The modules marked as
+'(old)' are not using the new 'Managed Ads' feature of Google AdSense, so
+you should only use them if you have ads in the old format or if you know
+what you're doing.
 
-To configure it, go to Administer -> Site configuration -> AdSense.
+To configure it, go to Administration > Configuration > Web services > AdSense
 
 Follow the online instructions on that page on how to display ads and the
 various ways to do so.
@@ -87,7 +86,7 @@ function your_module_adsense($op, $args = array()) {
 }
 
 Your module's settings form must be of type MENU_LOCAL_TASK and located in
-'admin/settings/adsense/publisher/your_module'.
+'admin/config/services/adsense/publisher/your_module'.
 
 After you install the module, it should appear on the adsense module settings
 page, along with other modules. You should be able to select it, and configure
@@ -104,7 +103,7 @@ http://drupal.org/project/adsense
 Authors
 -------
 Khalid Baheyeldin (http://baheyeldin.com/khalid and http://2bits.com)
-Joao Ventura      (http://www.venturas.org)
+Joao Ventura      (http://venturas.org)
 
 If you use this module, find it useful, and want to send the authors a thank
 you note, then use the Feedback/Contact page at the URLs above.

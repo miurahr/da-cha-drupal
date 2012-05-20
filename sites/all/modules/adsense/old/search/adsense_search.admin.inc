@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_search.admin.inc,v 1.1.2.3 2009/05/13 00:04:20 jcnventura Exp $
 
 /**
  * @file
@@ -14,9 +13,9 @@
  *
  * @ingroup forms
  */
-function adsense_search_settings() {
+function adsense_search_settings($form, &$form_state) {
   global $base_url;
-  require_once(drupal_get_path('module', 'adsense') .'/includes/adsense.search_options.inc');
+  require_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'adsense') . '/includes/adsense.search_options.inc';
 
   $form['searchbox'] = array(
     '#type' => 'fieldset',
@@ -61,9 +60,9 @@ function adsense_search_settings() {
     '#title' => t('Logo Type'),
     '#default_value' => variable_get('adsense_search_logo', ADSENSE_SEARCH_LOGO_DEFAULT),
     '#options' => array(
-      'adsense_search_logo_google'        => t('Google Logo'),
+      'adsense_search_logo_google' => t('Google Logo'),
       'adsense_search_logo_above_textbox' => t('Logo above text box'),
-      'adsense_search_logo_on_button'     => t('"Google Search" on button'),
+      'adsense_search_logo_on_button' => t('"Google Search" on button'),
     ),
   );
 
@@ -146,13 +145,13 @@ function adsense_search_settings() {
   );
 
   // Add Farbtastic color picker
-  drupal_add_css('misc/farbtastic/farbtastic.css', 'module', 'all', FALSE);
+  drupal_add_css('misc/farbtastic/farbtastic.css', array('preprocess' => FALSE));
   drupal_add_js('misc/farbtastic/farbtastic.js');
-  drupal_add_js(drupal_get_path('module', 'adsense_search') .'/adsense_search.js');
+  drupal_add_js(drupal_get_path('module', 'adsense_search') . '/adsense_search.js');
 
   $form['result']['colors']['colorpicker'] = array(
     '#type' => 'markup',
-    '#value' => '<div id="colorpicker" style="float:right;"></div>',
+    '#markup' => '<div id="colorpicker" style="float:right;"></div>',
   );
 
   $form['result']['colors']['adsense_search_color_border'] = array(
@@ -242,11 +241,11 @@ function adsense_search_settings() {
     '#description' => t('Enter up to !channels custom channels that you have configured in Google AdSense. If you are not using custom channels, or you are only using URL channels, then leave this empty.', array('!channels' => ADSENSE_MAX_CHANNELS)),
   );
 
-  for ($channel=1; $channel <= ADSENSE_MAX_CHANNELS ; $channel++) {
-    $form['channels']['adsense_ad_channel_'. $channel] = array(
+  for ($channel = 1; $channel <= ADSENSE_MAX_CHANNELS; $channel++) {
+    $form['channels']['adsense_ad_channel_' . $channel] = array(
       '#type' => 'textfield',
-      '#title' => t('Custom channel ID') .' '. $channel,
-      '#default_value' => variable_get('adsense_ad_channel_'. $channel, ADSENSE_AD_CHANNEL_DEFAULT),
+      '#title' => t('Custom channel ID') . ' ' . $channel,
+      '#default_value' => variable_get('adsense_ad_channel_' . $channel, ADSENSE_AD_CHANNEL_DEFAULT),
       '#size' => 30,
       '#maxlength' => 30,
     );

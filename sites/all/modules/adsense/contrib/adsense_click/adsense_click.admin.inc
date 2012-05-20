@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_click.admin.inc,v 1.1.4.2 2008/12/19 01:32:37 jcnventura Exp $
 
 /**
  * @file

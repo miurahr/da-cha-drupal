@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_click.logs.inc,v 1.1.4.2 2008/12/19 01:32:37 jcnventura Exp $
 
 /**
  * @file
@@ -11,18 +10,27 @@
 
 function adsense_click_log() {
   $header = array(
-    array('data' => t('Timestamp'), 'field' => 'timestamp', 'sort' => 'desc'),
-    array('data' => t('Path'),      'field' => 'path'),
-    array('data' => t('IP/Host'),   'field' => 'ip'),
-    array('data' => t('Referrer'),  'field' => 'referrer'),
+    array('data' => t('Timestamp'), 'field' => 'ads.timestamp', 'sort' => 'desc'),
+    array('data' => t('Path'),      'field' => 'ads.path'),
+    array('data' => t('IP/Host'),   'field' => 'ads.ip'),
+    array('data' => t('Referrer'),  'field' => 'ads.referrer'),
   );
+  $rows = array();
 
   $name_resolve = variable_get('adsense_click_tracking_name_resolve', ADSENSE_CLICK_TRACKING_NAME_RESOLVE_DEFAULT);
 
-  $sql = 'SELECT * FROM {adsense_clicks} '. tablesort_sql($header);
+  // Create our base query.
+  $query = db_select('adsense_clicks', 'ads');
+  $query = $query->extend('PagerDefault')->extend('TableSort');
 
-  $result = pager_query($sql, 50);
-  while ($log = db_fetch_object($result)) {
+  $query
+    ->fields('ads', array('ip', 'timestamp', 'path', 'title', 'referrer'))
+    ->limit(50)
+    ->orderByHeader($header);
+
+  $result = $query->execute();
+
+  foreach ($result as $log) {
     if ($name_resolve) {
       $host = gethostbyaddr($log->ip);
     }
@@ -33,64 +41,97 @@ function adsense_click_log() {
     $rows[] = array(
       array('data' => format_date($log->timestamp, 'small'), 'nowrap' => 'nowrap'),
       _adsense_click_format_path($log->path, $log->title),
-      l($host, 'http://whois.domaintools.com/'. $log->ip),
+      l($host, 'http://whois.domaintools.com/' . $log->ip),
       _adsense_click_format_path($log->referrer),
     );
   }
 
-  return theme('table', $header, $rows) . theme('pager', NULL, 50, 0);
+  return theme('table', array('header' => $header, 'rows' => $rows)) . theme('pager');
 }
 
 function adsense_click_top_pages() {
   $header = array(
-    array('data' => t('Path'),   'field' => 'path'),
+    array('data' => t('Path'),   'field' => 'ads.path'),
     array('data' => t('Clicks'), 'field' => 'count', 'sort' => 'desc'),
     array('data' => t('Last'),   'field' => 'last'),
   );
+  $rows = array();
 
-  $sql = 'SELECT path, COUNT(*) AS count, MAX(timestamp) AS last FROM {adsense_clicks} GROUP BY path'. tablesort_sql($header);
+  // Create our base query.
+  $query = db_select('adsense_clicks', 'ads');
+  $query = $query->extend('PagerDefault')->extend('TableSort');
 
-  $result = pager_query($sql, 50);
-  while ($log = db_fetch_object($result)) {
-    $title = db_result(db_query("SELECT title FROM {adsense_clicks} WHERE path = '%s'", $path));
+  $query
+    ->fields('ads', array('path', 'title'))
+    ->groupBy('path')
+    ->limit(50)
+    ->orderByHeader($header);
+
+  $count = $query->addExpression('COUNT(*)', 'count');
+  $max = $query->addExpression('MAX(timestamp)', 'last');
+
+  $result = $query->execute();
+
+  foreach ($result as $log) {
     $rows[] = array(
-      array('data' => _adsense_click_format_path($log->path, $title)),
+      array('data' => _adsense_click_format_path($log->path, $log->title)),
       array('data' => $log->count, 'align' => 'right'),
       array('data' => format_date($log->last, 'small'), 'nowrap' => 'nowrap'),
     );
   }
 
-  return theme('table', $header, $rows) . theme('pager', NULL, 50, 0);
+  return theme('table', array('header' => $header, 'rows' => $rows)) . theme('pager');
 }
 
 function adsense_click_by_day() {
-  global $db_type;
   $header = array(
     array('data' => t('Day'),    'field' => 'day', 'sort' => 'desc'),
     array('data' => t('Clicks'), 'field' => 'count'),
   );
+  $rows = array();
 
-  switch ($db_type) {
+  $query = db_select('adsense_clicks', 'ads');
+  $count_query = clone $query;
+  $query = $query->extend('PagerDefault')->extend('TableSort');
+
+  /**
+   * @TODO Must be an easier and prettier way of doing this.
+   */
+  $database_driver = db_driver();
+
+  switch ($database_driver) {
     case 'mysql':
-    case 'mysqli':
-      $sql_count = "SELECT COUNT(DISTINCT(FROM_UNIXTIME(timestamp, '%y-%m-%%d'))) FROM {adsense_clicks}";
-      $sql = "SELECT FROM_UNIXTIME(timestamp, '%Y-%m-%%d') AS day, COUNT(*) AS count FROM {adsense_clicks} GROUP BY day" . tablesort_sql($header);
+      $count_query->addExpression("COUNT(DISTINCT(FROM_UNIXTIME(timestamp, '%y-%m-%d')))");
+      $day = $query->addExpression("FROM_UNIXTIME(timestamp, '%Y-%m-%d')", 'day');
       break;
     case 'pgsql':
-      $sql_count = "SELECT COUNT(DISTINCT(TO_CHAR(timestamp, 'YYYY-MM-DD'))) FROM {adsense_clicks}";
-      $sql = "SELECT TO_CHAR(timestamp, 'YYYY-MM-DD') AS day, COUNT(*) AS count FROM {adsense_clicks} GROUP BY day" . tablesort_sql($header);
+      $count_query->addExpression("COUNT(DISTINCT(TO_CHAR(timestamp, 'YYYY-MM-DD')))");
+      $day = $query->addExpression("TO_CHAR(timestamp, 'YYYY-MM-DD')", 'day');
+      break;
+    case 'sqlite':
+      $count_query->addExpression("COUNT(DISTINCT(datetime(timestamp, 'unixepoch', 'localtime')))");
+      $day = $query->addExpression("datetime(timestamp, 'unixepoch', 'localtime')", 'day');
       break;
   }
 
-  $result = pager_query($sql, 50, 0, $sql_count);
-  while ($log = db_fetch_object($result)) {
+  // Extend our query and add our count expression.
+  $count = $query->addExpression('COUNT(*)', 'count');
+
+  $query->groupBy('day')
+    ->limit(50)
+    ->orderByHeader($header)
+    ->setCountQuery($count_query);
+
+  $result = $query->execute();
+
+  foreach ($result as $log) {
     $rows[] = array(
       $log->day,
       array('data' => $log->count, 'align' => 'right'),
     );
   }
 
-  return theme('table', $header, $rows) . theme('pager', NULL, 50, 0);
+  return theme('table', array('header' => $header, 'rows' => $rows)) . theme('pager');
 }
 
 function _adsense_click_format_path($path, $title = '', $width = 32) {
@@ -101,7 +142,7 @@ function _adsense_click_format_path($path, $title = '', $width = 32) {
   }
   else {
     $title = $path;
-    $short_path = preg_replace('?^'. $base_url .'?', '', $path);
+    $short_path = preg_replace('?^' . $base_url . '?', '', $path);
     $short_title = truncate_utf8($short_path, $width, FALSE, TRUE);
   }
 

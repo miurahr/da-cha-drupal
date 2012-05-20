@@ -1,7 +1,7 @@
-// $Id: adsense_search.js,v 1.3.2.2 2008/09/11 22:52:00 jcnventura Exp $
+(function ($) {
 
-if (Drupal.jsEnabled) {
-  $(document).ready(function () {
+Drupal.behaviors.adSenseOldCodeColorpicker = {
+  attach: function (context) {
     // initiate farbtastic colorpicker
     var farb = $.farbtastic("#colorpicker");
     var firstField = "";
@@ -20,5 +20,7 @@ if (Drupal.jsEnabled) {
     });
 
     farb.linkTo(firstField);
-  });
-}
+  }
+};
+
+})(jQuery);

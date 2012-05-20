@@ -1,5 +1,4 @@
 <?php
-// $Id: revenue_sharing_basic.module,v 1.4.2.12 2009/05/19 21:25:49 jcnventura Exp $
 
 /**
  * @file
@@ -13,12 +12,12 @@ define('REVENUE_SHARING_BASIC_PERCENTAGE_REFER_DEFAULT', 0);
 define('REVENUE_SHARING_BASIC_NODE_TYPE_DEFAULT', 1);
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function revenue_sharing_basic_menu() {
   $items = array();
 
-  $items['admin/settings/adsense/publisher/revenue_sharing_basic'] = array(
+  $items['admin/config/services/adsense/publisher/revenue_sharing_basic'] = array(
     'title' => 'Revenue Sharing',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('revenue_sharing_basic_settings'),
@@ -31,19 +30,19 @@ function revenue_sharing_basic_menu() {
 }
 
 /**
- * Implementation of hook_theme().
+ * Implements hook_theme().
  */
 function revenue_sharing_basic_theme() {
   return array(
     'revenue_sharing_basic_author_percentage_role' => array(
-      'arguments' => array('form'),
+      'render element' => 'form',
       'file' => 'revenue_sharing_basic.admin.inc',
     ),
   );
 }
 
 /**
- * Implementation of hook_requirements().
+ * Implements hook_requirements().
  */
 function revenue_sharing_basic_requirements($phase) {
   $requirements = array();
@@ -91,10 +90,10 @@ function revenue_sharing_basic_adsense($op, $args = array()) {
 
   switch ($op) {
     case 'settings':
-        return array(
-          'name' => 'Revenue sharing',
-          'desc' => 'DOES NOT WORK with new code ad units, such as "Managed Ads" or "Custom Search".',
-        );
+      return array(
+        'name' => 'Revenue sharing',
+        'desc' => 'DOES NOT WORK with new code ad units, such as "Managed Ads" or "Custom Search".',
+      );
       break;
     case 'client_id':
       if (!$client_id) {
@@ -113,7 +112,7 @@ function revenue_sharing_basic_adsense($op, $args = array()) {
  * @param $format
  *   Format of the ad
  * @return
- *   If format is set, returns NULL. Otherwise, based on the configured 
+ *   If format is set, returns NULL. Otherwise, based on the configured
  *   percentage, returns either the Publisher ID of the current page's author
  *   or of the owner of the site. When configured, it may also return the
  *   Publisher ID of the user who referred the page author.
@@ -130,15 +129,15 @@ function revenue_sharing_basic_choose_client($format) {
   $site_client = variable_get('adsense_basic_id', ADSENSE_BASIC_ID_DEFAULT);
 
   $info = revenue_sharing_basic_get_node_info();
-  if (empty($info) || !variable_get('revenue_sharing_basic_node_type_'. $info['type'], REVENUE_SHARING_BASIC_NODE_TYPE_DEFAULT)) {
+  if (empty($info) || !variable_get('revenue_sharing_basic_node_type_' . $info['type'], REVENUE_SHARING_BASIC_NODE_TYPE_DEFAULT)) {
     return $site_client;
   }
 
   $percents[0] = variable_get('revenue_sharing_basic_percentage_author', REVENUE_SHARING_BASIC_PERCENTAGE_AUTHOR_DEFAULT);
 
-  $author_user = user_load(array('uid' => $info['uid']));
+  $author_user = user_load($info['uid']);
   foreach ($author_user->roles as $role => $role_desc) {
-    $percents[$role] = variable_get('revenue_sharing_basic_percentage_role_'. $role, REVENUE_SHARING_BASIC_PERCENTAGE_ROLE_DEFAULT);
+    $percents[$role] = variable_get('revenue_sharing_basic_percentage_role_' . $role, REVENUE_SHARING_BASIC_PERCENTAGE_ROLE_DEFAULT);
   }
   arsort($percents);
   $percent_author = array_shift($percents);
@@ -180,7 +179,7 @@ function revenue_sharing_basic_get_profile_client_id($uid) {
   if ($uid) {
     // Get the profile field for a certain user
     $profile_field = variable_get('revenue_sharing_basic_client_id_profile_field', REVENUE_SHARING_BASIC_CLIENT_ID_PROFILE_FIELD_DEFAULT);
-    $client_id = db_result(db_query('SELECT value FROM {profile_values} WHERE fid = %d AND uid = %d', $profile_field, $uid));
+    $client_id = db_query('SELECT value FROM {profile_value} WHERE fid = :fid AND uid = :uid', array(':fid' => $profile_field, ':uid' => $uid))->fetchField();
   }
 
   return $client_id;
@@ -199,7 +198,10 @@ function revenue_sharing_basic_get_node_info() {
     $node = node_load(arg(1));
 
     // Cache the results
-    $info = array('uid' => $node->uid, 'type' => $node->type);
+    $info = array(
+      'uid' => $node->uid,
+      'type' => $node->type,
+    );
   }
 
   return $info;

@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_search.results.inc,v 1.1.2.3 2009/03/31 14:41:02 jcnventura Exp $
 
 /**
  * @file

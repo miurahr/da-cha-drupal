@@ -1,7 +1,7 @@
-// $Id: adsense_oldcode.js,v 1.3.2.2 2008/09/11 22:52:00 jcnventura Exp $
+(function ($) {
 
-if (Drupal.jsEnabled) {
-  $(document).ready(function () {
+Drupal.behaviors.adSenseOldCodeColorpicker = {
+  attach: function (context) {
     var i = 0;
 
     for (i = 1; i <= 5; i++) {
@@ -27,5 +27,7 @@ if (Drupal.jsEnabled) {
 
       farb.linkTo(firstField);
     };
-  });
-}
+  }
+};
+
+})(jQuery);

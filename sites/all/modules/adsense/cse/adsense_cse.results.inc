@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_cse.results.inc,v 1.1.2.7 2009/08/05 21:08:10 jcnventura Exp $
 
 /**
  * @file
@@ -14,7 +13,7 @@
  */
 function _adsense_cse_results() {
   // Log the search keys:
-  watchdog('AdSense search', 'Search keywords: '. urldecode(check_plain($_GET['as_q'])));
+  watchdog('AdSense search', 'Search keywords: ' . urldecode(check_plain($_GET['as_q'])));
 
   // Output search results
   $width   = variable_get('adsense_cse_frame_width', ADSENSE_CSE_FRAME_WIDTH_DEFAULT);
@@ -24,9 +23,7 @@ function _adsense_cse_results() {
     $output = _adsense_format_box("Results<br />width = ${width}<br />country = ${country}", $width, 100);
   }
   else {
-    if (variable_get('adsense_secret_adtest', ADSENSE_SECRET_ADTEST_DEFAULT)) {
-      $secret = '  var googleAdtest = "on";';
-    }
+    $secret = variable_get('adsense_secret_adtest', ADSENSE_SECRET_ADTEST_DEFAULT) ? '  var googleAdtest = "on";' : '';
 
     $output = <<<CSE_RESULTS_TXT
 <div id="cse-search-results"></div>

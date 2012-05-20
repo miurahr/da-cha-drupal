@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense.help.inc,v 1.1.2.8 2009/06/04 22:01:56 jcnventura Exp $
 // Copyright 2005-2008 Khalid Baheyeldin - http://2bits.com
 // Copyright 2008 Joao Ventura - http://www.venturas.org
 
@@ -20,6 +19,8 @@ function adsense_help_text() {
   // Get the ad formats
   $ads = adsense_ad_formats();
   $ads['Search Box'] = adsense_ad_formats('Search Box');
+
+  // Create the ad format table.
   $headers = array(t('Format'), t('Description'), t('Width'), t('Height'));
   $rows = array();
   foreach ($ads as $format => $data) {
@@ -28,14 +29,13 @@ function adsense_help_text() {
     $rows[] = array($format, $data['desc'], $width, $height);
   }
 
-  // Create the ad format text
-  $ad_formats_text = theme('table', $headers, $rows);
+  $ad_formats_text = theme('table', array('header' => $headers, 'rows' => $rows));
 
   if (module_exists('adsense_cse')) {
-    $custom_search_link = l(t('Custom search help'), 'admin/settings/adsense/cse');
+    $custom_search_link = l(t('Custom search help'), 'admin/config/services/adsense/cse');
   }
   else {
-    $custom_search_link = t('Adsense CSE module (which must be enabled; !link) and refer to its help', array('!link' => l(t('modules'), 'admin/build/modules')));
+    $custom_search_link = t('Adsense CSE module (which must be enabled; !link) and refer to its help', array('!link' => l(t('modules'), 'admin/modules')));
   }
 
   $output = <<<EOF
@@ -47,9 +47,8 @@ AdSense ads on their web site, thus earning revenue.</p>
 <p>You must have a Google AdSense account before using this module.</p>
 
 <h2>Configuration</h2>
-<p>To use this module, you need to select one of the Adsense Client ID
-selection modules first, and configure it correctly. See below for a list of
-available modules, and their settings page.</p>
+<p>To use this module, you need to enable at least one of the Adsense ad unit
+generator modules first, and configure it correctly.</p>
 
 <h2>Supported formats</h2>
 <p>Most of Adsense's ad formats are supported.</p>
@@ -63,7 +62,7 @@ in any phptemplate based theme.</p>
 <h3>Using blocks</h3>
 <p>The easiest way to get started with this module is to use one or more of
 the pre-defined blocks.</p>
-<p>Visit the <a href="$base/admin/build/block">blocks</a> configuration page,
+<p>Visit the <a href="$base/admin/structure/block">blocks</a> configuration page,
 and click on the <strong>configure</strong> link of one of the AdSense blocks.
 You must select a format, a group, and a channel.</p>
 <p>Enable the block, and specify a region for it to be displayed in.</p>

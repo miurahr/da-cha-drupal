@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_click.module,v 1.2.2.10 2008/12/19 01:32:37 jcnventura Exp $
 
 /**
  * @file
@@ -13,12 +12,12 @@ define('ADSENSE_CLICK_TRACKING_DEFAULT', TRUE);
 define('ADSENSE_CLICK_TRACKING_NAME_RESOLVE_DEFAULT', 0);
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function adsense_click_menu() {
   $items = array();
 
-  $items['admin/settings/adsense/click'] = array(
+  $items['admin/config/services/adsense/click'] = array(
     'title'            => 'Clicks',
     'description'      => 'Track the clicks on Adsense ads.',
     'page callback'    => 'drupal_get_form',
@@ -60,26 +59,35 @@ function adsense_click_menu() {
 }
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_permission().
  */
-function adsense_click_perm() {
-  return array('view clicks');
+function adsense_click_permission() {
+  return array(
+    'view clicks' => array(
+      'title' => 'View AdSense clicks',
+    )
+  );
 }
 
 /**
- * Implementation of hook_footer().
+ * Implements hook_init().
  */
-function adsense_click_footer($main = 0) {
+function adsense_click_init() {
   if (variable_get('adsense_click_tracking', ADSENSE_CLICK_TRACKING_DEFAULT)) {
-    $path = base_path() . drupal_get_path('module', 'adsense_click') .'/adsense_click.js';
-    $js = '<script type="text/javascript" src="'. $path .'"></script>';
-    return $js;
+    drupal_add_js(drupal_get_path('module', 'adsense_click') . '/adsense_click.js');
   }
 }
 
 function adsense_click_register() {
   if (variable_get('adsense_click_tracking', ADSENSE_CLICK_TRACKING_DEFAULT)) {
-    db_query("INSERT INTO {adsense_clicks} (ip, timestamp, path, title, referrer) values('%s', %d, '%s', '%s', '%s')",
-      ip_address(), time(), $_GET['u'], $_GET['t'], $_GET['r']);
+    db_insert('adsense_clicks')
+      ->fields(array(
+        'ip' => ip_address(),
+        'timestamp' => REQUEST_TIME,
+        'path' => $_GET['u'],
+        'title' => $_GET['t'],
+        'referrer' => $_GET['r']
+      ))
+      ->execute();
   }
 }

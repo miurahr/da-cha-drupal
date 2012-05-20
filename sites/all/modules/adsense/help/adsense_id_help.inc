@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_id_help.inc,v 1.1.2.3 2008/12/13 23:09:10 jcnventura Exp $
 // Copyright 2005-2008 Khalid Baheyeldin - http://2bits.com
 // Copyright 2008 Joao Ventura - http://www.venturas.org
 

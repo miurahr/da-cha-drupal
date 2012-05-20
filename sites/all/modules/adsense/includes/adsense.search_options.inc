@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense.search_options.inc,v 1.1.2.1 2008/08/10 22:26:34 jcnventura Exp $
 
 /**
  * @file

@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense.module,v 1.68.2.20 2009/06/04 22:01:50 jcnventura Exp $
 
 /**
  * @file
@@ -93,30 +92,42 @@ function adsense_ad_formats($key = NULL) {
 }
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_permission().
  */
-function adsense_perm() {
-  return array('administer adsense', 'hide adsense', 'use PHP for ad visibility');
-}
-
-/**
- * Implementation of hook_theme().
- */
-function adsense_theme() {
+function adsense_permission() {
   return array(
-    'adsense_ad' => array(
-      'arguments' => array('ad' => NULL, 'module' => NULL),
+    'administer adsense' => array(
+      'title' => t('Administer AdSense settings'),
+      'description' => t('Perform administration tasks for AdSense.'),
+    ),
+    'hide adsense' => array(
+      'title' => t('Hide AdSense'),
+      'description' => t('Hide AdSense ads for this role.'),
+    ),
+    'use PHP for ad visibility' => array(
+      'title' => t('Can use PHP for AdSense visibility'),
     ),
   );
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_theme().
+ */
+function adsense_theme() {
+  return array(
+    'adsense_ad' => array(
+      'variables' => array('ad' => NULL, 'module' => NULL),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
  */
 function adsense_menu() {
   $items = array();
 
-  $items['admin/settings/adsense'] = array(
+  $items['admin/config/services/adsense'] = array(
     'title' => 'AdSense',
     'description' => 'Configure Google AdSense Ads.',
     'page callback' => 'drupal_get_form',
@@ -124,12 +135,12 @@ function adsense_menu() {
     'access arguments'  => array('administer adsense'),
     'file' => 'adsense.admin.inc',
   );
-  $items['admin/settings/adsense/main'] = array(
+  $items['admin/config/services/adsense/main'] = array(
     'title' => 'Settings',
     'weight' => 10,
     'type' => MENU_DEFAULT_LOCAL_TASK,
   );
-  $items['admin/settings/adsense/publisher'] = array(
+  $items['admin/config/services/adsense/publisher'] = array(
     'title' => 'Publisher ID',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('adsense_id_settings'),
@@ -138,7 +149,7 @@ function adsense_menu() {
     'type' => MENU_LOCAL_TASK,
     'file' => 'adsense.admin.inc',
   );
-  $items['admin/settings/adsense/publisher/site'] = array(
+  $items['admin/config/services/adsense/publisher/site'] = array(
     'title' => 'Site ID',
     'weight' => -1,
     'type' => MENU_DEFAULT_LOCAL_TASK,
@@ -148,7 +159,7 @@ function adsense_menu() {
 }
 
 /**
- * Implementation of hook_requirements().
+ * Implements hook_requirements().
  */
 function adsense_requirements($phase) {
   $requirements = array();
@@ -161,7 +172,7 @@ function adsense_requirements($phase) {
         $requirements['adsense_basic_id'] = array(
           'title' => $t('AdSense'),
           'value' => $t('Publisher ID is not set.'),
-          'description' => $t('Please configure it in the <a href="@url">AdSense settings page</a>.', array('@url' => url('admin/settings/adsense/publisher'))),
+          'description' => $t('Please configure it in the <a href="@url">AdSense Publisher ID settings page</a>.', array('@url' => url('admin/config/services/adsense/publisher'))),
           'severity' => REQUIREMENT_ERROR,
         );
       }
@@ -171,60 +182,35 @@ function adsense_requirements($phase) {
 }
 
 /**
- * Implementation of hook_filter().
+ * Implements hook_help().
  */
-function adsense_filter($op, $delta = 0, $format = -1, $text = '') {
-  switch ($op) {
-    case 'list':
-      return array(0 => t('AdSense tag'));
-    case 'no cache':
-      return TRUE;
-    case 'description':
-      return t('Substitutes an AdSense special tag with an ad.');
-    case 'process':
-      return _adsense_process_tags($text);
-    default:
-      return $text;
+function adsense_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#adsense':
+      include_once(drupal_get_path('module', 'adsense') . '/help/adsense.help.inc');
+      return adsense_help_text();
   }
 }
 
 /**
- * Implementation of hook_nodeapi().
+ * Implements hook_filter_info().
  */
-function adsense_nodeapi(&$node, $op = 'view', $teaser, $page) {
-  switch ($op) {
-    case 'view':
-      if (variable_get('adsense_section_targeting', ADSENSE_SECTION_TARGETING_DEFAULT)) {
-        $node->content['adsense_start'] = array(
-          '#value' => '<!-- google_ad_section_start -->',
-          '#weight' => -5,
-          );
-        $node->content['adsense_end'] = array(
-          '#value' => '<!-- google_ad_section_end -->',
-          '#weight' => 5,
-          );
-      }
-  }
+function adsense_filter_info() {
+  $filters['adsense'] = array(
+    'title' => t('AdSense tag'),
+    'description' => t('Substitutes an AdSense special tag with an ad. Add this below "Limit allowed HTML tags".'),
+    'process callback' => '_adsense_process_tags',
+    'tips callback' => '_adsense_filter_tips',
+    'cache' => FALSE,
+  );
+
+  return $filters;
 }
 
 /**
- * Implementation of hook_form_filter_admin_format_form_alter().
+ * Callback to display our filter tips.
  */
-function adsense_form_filter_admin_format_form_alter(&$form, $form_state) {
-  // In Drupal <= 6.9 (or later) the HTML corrector has a bug that causes problems with the use of the AdSense tag filter
-  sscanf(VERSION, "%d.%d", $major, $minor);
-  if (($major == 6) && ($minor <= 99)) {
-    if ((empty($form_state['post']) && $form['filters']['adsense/0']['#default_value'] && $form['filters']['filter/3']['#default_value']) ||
-        ((!empty($form_state['post'])) && ($form_state['post']['filters']['adsense/0'] == '1') && ($form_state['post']['filters']['filter/3'] == '1'))) {
-      drupal_set_message(t('The HTML corrector filter has a bug that causes problems with the use of the AdSense tag. Disabling the HTML corrector filter is recommended.'), 'warning', TRUE);
-    }
-  }
-}
-
-/**
- * Implementation of hook_filter_tips().
- */
-function adsense_filter_tips($delta, $format, $long = FALSE) {
+function _adsense_filter_tips($filter, $format, $long = FALSE) {
   return t('Use the special tag [adsense:<em>format</em>:<em>slot</em>] or [adsense:<em>format</em>:<em>[group]</em>:<em>[channel]</em><em>[:slot]</em>] or [adsense:block:<em>location</em>] to display Google AdSense ads.');
 }
 
@@ -235,10 +221,11 @@ function adsense_filter_tips($delta, $format, $long = FALSE) {
  *   text of the node being processed
  * @return
  *   modified text with the adsense tags replaced by Google AdSense ads
- * @see adsense_filter()
+ *
+ * @see adsense_filter_info()
  * @see adsense_display()
  */
-function _adsense_process_tags($text) {
+function _adsense_process_tags($text, $filter) {
   $patterns = array(
     'block'  => '/\[adsense:block:([^\]]+)\]/x',
     'oldtag' => '/\[adsense:([^:]+):(\d*):(\d*):?(\w*)\]/x',
@@ -257,12 +244,12 @@ function _adsense_process_tags($text) {
               'adsense_search',
             );
             foreach ($mods as $module) {
-              $module_blocks = module_invoke($module, 'block', 'list');
+              $module_blocks = module_invoke($module, 'block_info');
               if ($module_blocks) {
                 foreach ($module_blocks as $delta => $block) {
                   if ($block['info'] == $match[1]) {
                     // Found the block with the same name as the passed arg
-                    $block = module_invoke($module, 'block', 'view', $delta);
+                    $block = module_invoke($module, 'block_view', $delta);
                     $ad = $block['content'];
                   }
                 }
@@ -297,13 +284,30 @@ function _adsense_process_tags($text) {
         }
         // Replace the first occurance of the tag, in case we have the same
         // tag more than once.
-        $str = '/\\'. $match[0] .'/';
+        $str = '/\\' . $match[0] . '/';
         $text = preg_replace($str, $ad, $text, 1);
       }
     }
   }
 
   return $text;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function adsense_node_view($node, $view_mode, $langcode) {
+  if (variable_get('adsense_section_targeting', ADSENSE_SECTION_TARGETING_DEFAULT)) {
+    $node->content['adsense_start'] = array(
+      '#markup' => '<!-- google_ad_section_start -->',
+      '#weight' => -5,
+    );
+
+    $node->content['adsense_end'] = array(
+      '#markup' => '<!-- google_ad_section_end -->',
+      '#weight' => 5,
+    );
+  }
 }
 
 /**
@@ -391,7 +395,7 @@ function adsense_display() {
   $ad = adsense_ad_formats($args['format']);
 
   if ($ad === NULL) {
-    $ad = '<!--adsense: invalid format: '. $args['format'] .'-->';
+    $ad = '<!--adsense: invalid format: ' . $args['format'] . '-->';
   }
   elseif (!_adsense_page_match()) {
     // Check first if disabled or if we are at adsense limit or if this page doesn't allow adsense
@@ -404,12 +408,12 @@ function adsense_display() {
     if (variable_get('adsense_placeholder', ADSENSE_PLACEHOLDER_DEFAULT) || ($user->uid == 1)) {
       $width = array_key_exists('width', $ad) ? $ad['width'] : 0;
       $height = array_key_exists('height', $ad) ? $ad['height'] : 0;
-      $text = variable_get('adsense_placeholder_text', ADSENSE_PLACEHOLDER_TEXT_DEFAULT) ." ${ad['desc']}";
+      $text = variable_get('adsense_placeholder_text', ADSENSE_PLACEHOLDER_TEXT_DEFAULT) . " ${ad['desc']}";
       if ($user->uid == 1) {
-        $text = 'Ads disabled for site admin<br />'. $text;
+        $text = 'Ads disabled for site admin<br />' . $text;
       }
 
-      $ad = "<!--adsense: placeholder-->\n". _adsense_format_box($text, $width, $height);
+      $ad = "<!--adsense: placeholder-->\n" . _adsense_format_box($text, $width, $height);
     }
     else {
       $ad = '<!--adsense: ads disabled -->';
@@ -463,7 +467,7 @@ function adsense_display() {
           $ad = '<!--adsense: no AdSense for Content module found-->';
         }
 
-        $ad = theme('adsense_ad', $ad, $module);
+        $ad = theme('adsense_ad', array('ad' => $ad, 'module' => $module));
 
         break;
     }
@@ -486,8 +490,8 @@ function adsense_display() {
  *   string with the modified ad unit
  * @ingroup themeable
  */
-function theme_adsense_ad($ad, $module) {
-  return "<div class='adsense $module'>\n$ad\n</div>";
+function theme_adsense_ad($vars) {
+  return "<div class='adsense " . $vars['module'] . "'>\n" . $vars['ad'] . "\n</div>";
 }
 
 /**
@@ -558,11 +562,7 @@ function _adsense_page_match() {
   // and it also prevents warnings about mixed-content
   // Thanks to Brad Konia http://drupal.org/node/29585
   // Should be restricted when running on Apache only
-  // 
-  // hack for PHP4 - we don't have secure page operate.
-  // by H.Miura
-  // - original - : if (isset($_SERVER['SERVER_SOFTWARE']) && (stripos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) && 
-  if (isset($_SERVER['SERVER_SOFTWARE']) && (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) && 
+  if (isset($_SERVER['SERVER_SOFTWARE']) && (stristr($_SERVER['SERVER_SOFTWARE'], 'Apache') !== FALSE) &&
       isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) {
     return FALSE;
   }
@@ -572,7 +572,7 @@ function _adsense_page_match() {
 
   if ($pages) {
     if ($visibility == 2) {
-      return drupal_eval($pages);
+      return php_eval($pages);
     }
     $path = drupal_get_path_alias($_GET['q']);
     $page_match = drupal_match_path($path, $pages);
@@ -595,7 +595,7 @@ function _adsense_page_match() {
  */
 function _adsense_format_box($text, $width, $height) {
   $dimensions = ((!empty($width)) && (!empty($height)))
-                ? " width:". $width ."px; height:". $height ."px;" : "";
+                ? " width:" . $width . "px; height:" . $height . "px;" : "";
 
   return "<div class='adsense' style='text-align:center;display: table-cell;vertical-align:middle;border:solid 1px;${dimensions}'>${text}</div>";
 }

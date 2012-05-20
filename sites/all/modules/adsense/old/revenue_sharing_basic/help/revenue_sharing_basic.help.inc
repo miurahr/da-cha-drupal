@@ -1,5 +1,4 @@
 <?php
-// $Id: revenue_sharing_basic.help.inc,v 1.1.2.4 2008/12/13 23:09:10 jcnventura Exp $
 // Copyright 2005-2008 Khalid Baheyeldin - http://2bits.com
 // Copyright 2008 Joao Ventura - http://www.venturas.org
 

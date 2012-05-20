@@ -1,5 +1,4 @@
 <?php
-// $Id: adsense_cse.module,v 1.1.2.9 2009/07/03 12:05:50 jcnventura Exp $
 
 /**
  * @file
@@ -23,14 +22,14 @@ define('ADSENSE_CSE_TEXTBOX_LENGTH_DEFAULT', 31);
 define('ADSENSE_CSE_LANGUAGE_DEFAULT', 'en');
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function adsense_cse_menu() {
   $items = array();
 
   $results_path = variable_get('clean_url', 0) ? ADSENSE_CSE_RESULTS_PATH : '.';
 
-  $items['admin/settings/adsense/cse'] = array(
+  $items['admin/config/services/adsense/cse'] = array(
     'title' => 'Custom Search',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('adsense_cse_settings'),
@@ -51,60 +50,71 @@ function adsense_cse_menu() {
 }
 
 /**
- * Implementation of hook_block().
+ * Implements hook_block_info().
  */
-function adsense_cse_block($op = 'list', $delta = 0, $edit = array()) {
-  $block = NULL;
-
-  switch ($op) {
-    case 'list':
-      $max = variable_get('adsense_cse_number_blocks', ADSENSE_CSE_NUMBER_BLOCKS_DEFAULT);
-      for ($count=0; $count < $max ; $count++) {
-        if ($ad = _adsense_cse_get_block_config($count)) {
-          $title = $ad[0];
-        }
-        else {
-          $title = t('AdSense CSE: unconfigured ') . $count;
-        }
-        $block[$count]['info'] = $title;
-      }
-      break;
-
-    case 'configure':
-      $ad = _adsense_cse_get_block_config($delta);
-
-      $form['info'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Block description'),
-        '#default_value' => ($ad) ? $ad[0] : '',
-        '#maxlength' => 64,
-        '#description' => t('A brief description of your block. Used on the <a href="@overview">block overview page</a>.', array('@overview' => url('admin/build/block'))),
-        '#required' => TRUE,
-        '#weight' => -19,
-      );
-
-      $form['ad_slot'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Ad Slot ID'),
-        '#default_value' => ($ad) ? $ad[1] : '',
-        '#description' => t('This is the provided by the AdSense site in the Search Box Code "cx" field. This is usually provided in the form partner-<em>Publisher ID</em>:<em>Slot Id</em>. If the code provided is, for example, partner-pub-0123456789:<strong>abcdef-ghij</strong>, then insert only <strong>abcdef-ghij</strong> here.'),
-        '#required' => TRUE,
-      );
-      return $form;
-
-    case 'save':
-      $data = implode(':', array(urlencode($edit['info']), $edit['ad_slot']));
-      variable_set('adsense_cse_ad_block_'. $delta, $data);
-      return;
-
-    case 'view':
-      if (_adsense_page_match()) {
-        $ad = _adsense_cse_get_block_config($delta);
-        $block['content'] = ($ad) ? adsense_display(array('format' => 'Search Box', 'slot' => $ad[1])) : t('AdSense unconfigured block. <a href=!url>Click to configure.</a>', array('!url' => url('admin/build/block/configure/adsense_cse/'. $delta)));
-      }
-      break;
+function adsense_cse_block_info() {
+  $blocks = array();
+  $max = variable_get('adsense_cse_number_blocks', ADSENSE_CSE_NUMBER_BLOCKS_DEFAULT);
+  for ($count=0 ; $count < $max ; $count++) {
+    if ($ad = _adsense_cse_get_block_config($count)) {
+      $title = $ad[0];
     }
-  return $block;
+    else {
+      $title = t('AdSense CSE: unconfigured') . ' ' . $count;
+    }
+    $blocks[$count] = array(
+      'info' => $title,
+      'cache' => DRUPAL_NO_CACHE,
+    );
+  }
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function adsense_cse_block_configure($delta = '') {
+  $ad = _adsense_cse_get_block_config($delta);
+
+  $form['info'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Block description'),
+    '#default_value' => ($ad) ? $ad[0] : '',
+    '#maxlength' => 64,
+    '#description' => t('A brief description of your block. Used on the <a href="@overview">block overview page</a>.', array('@overview' => url('admin/structure/block'))),
+    '#required' => TRUE,
+    '#weight' => -19,
+  );
+
+  $form['ad_slot'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Ad Slot ID'),
+    '#default_value' => ($ad) ? $ad[1] : '',
+    '#description' => t('This is the provided by the AdSense site in the Search Box Code "cx" field. This is usually provided in the form partner-<em>Publisher ID</em>:<em>Slot Id</em>. If the code provided is, for example, partner-pub-0123456789:<strong>abcdef-ghij</strong>, then insert only <strong>abcdef-ghij</strong> here.'),
+    '#required' => TRUE,
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function adsense_cse_block_save($delta = '', $edit = array()) {
+  $data = implode(':', array(urlencode($edit['info']), $edit['ad_slot']));
+  variable_set('adsense_cse_ad_block_' . $delta, $data);
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function adsense_cse_block_view($delta = '') {
+  if (_adsense_page_match()) {
+    $ad = _adsense_cse_get_block_config($delta);
+    $block['content'] = ($ad) ? adsense_display(array('format' => 'Search Box', 'slot' => $ad[1])) : t('AdSense unconfigured block. <a href=!url>Click to configure.</a>', array('!url' => url('admin/structure/block/manage/adsense_cse/' . $delta)));
+    return $block;
+  }
 }
 
 /**
@@ -116,7 +126,7 @@ function adsense_cse_block($op = 'list', $delta = 0, $edit = array()) {
  *   array with the block configuration or FALSE if no such block was found
  */
 function _adsense_cse_get_block_config($delta = 0) {
-  if ($data = variable_get('adsense_cse_ad_block_'. $delta, ADSENSE_CSE_AD_BLOCK_DEFAULT)) {
+  if ($data = variable_get('adsense_cse_ad_block_' . $delta, ADSENSE_CSE_AD_BLOCK_DEFAULT)) {
     $ad = explode(':', $data);
     $ad[0] = urldecode($ad[0]);
     return $ad;
@@ -175,7 +185,7 @@ function _adsense_cse_get_searchbox($client, $slot = NULL) {
 
   if ($branding == 'adsense_cse_branding_watermark') {
     // Since we use as_q, Google's Javascript can't be used, so we use a modified local copy
-    $script = $base_url .'/'. drupal_get_path('module', 'adsense_cse') .'/adsense_cse.js';
+    $script = $base_url . '/' . drupal_get_path('module', 'adsense_cse') . '/adsense_cse.js';
     // If there is a watermark, the indentation of the code makes it impossible to re-use the same text
     $output = <<<CSE_TXT1
 <script type="text/javascript"><!--
