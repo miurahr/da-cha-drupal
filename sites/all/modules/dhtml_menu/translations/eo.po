@@ -1,4 +1,4 @@
-﻿# $Id: eo.po,v 1.1.2.1 2008/07/26 07:43:27 arancaytar Exp $
+﻿# $Id: eo.po,v 1.2 2008/08/28 13:39:34 arancaytar Exp $
 #
 # Esperanto translation of Drupal (dhtml_menu)
 # Copyright 2008 <christoph@burschka.de>

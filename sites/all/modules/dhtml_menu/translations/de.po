@@ -1,4 +1,4 @@
-# $Id: de.po,v 1.1.2.1 2008/07/26 07:43:27 arancaytar Exp $
+# $Id: de.po,v 1.3 2008/08/28 13:38:09 arancaytar Exp $
 #
 # German translation of Drupal (dhtml_menu)
 # Copyright Christoph Burschka <christoph@burschka.de>
