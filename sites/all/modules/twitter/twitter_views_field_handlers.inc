@@ -5,11 +5,12 @@
  */
 class twitter_views_handler_field_xss extends views_handler_field {
   function option_definition() {
+    $conf = TwitterConf::instance();
     $options = parent::option_definition();
     $options['link_urls'] = array('default' => TRUE);
     $options['link_usernames'] = array('default' => TRUE);
     $options['link_hashtags'] = array('default' => FALSE);
-    $options['hashtags_url'] = array('default' => 'http://search.twitter.com/search?q=%23');
+    $options['hashtags_url'] = array('default' => 'http://' . $conf->get('search') . '/search?q=%23');
     return $options;
   }
 
@@ -33,7 +34,7 @@ class twitter_views_handler_field_xss extends views_handler_field {
     $form['hashtags_url'] = array(
       '#type' => 'textfield',
       '#default_value' => $this->options['hashtags_url'],
-      '#process' => array('views_process_dependency'),
+      '#process' => array('ctools_dependent_process'),
       '#dependency' => array('edit-options-link-hashtags' => array(TRUE)),
     );
   }
@@ -41,18 +42,21 @@ class twitter_views_handler_field_xss extends views_handler_field {
   function render($values) {
     $value = $values->{$this->field_alias};
     if (!empty($this->options['link_urls'])) {
-      $value = _filter_url($value, FILTER_DEFAULT);
+      $filter = new stdClass;
+      $filter->settings = array(
+        'filter_url_length' => 496,
+      );
+     $value = _filter_url($value, $filter);
     }
     if (!empty($this->options['link_usernames'])) {
-      $value = twitter_link_filter($value);
-    }
-    if (!empty($this->options['link_hashtags']) && valid_url($this->options['hashtags_url'])) {
-      $value = twitter_link_filter($value, '#', url($this->options['hashtags_url']));
+      $conf = TwitterConf::instance();
+      $value = _twitter_filter_text($value, '@', 'http://' . $conf->get('host') . '/'); 
+    } if (!empty($this->options['link_hashtags']) && valid_url($this->options['hashtags_url'])) {
+      $value = _twitter_filter_text($value, '#', url($this->options['hashtags_url']));
     }
     return filter_xss($value);
   }
 }
-
 
 /**
  * Field handler to provide simple renderer that turns a URL into a clickable link.
@@ -60,7 +64,6 @@ class twitter_views_handler_field_xss extends views_handler_field {
 class twitter_views_handler_field_profile_image extends views_handler_field {
   function render($values) {
     $value = $values->{$this->field_alias};
-    return theme('image', $value, '', '', array(), FALSE);
+    return theme('image', array('path' => $value));
   }
 }
-

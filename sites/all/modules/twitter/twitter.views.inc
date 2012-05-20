@@ -1,5 +1,4 @@
 <?php
-// $Id: twitter.views.inc,v 1.6.2.1 2009/05/28 06:45:21 walkah Exp $
 /**
  * @file
  * Provide views data and handlers for twitter.module
@@ -12,27 +11,9 @@
  * @{
  */
 
-/**
- * Implementation of hook_views_handlers()
- */
-function twitter_views_handlers() {
-  return array(
-    'handlers' => array(
-      'twitter_views_handler_field_profile_image' => array(
-        'parent' => 'views_handler_field',
-        'file' => 'twitter_views_field_handlers.inc',
-      ),
-      'twitter_views_handler_field_xss' => array(
-        'parent' => 'views_handler_field',
-        'file' => 'twitter_views_field_handlers.inc',
-      ),
-    ),
-  );
-}
-
 
 /**
- * Implementation of hook_views_data()
+ * Implements hook_views_data().
  */
 function twitter_views_data() {
   // Basic table information.
@@ -45,6 +26,62 @@ function twitter_views_data() {
     'title' => t('Twitter message'),
     'help' => t('Twitter status messages.'),
     'weight' => 10,
+  );
+
+  // Tweet ID
+  $data['twitter']['twitter_id'] = array(
+    'title' => t('Twitter status message ID'),
+    'help' => t('The ID of the Twitter status message.'),
+    'field' => array(
+      'handler' => 'views_handler_field',
+      'click sortable' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_numeric',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
+    ),
+  );
+
+  // Twitter reply-to-status id
+  $data['twitter']['in_reply_to_status_id'] = array(
+    'title' => t('In reply to status ID'),
+    'help' => t('The ID of the Twitter status this message is replying to.'),
+    'field' => array(
+      'handler' => 'views_handler_field',
+      'click sortable' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_numeric',
+      'allow empty' => TRUE,
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+  );
+
+  // Twitter reply-to-status screen name
+  $data['twitter']['in_reply_to_screen_name'] = array(
+    'title' => t('In reply to user name'),
+    'help' => t('The login account of the Twitter user this message is replying to.'),
+    'field' => array(
+      'handler' => 'views_handler_field',
+      'click sortable' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+      'allow empty' => TRUE,
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
+    ),
   );
 
   // Twitter screen name
@@ -298,6 +335,10 @@ function twitter_views_data() {
 }
 
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function twitter_views_data_alter(&$data) {
   $data['users']['table']['join']['twitter'] = array(
     'left_table' => 'twitter_account',

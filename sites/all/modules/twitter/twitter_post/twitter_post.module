@@ -1,5 +1,4 @@
 <?php
-// $Id: twitter_post.module,v 1.1.2.1 2010/01/25 05:09:05 walkah Exp $
 
 /**
  * @file
@@ -7,29 +6,39 @@
  */
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function twitter_post_menu() {
-  $items['admin/settings/twitter/post'] = array(
+  $items['admin/config/services/twitter/post'] = array(
     'title' => 'Post',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('twitter_post_admin_settings'),
     'access arguments' => array('administer site configuration'),
     'file' => 'twitter_post.pages.inc',
     'type' => MENU_LOCAL_TASK,
-    'weight' => 3
-    
+    'weight' => 3,
   );
 
   return $items;
 }
 
 /**
- * Implementation of hook_form_alter().
+ * Implements hook_permission().
+ */
+function twitter_post_permission() {
+  return array(
+    'post to twitter' => array(
+      'title' => t('Post a message to Twitter'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
  */
 function twitter_post_form_alter(&$form, $form_state, $form_id) {
   // Alter any node forms.
-  if (isset($form['#node']) && $form['#node']->type .'_node_form' == $form_id) {
+  if (isset($form['#node']) && $form['#node']->type . '_node_form' == $form_id) {
     // If we haven't enabled Twitter posting on this node type, nothing to do
     // here.
     $type = $form['#node']->type;
@@ -60,45 +69,50 @@ function twitter_post_form_alter(&$form, $form_state, $form_id) {
     $form['twitter'] += $twitter_form;
     $form['twitter']['status']['#default_value'] = variable_get('twitter_post_default_format', 'New post: !title !tinyurl');
     $form['twitter']['status']['#description'] = t('The given text will be posted to twitter.com. You can use !url, !url-alias, !tinyurl, !title and !user as replacement text.');
+    $form['twitter']['status']['#maxlength'] = 150;
   }
 }
 
 /**
- * Implementation of hook_nodeapi().
+ * Implementation of hook_node_insert().
  *
  * Intercepts newly published nodes and posts noticed to Twitter.
  */
-function twitter_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
-  
-  switch ($op) {
-    case 'insert':
-    case 'update':
-      if (!empty($node->status) && !empty($node->twitter) && !empty($node->twitter['post'])) {
-        module_load_include('inc', 'twitter');
+function twitter_post_node_insert($node) {
+  if (!empty($node->status) && !empty($node->twitter) && !empty($node->twitter['post'])) {
+    module_load_include('inc', 'twitter');
 
-        $twitter_account = twitter_account_load($node->twitter['account']);
-        $replacements = array('!title' => $node->title,
-                              '!url' => url('node/'. $node->nid, array('absolute' => TRUE, 'alias' => TRUE)),
-                              '!url-alias' => url('node/'. $node->nid, array('absolute' => TRUE)),
-                              '!user' => $node->name);
-        // Only generate the shortened URL if it's going to be used. No sense
-        // burning through TinyURLs without a good reason.
-        if (strstr($node->twitter['status'], '!tinyurl') !== FALSE) {
-          $replacements['!tinyurl'] = twitter_shorten_url(url('node/'. $node->nid, array('absolute' => TRUE)));
-        }
+    $twitter_account = twitter_account_load($node->twitter['account']);
+    $replacements = array(
+      '!title' => $node->title,
+      '!url' => url('node/' . $node->nid, array('absolute' => TRUE, 'alias' => TRUE)),
+      '!url-alias' => url('node/' . $node->nid, array('absolute' => TRUE)),
+      '!user' => $node->name,
+    );
 
-        $status = strtr($node->twitter['status'], $replacements);
-        try {
-          $result = twitter_set_status($twitter_account, $status);
-          drupal_set_message(t('Successfully posted to Twitter'));
-        }
-        catch (TwitterException $e) {
-          drupal_set_message(t('An error occurred when posting to twitter: %code %error',
-                               array('%code' => $result->code, '%error' => $result->error)), 'warning');
-        }
-      }
-      break;
+    // Only generate the shortened URL if it's going to be used. No sense
+    // burning through TinyURLs without a good reason.
+    if (strstr($node->twitter['status'], '!tinyurl') !== FALSE) {
+      $replacements['!tinyurl'] = twitter_shorten_url(url('node/' . $node->nid, array('absolute' => TRUE)));
+    }
+
+    $status = strtr($node->twitter['status'], $replacements);
+    try {
+      $result = twitter_set_status($twitter_account, $status);
+      drupal_set_message(t('Successfully posted to Twitter'));
+    }
+    catch (TwitterException $e) {
+      drupal_set_message(t('An error occurred when posting to twitter: %code %error',
+                           array('%code' => $result->code, '%error' => $result->error)), 'warning');
+    }
   }
+}
+
+/**
+ * Implementation of hook_node_update().
+ */
+function twitter_post_node_update($node) {
+  twitter_post_node_insert($node);
 }
 
 
@@ -109,16 +123,18 @@ function twitter_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
  *   A Drupal user object.
  */
 function twitter_post_form($account = NULL) {
-  drupal_add_js(drupal_get_path('module', 'twitter') .'/twitter.js', 'module');
+  drupal_add_js(drupal_get_path('module', 'twitter_post') . '/twitter_post.js');
 
   if (empty($account)) {
-    global $user;
-    $account = $user;
+    $account = user_load($GLOBALS['user']->uid);
   }
 
-  $twitter_accounts = twitter_get_user_accounts($account->uid);
+  if (!user_access('post to twitter', $account)) {
+    return;
+  }
+
   $options = array();
-  foreach ($twitter_accounts as $twitter_account) {
+  foreach ($account->twitter_accounts as $twitter_account) {
     $options[$twitter_account->id] = $twitter_account->screen_name;
   }
 
@@ -140,7 +156,7 @@ function twitter_post_form($account = NULL) {
     else {
       $form['account'] = array(
         '#type' => 'value',
-        '#value' => array_pop(array_keys($options))
+        '#value' => array_pop(array_keys($options)),
       );
     }
     return $form;

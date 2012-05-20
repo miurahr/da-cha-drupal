@@ -1,18 +1,66 @@
 <?php
-// $Id: twitter.lib.php,v 1.1.2.6 2010/10/20 15:18:10 walkah Exp $
-
 /**
  * @file
  * Classes to implement the full Twitter API
  */
 
+/**
+ * Class TwitterConfig
+ *
+ * Singleton which stores common configuration
+ * @see http://php.net/manual/en/language.oop5.patterns.php
+ */
+class TwitterConf {
+  private static $instance;
+  private $attributes = array(
+    'host'     => 'twitter.com',
+    'api'      => 'api.twitter.com',
+    'search'   => 'search.twitter.com',
+    'tiny_url' => 'tinyurl.com',
+  );
+
+  private function __construct() {}
+
+  public static function instance() {
+    if (!isset(self::$instance)) {
+      $className = __CLASS__;
+      self::$instance = new $className;
+    }
+    return self::$instance;
+  }
+
+  /**
+   * Generic getter
+   *
+   * @param $attribute
+   *   string attribute name to return
+   * @return
+   *   mixed value or NULL
+   */
+  public function get($attribute) {
+    if (array_key_exists($attribute, $this->attributes)) {
+      return $this->attributes[$attribute];
+    }
+  }
+
+  /**
+   * Generic setter
+   * @param $attribute
+   *   string attribute name to be set
+   * @param $value
+   *   mixed value
+   */
+  public function set($attribute, $value) {
+    if (array_key_exists($attribute, $this->attributes)) {
+      $this->attributes[$attribute] = $value;
+    }
+  }
+}
 
 /**
  * Exception handling class.
  */
-class TwitterException extends Exception {
-
-}
+class TwitterException extends Exception {}
 
 /**
  * Primary Twitter API implementation class
@@ -24,11 +72,6 @@ class Twitter {
    * @var $format API format to use: can be json or xml
    */
   protected $format = 'json';
-
-  /**
-   * @var $host The host to query against
-   */
-  protected $host = 'twitter.com';
 
   /**
    * @var $source the twitter api 'source'
@@ -60,16 +103,6 @@ class Twitter {
   public function set_auth($username, $password) {
     $this->username = $username;
     $this->password = $password;
-  }
-
-  /**
-   * Set the current host. This is good for using laconi.ca instances
-   * and anything else that utilizes the Twitter API
-   *
-   * @param $host the hostname to set.
-   */
-  public function set_host($host) {
-    $this->host = $host;
   }
 
   /**
@@ -154,7 +187,7 @@ class Twitter {
    *
    * @see http://apiwiki.twitter.com/Twitter-REST-API-Method%3A-users%C2%A0show
    */
-  public function users_show($id) {
+  public function users_show($id, $use_auth = TRUE) {
     $params = array();
     if (is_numeric($id)) {
       $params['user_id'] = $id;
@@ -163,7 +196,7 @@ class Twitter {
       $params['screen_name'] = $id;
     }
 
-    $values = $this->call('users/show', $params, 'GET', TRUE);
+    $values = $this->call('users/show', $params, 'GET', $use_auth);
     return new TwitterUser($values);
   }
 
@@ -195,6 +228,7 @@ class Twitter {
       }
     }
     catch (TwitterException $e) {
+      watchdog('twitter', '!message', array('!message' => $e->__toString()), WATCHDOG_ERROR);
       return FALSE;
     }
 
@@ -237,14 +271,14 @@ class Twitter {
       $headers['Content-type'] = 'application/x-www-form-urlencoded';
     }
 
-    $response = drupal_http_request($url, $headers, $method, $data);
-    if (!$response->error) {
+    $response = drupal_http_request($url, array('headers' => $headers, 'method' => $method, 'data' => $data));
+    if (!isset($response->error)) {
       return $response->data;
     }
     else {
       $error = $response->error;
       $data = $this->parse_response($response->data);
-      if ($data['error']) {
+      if (isset($data['error'])) {
         $error = $data['error'];
       }
       throw new TwitterException($error);
@@ -258,6 +292,9 @@ class Twitter {
 
     switch ($format) {
       case 'json':
+        // http://drupal.org/node/985544 - json_decode large integer issue
+        $length = strlen(PHP_INT_MAX);
+        $response = preg_replace('/"(id|in_reply_to_status_id)":(\d{' . $length . ',})/', '"\1":"\2"', $response);
         return json_decode($response, TRUE);
     }
   }
@@ -266,8 +303,8 @@ class Twitter {
     if (is_null($format)) {
       $format = $this->format;
     }
-
-    $url =  'http://'. $this->host .'/'. $path;
+    $conf = TwitterConf::instance();
+    $url =  'http://'. $conf->get('api') .'/'. $path;
     if (!empty($format)) {
       $url .= '.'. $this->format;
     }
@@ -345,13 +382,11 @@ class TwitterOAuth extends Twitter {
 
 }
 
+/**
+  * Twitter search is not used in this module yet
+  */
 class TwitterSearch extends Twitter {
-
-  protected $host = 'search.twitter.com';
-
-  public function search($params = array()) {
-
-  }
+  public function search($params = array()) {}
 }
 
 /**
@@ -482,9 +517,9 @@ class TwitterUser {
     if ($values['created_at'] && $created_time = strtotime($values['created_at'])) {
       $this->created_time = $created_time;
     }
-    $this->utc_offset = $values['utc_offset'];
+    $this->utc_offset = $values['utc_offset']?$values['utc_offset']:0;
 
-    if ($values['status']) {
+    if (isset($values['status'])) {
       $this->status = new TwitterStatus($values['status']);
     }
   }
@@ -494,8 +529,7 @@ class TwitterUser {
   }
 
   public function set_auth($values) {
-    $this->password = $values['password'];
-    $this->oauth_token = $values['oauth_token'];
-    $this->oauth_token_secret = $values['oauth_token_secret'];
+    $this->oauth_token = isset($values['oauth_token'])?$values['oauth_token']:NULL;
+    $this->oauth_token_secret = isset($values['oauth_token_secret'])?$values['oauth_token_secret']:NULL;
   }
 }

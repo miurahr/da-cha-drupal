@@ -1,12 +1,16 @@
-; $Id: twitter.info,v 1.4 2009/05/27 19:00:07 walkah Exp $
 name = Twitter
 description = Adds integration with the Twitter microblogging service.
 php = 5.1
-core = 6.x
+core = 7.x
+files[] = twitter.lib.php
+files[] = twitter_views_field_handlers.inc
+files[] = tests/core.test
+files[] = tests/input_filters.test
+configure = admin/config/services/twitter
 
-; Information added by drupal.org packaging script on 2010-10-20
-version = "6.x-3.0-beta3"
-core = "6.x"
+; Information added by drupal.org packaging script on 2011-12-03
+version = "7.x-3.0-beta4"
+core = "7.x"
 project = "twitter"
-datestamp = "1287594086"
+datestamp = "1322940643"
 
