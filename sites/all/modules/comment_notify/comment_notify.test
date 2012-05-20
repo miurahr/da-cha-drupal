@@ -1,6 +1,9 @@
 <?php
-// $Id: comment_notify.test,v 1.4 2009/11/17 18:38:14 greggles Exp $
 
+/**
+ * @file
+ * Creates tests for comment_notify module.
+ */
 class CommentNotifyTestCase extends DrupalWebTestCase {
   /**
    * Implementation of getInfo().
@@ -20,9 +23,6 @@ class CommentNotifyTestCase extends DrupalWebTestCase {
     parent::setUp('comment_notify');
     // Create a content type where commenting is enabled.
     // Allow contact info for anons on that content type, and make preview optional.
-
-    // Do some default comment notify settings?.
-    // variable_set('some_variable', 'some value');
   }
 
   /**
@@ -35,37 +35,40 @@ class CommentNotifyTestCase extends DrupalWebTestCase {
     $this->drupalLogin($admin_user);
 
     // Enable comment notify on this node and allow anonymous information in comments.
-    variable_set('comment_notify_node_types', array('story' => 'story'));
-    variable_set('comment_anonymous_story', 1);
+    variable_set('comment_notify_node_types', array('article' => 'article', 'page' => 0));
+    variable_set('comment_anonymous_article', '1');
 
     // Create a node with comments allowed.
-    $this->node = $this->drupalCreateNode(array('type' => 'story', 'promote' => 1, 'comment' => 2));
+    $this->node = $this->drupalCreateNode(array('type' => 'article', 'promote' => NODE_PROMOTED, 'comment' => COMMENT_NODE_OPEN));
 
     // Allow anonymous users to post comments and get notifications.
-    $this->setPermission('anonymous user', array('access comments' => TRUE, 'access content' => TRUE, 'post comments' => TRUE, 'post comments without approval' => TRUE, 'subscribe to comments' => TRUE));
+    user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access comments', 'access content', 'post comments', 'skip comment approval', 'subscribe to comments'));
     $this->drupalLogout();
 
     // Notify type 1 - All comments on the node.
     // First confirm that we properly require an e-mail address.
     $subscribe_1 = array('notify' => TRUE, 'notify_type' => 1);
-    $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), TRUE, TRUE, $subscribe_1);
-    $this->assertText(t('If you want to subscribe to comments you must supply a valid e-mail address.'), t('Anonymous user must leave E-mail if they want to get notifications.'));
+    $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), $subscribe_1);
+
+    // This is still a bad test to test for a static string showing on the page, but at least the definition of the string is centralized.
+    $expected_error = comment_notify_variable_registry_get('error_anonymous_email_missing');
+    $this->assertText(t($expected_error));
 
     // Try again with an e-mail address.
-    $contact_1 = array('mail' => $this->randomName() .'@'. $this->randomName());
-    $anonymous_comment_1 = $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), TRUE, $subscribe_1, $contact_1);
+    $contact_1 = array('name' => $this->randomName(), 'mail' => $this->getRandomEmailAddress());
+    $anonymous_comment_1 = $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), $subscribe_1, $contact_1);
 
     // Confirm that the notification is saved.
-    $result = db_result(db_query("SELECT notify FROM {comment_notify} WHERE cid = %d", $anonymous_comment_1['id']));
+    $result = comment_notify_get_notification_type($anonymous_comment_1['id']);
     $this->assertEqual($result, $subscribe_1['notify_type'], 'Notify selection option 1 is saved properly.');
 
     // Notify type 2 - replies to a comment.
     $subscribe_2 = array('notify' => TRUE, 'notify_type' => 2);
-    $contact_2 = array('mail' => $this->randomName() .'@'. $this->randomName());
-    $anonymous_comment_2 = $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), TRUE, $subscribe_2, $contact_2);
+    $contact_2 = array('name' => $this->randomName(), 'mail' => $this->getRandomEmailAddress());
+    $anonymous_comment_2 = $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), $subscribe_2, $contact_2);
 
     // Confirm that the notification is saved.
-    $result = db_result(db_query("SELECT notify FROM {comment_notify} WHERE cid = %d", $anonymous_comment_2['id']));
+    $result = comment_notify_get_notification_type($anonymous_comment_2['id']);
     $this->assertEqual($result, $subscribe_2['notify_type'], 'Notify selection option 2 is saved properly.');
 
     // Confirm that the original subscriber with all comments on this node got their mail.
@@ -74,38 +77,14 @@ class CommentNotifyTestCase extends DrupalWebTestCase {
     // Notify type 0 (i.e. only one mode is enabled).
     variable_set('comment_notify_available_alerts', array(1 => 0, 2 => 2));
     $subscribe_0 = array('notify' => TRUE);
-    $contact_0 = array('mail' => $this->randomName() .'@'. $this->randomName());
-    $anonymous_comment_0 = $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), TRUE, $subscribe_0, $contact_0);
+    $contact_0 = array('mail' => $this->getRandomEmailAddress());
+    $anonymous_comment_0 = $this->postCommentNotifyComment($this->node, $this->randomName(), $this->randomName(), $subscribe_0, $contact_0);
 
     // Confirm that the notification is saved.
-    $result = db_result(db_query("SELECT notify FROM {comment_notify} WHERE cid = %d", $anonymous_comment_0['id']));
+    $result = comment_notify_get_notification_type($anonymous_comment_0['id']);
     $this->assertEqual($result, 2, 'Notify selection option 0 is saved properly.');
 
     // TODO yet more tests.
-  }
-
-
-  /**
-   * Set permission.
-   *
-   * @param string $role User role to set permissions for.
-   * @param array $permissions Key-value array of permissions to set.
-   */
-  function setPermission($role, $permissions) {
-    // Get role id (rid) for specified role.
-    $rid = db_result(db_query("SELECT rid FROM {role} WHERE name = '%s'", array('%s' => $role)));
-    if ($rid === FALSE) {
-      $this->fail(t(' [permission] Role "' . $role . '" not found.'));
-    }
-
-    // Create edit array from permission.
-    $edit = array();
-    foreach ($permissions as $name => $value) {
-      $edit[$rid . '[' . $name . ']'] = $value;
-    }
-
-    $this->drupalPost('admin/user/permissions', $edit, t('Save permissions'));
-    $this->assertText(t('The changes have been saved.'), t(' [permission] Saved changes.'));
   }
 
   /////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -122,10 +101,11 @@ class CommentNotifyTestCase extends DrupalWebTestCase {
    * @param boolean $preview Should preview be required.
    * @param mixed $contact Set to NULL for no contact info, TRUE to ignore success checking, and array of values to set contact info.
    */
-  function postCommentNotifyComment($node, $subject, $comment, $preview = TRUE, $notify, $contact = NULL) {
+  function postCommentNotifyComment($node, $subject, $comment, $notify, $contact = NULL) {
+    $langcode = LANGUAGE_NONE;
     $edit = array();
     $edit['subject'] = $subject;
-    $edit['comment'] = $comment;
+    $edit['comment_body[' . $langcode . '][0][value]'] = $comment;
 
     if ($notify !== NULL && is_array($notify)) {
       $edit += $notify;
@@ -135,15 +115,8 @@ class CommentNotifyTestCase extends DrupalWebTestCase {
       $edit += $contact;
     }
 
-    if ($node !== NULL) {
-      $this->drupalGet('comment/reply/' . $node->nid);
-    }
+    $this->drupalPost('node/' . $node->nid, $edit, t('Save'));
 
-    if ($preview) {
-      $this->assertNoFieldByName('op', t('Save'), t('Save button not found.')); // Preview required so no save button should be found.
-      $this->drupalPost(NULL, $edit, t('Preview'));
-    }
-    $this->drupalPost(NULL, $edit, t('Save'));
     $match = array();
     // Get comment ID
     preg_match('/#comment-([^"]+)/', $this->getURL(), $match);
@@ -185,4 +158,12 @@ class CommentNotifyTestCase extends DrupalWebTestCase {
     }
   }
 
+  /**
+   * Returns a randomly generated valid email address.
+   * 
+   * @return string.
+   */
+  function getRandomEmailAddress() {
+    return $this->randomName() . '@example.com';
+  }
 }
