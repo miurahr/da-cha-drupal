@@ -1,0 +1,8 @@
+;$Id$
+name = FeedAPI2Feeds
+description = FeedAPI to Feeds migration helper module. Can be user from the user interface or via drush
+package = Feeds
+dependencies[] = feeds
+dependencies[] = feeds_defaults
+dependencies[] = feeds_ui
+core = 6.x
